@@ -1,0 +1,10 @@
+# robots.txt for quicktick.ai
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://quicktick.ai/sitemap.xml
+
+# Crawl-delay (be nice to servers)
+Crawl-delay: 1

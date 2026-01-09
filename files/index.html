@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Quick Tick provides AI-powered stock analysis reports for 180+ publicly traded companies. Get comprehensive investment insights, buy ratings, fair value estimates, and competitive analysis updated monthly.">
+    <meta name="keywords" content="stock analysis, investment reports, AI stock analysis, buy ratings, fair value, stock research, investment research, financial analysis">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="Quick Tick">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Quick Tick">
+    <meta property="og:title" content="Quick Tick - AI-Powered Stock Analysis & Investment Reports">
+    <meta property="og:description" content="Comprehensive stock analysis for 180+ companies with AI-powered insights, buy ratings, and fair value estimates. Updated monthly.">
+    <meta property="og:url" content="https://quicktick.ai">
+    
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Quick Tick - AI-Powered Stock Analysis">
+    <meta name="twitter:description" content="Comprehensive stock analysis for 180+ companies with AI-powered insights and buy ratings.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    
+    <title>Quick Tick - AI-Powered Stock Analysis & Investment Reports</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0e1a;
+            --bg-secondary: #141b2d;
+            --bg-card: #1a2332;
+            --text-primary: #e8eaed;
+            --text-secondary: #9aa0aa;
+            --accent-green: #00ffa3;
+            --accent-cyan: #00d4ff;
+            --accent-red: #ff4d6d;
+            --border: #2a3447;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background grid */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 163, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 163, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Glow orbs in background */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 255, 163, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 15s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-100px, 100px) scale(1.1); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px 60px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .logo-container {
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .logo {
+            width: 350px;
+            height: auto;
+            filter: drop-shadow(0 5px 20px rgba(0, 255, 163, 0.3));
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .main-nav {
+            margin-top: 20px;
+            animation: fadeIn 1s ease-out 0.6s both;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            display: inline-block;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 10px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .nav-link:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .nav-link.patreon-link {
+            background: linear-gradient(135deg, #ff424d, #ff5a63);
+            color: white;
+            border-color: #ff424d;
+        }
+
+        .nav-link.patreon-link:hover {
+            border-color: #ff5a63;
+            box-shadow: 0 5px 20px rgba(255, 66, 77, 0.5);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 4.5rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -2px;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 255, 163, 0.4)); }
+            50% { filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.6)); }
+        }
+
+        .subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-top: 20px;
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 50px auto;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .search-wrapper {
+            position: relative;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .search-wrapper:focus-within {
+            border-color: var(--accent-green);
+            box-shadow: 0 0 30px rgba(0, 255, 163, 0.2);
+            transform: translateY(-2px);
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 24px 60px 24px 24px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.3rem;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            outline: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        #searchInput::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.5;
+        }
+
+        .search-button {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .search-button:hover {
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 5px 20px rgba(0, 255, 163, 0.4);
+        }
+
+        .search-button svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--bg-primary);
+            stroke-width: 2.5;
+        }
+
+        .error-message {
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(255, 77, 109, 0.1);
+            border: 1px solid var(--accent-red);
+            border-radius: 10px;
+            color: var(--accent-red);
+            text-align: center;
+            display: none;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .examples {
+            text-align: center;
+            margin-top: 30px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .example-ticker {
+            display: inline-block;
+            margin: 5px 8px;
+            padding: 6px 12px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--accent-cyan);
+            font-weight: 700;
+        }
+
+        .example-ticker:hover {
+            background: var(--bg-card);
+            border-color: var(--accent-cyan);
+            transform: translateY(-2px);
+        }
+
+        .info-section {
+            margin-top: 80px;
+            padding: 40px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            animation: fadeIn 1s ease-out 0.8s both;
+        }
+
+        .info-section h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--accent-green);
+        }
+
+        .info-section p {
+            line-height: 1.8;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .feature {
+            padding: 25px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 255, 163, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--accent-cyan);
+        }
+
+        .feature p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px 40px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            .logo {
+                width: 250px;
+            }
+
+            #searchInput {
+                font-size: 1.1rem;
+                padding: 20px 55px 20px 20px;
+            }
+
+            .info-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <img src="Quick_Tick_Logo.png" alt="Quick Tick AI Logo" class="logo">
+            </div>
+            <div class="subtitle">AI-Powered Analysis</div>
+            <h1>Quick Tick</h1>
+            <p class="tagline">Intelligent Investing. Instant Insights.</p>
+            <nav class="main-nav">
+                <a href="about.html" class="nav-link">About</a>
+                <a href="patreon.html" class="nav-link patreon-link">Patreon</a>
+            </nav>
+        </header>
+
+        <div class="search-container">
+            <div class="search-wrapper">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="AAPL"
+                    autocomplete="off"
+                    spellcheck="false"
+                >
+                <button class="search-button" id="searchButton" aria-label="Search">
+                    <svg fill="none" viewBox="0 0 24 24">
+                        <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="error-message" id="errorMessage"></div>
+            <div class="examples">
+                Try: 
+                <span class="example-ticker" data-ticker="AAPL">AAPL</span>
+                <span class="example-ticker" data-ticker="MSFT">MSFT</span>
+                <span class="example-ticker" data-ticker="GOOGL">GOOGL</span>
+                <span class="example-ticker" data-ticker="NVDA">NVDA</span>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>How It Works</h2>
+            <p>Enter any US stock ticker symbol to access AI-generated analysis and insights about publicly traded companies. Our database is updated monthly to provide you with comprehensive information.</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI-Powered</h3>
+                    <p>Advanced language models analyze and summarize key company information</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Comprehensive Data</h3>
+                    <p>Business overview, financials, competitive landscape, and more</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Regular Updates</h3>
+                    <p>Database refreshed monthly to keep information current</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Quick Tick &copy; 2026 | Data updated monthly</p>
+        </footer>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const errorMessage = document.getElementById('errorMessage');
+
+        function performSearch() {
+            const ticker = searchInput.value.trim().toUpperCase();
+            
+            if (!ticker) {
+                showError('Please enter a ticker symbol');
+                return;
+            }
+
+            // Basic ticker validation (1-5 letters)
+            if (!/^[A-Z]{1,5}$/.test(ticker)) {
+                showError('Please enter a valid ticker symbol (1-5 letters)');
+                return;
+            }
+
+            // Redirect to company page
+            window.location.href = `company.html?ticker=${ticker}`;
+        }
+
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+            setTimeout(() => {
+                errorMessage.style.display = 'none';
+            }, 3000);
+        }
+
+        searchButton.addEventListener('click', performSearch);
+        
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Example ticker clicks
+        document.querySelectorAll('.example-ticker').forEach(ticker => {
+            ticker.addEventListener('click', (e) => {
+                const tickerValue = e.target.getAttribute('data-ticker');
+                searchInput.value = tickerValue;
+                performSearch();
+            });
+        });
+
+        // Auto-uppercase input
+        searchInput.addEventListener('input', (e) => {
+            e.target.value = e.target.value.toUpperCase();
+        });
+    </script>
+</body>
+</html>

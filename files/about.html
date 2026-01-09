@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Quick Tick - Learn how our AI-powered platform provides institutional-quality stock analysis for hundreds of publicly traded companies with monthly updates.">
+    <meta name="keywords" content="about Quick Tick, AI stock analysis, investment research platform, financial analysis">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    
+    <title>About Quick Tick - AI-Powered Stock Analysis Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0e1a;
+            --bg-secondary: #141b2d;
+            --bg-card: #1a2332;
+            --text-primary: #e8eaed;
+            --text-secondary: #9aa0aa;
+            --accent-green: #00ffa3;
+            --accent-cyan: #00d4ff;
+            --border: #2a3447;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 163, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 163, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            width: 300px;
+            height: auto;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 5px 20px rgba(0, 255, 163, 0.3));
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 10px 18px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+
+        .back-link:hover {
+            border-color: var(--accent-cyan);
+            transform: translateX(-3px);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -2px;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: var(--accent-cyan);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .content-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: var(--accent-green);
+            margin: 40px 0 20px 0;
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        p {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        .highlight {
+            color: var(--accent-cyan);
+            font-weight: 700;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-green);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 255, 163, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: var(--accent-cyan);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        ul {
+            margin: 20px 0 20px 25px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 12px;
+            line-height: 1.8;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 50px;
+            padding: 40px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+            color: var(--bg-primary);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 163, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px 40px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .content-section {
+                padding: 30px 20px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">
+            <span>←</span>
+            <span>Back to Home</span>
+        </a>
+
+        <header>
+            <img src="Quick_Tick_Logo.png" alt="Quick Tick AI Logo" class="logo">
+            <h1>About Quick Tick</h1>
+            <p class="tagline">Intelligent Investing. Instant Insights.</p>
+        </header>
+
+        <div class="content-section">
+            <h2>What is Quick Tick?</h2>
+            <p>
+                <strong>Quick Tick is an AI-powered stock analysis platform</strong> that provides comprehensive, institutional-quality sell-side research reports for hundreds of publicly traded companies. We deliver buy ratings (1-10 scale), fair value estimates, competitive analysis, and growth strategies updated monthly—bringing the depth of professional financial research to individual investors in an accessible, searchable format.
+            </p>
+
+            <p>
+                Our platform is designed for <span class="highlight">growth-focused investors with moderate risk appetite</span> who want detailed, data-driven insights without paying thousands of dollars for traditional research services.
+            </p>
+
+            <h2>How It Works</h2>
+            <p>
+                Quick Tick leverages advanced artificial intelligence to analyze vast amounts of real-time data from multiple sources:
+            </p>
+            <ul>
+                <li><strong>Earnings Reports & Transcripts:</strong> Latest quarterly and annual financial data</li>
+                <li><strong>News & Articles:</strong> Recent developments from financial news outlets</li>
+                <li><strong>Market Data:</strong> Current stock prices, market capitalization, and trading metrics</li>
+                <li><strong>Competitive Intelligence:</strong> Industry positioning and competitor analysis</li>
+                <li><strong>Growth Indicators:</strong> Product pipelines, partnerships, and strategic initiatives</li>
+            </ul>
+
+            <p>
+                Our AI synthesizes this information into clear, comprehensive reports that include:
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Company Overview</h3>
+                    <p>Concise summaries of business models, operations, and market position</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Financial Analysis</h3>
+                    <p>Recent earnings, revenue trends, margins, and key financial metrics</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Buy Ratings</h3>
+                    <p>1-10 scale investment recommendations based on comprehensive analysis</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Fair Value Estimates</h3>
+                    <p>Price targets derived from fundamentals and market analysis</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Growth Strategy</h3>
+                    <p>Analysis of expansion plans, new products, and strategic initiatives</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚖️</div>
+                    <h3>Risk Assessment</h3>
+                    <p>Identification of headwinds, tailwinds, and competitive threats</p>
+                </div>
+            </div>
+
+            <h2>Why Quick Tick?</h2>
+            
+            <p><strong>🤖 AI-Powered Intelligence:</strong> Our advanced AI models process thousands of data points to deliver insights that would take analysts days to compile.</p>
+
+            <p><strong>📅 Monthly Updates:</strong> All reports are refreshed monthly with the latest earnings data, news, and market developments—ensuring you always have current information.</p>
+
+            <p><strong>💼 Institutional Quality:</strong> We provide the same depth of analysis found in expensive sell-side research reports from major investment banks.</p>
+
+            <p><strong>⚡ Instant Access:</strong> Search any ticker and get comprehensive analysis immediately—no waiting for analyst coverage or subscription tiers.</p>
+
+            <p><strong>📊 Data-Driven Decisions:</strong> Make informed investment choices backed by verified financial data, competitive analysis, and market intelligence.</p>
+
+            <h2>Who We Serve</h2>
+            <p>
+                Quick Tick is built for investors who:
+            </p>
+            <ul>
+                <li>Want professional-grade analysis without paying thousands for traditional research services</li>
+                <li>Seek growth opportunities with comprehensive due diligence</li>
+                <li>Value data-driven insights over speculation and hype</li>
+                <li>Need quick access to detailed company information for investment decisions</li>
+                <li>Prefer clear, actionable recommendations with transparent methodology</li>
+            </ul>
+
+            <h2>Our Commitment</h2>
+            <p>
+                We're committed to <span class="highlight">transparency, accuracy, and accessibility</span>. Every report clearly states its data sources and update date. We use only verified financial information from recent earnings reports (within 6 months) and provide current stock prices from reliable market data sources.
+            </p>
+
+            <p>
+                While our AI provides powerful analysis, we always remind users that <strong>all investing involves risk</strong> and our reports should be one component of a comprehensive investment strategy. We encourage investors to verify critical information with official company sources and consult financial advisors for personalized advice.
+            </p>
+
+            <h2>Get Started</h2>
+            <p>
+                Ready to explore institutional-quality stock analysis? Simply search for any ticker symbol on our homepage to access comprehensive reports on hundreds of publicly traded companies.
+            </p>
+        </div>
+
+        <div class="cta-section">
+            <h2 style="margin-top: 0; color: var(--text-primary);">Start Exploring Now</h2>
+            <p>Search hundreds of company reports with detailed analysis and buy ratings.</p>
+            <a href="index.html" class="cta-button">Search Companies →</a>
+        </div>
+
+        <footer>
+            <p>Quick Tick &copy; 2026 | AI-Powered Stock Analysis</p>
+            <p style="margin-top: 10px;">Data updated monthly | For informational purposes only</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,3560 @@
+﻿,COMPANY NAME,TICKER,SUB-INDUSTRY
+,Apple Inc,AAPL,"Technology Hardware, Storage & Peripherals"
+,NVIDIA Corp,NVDA,Semiconductors
+,Microsoft Corp,MSFT,Systems Software
+,Amazon.com Inc,AMZN,Broadline Retail
+,Broadcom Inc,AVGO,Semiconductors
+,Alphabet Inc,GOOGL,Interactive Media & Services
+,Alphabet Inc,GOOG,Interactive Media & Services
+,Meta Platforms Inc,META,Interactive Media & Services
+,Tesla Inc,TSLA,Automobile Manufacturers
+,Berkshire Hathaway Inc,BRK/B,Multi-Sector Holdings
+,Eli Lilly & Co,LLY,Pharmaceuticals
+,JPMorgan Chase & Co,JPM,Diversified Banks
+,Visa Inc,V,Transaction & Payment Processing Services
+,Johnson & Johnson,JNJ,Pharmaceuticals
+,Exxon Mobil Corp,XOM,Integrated Oil & Gas
+,Walmart Inc,WMT,Consumer Staples Merchandise Retail
+,Netflix Inc,NFLX,Movies & Entertainment
+,Mastercard Inc,MA,Transaction & Payment Processing Services
+,Costco Wholesale Corp,COST,Consumer Staples Merchandise Retail
+,AbbVie Inc,ABBV,Biotechnology
+,Palantir Technologies Inc,PLTR,Application Software
+,Home Depot Inc/The,HD,Home Improvement Retail
+,Advanced Micro Devices Inc,AMD,Semiconductors
+,Procter & Gamble Co/The,PG,Household Products
+,Oracle Corp,ORCL,Systems Software
+,Bank of America Corp,BAC,Diversified Banks
+,General Electric Co,GE,Aerospace & Defense
+,UnitedHealth Group Inc,UNH,Managed Health Care
+,Chevron Corp,CVX,Integrated Oil & Gas
+,International Business Machines Corp,IBM,IT Consulting & Other Services
+,Wells Fargo & Co,WFC,Diversified Banks
+,Cisco Systems Inc,CSCO,Communications Equipment
+,Caterpillar Inc,CAT,Construction Machinery & Heavy Transportation Equipment
+,Micron Technology Inc,MU,Semiconductors
+,Merck & Co Inc,MRK,Pharmaceuticals
+,Coca-Cola Co/The,KO,Soft Drinks & Non-alcoholic Beverages
+,Philip Morris International Inc,PM,Tobacco
+,Goldman Sachs Group Inc/The,GS,Investment Banking & Brokerage
+,RTX Corp,RTX,Aerospace & Defense
+,Abbott Laboratories,ABT,Health Care Equipment
+,Thermo Fisher Scientific Inc,TMO,Life Sciences Tools & Services
+,McDonald's Corp,MCD,Restaurants
+,Salesforce Inc,CRM,Application Software
+,Intuitive Surgical Inc,ISRG,Health Care Equipment
+,PepsiCo Inc,PEP,Soft Drinks & Non-alcoholic Beverages
+,Morgan Stanley,MS,Investment Banking & Brokerage
+,Applied Materials Inc,AMAT,Semiconductor Materials & Equipment
+,Lam Research Corp,LRCX,Semiconductor Materials & Equipment
+,Linde PLC,LIN,Industrial Gases
+,Walt Disney Co/The,DIS,Movies & Entertainment
+,AT&T Inc,T,Integrated Telecommunication Services
+,Amgen Inc,AMGN,Biotechnology
+,Uber Technologies Inc,UBER,Passenger Ground Transportation
+,QUALCOMM Inc,QCOM,Semiconductors
+,NextEra Energy Inc,NEE,Electric Utilities
+,American Express Co,AXP,Consumer Finance
+,Intuit Inc,INTU,Application Software
+,Amphenol Corp,APH,Electronic Components
+,TJX Cos Inc/The,TJX,Apparel Retail
+,ServiceNow Inc,NOW,Systems Software
+,Citigroup Inc,C,Diversified Banks
+,GE Vernova Inc,GEV,Heavy Electrical Equipment
+,Intel Corp,INTC,Semiconductors
+,Charles Schwab Corp/The,SCHW,Investment Banking & Brokerage
+,Booking Holdings Inc,BKNG,"Hotels, Resorts & Cruise Lines"
+,Gilead Sciences Inc,GILD,Biotechnology
+,Verizon Communications Inc,VZ,Integrated Telecommunication Services
+,S&P Global Inc,SPGI,Financial Exchanges & Data
+,Accenture PLC,ACN,IT Consulting & Other Services
+,KLA Corp,KLAC,Semiconductor Materials & Equipment
+,Texas Instruments Inc,TXN,Semiconductors
+,Boston Scientific Corp,BSX,Health Care Equipment
+,AppLovin Corp,APP,Application Software
+,Pfizer Inc,PFE,Pharmaceuticals
+,Danaher Corp,DHR,Life Sciences Tools & Services
+,Blackrock Inc,BLK,Asset Management & Custody Banks
+,Boeing Co/The,BA,Aerospace & Defense
+,Capital One Financial Corp,COF,Consumer Finance
+,Welltower Inc,WELL,Health Care REITs
+,Union Pacific Corp,UNP,Rail Transportation
+,Lowe's Cos Inc,LOW,Home Improvement Retail
+,Adobe Inc,ADBE,Application Software
+,Medtronic PLC,MDT,Health Care Equipment
+,Eaton Corp PLC,ETN,Electrical Components & Equipment
+,Progressive Corp/The,PGR,Property & Casualty Insurance
+,Arista Networks Inc,ANET,Communications Equipment
+,Analog Devices Inc,ADI,Semiconductors
+,Stryker Corp,SYK,Health Care Equipment
+,Palo Alto Networks Inc,PANW,Systems Software
+,Honeywell International Inc,HON,Industrial Conglomerates
+,Crowdstrike Holdings Inc,CRWD,Systems Software
+,Deere & Co,DE,Agricultural & Farm Machinery
+,Prologis Inc,PLD,Industrial REITs
+,Constellation Energy Corp,CEG,Electric Utilities
+,Chubb Ltd,CB,Property & Casualty Insurance
+,Vertex Pharmaceuticals Inc,VRTX,Biotechnology
+,ConocoPhillips,COP,Oil & Gas Exploration & Production
+,McKesson Corp,MCK,Health Care Distributors
+,Parker-Hannifin Corp,PH,Industrial Machinery & Supplies & Components
+,Blackstone Inc,BX,Asset Management & Custody Banks
+,Lockheed Martin Corp,LMT,Aerospace & Defense
+,Automatic Data Processing Inc,ADP,Human Resource & Employment Services
+,CVS Health Corp,CVS,Health Care Services
+,CME Group Inc,CME,Financial Exchanges & Data
+,Southern Co/The,SO,Electric Utilities
+,Bristol-Myers Squibb Co,BMY,Pharmaceuticals
+,Newmont Corp,NEM,Gold
+,Robinhood Markets Inc,HOOD,Investment Banking & Brokerage
+,Altria Group Inc,MO,Tobacco
+,Starbucks Corp,SBUX,Restaurants
+,Comcast Corp,CMCSA,Cable & Satellite
+,Duke Energy Corp,DUK,Electric Utilities
+,T-Mobile US Inc,TMUS,Wireless Telecommunication Services
+,Trane Technologies PLC,TT,Building Products
+,3M Co,MMM,Industrial Conglomerates
+,Marsh & McLennan Cos Inc,MMC,Insurance Brokers
+,Intercontinental Exchange Inc,ICE,Financial Exchanges & Data
+,Waste Management Inc,WM,Environmental & Facilities Services
+,O'Reilly Automotive Inc,ORLY,Automotive Retail
+,Cadence Design Systems Inc,CDNS,Application Software
+,American Tower Corp,AMT,Telecom Tower REITs
+,HCA Healthcare Inc,HCA,Health Care Facilities
+,General Dynamics Corp,GD,Aerospace & Defense
+,Howmet Aerospace Inc,HWM,Aerospace & Defense
+,Northrop Grumman Corp,NOC,Aerospace & Defense
+,KKR & Co Inc,KKR,Asset Management & Custody Banks
+,CRH PLC,CRH,Construction Materials
+,Bank of New York Mellon Corp/The,BK,Asset Management & Custody Banks
+,Synopsys Inc,SNPS,Application Software
+,Regeneron Pharmaceuticals Inc,REGN,Biotechnology
+,Sherwin-Williams Co/The,SHW,Specialty Chemicals
+,Marvell Technology Inc,MRVL,Semiconductors
+,NIKE Inc,NKE,Footwear
+,TransDigm Group Inc,TDG,Aerospace & Defense
+,US Bancorp,USB,Diversified Banks
+,Elevance Health Inc,ELV,Managed Health Care
+,Johnson Controls International plc,JCI,Building Products
+,Snowflake Inc,SNOW,Internet Services & Infrastructure
+,Emerson Electric Co,EMR,Electrical Components & Equipment
+,PNC Financial Services Group Inc/The,PNC,Diversified Banks
+,Moody's Corp,MCO,Financial Exchanges & Data
+,Mondelez International Inc,MDLZ,Packaged Foods & Meats
+,Williams Cos Inc/The,WMB,Oil & Gas Storage & Transportation
+,Cigna Group/The,CI,Health Care Services
+,Equinix Inc,EQIX,Data Center REITs
+,Aon PLC,AON,Insurance Brokers
+,United Parcel Service Inc,UPS,Air Freight & Logistics
+,Ecolab Inc,ECL,Specialty Chemicals
+,General Motors Co,GM,Automobile Manufacturers
+,Quanta Services Inc,PWR,Construction & Engineering
+,Illinois Tool Works Inc,ITW,Industrial Machinery & Supplies & Components
+,Vertiv Holdings Co,VRT,Electrical Components & Equipment
+,Cummins Inc,CMI,Construction Machinery & Heavy Transportation Equipment
+,Cencora Inc,COR,Health Care Distributors
+,DoorDash Inc,DASH,Restaurants
+,Hilton Worldwide Holdings Inc,HLT,"Hotels, Resorts & Cruise Lines"
+,TE Connectivity PLC,TEL,Electronic Manufacturing Services
+,American Electric Power Co Inc,AEP,Electric Utilities
+,Marriott International Inc/MD,MAR,"Hotels, Resorts & Cruise Lines"
+,AutoZone Inc,AZO,Automotive Retail
+,Travelers Cos Inc/The,TRV,Property & Casualty Insurance
+,CSX Corp,CSX,Rail Transportation
+,Norfolk Southern Corp,NSC,Rail Transportation
+,Royal Caribbean Cruises Ltd,RCL,"Hotels, Resorts & Cruise Lines"
+,Corning Inc,GLW,Electronic Components
+,Colgate-Palmolive Co,CL,Household Products
+,Autodesk Inc,ADSK,Application Software
+,Cintas Corp,CTAS,Diversified Support Services
+,Arthur J Gallagher & Co,AJG,Insurance Brokers
+,Sempra,SRE,Multi-Utilities
+,Freeport-McMoRan Inc,FCX,Copper
+,Motorola Solutions Inc,MSI,Communications Equipment
+,Vistra Corp,VST,Independent Power Producers & Energy Traders
+,IDEXX Laboratories Inc,IDXX,Health Care Equipment
+,PayPal Holdings Inc,PYPL,Transaction & Payment Processing Services
+,Truist Financial Corp,TFC,Regional Banks
+,Cloudflare Inc,NET,Internet Services & Infrastructure
+,Alnylam Pharmaceuticals Inc,ALNY,Biotechnology
+,Aflac Inc,AFL,Life & Health Insurance
+,Marathon Petroleum Corp,MPC,Oil & Gas Refining & Marketing
+,EOG Resources Inc,EOG,Oil & Gas Exploration & Production
+,Seagate Technology Holdings PLC,STX,"Technology Hardware, Storage & Peripherals"
+,Coinbase Global Inc,COIN,Financial Exchanges & Data
+,FedEx Corp,FDX,Air Freight & Logistics
+,ROBLOX Corp,RBLX,Interactive Home Entertainment
+,Air Products and Chemicals Inc,APD,Industrial Gases
+,Simon Property Group Inc,SPG,Retail REITs
+,Ross Stores Inc,ROST,Apparel Retail
+,Western Digital Corp,WDC,"Technology Hardware, Storage & Peripherals"
+,Warner Bros Discovery Inc,WBD,Movies & Entertainment
+,Allstate Corp/The,ALL,Property & Casualty Insurance
+,Becton Dickinson & Co,BDX,Health Care Equipment
+,PACCAR Inc,PCAR,Construction Machinery & Heavy Transportation Equipment
+,Phillips 66,PSX,Oil & Gas Refining & Marketing
+,Valero Energy Corp,VLO,Oil & Gas Refining & Marketing
+,Digital Realty Trust Inc,DLR,Data Center REITs
+,SLB Ltd,SLB,Oil & Gas Equipment & Services
+,Dominion Energy Inc,D,Multi-Utilities
+,Apollo Global Management Inc,APO,Diversified Financial Services
+,Fortinet Inc,FTNT,Systems Software
+,Realty Income Corp,O,Retail REITs
+,United Rentals Inc,URI,Trading Companies & Distributors
+,L3Harris Technologies Inc,LHX,Aerospace & Defense
+,Ford Motor Co,F,Automobile Manufacturers
+,Datadog Inc,DDOG,Application Software
+,Kinder Morgan Inc,KMI,Oil & Gas Storage & Transportation
+,Monster Beverage Corp,MNST,Soft Drinks & Non-alcoholic Beverages
+,Zoetis Inc,ZTS,Pharmaceuticals
+,Edwards Lifesciences Corp,EW,Health Care Equipment
+,Cardinal Health Inc,CAH,Health Care Distributors
+,Electronic Arts Inc,EA,Interactive Home Entertainment
+,Ferguson Enterprises Inc,FERG,Trading Companies & Distributors
+,Baker Hughes Co,BKR,Oil & Gas Equipment & Services
+,Carvana Co,CVNA,Automotive Retail
+,Xcel Energy Inc,XEL,Electric Utilities
+,CBRE Group Inc,CBRE,Real Estate Services
+,Roper Technologies Inc,ROP,Application Software
+,Exelon Corp,EXC,Electric Utilities
+,Nasdaq Inc,NDAQ,Financial Exchanges & Data
+,Workday Inc,WDAY,Application Software
+,Strategy Inc,MSTR,Application Software
+,Fastenal Co,FAST,Trading Companies & Distributors
+,Chipotle Mexican Grill Inc,CMG,Restaurants
+,Corteva Inc,CTVA,Fertilizers & Agricultural Chemicals
+,ONEOK Inc,OKE,Oil & Gas Storage & Transportation
+,AMETEK Inc,AME,Electrical Components & Equipment
+,Waste Connections Inc,WCN,Environmental & Facilities Services
+,Airbnb Inc,ABNB,"Hotels, Resorts & Cruise Lines"
+,Rockwell Automation Inc,ROK,Electrical Components & Equipment
+,Carrier Global Corp,CARR,Building Products
+,Republic Services Inc,RSG,Environmental & Facilities Services
+,Insmed Inc,INSM,Biotechnology
+,Agilent Technologies Inc,A,Life Sciences Tools & Services
+,Entergy Corp,ETR,Electric Utilities
+,Cheniere Energy Inc,LNG,Oil & Gas Storage & Transportation
+,Public Storage,PSA,Self-Storage REITs
+,MetLife Inc,MET,Life & Health Insurance
+,Take-Two Interactive Software Inc,TTWO,Interactive Home Entertainment
+,WW Grainger Inc,GWW,Trading Companies & Distributors
+,Ameriprise Financial Inc,AMP,Asset Management & Custody Banks
+,DR Horton Inc,DHI,Homebuilding
+,Yum! Brands Inc,YUM,Restaurants
+,Monolithic Power Systems Inc,MPWR,Semiconductors
+,American International Group Inc,AIG,Property & Casualty Insurance
+,Delta Air Lines Inc,DAL,Passenger Airlines
+,Public Service Enterprise Group Inc,PEG,Multi-Utilities
+,MSCI Inc,MSCI,Financial Exchanges & Data
+,Target Corp,TGT,Consumer Staples Merchandise Retail
+,Fair Isaac Corp,FICO,Application Software
+,Dell Technologies Inc,DELL,"Technology Hardware, Storage & Peripherals"
+,Axon Enterprise Inc,AXON,Aerospace & Defense
+,Kroger Co/The,KR,Food Retail
+,Crown Castle Inc,CCI,Telecom Tower REITs
+,Vulcan Materials Co,VMC,Construction Materials
+,Hartford Insurance Group Inc/The,HIG,Property & Casualty Insurance
+,Prudential Financial Inc,PRU,Life & Health Insurance
+,EQT Corp,EQT,Oil & Gas Exploration & Production
+,Cognizant Technology Solutions Corp,CTSH,IT Consulting & Other Services
+,eBay Inc,EBAY,Broadline Retail
+,Targa Resources Corp,TRGP,Oil & Gas Storage & Transportation
+,Martin Marietta Materials Inc,MLM,Construction Materials
+,ResMed Inc,RMD,Health Care Equipment
+,IQVIA Holdings Inc,IQV,Life Sciences Tools & Services
+,Block Inc,XYZ,Transaction & Payment Processing Services
+,Flutter Entertainment PLC,FLUT,Casinos & Gaming
+,Ventas Inc,VTR,Health Care REITs
+,Sysco Corp,SYY,Food Distributors
+,Paychex Inc,PAYX,Human Resource & Employment Services
+,Consolidated Edison Inc,ED,Multi-Utilities
+,Kimberly-Clark Corp,KMB,Household Products
+,WEC Energy Group Inc,WEC,Multi-Utilities
+,Keurig Dr Pepper Inc,KDP,Soft Drinks & Non-alcoholic Beverages
+,Westinghouse Air Brake Technologies Corp,WAB,Construction Machinery & Heavy Transportation Equipment
+,Veeva Systems Inc,VEEV,Health Care Technology
+,Otis Worldwide Corp,OTIS,Industrial Machinery & Supplies & Components
+,Nucor Corp,NUE,Steel
+,GE HealthCare Technologies Inc,GEHC,Health Care Equipment
+,PG&E Corp,PCG,Electric Utilities
+,Comfort Systems USA Inc,FIX,Construction & Engineering
+,Fidelity National Information Services Inc,FIS,Transaction & Payment Processing Services
+,Xylem Inc/NY,XYL,Industrial Machinery & Supplies & Components
+,Keysight Technologies Inc,KEYS,Electronic Equipment & Instruments
+,Copart Inc,CPRT,Diversified Support Services
+,SoFi Technologies Inc,SOFI,Consumer Finance
+,Fiserv Inc,FISV,Transaction & Payment Processing Services
+,United Airlines Holdings Inc,UAL,Passenger Airlines
+,Arch Capital Group Ltd,ACGL,Property & Casualty Insurance
+,Kenvue Inc,KVUE,Personal Care Products
+,NRG Energy Inc,NRG,Electric Utilities
+,Ares Management Corp,ARES,Asset Management & Custody Banks
+,Garmin Ltd,GRMN,Consumer Electronics
+,Ingersoll Rand Inc,IR,Industrial Machinery & Supplies & Components
+,State Street Corp,STT,Asset Management & Custody Banks
+,Verisk Analytics Inc,VRSK,Research & Consulting Services
+,Willis Towers Watson PLC,WTW,Insurance Brokers
+,Natera Inc,NTRA,Biotechnology
+,Occidental Petroleum Corp,OXY,Integrated Oil & Gas
+,SANDISK CORP,SNDK,"Technology Hardware, Storage & Peripherals"
+,Mettler-Toledo International Inc,MTD,Life Sciences Tools & Services
+,Expedia Group Inc,EXPE,"Hotels, Resorts & Cruise Lines"
+,M&T Bank Corp,MTB,Regional Banks
+,Humana Inc,HUM,Managed Health Care
+,Archer-Daniels-Midland Co,ADM,Agricultural Products & Services
+,CoStar Group Inc,CSGP,Real Estate Services
+,Tractor Supply Co,TSCO,Other Specialty Retail
+,Teradyne Inc,TER,Semiconductor Materials & Equipment
+,Microchip Technology Inc,MCHP,Semiconductors
+,Ciena Corp,CIEN,Communications Equipment
+,Synchrony Financial,SYF,Consumer Finance
+,Fifth Third Bancorp,FITB,Diversified Banks
+,Diamondback Energy Inc,FANG,Oil & Gas Exploration & Production
+,Ameren Corp,AEE,Multi-Utilities
+,Hewlett Packard Enterprise Co,HPE,"Technology Hardware, Storage & Peripherals"
+,LPL Financial Holdings Inc,LPLA,Investment Banking & Brokerage
+,Atmos Energy Corp,ATO,Gas Utilities
+,Extra Space Storage Inc,EXR,Self-Storage REITs
+,Raymond James Financial Inc,RJF,Investment Banking & Brokerage
+,VICI Properties Inc,VICI,Other Specialized REITs
+,Hershey Co/The,HSY,Packaged Foods & Meats
+,First Solar Inc,FSLR,Semiconductors
+,Berkshire Hathaway Inc,BRK/A,Multi-Sector Holdings
+,Pure Storage Inc. Class A,PSTG,"Technology Hardware, Storage & Peripherals"
+,Expand Energy Corp,EXE,Oil & Gas Exploration & Production
+,EMCOR Group Inc,EME,Construction & Engineering
+,Interactive Brokers Group Inc,IBKR,Investment Banking & Brokerage
+,Carnival Corp,CCL,"Hotels, Resorts & Cruise Lines"
+,Cboe Global Markets Inc,CBOE,Financial Exchanges & Data
+,Biogen Inc,BIIB,Biotechnology
+,Broadridge Financial Solutions Inc,BR,Data Processing & Outsourced Services
+,American Water Works Co Inc,AWK,Water Utilities
+,Equifax Inc,EFX,Research & Consulting Services
+,Reddit Inc,RDDT,Interactive Media & Services
+,Cincinnati Financial Corp,CINF,Property & Casualty Insurance
+,STERIS PLC,STE,Health Care Equipment
+,FirstEnergy Corp,FE,Electric Utilities
+,CenterPoint Energy Inc,CNP,Multi-Utilities
+,Credo Technology Group Holding Ltd,CRDO,Semiconductors
+,PPL Corp,PPL,Electric Utilities
+,AvalonBay Communities Inc,AVB,Multi-Family Residential REITs
+,MongoDB Inc,MDB,Internet Services & Infrastructure
+,Coherent Corp,COHR,Electronic Components
+,Old Dominion Freight Line Inc,ODFL,Cargo Ground Transportation
+,Huntington Bancshares Inc/OH,HBAN,Regional Banks
+,Iron Mountain Inc,IRM,Other Specialized REITs
+,Zscaler Inc,ZS,Systems Software
+,Dover Corp,DOV,Industrial Machinery & Supplies & Components
+,General Mills Inc,GIS,Packaged Foods & Meats
+,PulteGroup Inc,PHM,Homebuilding
+,Markel Group Inc,MKL,Property & Casualty Insurance
+,Eversource Energy,ES,Electric Utilities
+,Dexcom Inc,DXCM,Health Care Equipment
+,Atlassian Corp,TEAM,Application Software
+,Leidos Holdings Inc,LDOS,Research & Consulting Services
+,HEICO Corp,HEI/A,Aerospace & Defense
+,Ulta Beauty Inc,ULTA,Other Specialty Retail
+,DTE Energy Co,DTE,Multi-Utilities
+,Dollar General Corp,DG,Consumer Staples Merchandise Retail
+,Waters Corp,WAT,Life Sciences Tools & Services
+,Northern Trust Corp,NTRS,Asset Management & Custody Banks
+,Veralto Corp,VLTO,Environmental & Facilities Services
+,Lennar Corp,LEN,Homebuilding
+,Devon Energy Corp,DVN,Oil & Gas Exploration & Production
+,Steel Dynamics Inc,STLD,Steel
+,Teledyne Technologies Inc,TDY,Electronic Equipment & Instruments
+,Kellanova,K,Packaged Foods & Meats
+,Insulet Corp,PODD,Health Care Equipment
+,Bloom Energy Corp,BE,Heavy Electrical Equipment
+,HP Inc,HPQ,"Technology Hardware, Storage & Peripherals"
+,Hubbell Inc,HUBB,Electrical Components & Equipment
+,Omnicom Group Inc,OMC,Advertising
+,Tapestry Inc,TPR,"Apparel, Accessories & Luxury Goods"
+,Regions Financial Corp,RF,Regional Banks
+,Edison International,EIX,Electric Utilities
+,CMS Energy Corp,CMS,Multi-Utilities
+,Brown & Brown Inc,BRO,Insurance Brokers
+,T Rowe Price Group Inc,TROW,Asset Management & Custody Banks
+,Equity Residential,EQR,Multi-Family Residential REITs
+,Labcorp Holdings Inc,LH,Health Care Services
+,PPG Industries Inc,PPG,Specialty Chemicals
+,W R Berkley Corp,WRB,Property & Casualty Insurance
+,Williams-Sonoma Inc,WSM,Homefurnishing Retail
+,Citizens Financial Group Inc,CFG,Regional Banks
+,Dollar Tree Inc,DLTR,Consumer Staples Merchandise Retail
+,United Therapeutics Corp,UTHR,Biotechnology
+,Live Nation Entertainment Inc,LYV,Movies & Entertainment
+,NetApp Inc,NTAP,"Technology Hardware, Storage & Peripherals"
+,Jabil Inc,JBL,Electronic Manufacturing Services
+,Lumentum Holdings Inc,LITE,Communications Equipment
+,Curtiss-Wright Corp,CW,Aerospace & Defense
+,Casey's General Stores Inc,CASY,Food Retail
+,VeriSign Inc,VRSN,Internet Services & Infrastructure
+,Kraft Heinz Co/The,KHC,Packaged Foods & Meats
+,Quest Diagnostics Inc,DGX,Health Care Services
+,Las Vegas Sands Corp,LVS,Casinos & Gaming
+,PTC Inc,PTC,Application Software
+,Astera Labs Inc,ALAB,Semiconductors
+,Darden Restaurants Inc,DRI,Restaurants
+,SBA Communications Corp,SBAC,Telecom Tower REITs
+,International Paper Co,IP,Paper & Plastic Packaging Products & Materials
+,Estee Lauder Cos Inc/The,EL,Personal Care Products
+,NiSource Inc,NI,Multi-Utilities
+,Church & Dwight Co Inc,CHD,Household Products
+,ON Semiconductor Corp,ON,Semiconductors
+,NVR Inc,NVR,Homebuilding
+,Zoom Communications Inc,ZM,Application Software
+,Tyler Technologies Inc,TYL,Application Software
+,Liberty Media Corp-Liberty Formula One,FWONK,Movies & Entertainment
+,Halliburton Co,HAL,Oil & Gas Equipment & Services
+,KeyCorp,KEY,Diversified Banks
+,Lululemon Athletica Inc,LULU,"Apparel, Accessories & Luxury Goods"
+,West Pharmaceutical Services Inc,WST,Life Sciences Tools & Services
+,Expeditors International of Washington Inc,EXPD,Air Freight & Logistics
+,Corpay Inc,CPAY,Transaction & Payment Processing Services
+,Coterra Energy Inc,CTRA,Oil & Gas Exploration & Production
+,Rollins Inc,ROL,Environmental & Facilities Services
+,Trimble Inc,TRMB,Electronic Equipment & Instruments
+,Centene Corp,CNC,Managed Health Care
+,Rocket Lab Corp,RKLB,Aerospace & Defense
+,Zimmer Biomet Holdings Inc,ZBH,Health Care Equipment
+,Constellation Brands Inc,STZ,Distillers & Vintners
+,Exact Sciences Corp,EXAS,Biotechnology
+,Illumina Inc,ILMN,Life Sciences Tools & Services
+,Tenet Healthcare Corp,THC,Health Care Facilities
+,CDW Corp/DE,CDW,Technology Distributors
+,Principal Financial Group Inc,PFG,Life & Health Insurance
+,Smurfit WestRock PLC,SW,Paper & Plastic Packaging Products & Materials
+,TechnipFMC PLC,FTI,Oil & Gas Equipment & Services
+,HubSpot Inc,HUBS,Application Software
+,Packaging Corp of America,PKG,Paper & Plastic Packaging Products & Materials
+,Southwest Airlines Co,LUV,Passenger Airlines
+,Somnigroup International Inc,SGI,Home Furnishings
+,RB Global Inc,RBA,Diversified Support Services
+,Rocket Cos Inc,RKT,Commercial & Residential Mortgage Finance
+,Guidewire Software Inc,GWRE,Application Software
+,Genuine Parts Co,GPC,Distributors
+,Fortive Corp,FTV,Industrial Machinery & Supplies & Components
+,Woodward Inc,WWD,Aerospace & Defense
+,Affirm Holdings Inc,AFRM,Transaction & Payment Processing Services
+,Talen Energy Corp,TLN,Independent Power Producers & Energy Traders
+,Twilio Inc,TWLO,Internet Services & Infrastructure
+,Alliant Energy Corp,LNT,Electric Utilities
+,SS&C Technologies Holdings Inc,SSNC,Data Processing & Outsourced Services
+,International Flavors & Fragrances Inc,IFF,Specialty Chemicals
+,Evergy Inc,EVRG,Electric Utilities
+,Charter Communications Inc,CHTR,Cable & Satellite
+,CH Robinson Worldwide Inc,CHRW,Air Freight & Logistics
+,FTAI Aviation Ltd,FTAI,Trading Companies & Distributors
+,Loews Corp,L,Property & Casualty Insurance
+,Snap-on Inc,SNA,Industrial Machinery & Supplies & Components
+,US Foods Holding Corp,USFD,Food Distributors
+,GoDaddy Inc,GDDY,Internet Services & Infrastructure
+,Trade Desk Inc/The,TTD,Advertising
+,Incyte Corp,INCY,Biotechnology
+,nVent Electric PLC,NVT,Electrical Components & Equipment
+,Pentair PLC,PNR,Industrial Machinery & Supplies & Components
+,Super Micro Computer Inc,SMCI,"Technology Hardware, Storage & Peripherals"
+,McCormick & Co Inc/MD,MKC,Packaged Foods & Meats
+,Essex Property Trust Inc,ESS,Multi-Family Residential REITs
+,Qnity Electronics Inc,Q,Semiconductor Materials & Equipment
+,Aptiv PLC,APTV,Automotive Parts & Equipment
+,Texas Pacific Land Corp,TPL,Oil & Gas Exploration & Production
+,Dow Inc,DOW,Commodity Chemicals
+,First Citizens BancShares Inc/NC,FCNCA,Diversified Banks
+,Gartner Inc,IT,IT Consulting & Other Services
+,Hologic Inc,HOLX,Health Care Equipment
+,DuPont de Nemours Inc,DD,Specialty Chemicals
+,Toast Inc,TOST,Transaction & Payment Processing Services
+,TransUnion,TRU,Research & Consulting Services
+,Tyson Foods Inc,TSN,Packaged Foods & Meats
+,Fabrinet,FN,Electronic Manufacturing Services
+,Invitation Homes Inc,INVH,Single-Family Residential REITs
+,BWX Technologies Inc,BWXT,Aerospace & Defense
+,Sun Communities Inc,SUI,Single-Family Residential REITs
+,Jacobs Solutions Inc,J,Research & Consulting Services
+,Weyerhaeuser Co,WY,Timber REITs
+,Burlington Stores Inc,BURL,Apparel Retail
+,XPO Inc,XPO,Cargo Ground Transportation
+,Mid-America Apartment Communities Inc,MAA,Multi-Family Residential REITs
+,Lennox International Inc,LII,Building Products
+,DraftKings Inc,DKNG,Casinos & Gaming
+,Cooper Cos Inc/The,COO,Health Care Supplies
+,Jones Lang LaSalle Inc,JLL,Real Estate Services
+,Fidelity National Financial Inc,FNF,Property & Casualty Insurance
+,Albemarle Corp,ALB,Specialty Chemicals
+,Rivian Automotive Inc,RIVN,Automobile Manufacturers
+,Performance Food Group Co,PFGC,Food Distributors
+,Neurocrine Biosciences Inc,NBIX,Biotechnology
+,Carpenter Technology Corp,CRS,Aerospace & Defense
+,Best Buy Co Inc,BBY,Computer & Electronics Retail
+,Pinterest Inc,PINS,Interactive Media & Services
+,API Group Corp,APG,Construction & Engineering
+,Textron Inc,TXT,Aerospace & Defense
+,WP Carey Inc,WPC,Diversified REITs
+,East West Bancorp Inc,EWBC,Regional Banks
+,Reliance Inc,RS,Steel
+,Gen Digital Inc,GEN,Systems Software
+,Annaly Capital Management Inc,NLY,Mortgage REITs
+,ITT Inc,ITT,Industrial Machinery & Supplies & Components
+,Allegion plc,ALLE,Building Products
+,RBC Bearings Inc,RBC,Industrial Machinery & Supplies & Components
+,Kimco Realty Corp,KIM,Retail REITs
+,Equitable Holdings Inc,EQH,Diversified Financial Services
+,Docusign Inc,DOCU,Application Software
+,ATI Inc,ATI,Aerospace & Defense
+,Carlyle Group Inc/The,CG,Asset Management & Custody Banks
+,RPM International Inc,RPM,Specialty Chemicals
+,F5 Inc,FFIV,Communications Equipment
+,Toll Brothers Inc,TOL,Homebuilding
+,Global Payments Inc,GPN,Transaction & Payment Processing Services
+,AECOM,ACM,Construction & Engineering
+,Graco Inc,GGG,Industrial Machinery & Supplies & Components
+,CACI International Inc,CACI,Research & Consulting Services
+,Carlisle Cos Inc,CSL,Building Products
+,Okta Inc,OKTA,Internet Services & Infrastructure
+,Omega Healthcare Investors Inc,OHI,Health Care REITs
+,Masco Corp,MAS,Building Products
+,Ball Corp,BALL,"Metal, Glass & Plastic Containers"
+,Ralph Lauren Corp,RL,"Apparel, Accessories & Luxury Goods"
+,JB Hunt Transport Services Inc,JBHT,Cargo Ground Transportation
+,Unity Software Inc,U,Application Software
+,MasTec Inc,MTZ,Construction & Engineering
+,Bunge Global SA,BG,Agricultural Products & Services
+,Royal Gold Inc,RGLD,Gold
+,Dynatrace Inc,DT,Application Software
+,Avery Dennison Corp,AVY,Paper & Plastic Packaging Products & Materials
+,Medpace Holdings Inc,MEDP,Life Sciences Tools & Services
+,Lincoln Electric Holdings Inc,LECO,Industrial Machinery & Supplies & Components
+,Clorox Co/The,CLX,Household Products
+,Everest Group Ltd,EG,Reinsurance
+,Dick's Sporting Goods Inc,DKS,Other Specialty Retail
+,IDEX Corp,IEX,Industrial Machinery & Supplies & Components
+,Revolution Medicines Inc,RVMD,Biotechnology
+,Fox Corp,FOXA,Broadcasting
+,Deckers Outdoor Corp,DECK,Footwear
+,Universal Health Services Inc,UHS,Health Care Facilities
+,WESCO International Inc,WCC,Trading Companies & Distributors
+,Regency Centers Corp,REG,Retail REITs
+,Nextpower Inc,NXT,Electrical Components & Equipment
+,Zebra Technologies Corp,ZBRA,Electronic Equipment & Instruments
+,Kratos Defense & Security Solutions Inc,KTOS,Aerospace & Defense
+,Zillow Group Inc,Z,Real Estate Services
+,Akamai Technologies Inc,AKAM,Internet Services & Infrastructure
+,Guardant Health Inc,GH,Health Care Services
+,Domino's Pizza Inc,DPZ,Restaurants
+,TopBuild Corp,BLD,Homebuilding
+,CF Industries Holdings Inc,CF,Fertilizers & Agricultural Chemicals
+,TKO Group Holdings Inc,TKO,Movies & Entertainment
+,Jack Henry & Associates Inc,JKHY,Transaction & Payment Processing Services
+,Healthpeak Properties Inc,DOC,Health Care REITs
+,Tradeweb Markets Inc,TW,Financial Exchanges & Data
+,LyondellBasell Industries NV,LYB,Commodity Chemicals
+,Roku Inc,ROKU,Movies & Entertainment
+,Ionis Pharmaceuticals Inc,IONS,Biotechnology
+,Solventum Corp,SOLV,Health Care Supplies
+,Reinsurance Group of America Inc,RGA,Reinsurance
+,Viatris Inc,VTRS,Pharmaceuticals
+,IonQ Inc,IONQ,"Technology Hardware, Storage & Peripherals"
+,Bridgebio Pharma Inc,BBIO,Biotechnology
+,DT Midstream Inc,DTM,Oil & Gas Storage & Transportation
+,Huntington Ingalls Industries Inc,HII,Aerospace & Defense
+,Unum Group,UNM,Life & Health Insurance
+,RenaissanceRe Holdings Ltd,RNR,Reinsurance
+,Nutanix Inc,NTNX,Application Software
+,Revvity Inc,RVTY,Life Sciences Tools & Services
+,Host Hotels & Resorts Inc,HST,Hotel & Resort REITs
+,Watsco Inc,WSO,Trading Companies & Distributors
+,UDR Inc,UDR,Multi-Family Residential REITs
+,Nordson Corp,NDSN,Industrial Machinery & Supplies & Components
+,QXO Inc,QXO,Trading Companies & Distributors
+,Advanced Drainage Systems Inc,WMS,Building Products
+,Stifel Financial Corp,SF,Investment Banking & Brokerage
+,BJ's Wholesale Club Holdings Inc,BJ,Consumer Staples Merchandise Retail
+,Builders FirstSource Inc,BLDR,Building Products
+,Evercore Inc,EVR,Investment Banking & Brokerage
+,Entegris Inc,ENTG,Semiconductor Materials & Equipment
+,Encompass Health Corp,EHC,Health Care Facilities
+,Gaming and Leisure Properties Inc,GLPI,Other Specialized REITs
+,Texas Roadhouse Inc,TXRH,Restaurants
+,Elanco Animal Health Inc,ELAN,Pharmaceuticals
+,Mueller Industries Inc,MLI,Industrial Machinery & Supplies & Components
+,Assurant Inc,AIZ,Property & Casualty Insurance
+,Lamar Advertising Co,LAMR,Other Specialized REITs
+,BXP Inc,BXP,Office REITs
+,Camden Property Trust,CPT,Multi-Family Residential REITs
+,AST SpaceMobile Inc,ASTS,Alternative Carriers
+,First Horizon Corp,FHN,Regional Banks
+,TD SYNNEX Corp,SNX,Technology Distributors
+,Exelixis Inc,EXEL,Biotechnology
+,Ally Financial Inc,ALLY,Consumer Finance
+,Crown Holdings Inc,CCK,"Metal, Glass & Plastic Containers"
+,Acuity Inc,AYI,Electrical Components & Equipment
+,Wayfair Inc,W,Homefurnishing Retail
+,MACOM Technology Solutions Holdings Inc,MTSI,Semiconductors
+,Stanley Black & Decker Inc,SWK,Industrial Machinery & Supplies & Components
+,Essential Utilities Inc,WTRG,Water Utilities
+,Hasbro Inc,HAS,Leisure Products
+,Equity LifeStyle Properties Inc,ELS,Single-Family Residential REITs
+,Clean Harbors Inc,CLH,Environmental & Facilities Services
+,News Corp,NWSA,Publishing
+,AGNC Investment Corp,AGNC,Mortgage REITs
+,Invesco Ltd,IVZ,Asset Management & Custody Banks
+,Penumbra Inc,PEN,Health Care Equipment
+,Pinnacle West Capital Corp,PNW,Electric Utilities
+,Alcoa Corp,AA,Aluminum
+,BioMarin Pharmaceutical Inc,BMRN,Biotechnology
+,Hecla Mining Co,HL,Silver
+,Ensign Group Inc/The,ENSG,Health Care Facilities
+,Antero Resources Corp,AR,Oil & Gas Exploration & Production
+,Madrigal Pharmaceuticals Inc,MDGL,Biotechnology
+,Oklo Inc,OKLO,Electric Utilities
+,Manhattan Associates Inc,MANH,Application Software
+,Service Corp International/US,SCI,Specialized Consumer Services
+,J M Smucker Co/The,SJM,Packaged Foods & Meats
+,Coeur Mining Inc,CDE,Gold
+,MKS Inc,MKSI,Semiconductor Materials & Equipment
+,Ovintiv Inc,OVV,Oil & Gas Exploration & Production
+,AeroVironment Inc,AVAV,Aerospace & Defense
+,FactSet Research Systems Inc,FDS,Financial Exchanges & Data
+,Donaldson Co Inc,DCI,Industrial Machinery & Supplies & Components
+,Globe Life Inc,GL,Life & Health Insurance
+,Dayforce Inc,DAY,Human Resource & Employment Services
+,Comerica Inc,CMA,Diversified Banks
+,Rambus Inc,RMBS,Semiconductors
+,Samsara Inc,IOT,Application Software
+,Booz Allen Hamilton Holding Corp,BAH,Research & Consulting Services
+,Permian Resources Corp,PR,Oil & Gas Exploration & Production
+,Globus Medical Inc,GMED,Health Care Equipment
+,Old Republic International Corp,ORI,Property & Casualty Insurance
+,Jazz Pharmaceuticals PLC,JAZZ,Pharmaceuticals
+,Align Technology Inc,ALGN,Health Care Supplies
+,SPX Technologies Inc,SPXC,Industrial Machinery & Supplies & Components
+,American Homes 4 Rent,AMH,Single-Family Residential REITs
+,Bio-Techne Corp,TECH,Life Sciences Tools & Services
+,Wynn Resorts Ltd,WYNN,Casinos & Gaming
+,AES Corp/The,AES,Independent Power Producers & Energy Traders
+,Sterling Infrastructure Inc,STRL,Construction & Engineering
+,Dycom Industries Inc,DY,Construction & Engineering
+,New York Times Co/The,NYT,Publishing
+,EPAM Systems Inc,EPAM,IT Consulting & Other Services
+,Rexford Industrial Realty Inc,REXR,Industrial REITs
+,Webster Financial Corp,WBS,Regional Banks
+,Avidity Biosciences Inc,RNA,Biotechnology
+,American Financial Group Inc/OH,AFG,Property & Casualty Insurance
+,Skyworks Solutions Inc,SWKS,Semiconductors
+,Applied Industrial Technologies Inc,AIT,Trading Companies & Distributors
+,Aramark,ARMK,Restaurants
+,EchoStar Corp,SATS,Cable & Satellite
+,Regal Rexnord Corp,RRX,Electrical Components & Equipment
+,EastGroup Properties Inc,EGP,Industrial REITs
+,Baxter International Inc,BAX,Health Care Equipment
+,Lattice Semiconductor Corp,LSCC,Semiconductors
+,Houlihan Lokey Inc,HLI,Investment Banking & Brokerage
+,Owens Corning,OC,Building Products
+,Frontier Communications Parent Inc,FYBR,Integrated Telecommunication Services
+,Planet Fitness Inc,PLNT,Leisure Facilities
+,Blue Owl Capital Inc,OWL,Asset Management & Custody Banks
+,MP Materials Corp,MP,Diversified Metals & Mining
+,Flowserve Corp,FLS,Industrial Machinery & Supplies & Components
+,BorgWarner Inc,BWA,Automotive Parts & Equipment
+,American Airlines Group Inc,AAL,Passenger Airlines
+,Alexandria Real Estate Equities Inc,ARE,Health Care REITs
+,InterDigital Inc,IDCC,Application Software
+,OGE Energy Corp,OGE,Electric Utilities
+,Chart Industries Inc,GTLS,Industrial Machinery & Supplies & Components
+,Core & Main Inc,CNM,Trading Companies & Distributors
+,Repligen Corp,RGEN,Life Sciences Tools & Services
+,Tetra Tech Inc,TTEK,Environmental & Facilities Services
+,HealthEquity Inc,HQY,Managed Health Care
+,Five Below Inc,FIVE,Other Specialty Retail
+,Moderna Inc,MRNA,Biotechnology
+,GameStop Corp,GME,Computer & Electronics Retail
+,SOUTHSTATE BANK CORP,SSB,Regional Banks
+,Crane Co,CR,Industrial Machinery & Supplies & Components
+,Range Resources Corp,RRC,Oil & Gas Exploration & Production
+,SEI Investments Co,SEIC,Asset Management & Custody Banks
+,Apa Corp,APA,Oil & Gas Exploration & Production
+,Wintrust Financial Corp,WTFC,Regional Banks
+,Generac Holdings Inc,GNRC,Electrical Components & Equipment
+,Charles River Laboratories International Inc,CRL,Life Sciences Tools & Services
+,American Healthcare REIT Inc,AHR,Health Care REITs
+,Western Alliance Bancorp,WAL,Regional Banks
+,Conagra Brands Inc,CAG,Packaged Foods & Meats
+,Kinsale Capital Group Inc,KNSL,Property & Casualty Insurance
+,Modine Manufacturing Co,MOD,Building Products
+,Federal Realty Investment Trust,FRT,Retail REITs
+,CubeSmart,CUBE,Self-Storage REITs
+,Roivant Sciences Ltd,ROIV,Biotechnology
+,UGI Corp,UGI,Gas Utilities
+,HF Sinclair Corp,DINO,Oil & Gas Refining & Marketing
+,Paycom Software Inc,PAYC,Human Resource & Employment Services
+,Brown-Forman Corp,BF/B,Distillers & Vintners
+,Halozyme Therapeutics Inc,HALO,Biotechnology
+,Norwegian Cruise Line Holdings Ltd,NCLH,"Hotels, Resorts & Cruise Lines"
+,Primerica Inc,PRI,Life & Health Insurance
+,Corebridge Financial Inc,CRBG,Diversified Financial Services
+,Jefferies Financial Group Inc,JEF,Investment Banking & Brokerage
+,Procore Technologies Inc,PCOR,Application Software
+,Columbia Banking System Inc,COLB,Regional Banks
+,Agree Realty Corp,ADC,Retail REITs
+,Snap Inc,SNAP,Interactive Media & Services
+,CareTrust REIT Inc,CTRE,Health Care REITs
+,Maplebear Inc,CART,Food Retail
+,Sprouts Farmers Market Inc,SFM,Food Retail
+,Oshkosh Corp,OSK,Construction Machinery & Heavy Transportation Equipment
+,AptarGroup Inc,ATR,"Metal, Glass & Plastic Containers"
+,Pool Corp,POOL,Distributors
+,Lamb Weston Holdings Inc,LW,Packaged Foods & Meats
+,Armstrong World Industries Inc,AWI,Building Products
+,Lithia Motors Inc,LAD,Automotive Retail
+,Coca-Cola Consolidated Inc,COKE,Soft Drinks & Non-alcoholic Beverages
+,Rubrik Inc,RBRK,Systems Software
+,Valmont Industries Inc,VMI,Construction & Engineering
+,Cytokinetics Inc,CYTK,Biotechnology
+,Molina Healthcare Inc,MOH,Managed Health Care
+,Match Group Inc,MTCH,Interactive Media & Services
+,Brixmor Property Group Inc,BRX,Retail REITs
+,Avantor Inc,AVTR,Life Sciences Tools & Services
+,Advanced Energy Industries Inc,AEIS,Electronic Equipment & Instruments
+,Lyft Inc,LYFT,Passenger Ground Transportation
+,Qorvo Inc,QRVO,Semiconductors
+,Sanmina Corp,SANM,Electronic Manufacturing Services
+,Tempus AI Inc,TEM,Life Sciences Tools & Services
+,Rigetti Computing Inc,RGTI,Semiconductors
+,Zions Bancorp NA,ZION,Regional Banks
+,Lincoln National Corp,LNC,Life & Health Insurance
+,Mosaic Co/The,MOS,Fertilizers & Agricultural Chemicals
+,NNN REIT Inc,NNN,Retail REITs
+,Molson Coors Beverage Co,TAP,Brewers
+,Old National Bancorp/IN,ONB,Regional Banks
+,Genpact Ltd,G,Data Processing & Outsourced Services
+,Joby Aviation Inc,JOBY,Passenger Airlines
+,CNH Industrial NV,CNH,Agricultural & Farm Machinery
+,Henry Schein Inc,HSIC,Health Care Distributors
+,LKQ Corp,LKQ,Distributors
+,Zurn Elkay Water Solutions Corp,ZWS,Building Products
+,UMB Financial Corp,UMBF,Regional Banks
+,Fox Corp,FOX,Broadcasting
+,Axis Capital Holdings Ltd,AXS,Property & Casualty Insurance
+,First Industrial Realty Trust Inc,FR,Industrial REITs
+,Watts Water Technologies Inc,WTS,Industrial Machinery & Supplies & Components
+,Solstice Advanced Materials Inc,SOLS,Specialty Chemicals
+,Ollie's Bargain Outlet Holdings Inc,OLLI,Broadline Retail
+,Cullen/Frost Bankers Inc,CFR,Regional Banks
+,A O Smith Corp,AOS,Building Products
+,Erie Indemnity Co,ERIE,Property & Casualty Insurance
+,Saia Inc,SAIA,Cargo Ground Transportation
+,Lumen Technologies Inc,LUMN,Alternative Carriers
+,TPG Inc,TPG,Asset Management & Custody Banks
+,National Fuel Gas Co,NFG,Gas Utilities
+,Cleveland-Cliffs Inc,CLF,Steel
+,Celsius Holdings Inc,CELH,Soft Drinks & Non-alcoholic Beverages
+,Allison Transmission Holdings Inc,ALSN,Construction Machinery & Heavy Transportation Equipment
+,Wingstop Inc,WING,Restaurants
+,Masimo Corp,MASI,Health Care Equipment
+,Hims & Hers Health Inc,HIMS,Health Care Services
+,STAG Industrial Inc,STAG,Industrial REITs
+,OneMain Holdings Inc,OMF,Consumer Finance
+,JBT Marel Corp,JBTM,Industrial Machinery & Supplies & Components
+,Popular Inc,BPOP,Regional Banks
+,Cadence Bank,CADE,Regional Banks
+,D-Wave Quantum Inc,QBTS,Application Software
+,Eagle Materials Inc,EXP,Construction Materials
+,Rhythm Pharmaceuticals Inc,RYTM,Biotechnology
+,Affiliated Managers Group Inc,AMG,Asset Management & Custody Banks
+,Duolingo Inc,DUOL,Education Services
+,HEICO Corp,HEI,Aerospace & Defense
+,Commercial Metals Co,CMC,Steel
+,AutoNation Inc,AN,Automotive Retail
+,Eastman Chemical Co,EMN,Specialty Chemicals
+,IDACORP Inc,IDA,Electric Utilities
+,Corcept Therapeutics Inc,CORT,Pharmaceuticals
+,Pinnacle Financial Partners Inc,PNFP,Regional Banks
+,Knight-Swift Transportation Holdings Inc,KNX,Cargo Ground Transportation
+,Dutch Bros Inc,BROS,Restaurants
+,Franklin Resources Inc,BEN,Asset Management & Custody Banks
+,Hormel Foods Corp,HRL,Packaged Foods & Meats
+,Onto Innovation Inc,ONTO,Semiconductor Materials & Equipment
+,Simpson Manufacturing Co Inc,SSD,Building Products
+,Arrowhead Pharmaceuticals Inc,ARWR,Biotechnology
+,Fluor Corp,FLR,Construction & Engineering
+,Ingredion Inc,INGR,Agricultural Products & Services
+,Churchill Downs Inc,CHDN,Casinos & Gaming
+,Toro Co/The,TTC,Agricultural & Farm Machinery
+,Chewy Inc,CHWY,Other Specialty Retail
+,Floor & Decor Holdings Inc,FND,Home Improvement Retail
+,PTC Therapeutics Inc,PTCT,Biotechnology
+,VF Corp,VFC,"Apparel, Accessories & Luxury Goods"
+,Jackson Financial Inc,JXN,Diversified Financial Services
+,Commerce Bancshares Inc/MO,CBSH,Regional Banks
+,TTM Technologies Inc,TTMI,Electronic Manufacturing Services
+,Mattel Inc,MAT,Leisure Products
+,Voya Financial Inc,VOYA,Diversified Financial Services
+,MGM Resorts International,MGM,Casinos & Gaming
+,AGCO Corp,AGCO,Agricultural & Farm Machinery
+,Ryder System Inc,R,Cargo Ground Transportation
+,Murphy USA Inc,MUSA,Automotive Retail
+,Federal Signal Corp,FSS,Construction Machinery & Heavy Transportation Equipment
+,Gap Inc/The,GAP,Apparel Retail
+,Hyatt Hotels Corp,H,"Hotels, Resorts & Cruise Lines"
+,MGIC Investment Corp,MTG,Commercial & Residential Mortgage Finance
+,Ormat Technologies Inc,ORA,Renewable Electricity
+,Axalta Coating Systems Ltd,AXTA,Specialty Chemicals
+,Paylocity Holding Corp,PCTY,Human Resource & Employment Services
+,Moog Inc,MOG/A,Aerospace & Defense
+,Primoris Services Corp,PRIM,Construction & Engineering
+,Brinker International Inc,EAT,Restaurants
+,Terreno Realty Corp,TRNO,Industrial REITs
+,Esab Corp,ESAB,Industrial Machinery & Supplies & Components
+,Vaxcyte Inc,PCVX,Biotechnology
+,AAON Inc,AAON,Building Products
+,Axsome Therapeutics Inc,AXSM,Pharmaceuticals
+,Healthcare Realty Trust Inc,HR,Health Care REITs
+,Semtech Corp,SMTC,Semiconductors
+,Chemed Corp,CHE,Health Care Services
+,Cognex Corp,CGNX,Electronic Equipment & Instruments
+,Starwood Property Trust Inc,STWD,Mortgage REITs
+,Air Lease Corp,AL,Trading Companies & Distributors
+,First American Financial Corp,FAF,Property & Casualty Insurance
+,Vornado Realty Trust,VNO,Office REITs
+,Clearwater Analytics Holdings Inc,CWAN,Application Software
+,Synovus Financial Corp,SNV,Regional Banks
+,Littelfuse Inc,LFUS,Electronic Components
+,Kirby Corp,KEX,Marine Transportation
+,Elastic NV,ESTC,Application Software
+,Sealed Air Corp,SEE,Paper & Plastic Packaging Products & Materials
+,Doximity Inc,DOCS,Health Care Technology
+,Ryan Specialty Holdings Inc,RYAN,Insurance Brokers
+,Essential Properties Realty Trust Inc,EPRT,Diversified REITs
+,Installed Building Products Inc,IBP,Homebuilding
+,SiTime Corp,SITM,Semiconductors
+,Prosperity Bancshares Inc,PB,Regional Banks
+,Fortune Brands Innovations Inc,FBIN,Building Products
+,Viper Energy Inc,VNOM,Oil & Gas Exploration & Production
+,Cirrus Logic Inc,CRUS,Semiconductors
+,TXNM Energy Inc,TXNM,Electric Utilities
+,Bentley Systems Inc,BSY,Application Software
+,Mohawk Industries Inc,MHK,Home Furnishings
+,ExlService Holdings Inc,EXLS,Data Processing & Outsourced Services
+,NewMarket Corp,NEU,Specialty Chemicals
+,Rithm Capital Corp,RITM,Mortgage REITs
+,Hexcel Corp,HXL,Aerospace & Defense
+,Mirion Technologies Inc,MIR,Electronic Equipment & Instruments
+,Antero Midstream Corp,AM,Oil & Gas Storage & Transportation
+,Applied Digital Corp,APLD,Internet Services & Infrastructure
+,iRhythm Technologies Inc,IRTC,Health Care Equipment
+,Casella Waste Systems Inc,CWST,Environmental & Facilities Services
+,Bio-Rad Laboratories Inc,BIO,Life Sciences Tools & Services
+,Cipher Mining Inc,CIFR,Application Software
+,SiteOne Landscape Supply Inc,SITE,Trading Companies & Distributors
+,FirstCash Holdings Inc,FCFS,Consumer Finance
+,MSA Safety Inc,MSA,Office Services & Supplies
+,Hanover Insurance Group Inc/The,THG,Property & Casualty Insurance
+,Element Solutions Inc,ESI,Specialty Chemicals
+,Kyndryl Holdings Inc,KD,IT Consulting & Other Services
+,FNB Corp/PA,FNB,Regional Banks
+,Aurora Innovation Inc,AUR,Application Software
+,Campbell's Company/The,CPB,Packaged Foods & Meats
+,Boot Barn Holdings Inc,BOOT,Apparel Retail
+,Taylor Morrison Home Corp,TMHC,Homebuilding
+,Essent Group Ltd,ESNT,Commercial & Residential Mortgage Finance
+,Bright Horizons Family Solutions Inc,BFAM,Education Services
+,Life360 Inc,LIF,Application Software
+,Confluent Inc,CFLT,Application Software
+,Gates Industrial Corp PLC,GTES,Industrial Machinery & Supplies & Components
+,SLM Corp,SLM,Consumer Finance
+,MarketAxess Holdings Inc,MKTX,Financial Exchanges & Data
+,Cogent Biosciences Inc,COGT,Biotechnology
+,GXO Logistics Inc,GXO,Air Freight & Logistics
+,CarMax Inc,KMX,Automotive Retail
+,Glaukos Corp,GKOS,Health Care Equipment
+,Macy's Inc,M,Broadline Retail
+,NOV Inc,NOV,Oil & Gas Equipment & Services
+,RadNet Inc,RDNT,Health Care Services
+,Lear Corp,LEA,Automotive Parts & Equipment
+,Ryman Hospitality Properties Inc,RHP,Hotel & Resort REITs
+,Lazard Inc,LAZ,Investment Banking & Brokerage
+,UL Solutions Inc,ULS,Research & Consulting Services
+,JFrog Ltd,FROG,Systems Software
+,GATX Corp,GATX,Trading Companies & Distributors
+,Krystal Biotech Inc,KRYS,Biotechnology
+,Albertsons Cos Inc,ACI,Food Retail
+,Piper Sandler Cos,PIPR,Investment Banking & Brokerage
+,H&R Block Inc,HRB,Specialized Consumer Services
+,Protagonist Therapeutics Inc,PTGX,Biotechnology
+,Wyndham Hotels & Resorts Inc,WH,"Hotels, Resorts & Cruise Lines"
+,Portland General Electric Co,POR,Electric Utilities
+,Ralliant Corp,RAL,Electronic Equipment & Instruments
+,Arrow Electronics Inc,ARW,Technology Distributors
+,Nexstar Media Group Inc,NXST,Broadcasting
+,ESCO Technologies Inc,ESE,Industrial Machinery & Supplies & Components
+,Nuvalent Inc,NUVL,Biotechnology
+,Darling Ingredients Inc,DAR,Agricultural Products & Services
+,Liberty Broadband Corp,LBRDK,Cable & Satellite
+,Commvault Systems Inc,CVLT,Systems Software
+,Compass Inc,COMP,Real Estate Services
+,Uranium Energy Corp,UEC,Coal & Consumable Fuels
+,Janus Henderson Group PLC,JHG,Asset Management & Custody Banks
+,Dropbox Inc,DBX,Application Software
+,Morningstar Inc,MORN,Financial Exchanges & Data
+,Middleby Corp/The,MIDD,Industrial Machinery & Supplies & Components
+,UiPath Inc,PATH,Systems Software
+,Gitlab Inc,GTLB,Systems Software
+,RLI Corp,RLI,Property & Casualty Insurance
+,Chord Energy Corp,CHRD,Oil & Gas Exploration & Production
+,Valley National Bancorp,VLY,Regional Banks
+,Weatherford International PLC,WFRD,Oil & Gas Equipment & Services
+,EnerSys,ENS,Electrical Components & Equipment
+,Universal Display Corp,OLED,Semiconductors
+,Black Hills Corp,BKH,Multi-Utilities
+,Riot Platforms Inc,RIOT,Application Software
+,Southwest Gas Holdings Inc,SWX,Gas Utilities
+,Thor Industries Inc,THO,Automobile Manufacturers
+,Cidara Therapeutics Inc,CDTX,Biotechnology
+,Vontier Corp,VNT,Electronic Equipment & Instruments
+,KBR Inc,KBR,Research & Consulting Services
+,FTI Consulting Inc,FCN,Research & Consulting Services
+,United Bankshares Inc/WV,UBSI,Regional Banks
+,Badger Meter Inc,BMI,Electronic Equipment & Instruments
+,Arcosa Inc,ACA,Construction & Engineering
+,Glacier Bancorp Inc,GBCI,Regional Banks
+,CNX Resources Corp,CNX,Oil & Gas Exploration & Production
+,Vail Resorts Inc,MTN,Leisure Facilities
+,Group 1 Automotive Inc,GPI,Automotive Retail
+,Lemonade Inc,LMND,Property & Casualty Insurance
+,Bruker Corp,BRKR,Life Sciences Tools & Services
+,SentinelOne Inc,S,Systems Software
+,Construction Partners Inc,ROAD,Construction & Engineering
+,UFP Industries Inc,UFPI,Building Products
+,Pegasystems Inc,PEGA,Application Software
+,Louisiana-Pacific Corp,LPX,Forest Products
+,Merit Medical Systems Inc,MMSI,Health Care Supplies
+,Argan Inc,AGX,Construction & Engineering
+,Timken Co/The,TKR,Industrial Machinery & Supplies & Components
+,Etsy Inc,ETSY,Broadline Retail
+,Kite Realty Group Trust,KRG,Retail REITs
+,Qualys Inc,QLYS,Systems Software
+,WEX Inc,WEX,Transaction & Payment Processing Services
+,Kilroy Realty Corp,KRC,Office REITs
+,Option Care Health Inc,OPCH,Health Care Services
+,Balchem Corp,BCPC,Specialty Chemicals
+,Teleflex Inc,TFX,Health Care Equipment
+,Paramount Skydance Corp,PSKY,Broadcasting
+,ONE Gas Inc,OGS,Gas Utilities
+,Gentex Corp,GNTX,Automotive Parts & Equipment
+,Home BancShares Inc/AR,HOMB,Regional Banks
+,White Mountains Insurance Group Ltd,WTM,Property & Casualty Insurance
+,Meritage Homes Corp,MTH,Homebuilding
+,Spire Inc,SR,Gas Utilities
+,Bank OZK,OZK,Regional Banks
+,Alaska Air Group Inc,ALK,Passenger Airlines
+,Ameris Bancorp,ABCB,Regional Banks
+,Alkermes PLC,ALKS,Biotechnology
+,Hancock Whitney Corp,HWC,Regional Banks
+,Hamilton Lane Inc,HLNE,Asset Management & Custody Banks
+,Maximus Inc,MMS,Data Processing & Outsourced Services
+,ACI Worldwide Inc,ACIW,Application Software
+,Cava Group Inc,CAVA,Restaurants
+,Atlantic Union Bankshares Corp,AUB,Regional Banks
+,New Jersey Resources Corp,NJR,Gas Utilities
+,Opendoor Technologies Inc,OPEN,Real Estate Services
+,Radian Group Inc,RDN,Commercial & Residential Mortgage Finance
+,Post Holdings Inc,POST,Packaged Foods & Meats
+,Graphic Packaging Holding Co,GPK,Paper & Plastic Packaging Products & Materials
+,Selective Insurance Group Inc,SIGI,Property & Casualty Insurance
+,TG Therapeutics Inc,TGTX,Biotechnology
+,Moelis & Co,MC,Investment Banking & Brokerage
+,Matador Resources Co,MTDR,Oil & Gas Exploration & Production
+,QuantumScape Corp,QS,Automotive Parts & Equipment
+,TransMedics Group Inc,TMDX,Health Care Equipment
+,Appfolio Inc,APPF,Application Software
+,Praxis Precision Medicines Inc,PRAX,Biotechnology
+,MILLROSE PROPERTIES,MRP,Other Specialized REITs
+,Enpro Inc,NPO,Industrial Machinery & Supplies & Components
+,Shift4 Payments Inc,FOUR,Transaction & Payment Processing Services
+,Cavco Industries Inc,CVCO,Homebuilding
+,Granite Construction Inc,GVA,Construction & Engineering
+,Everus Construction Group Inc,ECG,Construction & Engineering
+,BILL Holdings Inc,BILL,Application Software
+,Boyd Gaming Corp,BYD,Casinos & Gaming
+,Sabra Health Care REIT Inc,SBRA,Health Care REITs
+,Sensata Technologies Holding PLC,ST,Electrical Components & Equipment
+,Core Scientific Inc,CORZ,Application Software
+,Urban Outfitters Inc,URBN,Apparel Retail
+,Champion Homes Inc,SKY,Homebuilding
+,Caesars Entertainment Inc,CZR,Casinos & Gaming
+,Workiva Inc. Class A,WK,Application Software
+,U-Haul Holding Co,UHAL/B,Cargo Ground Transportation
+,Celanese Corp,CE,Specialty Chemicals
+,CSW Industrials Inc,CSW,Building Products
+,Asbury Automotive Group Inc,ABG,Automotive Retail
+,Terawulf Inc,WULF,Application Software
+,Symbotic Inc,SYM,Industrial Machinery & Supplies & Components
+,CCC Intelligent Solutions Holdings Inc,CCC,Application Software
+,Parsons Corp,PSN,Research & Consulting Services
+,Landstar System Inc,LSTR,Cargo Ground Transportation
+,Itron Inc,ITRI,Electronic Equipment & Instruments
+,ServiceTitan Inc,TTAN,Application Software
+,Impinj Inc,PI,Semiconductors
+,Amkor Technology Inc,AMKR,Semiconductor Materials & Equipment
+,Belden Inc,BDC,Electronic Components
+,ADT Inc,ADT,Specialized Consumer Services
+,Herc Holdings Inc,HRI,Trading Companies & Distributors
+,Phillips Edison & Co Inc,PECO,Retail REITs
+,Abercrombie & Fitch Co,ANF,Apparel Retail
+,Brink's Co/The,BCO,Security & Alarm Services
+,Grand Canyon Education Inc,LOPE,Education Services
+,Resideo Technologies Inc,REZI,Building Products
+,Sunrun Inc,RUN,Electrical Components & Equipment
+,Axos Financial Inc,AX,Regional Banks
+,Macerich Co/The,MAC,Retail REITs
+,Crocs Inc,CROX,Footwear
+,Viasat Inc,VSAT,Communications Equipment
+,MDU Resources Group Inc,MDU,Gas Utilities
+,Galaxy Digital Inc,GLXY,Asset Management & Custody Banks
+,ADMA Biologics Inc,ADMA,Biotechnology
+,Murphy Oil Corp,MUR,Oil & Gas Exploration & Production
+,Brunswick Corp/DE,BC,Leisure Products
+,Spirit AeroSystems Holdings Inc,SPR,Aerospace & Defense
+,OSI Systems Inc,OSIS,Electronic Equipment & Instruments
+,Cousins Properties Inc,CUZ,Office REITs
+,Whirlpool Corp,WHR,Household Appliances
+,Centrus Energy Corp,LEU,Coal & Consumable Fuels
+,SoundHound AI Inc,SOUN,Application Software
+,Q2 Holdings Inc,QTWO,Application Software
+,Crinetics Pharmaceuticals Inc,CRNX,Pharmaceuticals
+,Archer Aviation Inc,ACHR,Aerospace & Defense
+,HA Sustainable Infrastructure Capital Inc,HASI,Specialized Finance
+,StepStone Group Inc,STEP,Asset Management & Custody Banks
+,Hut 8 Corp,HUT,Application Software
+,Northwestern Energy Group Inc,NWE,Multi-Utilities
+,DaVita Inc,DVA,Health Care Services
+,Transocean Ltd,RIG,Oil & Gas Drilling
+,FormFactor Inc,FORM,Semiconductor Materials & Equipment
+,Knife River Corp,KNF,Construction Materials
+,Circle Internet Group Inc,CRCL,Application Software
+,Travel + Leisure Co,TNL,"Hotels, Resorts & Cruise Lines"
+,Lennar Corp,LEN/B,Homebuilding
+,Waystar Holding Corp,WAY,Health Care Technology
+,Amentum Holdings Inc,AMTM,Research & Consulting Services
+,Sonoco Products Co,SON,Paper & Plastic Packaging Products & Materials
+,Atmus Filtration Technologies Inc,ATMU,Construction Machinery & Heavy Transportation Equipment
+,Sensient Technologies Corp,SXT,Specialty Chemicals
+,MARA Holdings Inc,MARA,Application Software
+,Akero Therapeutics Inc,AKRO,Biotechnology
+,CommScope Holding Co Inc,COMM,Communications Equipment
+,Associated Banc-Corp,ASB,Regional Banks
+,Kontoor Brands Inc,KTB,"Apparel, Accessories & Luxury Goods"
+,BrightSpring Health Services Inc,BTSG,Health Care Services
+,Warrior Met Coal Inc,HCC,Steel
+,Texas Capital Bancshares Inc,TCBI,Regional Banks
+,Dolby Laboratories Inc,DLB,Systems Software
+,elf Beauty Inc,ELF,Personal Care Products
+,Archrock Inc,AROC,Oil & Gas Equipment & Services
+,Novanta Inc,NOVT,Electronic Equipment & Instruments
+,Assured Guaranty Ltd,AGO,Property & Casualty Insurance
+,Magnolia Oil & Gas Corp,MGY,Oil & Gas Exploration & Production
+,Flagstar Bank NA,FLG,Regional Banks
+,PVH Corp,PVH,"Apparel, Accessories & Luxury Goods"
+,Box Inc,BOX,Application Software
+,Science Applications International Corp,SAIC,Research & Consulting Services
+,Eastern Bankshares Inc,EBC,Regional Banks
+,Cleanspark Inc,CLSK,Application Software
+,Arcellx Inc,ACLX,Biotechnology
+,StoneX Group Inc,SNEX,Investment Banking & Brokerage
+,Independence Realty Trust Inc,IRT,Multi-Family Residential REITs
+,Eos Energy Enterprises Inc,EOSE,Electrical Components & Equipment
+,Lantheus Holdings Inc,LNTH,Health Care Supplies
+,Viavi Solutions Inc,VIAV,Communications Equipment
+,Madison Square Garden Sports Corp,MSGS,Movies & Entertainment
+,Silicon Laboratories Inc,SLAB,Semiconductors
+,EPR Properties,EPR,Other Specialized REITs
+,Valvoline Inc,VVV,Automotive Retail
+,Avnet Inc,AVT,Technology Distributors
+,MSC Industrial Direct Co Inc,MSM,Trading Companies & Distributors
+,Frontdoor Inc,FTDR,Specialized Consumer Services
+,VSE Corp,VSEC,Aerospace & Defense
+,Viking Therapeutics Inc,VKTX,Biotechnology
+,Signet Jewelers Ltd,SIG,Other Specialty Retail
+,Sirius XM Holdings Inc,SIRI,Cable & Satellite
+,ALLETE Inc,ALE,Electric Utilities
+,Haemonetics Corp,HAE,Health Care Supplies
+,Warner Music Group Corp,WMG,Movies & Entertainment
+,Core Natural Resources Inc,CNR,Coal & Consumable Fuels
+,Perimeter Solutions Inc,PRM,Specialty Chemicals
+,Celcuity Inc,CELC,Biotechnology
+,Laureate Education Inc,LAUR,Education Services
+,SkyWest Inc,SKYW,Passenger Airlines
+,BellRing Brands Inc,BRBR,Personal Care Products
+,Noble Corp PLC,NE,Oil & Gas Drilling
+,Liberty Media Corp-Liberty Live,LLYVK,Movies & Entertainment
+,PJT Partners Inc,PJT,Investment Banking & Brokerage
+,Kymera Therapeutics Inc,KYMR,Biotechnology
+,Plexus Corp,PLXS,Electronic Manufacturing Services
+,Cushman & Wakefield Ltd,CWK,Real Estate Services
+,PennyMac Financial Services Inc,PFSI,Commercial & Residential Mortgage Finance
+,First Financial Bankshares Inc,FFIN,Regional Banks
+,Primo Brands Corp,PRMB,Soft Drinks & Non-alcoholic Beverages
+,Oscar Health Inc,OSCR,Life & Health Insurance
+,Mueller Water Products Inc,MWA,Industrial Machinery & Supplies & Components
+,Mercury Systems Inc,MRCY,Aerospace & Defense
+,CNO Financial Group Inc,CNO,Life & Health Insurance
+,Ligand Pharmaceuticals Inc,LGND,Pharmaceuticals
+,Federated Hermes Inc,FHI,Asset Management & Custody Banks
+,Trex Co Inc,TREX,Building Products
+,Brighthouse Financial Inc,BHF,Life & Health Insurance
+,IES Holdings Inc,IESC,Construction & Engineering
+,Zillow Group Inc,ZG,Real Estate Services
+,Veracyte Inc,VCYT,Biotechnology
+,KB Home,KBH,Homebuilding
+,Telephone and Data Systems Inc,TDS,Wireless Telecommunication Services
+,International Bancshares Corp,IBOC,Regional Banks
+,United Community Banks Inc/GA,UCB,Regional Banks
+,Upstart Holdings Inc,UPST,Consumer Finance
+,Life Time Group Holdings Inc,LTH,Leisure Facilities
+,Bath & Body Works Inc,BBWI,Other Specialty Retail
+,Inspire Medical Systems Inc,INSP,Health Care Equipment
+,Exponent Inc,EXPO,Research & Consulting Services
+,Dorman Products Inc,DORM,Automotive Parts & Equipment
+,Tanger Inc,SKT,Retail REITs
+,Scholar Rock Holding Corp,SRRK,Biotechnology
+,Independent Bank Corp,INDB,Regional Banks
+,Franklin Electric Co Inc,FELE,Industrial Machinery & Supplies & Components
+,National Health Investors Inc,NHI,Health Care REITs
+,Enphase Energy Inc,ENPH,Semiconductor Materials & Equipment
+,Polaris Inc,PII,Leisure Products
+,Genworth Financial Inc,GNW,Life & Health Insurance
+,Varonis Systems Inc,VRNS,Systems Software
+,Gulfport Energy Corp,GPOR,Oil & Gas Exploration & Production
+,ServisFirst Bancshares Inc,SFBS,Regional Banks
+,ICU Medical Inc,ICUI,Health Care Supplies
+,Sotera Health Co,SHC,Life Sciences Tools & Services
+,Envista Holdings Corp,NVST,Health Care Equipment
+,COPT Defense Properties,CDP,Office REITs
+,M/I Homes Inc,MHO,Homebuilding
+,Patrick Industries Inc,PATK,Automotive Parts & Equipment
+,Otter Tail Corp,OTTR,Electric Utilities
+,Rayonier Inc,RYN,Timber REITs
+,Korn Ferry,KFY,Human Resource & Employment Services
+,Apogee Therapeutics Inc,APGE,Biotechnology
+,Cal-Maine Foods Inc,CALM,Packaged Foods & Meats
+,WillScot Holdings Corp,WSC,Construction & Engineering
+,Hayward Holdings Inc,HAYW,Building Products
+,California Resources Corp,CRC,Oil & Gas Exploration & Production
+,Silgan Holdings Inc,SLGN,"Metal, Glass & Plastic Containers"
+,GRAIL Inc,GRAL,Biotechnology
+,Graham Holdings Co,GHC,Education Services
+,SL Green Realty Corp,SLG,Office REITs
+,Renasant Corp,RNST,Regional Banks
+,YETI Holdings Inc,YETI,Leisure Products
+,Victory Capital Holdings Inc,VCTR,Asset Management & Custody Banks
+,Avista Corp,AVA,Multi-Utilities
+,Klaviyo Inc,KVYO,Application Software
+,Shake Shack Inc,SHAK,Restaurants
+,Outfront Media Inc,OUT,Other Specialized REITs
+,Cabot Corp,CBT,Commodity Chemicals
+,Arcutis Biotherapeutics Inc,ARQT,Biotechnology
+,MYR Group Inc,MYRG,Construction & Engineering
+,Verra Mobility Corp,VRRM,Data Processing & Outsourced Services
+,Fulton Financial Corp,FULT,Regional Banks
+,Matson Inc,MATX,Marine Transportation
+,Kadant Inc,KAI,Industrial Machinery & Supplies & Components
+,Zeta Global Holdings Corp,ZETA,Application Software
+,Chesapeake Utilities Corp,CPK,Gas Utilities
+,BankUnited Inc,BKU,Regional Banks
+,Brady Corp,BRC,Commercial Printing
+,Calix Inc,CALX,Communications Equipment
+,Valaris Ltd,VAL,Oil & Gas Drilling
+,PriceSmart Inc,PSMT,Consumer Staples Merchandise Retail
+,Academy Sports & Outdoors Inc,ASO,Other Specialty Retail
+,Allegro MicroSystems Inc,ALGM,Semiconductors
+,Marzetti Company/The,MZTI,Packaged Foods & Meats
+,Clear Secure Inc,YOU,Application Software
+,Tenable Holdings Inc,TENB,Systems Software
+,American Eagle Outfitters Inc,AEO,Apparel Retail
+,BGC Group Inc,BGC,Investment Banking & Brokerage
+,Palomar Holdings Inc,PLMR,Property & Casualty Insurance
+,Adtalem Global Education Inc,ATGE,Education Services
+,BlackLine Inc,BL,Application Software
+,Cathay General Bancorp,CATY,Regional Banks
+,Ultragenyx Pharmaceutical Inc,RARE,Biotechnology
+,Broadstone Net Lease Inc,BNL,Diversified REITs
+,Blackstone Mortgage Trust Inc,BXMT,Mortgage REITs
+,First BanCorp/Puerto Rico,FBP,Regional Banks
+,ACADIA Pharmaceuticals Inc,ACAD,Biotechnology
+,Energy Fuels Inc/Canada,UUUU,Coal & Consumable Fuels
+,SPS Commerce Inc,SPSC,Application Software
+,Travere Therapeutics Inc,TVTX,Biotechnology
+,Griffon Corp,GFF,Building Products
+,HB Fuller Co,FUL,Specialty Chemicals
+,Peabody Energy Corp,BTU,Coal & Consumable Fuels
+,Enova International Inc,ENVA,Consumer Finance
+,GeneDx Holdings Corp,WGS,Health Care Services
+,Victoria's Secret & Co,VSCO,Apparel Retail
+,TEGNA Inc,TGNA,Broadcasting
+,Powell Industries Inc,POWL,Electrical Components & Equipment
+,Mirum Pharmaceuticals Inc,MIRM,Biotechnology
+,WSFS Financial Corp,WSFS,Regional Banks
+,Advance Auto Parts Inc,AAP,Automotive Retail
+,Agilysys Inc,AGYS,Application Software
+,Americold Realty Trust Inc,COLD,Industrial REITs
+,CG oncology Inc,CGON,Biotechnology
+,First Hawaiian Inc,FHB,Regional Banks
+,AAR Corp,AIR,Aerospace & Defense
+,Globalstar Inc,GSAT,Alternative Carriers
+,Tutor Perini Corp,TPC,Construction & Engineering
+,Hilton Grand Vacations Inc,HGV,"Hotels, Resorts & Cruise Lines"
+,Amicus Therapeutics Inc,FOLD,Biotechnology
+,Steven Madden Ltd,SHOO,Footwear
+,StandardAero Inc,SARO,Aerospace & Defense
+,DigitalOcean Holdings Inc,DOCN,Internet Services & Infrastructure
+,Tarsus Pharmaceuticals Inc,TARS,Pharmaceuticals
+,MGE Energy Inc,MGEE,Electric Utilities
+,Highwoods Properties Inc,HIW,Office REITs
+,Community Financial System Inc,CBU,Regional Banks
+,AZZ Inc,AZZ,Building Products
+,Bread Financial Holdings Inc,BFH,Consumer Finance
+,Ambarella Inc,AMBA,Semiconductors
+,Harley-Davidson Inc,HOG,Motorcycle Manufacturers
+,Red Rock Resorts Inc,RRR,Casinos & Gaming
+,PotlatchDeltic Corp,PCH,Timber REITs
+,Ideaya Biosciences Inc,IDYA,Biotechnology
+,Standex International Corp,SXI,Industrial Machinery & Supplies & Components
+,NMI Holdings Inc,NMIH,Commercial & Residential Mortgage Finance
+,WesBanco Inc,WSBC,Regional Banks
+,Dana Inc,DAN,Automotive Parts & Equipment
+,Cactus Inc. Class A,WHD,Oil & Gas Equipment & Services
+,Prestige Consumer Healthcare Inc,PBH,Pharmaceuticals
+,Loar Holdings Inc,LOAR,Aerospace & Defense
+,Euronet Worldwide Inc,EEFT,Transaction & Payment Processing Services
+,Virtu Financial Inc,VIRT,Investment Banking & Brokerage
+,Terex Corp,TEX,Construction Machinery & Heavy Transportation Equipment
+,Capri Holdings Ltd,CPRI,"Apparel, Accessories & Luxury Goods"
+,Rush Enterprises Inc,RUSHA,Trading Companies & Distributors
+,Boise Cascade Co,BCC,Trading Companies & Distributors
+,Cinemark Holdings Inc,CNK,Movies & Entertainment
+,Huron Consulting Group Inc,HURN,Research & Consulting Services
+,Cargurus Inc,CARG,Interactive Media & Services
+,Adaptive Biotechnologies Corp,ADPT,Life Sciences Tools & Services
+,American States Water Co,AWR,Water Utilities
+,Western Union Co/The,WU,Transaction & Payment Processing Services
+,Tri Pointe Homes Inc,TPH,Homebuilding
+,Visteon Corp,VC,Automotive Parts & Equipment
+,Viridian Therapeutics Inc,VRDN,Biotechnology
+,Avient Corp,AVNT,Specialty Chemicals
+,Bancorp Inc/The,TBBK,Regional Banks
+,Freshpet Inc,FRPT,Packaged Foods & Meats
+,Dyne Therapeutics Inc,DYN,Biotechnology
+,PBF Energy Inc,PBF,Oil & Gas Refining & Marketing
+,Artisan Partners Asset Management Inc,APAM,Asset Management & Custody Banks
+,Seacoast Banking Corp of Florida,SBCF,Regional Banks
+,First Interstate BancSystem Inc,FIBK,Regional Banks
+,Blackbaud Inc,BLKB,Application Software
+,Liberty Energy Inc,LBRT,Oil & Gas Equipment & Services
+,Freshworks Inc,FRSH,Application Software
+,Clearway Energy Inc,CWEN,Renewable Electricity
+,Crane NXT Co,CXT,Electronic Equipment & Instruments
+,LXP Industrial Trust,LXP,Industrial REITs
+,Insight Enterprises Inc,NSIT,Technology Distributors
+,Leonardo DRS Inc,DRS,Aerospace & Defense
+,NCR Atleos Corp,NATL,Transaction & Payment Processing Services
+,Catalyst Pharmaceuticals Inc,CPRX,Biotechnology
+,Civitas Resources Inc,CIVI,Oil & Gas Exploration & Production
+,Kodiak Gas Services Inc,KGS,Oil & Gas Equipment & Services
+,OPENLANE Inc,KAR,Diversified Support Services
+,Privia Health Group Inc,PRVA,Health Care Services
+,California Water Service Group,CWT,Water Utilities
+,Planet Labs PBC,PL,Research & Consulting Services
+,Acadia Realty Trust,AKR,Retail REITs
+,ABM Industries Inc,ABM,Environmental & Facilities Services
+,Simmons First National Corp,SFNC,Regional Banks
+,Howard Hughes Holdings Inc,HHH,Real Estate Development
+,WD-40 Co,WDFC,Household Products
+,Alignment Healthcare Inc,ALHC,Managed Health Care
+,Peloton Interactive Inc,PTON,Leisure Products
+,Penske Automotive Group Inc,PAG,Automotive Retail
+,Stride Inc,LRN,Education Services
+,Robert Half Inc,RHI,Human Resource & Employment Services
+,Bank of Hawaii Corp,BOH,Regional Banks
+,International Seaways Inc,INSW,Oil & Gas Storage & Transportation
+,LCI Industries,LCII,Automotive Parts & Equipment
+,Kohl's Corp,KSS,Broadline Retail
+,Medical Properties Trust Inc,MPW,Health Care REITs
+,Axcelis Technologies Inc,ACLS,Semiconductor Materials & Equipment
+,Mercury General Corp,MCY,Property & Casualty Insurance
+,nCino Inc,NCNO,Application Software
+,UniFirst Corp/MA,UNF,Diversified Support Services
+,Teradata Corp,TDC,Systems Software
+,CVB Financial Corp,CVBF,Regional Banks
+,Ondas Holdings Inc,ONDS,Communications Equipment
+,McGrath RentCorp,MGRC,Trading Companies & Distributors
+,Brookdale Senior Living Inc,BKD,Health Care Facilities
+,Integer Holdings Corp,ITGR,Health Care Equipment
+,Apple Hospitality REIT Inc,APLE,Hotel & Resort REITs
+,ZoomInfo Technologies Inc,GTM,Interactive Media & Services
+,CoreWeave Inc,CRWV,Internet Services & Infrastructure
+,Alphatec Holdings Inc,ATEC,Health Care Equipment
+,CBIZ Inc,CBZ,Research & Consulting Services
+,Dave Inc,DAVE,Consumer Finance
+,Four Corners Property Trust Inc,FCPT,Other Specialized REITs
+,Synaptics Inc,SYNA,Semiconductors
+,Helmerich & Payne Inc,HP,Oil & Gas Drilling
+,Concentra Group Holdings Parent Inc,CON,Health Care Facilities
+,BOK Financial Corp,BOKF,Regional Banks
+,WaFd Inc,WAFD,Regional Banks
+,REV Group Inc,REVG,Construction Machinery & Heavy Transportation Equipment
+,Upwork Inc,UPWK,Human Resource & Employment Services
+,Intapp Inc,INTA,Application Software
+,Lineage Inc,LINE,Industrial REITs
+,St Joe Co/The,JOE,Diversified Real Estate Activities
+,DNOW Inc,DNOW,Trading Companies & Distributors
+,Alarm.com Holdings Inc,ALRM,Application Software
+,Hawkins Inc,HWKN,Commodity Chemicals
+,Xometry Inc,XMTR,Trading Companies & Distributors
+,Oceaneering International Inc,OII,Oil & Gas Equipment & Services
+,Newmark Group Inc,NMRK,Real Estate Services
+,Scotts Miracle-Gro Co/The,SMG,Fertilizers & Agricultural Chemicals
+,Supernus Pharmaceuticals Inc,SUPN,Pharmaceuticals
+,Olin Corp,OLN,Commodity Chemicals
+,Disc Medicine Inc,IRON,Biotechnology
+,Materion Corp,MTRN,Diversified Metals & Mining
+,Kemper Corp,KMPR,Property & Casualty Insurance
+,Urban Edge Properties,UE,Retail REITs
+,FB Financial Corp,FBK,Regional Banks
+,Ashland Inc,ASH,Specialty Chemicals
+,Soleno Therapeutics Inc,SLNO,Biotechnology
+,ePlus Inc,PLUS,Technology Distributors
+,Provident Financial Services Inc,PFS,Regional Banks
+,RH,RH,Homefurnishing Retail
+,DXC Technology Co,DXC,IT Consulting & Other Services
+,BigBear.ai Holdings Inc,BBAI,IT Consulting & Other Services
+,Goodyear Tire & Rubber Co/The,GT,Tires & Rubber
+,IAC Inc,IAC,Interactive Media & Services
+,Edgewise Therapeutics Inc,EWTX,Pharmaceuticals
+,Plug Power Inc,PLUG,Electrical Components & Equipment
+,Denali Therapeutics Inc,DNLI,Biotechnology
+,Banc of California Inc,BANC,Regional Banks
+,Choice Hotels International Inc,CHH,"Hotels, Resorts & Cruise Lines"
+,Towne Bank/Portsmouth VA,TOWN,Regional Banks
+,Beam Therapeutics Inc,BEAM,Biotechnology
+,Vita Coco Co Inc/The,COCO,Soft Drinks & Non-alcoholic Beverages
+,RingCentral Inc,RNG,Application Software
+,Apellis Pharmaceuticals Inc,APLS,Biotechnology
+,Tidewater Inc,TDW,Oil & Gas Equipment & Services
+,DENTSPLY SIRONA Inc,XRAY,Health Care Supplies
+,Curbline Properties Corp,CURB,Retail REITs
+,First Financial Bancorp,FFBC,Regional Banks
+,Hillenbrand Inc,HI,Industrial Machinery & Supplies & Components
+,Atkore Inc,ATKR,Electrical Components & Equipment
+,Park National Corp,PRK,Regional Banks
+,Chefs' Warehouse Inc/The,CHEF,Food Distributors
+,Hub Group Inc,HUBG,Air Freight & Logistics
+,Remitly Global Inc,RELY,Transaction & Payment Processing Services
+,Nuvation Bio Inc,NUVB,Pharmaceuticals
+,Sphere Entertainment Co,SPHR,Movies & Entertainment
+,Karman Holdings Inc,KRMN,Aerospace & Defense
+,Extreme Networks Inc,EXTR,Communications Equipment
+,Delek US Holdings Inc,DK,Oil & Gas Refining & Marketing
+,Par Pacific Holdings Inc,PARR,Oil & Gas Refining & Marketing
+,Addus HomeCare Corp,ADUS,Health Care Services
+,Acushnet Holdings Corp,GOLF,Leisure Products
+,Terns Pharmaceuticals Inc,TERN,Pharmaceuticals
+,InvenTrust Properties Corp,IVT,Retail REITs
+,Liberty Media Corp-Liberty Formula One,FWONA,Movies & Entertainment
+,Amneal Pharmaceuticals Inc,AMRX,Pharmaceuticals
+,SM Energy Co,SM,Oil & Gas Exploration & Production
+,CSG Systems International Inc,CSGS,Data Processing & Outsourced Services
+,News Corp,NWS,Publishing
+,RXO Inc,RXO,Cargo Ground Transportation
+,National Vision Holdings Inc,EYE,Other Specialty Retail
+,Penn Entertainment Inc,PENN,Casinos & Gaming
+,Trinity Industries Inc,TRN,Construction Machinery & Heavy Transportation Equipment
+,Avis Budget Group Inc,CAR,Passenger Ground Transportation
+,Stewart Information Services Corp,STC,Property & Casualty Insurance
+,United Natural Foods Inc,UNFI,Food Distributors
+,Patterson-UTI Energy Inc,PTEN,Oil & Gas Drilling
+,NuScale Power Corp,SMR,Heavy Electrical Equipment
+,Beacon Financial Corp,BBT,Regional Banks
+,Westlake Corp,WLK,Commodity Chemicals
+,Mineralys Therapeutics Inc,MLYS,Biotechnology
+,Cheesecake Factory Inc/The,CAKE,Restaurants
+,Sonos Inc,SONO,Consumer Electronics
+,Braze Inc,BRZE,Application Software
+,GEO Group Inc/The,GEO,Security & Alarm Services
+,Artivion Inc,AORT,Health Care Equipment
+,Magnite Inc,MGNI,Advertising
+,Trustmark Corp,TRMK,Regional Banks
+,Kennametal Inc,KMT,Industrial Machinery & Supplies & Components
+,Liquidia Corp,LQDA,Pharmaceuticals
+,Pediatrix Medical Group Inc,MD,Health Care Services
+,Walker & Dunlop Inc,WD,Commercial & Residential Mortgage Finance
+,Customers Bancorp Inc,CUBI,Regional Banks
+,Credit Acceptance Corp,CACC,Consumer Finance
+,O-I Glass Inc,OI,"Metal, Glass & Plastic Containers"
+,Green Brick Partners Inc,GRBK,Homebuilding
+,Northern Oil & Gas Inc,NOG,Oil & Gas Exploration & Production
+,Levi Strauss & Co,LEVI,"Apparel, Accessories & Luxury Goods"
+,Vicor Corp,VICR,Electrical Components & Equipment
+,CorVel Corp,CRVL,Health Care Services
+,AvePoint Inc,AVPT,Application Software
+,Arcus Biosciences Inc,RCUS,Biotechnology
+,SIRIUSPOINT LTD,SPNT,Reinsurance
+,Banner Corp,BANR,Regional Banks
+,10X Genomics Inc,TXG,Life Sciences Tools & Services
+,Flowers Foods Inc,FLO,Packaged Foods & Meats
+,Progyny Inc,PGNY,Managed Health Care
+,NBT Bancorp Inc,NBTB,Regional Banks
+,Enerpac Tool Group Corp,EPAC,Industrial Machinery & Supplies & Components
+,Hawaiian Electric Industries Inc,HE,Electric Utilities
+,Diodes Inc,DIOD,Semiconductors
+,BancFirst Corp,BANF,Regional Banks
+,Ocular Therapeutix Inc,OCUL,Pharmaceuticals
+,Spyre Therapeutics Inc,SYRE,Biotechnology
+,Solaris Energy Infrastructure Inc,SEI,Oil & Gas Equipment & Services
+,National Storage Affiliates Trust,NSA,Self-Storage REITs
+,Vericel Corp,VCEL,Biotechnology
+,First Merchants Corp,FRME,Regional Banks
+,Northwest Natural Holding Co,NWN,Gas Utilities
+,First Bancorp/Southern Pines NC,FBNC,Regional Banks
+,Phinia Inc,PHIN,Automotive Parts & Equipment
+,Olema Pharmaceuticals Inc,OLMA,Biotechnology
+,Organon & Co,OGN,Pharmaceuticals
+,Summit Therapeutics Inc,SMMT,Biotechnology
+,Sarepta Therapeutics Inc,SRPT,Biotechnology
+,First Busey Corp,BUSE,Regional Banks
+,Avadel Pharmaceuticals PLC,AVDL,Pharmaceuticals
+,Nelnet Inc,NNI,Consumer Finance
+,Warby Parker Inc,WRBY,Other Specialty Retail
+,HCI Group Inc,HCI,Property & Casualty Insurance
+,LendingClub Corp,LC,Consumer Finance
+,ARMOUR Residential REIT Inc,ARR,Mortgage REITs
+,Comstock Resources Inc,CRK,Oil & Gas Exploration & Production
+,Douglas Emmett Inc,DEI,Office REITs
+,Baldwin Insurance Group Inc/The,BWIN,Insurance Brokers
+,Dillard's Inc,DDS,Broadline Retail
+,Concentrix Corp,CNXC,Data Processing & Outsourced Services
+,Chemours Co/The,CC,Diversified Chemicals
+,Ingevity Corp,NGVT,Specialty Chemicals
+,Quaker Chemical Corp,KWR,Specialty Chemicals
+,Enterprise Financial Services Corp,EFSC,Regional Banks
+,Madison Square Garden Entertainment Corp,MSGE,Movies & Entertainment
+,Centuri Holdings Inc,CTRI,Construction & Engineering
+,Recursion Pharmaceuticals Inc,RXRX,Biotechnology
+,Stock Yards Bancorp Inc,SYBT,Regional Banks
+,Marqeta Inc,MQ,Transaction & Payment Processing Services
+,Power Integrations Inc,POWI,Semiconductors
+,ASGN Inc,ASGN,IT Consulting & Other Services
+,Horace Mann Educators Corp,HMN,Multi-line Insurance
+,QuidelOrtho Corp,QDEL,Health Care Equipment
+,DiamondRock Hospitality Co,DRH,Hotel & Resort REITs
+,EVERTEC Inc,EVTC,Transaction & Payment Processing Services
+,Innospec Inc,IOSP,Specialty Chemicals
+,Dynex Capital Inc,DX,Mortgage REITs
+,IPG Photonics Corp,IPGP,Electronic Manufacturing Services
+,Celldex Therapeutics Inc,CLDX,Biotechnology
+,NetScout Systems Inc,NTCT,Communications Equipment
+,Minerals Technologies Inc,MTX,Specialty Chemicals
+,Park Hotels & Resorts Inc,PK,Hotel & Resort REITs
+,Perrigo Co PLC,PRGO,Pharmaceuticals
+,Twist Bioscience Corp,TWST,Biotechnology
+,CoreCivic Inc,CXW,Security & Alarm Services
+,Lionsgate Studios Corp,LION,Movies & Entertainment
+,Seadrill Ltd,SDRL,Oil & Gas Drilling
+,Pilgrim's Pride Corp,PPC,Packaged Foods & Meats
+,Helios Technologies Inc,HLIO,Industrial Machinery & Supplies & Components
+,HNI Corp,HNI,Office Services & Supplies
+,LiveRamp Holdings Inc,RAMP,Application Software
+,FMC Corp,FMC,Fertilizers & Agricultural Chemicals
+,Simply Good Foods Co/The,SMPL,Packaged Foods & Meats
+,Progress Software Corp,PRGS,Systems Software
+,Skyward Specialty Insurance Group Inc,SKWD,Property & Casualty Insurance
+,Cohen & Steers Inc,CNS,Asset Management & Custody Banks
+,Sunstone Hotel Investors Inc,SHO,Hotel & Resort REITs
+,Bel Fuse Inc,BELFB,Electronic Components
+,OFG Bancorp,OFG,Regional Banks
+,Greif Inc,GEF,"Metal, Glass & Plastic Containers"
+,Trump Media & Technology Group Corp,DJT,Interactive Media & Services
+,DigitalBridge Group Inc,DBRG,Asset Management & Custody Banks
+,Global Net Lease Inc,GNL,Diversified REITs
+,Northwest Bancshares Inc,NWBI,Regional Banks
+,Knowles Corp,KN,Electronic Components
+,Veeco Instruments Inc,VECO,Semiconductor Materials & Equipment
+,Vera Therapeutics Inc,VERA,Biotechnology
+,NETSTREIT Corp,NTST,Retail REITs
+,Century Communities Inc,CCS,Homebuilding
+,C3.ai Inc,AI,Application Software
+,Innodata Inc,INOD,Research & Consulting Services
+,Huntsman Corp,HUN,Diversified Chemicals
+,Ivanhoe Electric Inc / US,IE,Diversified Metals & Mining
+,Harmony Biosciences Holdings Inc,HRMY,Pharmaceuticals
+,Buckle Inc/The,BKE,Apparel Retail
+,Yelp Inc,YELP,Interactive Media & Services
+,Enovis Corp,ENOV,Health Care Equipment
+,Goosehead Insurance Inc,GSHD,Insurance Brokers
+,Hillman Solutions Corp,HLMN,Industrial Machinery & Supplies & Components
+,TriNet Group Inc,TNET,Human Resource & Employment Services
+,Pathward Financial Inc,CASH,Regional Banks
+,Syndax Pharmaceuticals Inc,SNDX,Biotechnology
+,Marriott Vacations Worldwide Corp,VAC,"Hotels, Resorts & Cruise Lines"
+,AtriCure Inc,ATRC,Health Care Equipment
+,Astronics Corp,ATRO,Aerospace & Defense
+,National HealthCare Corp,NHC,Health Care Facilities
+,LeMaitre Vascular Inc,LMAT,Health Care Equipment
+,Agios Pharmaceuticals Inc,AGIO,Biotechnology
+,Steelcase Inc,SCS,Office Services & Supplies
+,Vishay Intertechnology Inc,VSH,Electronic Components
+,City Holding Co,CHCO,Regional Banks
+,Immunovant Inc,IMVT,Biotechnology
+,Crescent Energy Co,CRGY,Oil & Gas Exploration & Production
+,Strategic Education Inc,STRA,Education Services
+,LTC Properties Inc,LTC,Health Care REITs
+,ACM Research Inc,ACMR,Semiconductor Materials & Equipment
+,Payoneer Global Inc,PAYO,Transaction & Payment Processing Services
+,Lucid Group Inc,LCID,Automobile Manufacturers
+,PROCEPT BioRobotics Corp,PRCT,Health Care Equipment
+,Alpha Metallurgical Resources Inc,AMR,Steel
+,Andersons Inc/The,ANDE,Food Distributors
+,Rush Street Interactive Inc,RSI,Casinos & Gaming
+,UFP Technologies Inc,UFPT,Health Care Supplies
+,Kiniksa Pharmaceuticals International Plc,KNSA,Biotechnology
+,Alamo Group Inc,ALG,Agricultural & Farm Machinery
+,Blue Bird Corp,BLBD,Construction Machinery & Heavy Transportation Equipment
+,Worthington Enterprises Inc,WOR,Industrial Machinery & Supplies & Components
+,Onestream Inc,OS,Systems Software
+,Appian Corp,APPN,Systems Software
+,Select Medical Holdings Corp,SEM,Health Care Facilities
+,Perdoceo Education Corp,PRDO,Education Services
+,Sylvamo Corp,SLVM,Paper Products
+,Turning Point Brands Inc,TPB,Tobacco
+,Getty Realty Corp,GTY,Retail REITs
+,Legalzoom.com Inc,LZ,Research & Consulting Services
+,La-Z-Boy Inc,LZB,Home Furnishings
+,Stoke Therapeutics Inc,STOK,Biotechnology
+,Flywire Corp,FLYW,Transaction & Payment Processing Services
+,First Commonwealth Financial Corp,FCF,Regional Banks
+,Applied Optoelectronics Inc,AAOI,Communications Equipment
+,Quantum Computing Inc,QUBT,"Technology Hardware, Storage & Peripherals"
+,Omnicell Inc,OMCL,Health Care Equipment
+,nLight Inc,LASR,Electronic Equipment & Instruments
+,Calumet Inc,CLMT,Oil & Gas Refining & Marketing
+,Sally Beauty Holdings Inc,SBH,Other Specialty Retail
+,Central Garden & Pet Co,CENTA,Household Products
+,S&T Bancorp Inc,STBA,Regional Banks
+,ANI Pharmaceuticals Inc,ANIP,Pharmaceuticals
+,CECO Environmental Corp,CECO,Industrial Machinery & Supplies & Components
+,Atlanta Braves Holdings Inc,BATRK,Movies & Entertainment
+,NeoGenomics Inc,NEO,Health Care Services
+,MannKind Corp,MNKD,Biotechnology
+,Century Aluminum Co,CENX,Aluminum
+,TripAdvisor Inc,TRIP,Interactive Media & Services
+,Elme Communities,ELME,Multi-Family Residential REITs
+,Diebold Nixdorf Inc,DBD,"Technology Hardware, Storage & Peripherals"
+,Boston Beer Co Inc/The,SAM,Brewers
+,Fastly Inc,FSLY,Internet Services & Infrastructure
+,Federal Agricultural Mortgage Corp,AGM,Commercial & Residential Mortgage Finance
+,Interface Inc,TILE,Office Services & Supplies
+,Rogers Corp,ROG,Electronic Components
+,Newell Brands Inc,NWL,Housewares & Specialties
+,Topgolf Callaway Brands Corp,MODG,Leisure Products
+,Benchmark Electronics Inc,BHE,Electronic Manufacturing Services
+,Pitney Bowes Inc,PBI,Office Services & Supplies
+,Hilltop Holdings Inc,HTH,Regional Banks
+,Acadia Healthcare Co Inc,ACHC,Health Care Facilities
+,BioCryst Pharmaceuticals Inc,BCRX,Biotechnology
+,Liberty Media Corp-Liberty Live,LLYVA,Movies & Entertainment
+,Kinetik Holdings Inc,KNTK,Oil & Gas Storage & Transportation
+,Nicolet Bankshares Inc,NIC,Regional Banks
+,Navitas Semiconductor Corp,NVTS,Semiconductors
+,Iridium Communications Inc,IRDM,Alternative Carriers
+,Kaiser Aluminum Corp,KALU,Aluminum
+,Arbor Realty Trust Inc,ABR,Mortgage REITs
+,Clearway Energy Inc,CWEN/A,Renewable Electricity
+,H2O America,HTO,Water Utilities
+,Gibraltar Industries Inc,ROCK,Building Products
+,Digi International Inc,DGII,Communications Equipment
+,DoubleVerify Holdings Inc,DV,Advertising
+,Immunome Inc,IMNM,Biotechnology
+,WisdomTree Inc,WT,Asset Management & Custody Banks
+,J & J Snack Foods Corp,JJSF,Packaged Foods & Meats
+,Werner Enterprises Inc,WERN,Cargo Ground Transportation
+,Arlo Technologies Inc,ARLO,Electronic Equipment & Instruments
+,Expro Group Holdings NV,XPRO,Oil & Gas Equipment & Services
+,ICF International Inc,ICFI,Research & Consulting Services
+,Dianthus Therapeutics Inc,DNTH,Biotechnology
+,PureCycle Technologies Inc,PCT,Commodity Chemicals
+,Lakeland Financial Corp,LKFN,Regional Banks
+,Stellar Bancorp Inc,STEL,Regional Banks
+,Five9 Inc,FIVN,Application Software
+,Amylyx Pharmaceuticals Inc,AMLX,Pharmaceuticals
+,Interparfums Inc,IPAR,Personal Care Products
+,Apollo Commercial Real Estate Finance Inc,ARI,Mortgage REITs
+,Coastal Financial Corp/WA,CCB,Regional Banks
+,Paymentus Holdings Inc,PAY,Transaction & Payment Processing Services
+,Talos Energy Inc,TALO,Oil & Gas Exploration & Production
+,Collegium Pharmaceutical Inc,COLL,Pharmaceuticals
+,Tandem Diabetes Care Inc,TNDM,Health Care Equipment
+,National Bank Holdings Corp,NBHC,Regional Banks
+,Albany International Corp,AIN,Industrial Machinery & Supplies & Components
+,Azenta Inc,AZTA,Life Sciences Tools & Services
+,Willdan Group Inc,WLDN,Research & Consulting Services
+,Zymeworks Inc,ZYME,Biotechnology
+,Masterbrand Inc,MBC,Building Products
+,PAR Technology Corp,PAR,Application Software
+,Upstream Bio Inc,UPB,Biotechnology
+,Shoals Technologies Group Inc,SHLS,Electrical Components & Equipment
+,ArcBest Corp,ARCB,Cargo Ground Transportation
+,John Wiley & Sons Inc,WLY,Publishing
+,Innovative Industrial Properties Inc,IIPR,Industrial REITs
+,Fresh Del Monte Produce Inc,FDP,Agricultural Products & Services
+,Vertex Inc,VERX,Application Software
+,Six Flags Entertainment Corp,FUN,Leisure Facilities
+,Napco Security Technologies Inc,NSSC,Electronic Equipment & Instruments
+,Healthcare Services Group Inc,HCSG,Diversified Support Services
+,Spectrum Brands Holdings Inc,SPB,Household Products
+,V2X Inc,VVX,Aerospace & Defense
+,Novocure Ltd,NVCR,Health Care Equipment
+,Trevi Therapeutics Inc,TRVI,Pharmaceuticals
+,TIC Solutions Inc,TIC,Research & Consulting Services
+,Enviri Corp,NVRI,Environmental & Facilities Services
+,Dynavax Technologies Corp,DVAX,Biotechnology
+,Nurix Therapeutics Inc,NRIX,Biotechnology
+,ManpowerGroup Inc,MAN,Human Resource & Employment Services
+,Tennant Co,TNC,Industrial Machinery & Supplies & Components
+,Anywhere Real Estate Inc,HOUS,Real Estate Services
+,American Superconductor Corp,AMSC,Electrical Components & Equipment
+,CONMED Corp,CNMD,Health Care Equipment
+,Pebblebrook Hotel Trust,PEB,Hotel & Resort REITs
+,Ziff Davis Inc,ZD,Interactive Media & Services
+,Teladoc Health Inc,TDOC,Health Care Technology
+,Columbia Sportswear Co,COLM,"Apparel, Accessories & Luxury Goods"
+,German American Bancorp Inc,GABC,Regional Banks
+,Xenia Hotels & Resorts Inc,XHR,Hotel & Resort REITs
+,Ellington Financial Inc,EFC,Mortgage REITs
+,RealReal Inc/The,REAL,Apparel Retail
+,Surgery Partners Inc,SGRY,Health Care Facilities
+,Alkami Technology Inc,ALKT,Application Software
+,Janux Therapeutics Inc,JANX,Biotechnology
+,JetBlue Airways Corp,JBLU,Passenger Airlines
+,Ardelyx Inc,ARDX,Biotechnology
+,NCR Voyix Corp,VYX,Application Software
+,Greenbrier Cos Inc/The,GBX,Construction Machinery & Heavy Transportation Equipment
+,Leggett & Platt Inc,LEG,Home Furnishings
+,Sila Realty Trust Inc,SILA,Health Care REITs
+,Photronics Inc,PLAB,Semiconductor Materials & Equipment
+,Harrow Inc,HROW,Pharmaceuticals
+,Papa John's International Inc,PZZA,Restaurants
+,Winmark Corp,WINA,Other Specialty Retail
+,QCR Holdings Inc,QCRH,Regional Banks
+,Reynolds Consumer Products Inc,REYN,Household Products
+,Innoviva Inc,INVA,Pharmaceuticals
+,Enovix Corp,ENVX,Electrical Components & Equipment
+,Relay Therapeutics Inc,RLAY,Biotechnology
+,Neogen Corp,NEOG,Health Care Supplies
+,Ducommun Inc,DCO,Aerospace & Defense
+,PACS Group Inc,PACS,Health Care Facilities
+,TriCo Bancshares,TCBK,Regional Banks
+,Hope Bancorp Inc,HOPE,Regional Banks
+,Wendy's Co/The,WEN,Restaurants
+,Fluence Energy Inc,FLNC,Electrical Components & Equipment
+,Adeia Inc,ADEA,Systems Software
+,ACV Auctions Inc,ACVA,Diversified Support Services
+,AMC Entertainment Holdings Inc,AMC,Movies & Entertainment
+,Ladder Capital Corp,LADR,Mortgage REITs
+,Donnelley Financial Solutions Inc,DFIN,Financial Exchanges & Data
+,TriMas Corp,TRS,"Metal, Glass & Plastic Containers"
+,Nektar Therapeutics,NKTR,Pharmaceuticals
+,Lindsay Corp,LNN,Agricultural & Farm Machinery
+,Figure Technology Solutions Inc,FIGR,Consumer Finance
+,Universal Corp/VA,UVV,Tobacco
+,Axogen Inc,AXGN,Health Care Equipment
+,Wolverine World Wide Inc,WWW,Footwear
+,CTS Corp,CTS,Electronic Manufacturing Services
+,Herbalife Ltd,HLF,Personal Care Products
+,Energizer Holdings Inc,ENR,Household Products
+,Proto Labs Inc,PRLB,Industrial Machinery & Supplies & Components
+,ProAssurance Corp,PRA,Property & Casualty Insurance
+,Monarch Casino & Resort Inc,MCRI,Casinos & Gaming
+,Paramount Group Inc,PGRE,Office REITs
+,MBX Biosciences Inc,MBX,Pharmaceuticals
+,Triumph Financial Inc,TFIN,Regional Banks
+,Xencor Inc,XNCR,Biotechnology
+,Beta Bionics Inc,BBNX,Health Care Equipment
+,Dime Community Bancshares Inc,DCOM,Regional Banks
+,Acadian Asset Management Inc,AAMI,Asset Management & Custody Banks
+,World Kinect Corp,WKC,Oil & Gas Refining & Marketing
+,MaxLinear Inc,MXL,Semiconductors
+,United States Lime & Minerals Inc,USLM,Construction Materials
+,ConnectOne Bancorp Inc,CNOB,Regional Banks
+,Cadre Holdings Inc,CDRE,Aerospace & Defense
+,Westamerica BanCorp,WABC,Regional Banks
+,Ouster Inc,OUST,Electronic Equipment & Instruments
+,Allegiant Travel Co,ALGT,Passenger Airlines
+,Brown-Forman Corp,BF/A,Distillers & Vintners
+,A10 Networks Inc,ATEN,Systems Software
+,Insperity Inc,NSP,Human Resource & Employment Services
+,Preferred Bank/Los Angeles CA,PFBC,Regional Banks
+,Cimpress PLC,CMPR,Commercial Printing
+,Bank First Corp,BFC,Regional Banks
+,DXP Enterprises Inc/TX,DXPE,Trading Companies & Distributors
+,Savara Inc,SVRA,Biotechnology
+,Tango Therapeutics Inc,TNGX,Biotechnology
+,BioLife Solutions Inc,BLFS,Life Sciences Tools & Services
+,Heidrick & Struggles International Inc,HSII,Human Resource & Employment Services
+,Coty Inc,COTY,Personal Care Products
+,Phreesia Inc,PHR,Health Care Technology
+,UMH Properties Inc,UMH,Single-Family Residential REITs
+,JBG SMITH Properties,JBGS,Office REITs
+,Fortrea Holdings Inc,FTRE,Life Sciences Tools & Services
+,Array Technologies Inc,ARRY,Electrical Components & Equipment
+,Thermon Group Holdings Inc,THR,Electrical Components & Equipment
+,Worthington Steel Inc,WS,Steel
+,Legence Corp,LGN,Construction & Engineering
+,Encore Capital Group Inc,ECPG,Consumer Finance
+,Enact Holdings Inc,ACT,Commercial & Residential Mortgage Finance
+,Trupanion Inc,TRUP,Property & Casualty Insurance
+,Alexander & Baldwin Inc,ALEX,Diversified REITs
+,Amprius Technologies Inc,AMPX,Electrical Components & Equipment
+,Universal Technical Institute Inc,UTI,Education Services
+,Centerspace,CSR,Multi-Family Residential REITs
+,EyePoint Pharmaceuticals Inc,EYPT,Pharmaceuticals
+,NextDecade Corp,NEXT,Oil & Gas Storage & Transportation
+,US Physical Therapy Inc,USPH,Health Care Facilities
+,Seaboard Corp,SEB,Packaged Foods & Meats
+,UWM Holdings Corp,UWMC,Commercial & Residential Mortgage Finance
+,Ingles Markets Inc,IMKTA,Food Retail
+,Vital Farms Inc,VITL,Packaged Foods & Meats
+,Certara Inc,CERT,Health Care Technology
+,PennyMac Mortgage Investment Trust,PMT,Mortgage REITs
+,Carter's Inc,CRI,"Apparel, Accessories & Luxury Goods"
+,Sionna Therapeutics Inc,SION,Biotechnology
+,CRA International Inc,CRAI,Research & Consulting Services
+,Asana Inc,ASAN,Application Software
+,Piedmont Realty Trust Inc,PDM,Office REITs
+,Live Oak Bancshares Inc,LOB,Regional Banks
+,PROG Holdings Inc,PRG,Consumer Finance
+,Ultra Clean Holdings Inc,UCTT,Semiconductor Materials & Equipment
+,First Advantage Corp,FA,Human Resource & Employment Services
+,Novavax Inc,NVAX,Biotechnology
+,Origin Bancorp Inc,OBK,Regional Banks
+,RLJ Lodging Trust,RLJ,Hotel & Resort REITs
+,Ameresco Inc,AMRC,Construction & Engineering
+,Veris Residential Inc,VRE,Multi-Family Residential REITs
+,Safety Insurance Group Inc,SAFT,Property & Casualty Insurance
+,First Watch Restaurant Group Inc,FWRG,Restaurants
+,Schrodinger Inc/United States,SDGR,Health Care Technology
+,Cohu Inc,COHU,Semiconductor Materials & Equipment
+,G-III Apparel Group Ltd,GIII,"Apparel, Accessories & Luxury Goods"
+,EZCORP Inc,EZPW,Consumer Finance
+,MillerKnoll Inc,MLKN,Office Services & Supplies
+,Perella Weinberg Partners,PWP,Investment Banking & Brokerage
+,Kura Oncology Inc,KURA,Biotechnology
+,Two Harbors Investment Corp,TWO,Mortgage REITs
+,Xeris Biopharma Holdings Inc,XERS,Pharmaceuticals
+,fuboTV Inc,FUBO,Interactive Media & Services
+,PagerDuty Inc,PD,Application Software
+,Sezzle Inc,SEZL,Transaction & Payment Processing Services
+,Diversified Healthcare Trust,DHC,Health Care REITs
+,Castle Biosciences Inc,CSTL,Health Care Services
+,CVR Energy Inc,CVI,Oil & Gas Refining & Marketing
+,Harmonic Inc,HLIT,Communications Equipment
+,OceanFirst Financial Corp,OCFC,Regional Banks
+,Astrana Health Inc,ASTH,Health Care Services
+,Virtus Investment Partners Inc,VRTS,Asset Management & Custody Banks
+,Taysha Gene Therapies Inc,TSHA,Biotechnology
+,Grocery Outlet Holding Corp,GO,Food Retail
+,NextNav Inc,NN,Application Software
+,Jamf Holding Corp,JAMF,Application Software
+,XPEL Inc,XPEL,Automotive Parts & Equipment
+,SailPoint Inc,SAIL,Application Software
+,LGI Homes Inc,LGIH,Homebuilding
+,TreeHouse Foods Inc,THS,Packaged Foods & Meats
+,Integral Ad Science Holding Corp,IAS,Advertising
+,Pacira BioSciences Inc,PCRX,Pharmaceuticals
+,Penguin Solutions Inc,PENG,Semiconductors
+,Kennedy-Wilson Holdings Inc,KW,Real Estate Operating Companies
+,Gorman-Rupp Co/The,GRC,Industrial Machinery & Supplies & Components
+,Oruka Therapeutics Inc,ORKA,Biotechnology
+,Select Water Solutions Inc,WTTR,Oil & Gas Equipment & Services
+,Astec Industries Inc,ASTE,Construction Machinery & Heavy Transportation Equipment
+,Innovex International Inc,INVX,Oil & Gas Equipment & Services
+,MFA Financial Inc,MFA,Mortgage REITs
+,Orchid Island Capital Inc,ORC,Mortgage REITs
+,Peoples Bancorp Inc/OH,PEBO,Regional Banks
+,eXp World Holdings Inc,EXPI,Real Estate Services
+,IDT Corp,IDT,Integrated Telecommunication Services
+,Maze Therapeutics Inc,MAZE,Pharmaceuticals
+,PROS Holdings Inc,PRO,Application Software
+,Ecovyst Inc,ECVT,Specialty Chemicals
+,ORIC Pharmaceuticals Inc,ORIC,Biotechnology
+,Old Second Bancorp Inc,OSBC,Regional Banks
+,Gentherm Inc,THRM,Automotive Parts & Equipment
+,Alight Inc,ALIT,Human Resource & Employment Services
+,United Parks & Resorts Inc,PRKS,Leisure Facilities
+,Chimera Investment Corp,CIM,Mortgage REITs
+,AdaptHealth Corp,AHCO,Health Care Distributors
+,Amphastar Pharmaceuticals Inc,AMPH,Pharmaceuticals
+,Employers Holdings Inc,EIG,Property & Casualty Insurance
+,Inhibrx Biosciences Inc,INBX,Biotechnology
+,Stepan Co,SCL,Specialty Chemicals
+,Revolve Group Inc,RVLV,Apparel Retail
+,Intellia Therapeutics Inc,NTLA,Biotechnology
+,Rapid7 Inc,RPD,Systems Software
+,Winnebago Industries Inc,WGO,Automobile Manufacturers
+,1st Source Corp,SRCE,Regional Banks
+,Enliven Therapeutics Inc,ELVN,Pharmaceuticals
+,Intuitive Machines Inc,LUNR,Aerospace & Defense
+,Alliance Laundry Holdings Inc,ALH,Industrial Machinery & Supplies & Components
+,Empire State Realty Trust Inc,ESRT,Office REITs
+,NPK International Inc,NPKI,Trading Companies & Distributors
+,NANO Nuclear Energy Inc,NNE,Heavy Electrical Equipment
+,Phathom Pharmaceuticals Inc,PHAT,Pharmaceuticals
+,Porch Group Inc,PRCH,Application Software
+,Palvella Therapeutics Inc,PVLA,Biotechnology
+,Global Business Travel Group I,GBTG,"Hotels, Resorts & Cruise Lines"
+,Clover Health Investments Corp,CLOV,Managed Health Care
+,Evolv Technologies Holdings Inc,EVLV,Electronic Equipment & Instruments
+,Schneider National Inc,SNDR,Cargo Ground Transportation
+,Easterly Government Properties Inc,DEA,Office REITs
+,TETRA Technologies Inc,TTI,Oil & Gas Equipment & Services
+,Esperion Therapeutics Inc,ESPR,Pharmaceuticals
+,Middlesex Water Co,MSEX,Water Utilities
+,Helix Energy Solutions Group Inc,HLX,Oil & Gas Equipment & Services
+,STAAR Surgical Co,STAA,Health Care Supplies
+,Sonic Automotive Inc,SAH,Automotive Retail
+,REX American Resources Corp,REX,Oil & Gas Refining & Marketing
+,Bristow Group Inc,VTOL,Oil & Gas Equipment & Services
+,CareDx Inc,CDNA,Biotechnology
+,Uniti Group Inc,UNIT,Integrated Telecommunication Services
+,American Assets Trust Inc,AAT,Diversified REITs
+,Deluxe Corp,DLX,Commercial Printing
+,Coursera Inc,COUR,Education Services
+,Univest Financial Corp,UVSP,Regional Banks
+,Weis Markets Inc,WMK,Food Retail
+,ArriVent Biopharma Inc,AVBP,Biotechnology
+,Cogent Communications Holdings Inc,CCOI,Alternative Carriers
+,Community Trust Bancorp Inc,CTBI,Regional Banks
+,BrightView Holdings Inc,BV,Environmental & Facilities Services
+,Sprinklr Inc,CXM,Application Software
+,Unitil Corp,UTL,Multi-Utilities
+,Zenas Biopharma Inc,ZBIO,Biotechnology
+,Root Inc/OH,ROOT,Property & Casualty Insurance
+,Upbound Group Inc,UPBD,Other Specialty Retail
+,Rapport Therapeutics Inc,RAPP,Pharmaceuticals
+,Smartstop Self Storage REIT Inc,SMA,Self-Storage REITs
+,Beta Technologies Inc,BETA,Aerospace & Defense
+,Netskope Inc,NTSK,Systems Software
+,Arvinas Inc,ARVN,Pharmaceuticals
+,PDF Solutions Inc,PDFS,Semiconductor Materials & Equipment
+,Integra LifeSciences Holdings Corp,IART,Health Care Equipment
+,Barrett Business Services Inc,BBSI,Human Resource & Employment Services
+,Monte Rosa Therapeutics Inc,GLUE,Biotechnology
+,Septerna Inc,SEPN,Pharmaceuticals
+,Montrose Environmental Group Inc,MEG,Environmental & Facilities Services
+,Pennant Group Inc/The,PNTG,Health Care Services
+,Rigel Pharmaceuticals Inc,RIGL,Biotechnology
+,Franklin BSP Realty Trust Inc,FBRT,Mortgage REITs
+,Yext Inc,YEXT,Application Software
+,i-80 Gold Corp,IAUX,Gold
+,Tompkins Financial Corp,TMP,Regional Banks
+,Universal Insurance Holdings Inc,UVE,Property & Casualty Insurance
+,Phibro Animal Health Corp,PAHC,Pharmaceuticals
+,RAPT Therapeutics Inc,RAPT,Biotechnology
+,Driven Brands Holdings Inc,DRVN,Specialized Consumer Services
+,Amplitude Inc,AMPL,Application Software
+,Southside Bancshares Inc,SBSI,Regional Banks
+,AnaptysBio Inc,ANAB,Biotechnology
+,First Mid Bancshares Inc,FMBH,Regional Banks
+,Burke & Herbert Financial Services Corp,BHRB,Regional Banks
+,Hanmi Financial Corp,HAFC,Regional Banks
+,Heritage Financial Corp/WA,HFWA,Regional Banks
+,Edgewell Personal Care Co,EPC,Personal Care Products
+,Figs Inc,FIGS,"Apparel, Accessories & Luxury Goods"
+,Standard Motor Products Inc,SMP,Automotive Parts & Equipment
+,Great Lakes Dredge & Dock Corp,GLDD,Construction & Engineering
+,Horizon Bancorp Inc/IN,HBNC,Regional Banks
+,Janus International Group Inc,JBI,Building Products
+,ScanSource Inc,SCSC,Technology Distributors
+,Iovance Biotherapeutics Inc,IOVA,Biotechnology
+,ODP Corp/The,ODP,Other Specialty Retail
+,BJ's Restaurants Inc,BJRI,Restaurants
+,Verastem Inc,VSTM,Biotechnology
+,Navient Corp,NAVI,Consumer Finance
+,TFS Financial Corp,TFSL,Regional Banks
+,ProPetro Holding Corp,PUMP,Oil & Gas Equipment & Services
+,Allient Inc,ALNT,Electrical Components & Equipment
+,National Beverage Corp,FIZZ,Soft Drinks & Non-alcoholic Beverages
+,SI-BONE Inc,SIBN,Health Care Equipment
+,Daktronics Inc,DAKT,Electronic Equipment & Instruments
+,Array Digital Infrastructure Inc,AD,Wireless Telecommunication Services
+,Compass Minerals International Inc,CMP,Diversified Metals & Mining
+,Kodiak Sciences Inc,KOD,Biotechnology
+,American Woodmark Corp,AMWD,Building Products
+,Cannae Holdings Inc,CNNE,Multi-Sector Holdings
+,Apartment Investment and Management Co,AIV,Multi-Family Residential REITs
+,Pursuit Attractions and Hospitality Inc,PRSU,Leisure Facilities
+,GCI LIBERTY INC-CL C,GLIBK,Integrated Telecommunication Services
+,Plymouth Industrial REIT Inc,PLYM,Industrial REITs
+,Bicara Therapeutics Inc,BCAX,Biotechnology
+,TrustCo Bank Corp NY,TRST,Regional Banks
+,iRadimed Corp,IRMD,Health Care Equipment
+,LENZ Therapeutics Inc,LENZ,Pharmaceuticals
+,Byline Bancorp Inc,BY,Regional Banks
+,Theravance Biopharma Inc,TBPH,Pharmaceuticals
+,LifeStance Health Group Inc,LFST,Health Care Services
+,NB Bancorp Inc,NBBK,Regional Banks
+,QuinStreet Inc,QNST,Interactive Media & Services
+,Energy Recovery Inc,ERII,Industrial Machinery & Supplies & Components
+,Central Pacific Financial Corp,CPF,Regional Banks
+,MiMedx Group Inc,MDXG,Biotechnology
+,Liberty Broadband Corp,LBRDA,Cable & Satellite
+,Resolute Holdings Management Inc,RHLD,Research & Consulting Services
+,Hudson Pacific Properties Inc,HPP,Office REITs
+,Metropolitan Bank Holding Corp,MCB,Regional Banks
+,Solid Power Inc,SLDP,Automotive Parts & Equipment
+,Rezolute Inc,RZLT,Biotechnology
+,Safehold Inc,SAFE,Other Specialized REITs
+,Amerant Bancorp Inc,AMTB,Regional Banks
+,Embecta Corp,EMBC,Health Care Supplies
+,Capitol Federal Financial Inc,CFFN,Regional Banks
+,Sun Country Airlines Holdings Inc,SNCY,Passenger Airlines
+,Esquire Financial Holdings Inc,ESQ,Regional Banks
+,EverQuote Inc,EVER,Interactive Media & Services
+,Erasca Inc,ERAS,Biotechnology
+,Limbach Holdings Inc,LMB,Construction & Engineering
+,Ramaco Resources Inc,METC,Steel
+,AMERISAFE Inc,AMSF,Property & Casualty Insurance
+,ThredUp Inc,TDUP,Apparel Retail
+,Day One Biopharmaceuticals Inc,DAWN,Biotechnology
+,NETGEAR Inc,NTGR,Communications Equipment
+,CNB Financial Corp/PA,CCNE,Regional Banks
+,Redwood Trust Inc,RWT,Mortgage REITs
+,BrightSpire Capital Inc,BRSP,Mortgage REITs
+,Mercantile Bank Corp,MBWM,Regional Banks
+,Vestis Corp,VSTS,Diversified Support Services
+,Miami International Holdings Inc,MIAX,Financial Exchanges & Data
+,Gossamer Bio Inc,GOSS,Biotechnology
+,Geron Corp,GERN,Biotechnology
+,Matthews International Corp,MATW,Specialized Consumer Services
+,Marcus & Millichap Inc,MMI,Real Estate Services
+,Vir Biotechnology Inc,VIR,Biotechnology
+,Equity Bancshares Inc,EQBK,Regional Banks
+,American Axle & Manufacturing Holdings Inc,AXL,Automotive Parts & Equipment
+,John B Sanfilippo & Son Inc,JBSS,Packaged Foods & Meats
+,Douglas Dynamics Inc,PLOW,Construction Machinery & Heavy Transportation Equipment
+,Blend Labs Inc,BLND,Application Software
+,Apogee Enterprises Inc,APOG,Building Products
+,USA TODAY Co Inc,TDAY,Publishing
+,Sana Biotechnology Inc,SANA,Biotechnology
+,Business First Bancshares Inc,BFST,Regional Banks
+,Under Armour Inc,UA,"Apparel, Accessories & Luxury Goods"
+,Compass Therapeutics Inc,CMPX,Biotechnology
+,NIQ Global Intelligence Plc,NIQ,Advertising
+,Forward Air Corp,FWRD,Air Freight & Logistics
+,Venture Global Inc,VG,Oil & Gas Exploration & Production
+,Nabors Industries Ltd,NBR,Oil & Gas Drilling
+,Red Cat Holdings Inc,RCAT,Electronic Equipment & Instruments
+,Cars.com Inc,CARS,Interactive Media & Services
+,Aveanna Healthcare Holdings Inc,AVAH,Health Care Services
+,PC Connection Inc,CNXN,Technology Distributors
+,ImmunityBio Inc,IBRX,Biotechnology
+,SEMrush Holdings Inc,SEMR,Application Software
+,Under Armour Inc,UAA,"Apparel, Accessories & Luxury Goods"
+,Beazer Homes USA Inc,BZH,Homebuilding
+,Arbutus Biopharma Corp,ABUS,Biotechnology
+,Heritage Insurance Holdings Inc,HRTG,Property & Casualty Insurance
+,Build-A-Bear Workshop Inc,BBW,Other Specialty Retail
+,Independent Bank Corp/MI,IBCP,Regional Banks
+,Merchants Bancorp/IN,MBIN,Commercial & Residential Mortgage Finance
+,Myriad Genetics Inc,MYGN,Biotechnology
+,Adamas Trust Inc,ADAM,Mortgage REITs
+,Myers Industries Inc,MYE,"Metal, Glass & Plastic Containers"
+,Utz Brands Inc,UTZ,Packaged Foods & Meats
+,Kimball Electronics Inc,KE,Electronic Manufacturing Services
+,Rush Enterprises Inc,RUSHB,Trading Companies & Distributors
+,Hinge Health Inc,HNGE,Health Care Services
+,Cantaloupe Inc,CTLP,Transaction & Payment Processing Services
+,Pacific Biosciences of California Inc,PACB,Life Sciences Tools & Services
+,Orrstown Financial Services Inc,ORRF,Regional Banks
+,Green Dot Corp,GDOT,Consumer Finance
+,Tyra Biosciences Inc,TYRA,Biotechnology
+,CorMedix Inc,CRMD,Pharmaceuticals
+,Camden National Corp,CAC,Regional Banks
+,Tootsie Roll Industries Inc,TR,Packaged Foods & Meats
+,KalVista Pharmaceuticals Inc,KALV,Biotechnology
+,Whitestone REIT,WSR,Retail REITs
+,F&G Annuities & Life Inc,FG,Life & Health Insurance
+,United Fire Group Inc,UFCS,Property & Casualty Insurance
+,Aquestive Therapeutics Inc,AQST,Pharmaceuticals
+,Mativ Holdings Inc,MATV,Commodity Chemicals
+,Camping World Holdings Inc,CWH,Automotive Retail
+,Cracker Barrel Old Country Store Inc,CBRL,Restaurants
+,CBL & Associates Properties Inc,CBL,Retail REITs
+,Hertz Global Holdings Inc,HTZ,Passenger Ground Transportation
+,CytomX Therapeutics Inc,CTMX,Biotechnology
+,Ventyx Biosciences Inc,VTYX,Pharmaceuticals
+,Green Plains Inc,GPRE,Oil & Gas Refining & Marketing
+,Atlas Energy Solutions Inc,AESI,Oil & Gas Equipment & Services
+,AMN Healthcare Services Inc,AMN,Health Care Services
+,Cullinan Therapeutics Inc,CGEM,Biotechnology
+,Microvast Holdings Inc,MVST,Construction Machinery & Heavy Transportation Equipment
+,Heritage Commerce Corp,HTBK,Regional Banks
+,Aehr Test Systems,AEHR,Semiconductor Materials & Equipment
+,Daily Journal Corp,DJCO,Application Software
+,MidWestOne Financial Group Inc,MOFG,Regional Banks
+,NerdWallet Inc,NRDS,Consumer Finance
+,Fulcrum Therapeutics Inc,FULC,Pharmaceuticals
+,ADTRAN Holdings Inc,ADTN,Communications Equipment
+,Excelerate Energy Inc,EE,Oil & Gas Storage & Transportation
+,Ryerson Holding Corp,RYI,Steel
+,United States Antimony Corp,UAMY,Diversified Metals & Mining
+,Omeros Corp,OMER,Pharmaceuticals
+,Oppenheimer Holdings Inc,OPY,Investment Banking & Brokerage
+,Guess? Inc,GES,Apparel Retail
+,Republic Bancorp Inc/KY,RBCAA,Regional Banks
+,Hycroft Mining Holding Corp,HYMC,Gold
+,Annexon Inc,ANNX,Biotechnology
+,LendingTree Inc,TREE,Consumer Finance
+,First Financial Corp,THFF,Regional Banks
+,Quanex Building Products Corp,NX,Building Products
+,Mid Penn Bancorp Inc,MPB,Regional Banks
+,Sweetgreen Inc,SG,Restaurants
+,NexPoint Residential Trust Inc,NXRT,Multi-Family Residential REITs
+,Cytek Biosciences Inc,CTKB,Life Sciences Tools & Services
+,Hallador Energy Co,HNRG,Independent Power Producers & Energy Traders
+,Accel Entertainment Inc,ACEL,Casinos & Gaming
+,CompoSecure Inc,CMPO,"Technology Hardware, Storage & Peripherals"
+,TPG RE Finance Trust Inc,TRTX,Mortgage REITs
+,Vitesse Energy Inc,VTS,Oil & Gas Exploration & Production
+,REGENXBIO Inc,RGNX,Biotechnology
+,HomeTrust Bancshares Inc,HTB,Regional Banks
+,Red Violet Inc,RDVT,Application Software
+,Sabre Corp,SABR,"Hotels, Resorts & Cruise Lines"
+,Metallus Inc,MTUS,Steel
+,PRA Group Inc,PRAA,Consumer Finance
+,Rumble Inc,RUM,Interactive Media & Services
+,HealthStream Inc,HSTM,Health Care Technology
+,indie Semiconductor Inc,INDI,Semiconductors
+,Babcock & Wilcox Enterprises Inc,BW,Heavy Electrical Equipment
+,Orthofix Medical Inc,OFIX,Health Care Equipment
+,Graham Corp,GHM,Industrial Machinery & Supplies & Components
+,P10 Inc,PX,Asset Management & Custody Banks
+,Personalis Inc,PSNL,Life Sciences Tools & Services
+,Bowhead Specialty Holdings Inc,BOW,Property & Casualty Insurance
+,Fulgent Genetics Inc,FLGT,Health Care Services
+,Seneca Foods Corp,SENEA,Packaged Foods & Meats
+,Alumis Inc,ALMS,Pharmaceuticals
+,Great Southern Bancorp Inc,GSBC,Regional Banks
+,Navan Inc,NAVN,"Hotels, Resorts & Cruise Lines"
+,Hovnanian Enterprises Inc,HOV,Homebuilding
+,Northeast Bank,NBN,Regional Banks
+,Precigen Inc,PGEN,Biotechnology
+,Corvus Pharmaceuticals Inc,CRVS,Biotechnology
+,Claritev Corp,CTEV,Health Care Technology
+,Financial Institutions Inc,FISI,Regional Banks
+,Clear Channel Outdoor Holdings Inc,CCO,Advertising
+,Marten Transport Ltd,MRTN,Cargo Ground Transportation
+,Sinclair Inc,SBGI,Broadcasting
+,Powerfleet Inc NJ,AIOT,Electronic Equipment & Instruments
+,Emergent BioSolutions Inc,EBS,Biotechnology
+,Brandywine Realty Trust,BDN,Office REITs
+,Invivyd Inc,IVVD,Biotechnology
+,Carriage Services Inc,CSV,Specialized Consumer Services
+,Southern Missouri Bancorp Inc,SMBC,Regional Banks
+,Ethan Allen Interiors Inc,ETD,Home Furnishings
+,Stagwell Inc,STGW,Advertising
+,Summit Hotel Properties Inc,INN,Hotel & Resort REITs
+,Cass Information Systems Inc,CASS,Transaction & Payment Processing Services
+,Astria Therapeutics Inc,ATXS,Biotechnology
+,CTO Realty Growth Inc,CTO,Diversified REITs
+,Koppers Holdings Inc,KOP,Commodity Chemicals
+,N-able Inc/US,NABL,Systems Software
+,Dream Finders Homes Inc,DFH,Homebuilding
+,Shenandoah Telecommunications Co,SHEN,Integrated Telecommunication Services
+,Insteel Industries Inc,IIIN,Building Products
+,Hippo Holdings Inc,HIPO,Insurance Brokers
+,Washington Trust Bancorp Inc,WASH,Regional Banks
+,Capital City Bank Group Inc,CCBG,Regional Banks
+,Liquidity Services Inc,LQDT,Diversified Support Services
+,Lightwave Logic Inc,LWLG,Electronic Components
+,SunCoke Energy Inc,SXC,Steel
+,Fox Factory Holding Corp,FOXF,Automotive Parts & Equipment
+,Vital Energy Inc,VTLE,Oil & Gas Exploration & Production
+,Golden Entertainment Inc,GDEN,Casinos & Gaming
+,Grid Dynamics Holdings Inc,GDYN,IT Consulting & Other Services
+,Lincoln Educational Services Corp,LINC,Education Services
+,Oil-Dri Corp of America,ODC,Household Products
+,Oxford Industries Inc,OXM,"Apparel, Accessories & Luxury Goods"
+,Lexeo Therapeutics Inc,LXEO,Biotechnology
+,Ichor Holdings Ltd,ICHR,Semiconductor Materials & Equipment
+,Tactile Systems Technology Inc,TCMD,Health Care Equipment
+,NWPX Infrastructure Inc,NWPX,Construction & Engineering
+,First Community Bankshares Inc,FCBC,Regional Banks
+,I3 Verticals Inc,IIIV,Application Software
+,Invesco Mortgage Capital Inc,IVR,Mortgage REITs
+,SmartFinancial Inc,SMBK,Regional Banks
+,ASP Isotopes Inc,ASPI,Specialty Chemicals
+,York Water Co/The,YORW,Water Utilities
+,Replimune Group Inc,REPL,Biotechnology
+,Consolidated Water Co Ltd,CWCO,Water Utilities
+,Northrim BanCorp Inc,NRIM,Regional Banks
+,CEVA Inc,CEVA,Semiconductors
+,Malibu Boats Inc,MBUU,Leisure Products
+,Universal Health Realty Income Trust,UHT,Health Care REITs
+,Kforce Inc,KFRC,Human Resource & Employment Services
+,Hagerty Inc,HGTY,Insurance Brokers
+,Shore Bancshares Inc,SHBI,Regional Banks
+,Eagle Bancorp Inc,EGBN,Regional Banks
+,American Public Education Inc,APEI,Education Services
+,BlackSky Technology Inc,BKSY,Research & Consulting Services
+,4D Molecular Therapeutics Inc,FDMT,Biotechnology
+,Eastman Kodak Co,KODK,"Technology Hardware, Storage & Peripherals"
+,RPC Inc,RES,Oil & Gas Equipment & Services
+,Guardian Pharmacy Services Inc,GRDN,Health Care Services
+,ARS Pharmaceuticals Inc,SPRY,Biotechnology
+,Monro Inc,MNRO,Automotive Retail
+,Cable One Inc,CABO,Cable & Satellite
+,Avanos Medical Inc,AVNS,Health Care Supplies
+,U-Haul Holding Co,UHAL,Cargo Ground Transportation
+,Bloomin' Brands Inc,BLMN,Restaurants
+,Gogo Inc,GOGO,Wireless Telecommunication Services
+,Flushing Financial Corp,FFIC,Regional Banks
+,Butterfly Network Inc,BFLY,Health Care Equipment
+,Arhaus Inc,ARHS,Homefurnishing Retail
+,Cooper-Standard Holdings Inc,CPS,Automotive Parts & Equipment
+,HeartFlow Inc,HTFL,Health Care Technology
+,OPKO Health Inc,OPK,Health Care Services
+,Billiontoone Inc,BLLN,Health Care Services
+,Armada Hoffler Properties Inc,AHH,Diversified REITs
+,Five Star Bancorp,FSBC,Regional Banks
+,Mister Car Wash Inc,MCW,Specialized Consumer Services
+,Idaho Strategic Resources Inc,IDR,Diversified Metals & Mining
+,LSI Industries Inc,LYTS,Electrical Components & Equipment
+,Preformed Line Products Co,PLPC,Electrical Components & Equipment
+,Shutterstock Inc,SSTK,Interactive Media & Services
+,National Presto Industries Inc,NPK,Aerospace & Defense
+,Core Laboratories Inc,CLB,Oil & Gas Equipment & Services
+,Transcat Inc,TRNS,Trading Companies & Distributors
+,Gladstone Commercial Corp,GOOD,Diversified REITs
+,Gold.com Inc,GOLD,Distributors
+,Optimum Communications Inc,OPTU,Cable & Satellite
+,BlueLinx Holdings Inc,BXC,Trading Companies & Distributors
+,McGraw Hill Inc,MH,Education Services
+,Bowman Consulting Group Ltd,BWMN,Construction & Engineering
+,Mission Produce Inc,AVO,Packaged Foods & Meats
+,Metrocity Bankshares Inc,MCBS,Regional Banks
+,Magnera Corp,MAGN,Paper Products
+,Sprout Social Inc,SPT,Application Software
+,Scholastic Corp,SCHL,Publishing
+,Compass Diversified Holdings,CODI,Multi-Sector Holdings
+,Udemy Inc,UDMY,Education Services
+,Tronox Holdings PLC,TROX,Commodity Chemicals
+,Digital Turbine Inc,APPS,Application Software
+,Gevo Inc,GEVO,Oil & Gas Refining & Marketing
+,GCM Grosvenor Inc,GCMG,Asset Management & Custody Banks
+,Peakstone Realty Trust,PKST,Office REITs
+,Amalgamated Financial Corp,AMAL,Regional Banks
+,Farmers National Banc Corp,FMNB,Regional Banks
+,Alpha & Omega Semiconductor Ltd,AOSL,Semiconductors
+,Ironwood Pharmaceuticals Inc,IRWD,Biotechnology
+,SkyWater Technology Inc,SKYT,Semiconductors
+,T1 Energy Inc,TE,Electrical Components & Equipment
+,AngioDynamics Inc,ANGO,Health Care Equipment
+,Firstsun Capital Bancorp,FSUN,Regional Banks
+,Arrow Financial Corp,AROW,Regional Banks
+,Hingham Institution For Savings The,HIFS,Regional Banks
+,Varex Imaging Corp,VREX,Health Care Equipment
+,Alexander's Inc,ALX,Retail REITs
+,California BanCorp,BCAL,Regional Banks
+,Forestar Group Inc,FOR,Real Estate Development
+,Sturm Ruger & Co Inc,RGR,Leisure Products
+,Ceribell Inc,CBLL,Health Care Equipment
+,Serve Robotics Inc,SERV,Restaurants
+,BKV Corp,BKV,Oil & Gas Exploration & Production
+,South Plains Financial Inc,SPFI,Regional Banks
+,Evolent Health Inc,EVH,Health Care Technology
+,Accelerant Holdings,ARX,Insurance Brokers
+,Altimmune Inc,ALT,Biotechnology
+,Nu Skin Enterprises Inc,NUS,Personal Care Products
+,NET Lease Office Properties,NLOP,Office REITs
+,Niagen Bioscience Inc,NAGE,Life Sciences Tools & Services
+,CryoPort Inc,CYRX,Life Sciences Tools & Services
+,Dine Brands Global Inc,DIN,Restaurants
+,Gray Media Inc,GTN,Broadcasting
+,Dave & Buster's Entertainment Inc,PLAY,Leisure Facilities
+,KKR Real Estate Finance Trust Inc,KREF,Mortgage REITs
+,Ur-Energy Inc,URG,Coal & Consumable Fuels
+,Hackett Group Inc/The,HCKT,IT Consulting & Other Services
+,Maravai LifeSciences Holdings Inc,MRVI,Life Sciences Tools & Services
+,ChoiceOne Financial Services Inc,COFS,Regional Banks
+,Jade Biosciences Inc,JBIO,Biotechnology
+,Bar Harbor Bankshares,BHB,Regional Banks
+,Zevra Therapeutics Inc,ZVRA,Pharmaceuticals
+,LSB Industries Inc,LXU,Diversified Chemicals
+,Lindblad Expeditions Holdings Inc,LIND,"Hotels, Resorts & Cruise Lines"
+,Columbus McKinnon Corp/NY,CMCO,Industrial Machinery & Supplies & Components
+,AXT Inc,AXTI,Semiconductor Materials & Equipment
+,Alerus Financial Corp,ALRS,Diversified Financial Services
+,ACNB Corp,ACNB,Regional Banks
+,Power Solutions International Inc,PSIX,Heavy Electrical Equipment
+,FTAI Infrastructure Inc,FIP,Rail Transportation
+,Neptune Insurance Holdings Inc,NP,Property & Casualty Insurance
+,MarineMax Inc,HZO,Other Specialty Retail
+,OneSpan Inc,OSPN,Systems Software
+,International Money Express Inc,IMXI,Transaction & Payment Processing Services
+,SandRidge Energy Inc,SD,Oil & Gas Exploration & Production
+,Miller Industries Inc/TN,MLR,Construction Machinery & Heavy Transportation Equipment
+,Northpointe Bancshares Inc,NPB,Regional Banks
+,Cerence Inc,CRNC,Application Software
+,XOMA Royalty Corp,XOMA,Biotechnology
+,Stitch Fix Inc,SFIX,Apparel Retail
+,Community Health Systems Inc,CYH,Health Care Facilities
+,Third Coast Bancshares Inc,TCBX,Regional Banks
+,Columbia Financial Inc,CLBK,Regional Banks
+,Slide Insurance Holdings Inc,SLDE,Property & Casualty Insurance
+,Helen of Troy Ltd,HELE,Household Appliances
+,NeuroPace Inc,NPCE,Health Care Equipment
+,Sierra Bancorp,BSRR,Regional Banks
+,Enhabit Inc,EHAB,Health Care Services
+,Angi Inc,ANGI,Interactive Media & Services
+,Ennis Inc,EBF,Commercial Printing
+,iHeartMedia Inc,IHRT,Broadcasting
+,Northfield Bancorp Inc,NFBK,Regional Banks
+,Arteris Inc,AIP,Systems Software
+,Peoples Financial Services Corp,PFIS,Regional Banks
+,Standard BioTools Inc,LAB,Life Sciences Tools & Services
+,Peapack-Gladstone Financial Corp,PGC,Regional Banks
+,Absci Corp,ABSI,Biotechnology
+,Tiptree Inc,TIPT,Property & Casualty Insurance
+,Ibotta Inc,IBTA,Advertising
+,Global Medical REIT Inc,GMRE,Health Care REITs
+,RxSight Inc,RXST,Health Care Supplies
+,Climb Global Solutions Inc,CLMB,Technology Distributors
+,Dakota Gold Corp,DC,Gold
+,Carter Bankshares Inc,CARE,Regional Banks
+,Mesa Laboratories Inc,MLAB,Life Sciences Tools & Services
+,Community Healthcare Trust Inc,CHCT,Health Care REITs
+,Civista Bancshares Inc,CIVB,Regional Banks
+,World Acceptance Corp,WRLD,Consumer Finance
+,Rayonier Advanced Materials Inc,RYAM,Specialty Chemicals
+,EVgo Inc,EVGO,Automotive Retail
+,Lyell Immunopharma Inc,LYEL,Biotechnology
+,Groupon Inc,GRPN,Broadline Retail
+,Lightbridge Corp,LTBR,Coal & Consumable Fuels
+,Talkspace Inc,TALK,Health Care Services
+,Akebia Therapeutics Inc,AKBA,Biotechnology
+,Vishay Precision Group Inc,VPG,Electronic Equipment & Instruments
+,Octave Specialty Group Inc,OSG,Property & Casualty Insurance
+,Via Transportation Inc,VIA,Application Software
+,Latham Group Inc,SWIM,Leisure Products
+,Monopar Therapeutics Inc,MNPR,Biotechnology
+,First Bank/Hamilton NJ,FRBA,Regional Banks
+,Claros Mortgage Trust Inc,CMTG,Mortgage REITs
+,First Business Financial Services Inc,FBIZ,Regional Banks
+,Consensus Cloud Solutions Inc,CCSI,Application Software
+,First Foundation Inc,FFWM,Regional Banks
+,Southern First Bancshares Inc,SFST,Regional Banks
+,Ginkgo Bioworks Holdings Inc,DNA,Life Sciences Tools & Services
+,Ready Capital Corp,RC,Mortgage REITs
+,Weave Communications Inc,WEAV,Application Software
+,Riley Exploration Permian Inc,REPX,Oil & Gas Exploration & Production
+,SES AI Corp,SES,Electrical Components & Equipment
+,Evolus Inc,EOLS,Pharmaceuticals
+,Olympic Steel Inc,ZEUS,Steel
+,ClearPoint Neuro Inc,CLPT,Health Care Equipment
+,AdvanSix Inc,ASIX,Commodity Chemicals
+,Forge Global Holdings Inc,FRGE,Diversified Capital Markets
+,Caleres Inc,CAL,Apparel Retail
+,Frontier Group Holdings Inc,ULCC,Passenger Airlines
+,Genesco Inc,GCO,Apparel Retail
+,Nutex Health Inc,NUTX,Health Care Facilities
+,Zumiez Inc,ZUMZ,Apparel Retail
+,Ocugen Inc,OCGN,Biotechnology
+,Grindr Inc,GRND,Interactive Media & Services
+,Bank of Marin Bancorp,BMRC,Regional Banks
+,Farmland Partners Inc,FPI,Other Specialized REITs
+,Immuneering Corp,IMRX,Biotechnology
+,Titan International Inc,TWI,Agricultural & Farm Machinery
+,Community West Bancshares,CWBC,Regional Banks
+,GLOBAL INDUSTRIAL CO,GIC,Trading Companies & Distributors
+,Mama's Creations Inc,MAMA,Packaged Foods & Meats
+,Assembly Biosciences Inc,ASMB,Biotechnology
+,Saul Centers Inc,BFS,Retail REITs
+,Firefly Aerospace Inc,FLY,Aerospace & Defense
+,Bandwidth Inc,BAND,Alternative Carriers
+,Mitek Systems Inc,MITK,Application Software
+,Manitowoc Co Inc/The,MTW,Construction Machinery & Heavy Transportation Equipment
+,Titan Machinery Inc,TITN,Trading Companies & Distributors
+,Eve Holding Inc,EVEX,Aerospace & Defense
+,Orion Group Holdings Inc,ORN,Construction & Engineering
+,Nextdoor Holdings Inc,NXDR,Interactive Media & Services
+,Kopin Corp,KOPN,Semiconductors
+,Kearny Financial Corp/MD,KRNY,Regional Banks
+,Oil States International Inc,OIS,Oil & Gas Equipment & Services
+,Kestra Medical Technologies Ltd,KMTS,Health Care Equipment
+,Enanta Pharmaceuticals Inc,ENTA,Biotechnology
+,VAALCO Energy Inc,EGY,Oil & Gas Exploration & Production
+,Home Bancorp Inc,HBCP,Regional Banks
+,Investors Title Co,ITIC,Property & Casualty Insurance
+,Jack in the Box Inc,JACK,Restaurants
+,Park Aerospace Corp,PKE,Aerospace & Defense
+,Eton Pharmaceuticals Inc,ETON,Pharmaceuticals
+,Natural Grocers by Vitamin Cottage Inc,NGVC,Food Retail
+,PubMatic Inc,PUBM,Advertising
+,Smith & Wesson Brands Inc,SWBI,Leisure Products
+,Better Home & Finance Holding Co,BETR,Commercial & Residential Mortgage Finance
+,Custom Truck One Source Inc,CTOS,Trading Companies & Distributors
+,Prime Medicine Inc,PRME,Biotechnology
+,SITE Centers Corp,SITC,Retail REITs
+,Domo Inc,DOMO,Application Software
+,West BanCorp Inc,WTBA,Regional Banks
+,MediaAlpha Inc,MAX,Interactive Media & Services
+,Marcus Corp/The,MCS,Movies & Entertainment
+,Forum Energy Technologies Inc,FET,Oil & Gas Equipment & Services
+,Natural Gas Services Group Inc,NGS,Oil & Gas Equipment & Services
+,Clean Energy Fuels Corp,CLNE,Oil & Gas Refining & Marketing
+,TWFG Inc,TWFG,Insurance Brokers
+,Heartland Express Inc,HTLD,Cargo Ground Transportation
+,B&G Foods Inc,BGS,Packaged Foods & Meats
+,Bridgewater Bancshares Inc,BWB,Regional Banks
+,Savers Value Village Inc,SVV,Broadline Retail
+,One Liberty Properties Inc,OLP,Industrial REITs
+,Donegal Group Inc,DGICA,Property & Casualty Insurance
+,Granite Ridge Resources Inc,GRNT,Oil & Gas Exploration & Production
+,Unity Bancorp Inc,UNTY,Regional Banks
+,Tejon Ranch Co,TRC,Diversified Real Estate Activities
+,BioAge Labs Inc,BIOA,Pharmaceuticals
+,Clearfield Inc,CLFD,Communications Equipment
+,Calavo Growers Inc,CVGW,Packaged Foods & Meats
+,Wabash National Corp,WNC,Construction Machinery & Heavy Transportation Equipment
+,MBIA Inc,MBI,Property & Casualty Insurance
+,MGP Ingredients Inc,MGPI,Distillers & Vintners
+,Postal Realty Trust Inc,PSTL,Office REITs
+,Portillo's Inc,PTLO,Restaurants
+,Luxfer Holdings PLC,LXFR,Industrial Machinery & Supplies & Components
+,Alto Neuroscience Inc,ANRO,Pharmaceuticals
+,BayCom Corp,BCML,Regional Banks
+,Pattern Group Inc,PTRN,Broadline Retail
+,Krispy Kreme Inc,DNUT,Restaurants
+,Midland States Bancorp Inc,MSBI,Regional Banks
+,Greenlight Capital Re Ltd,GLRE,Reinsurance
+,Avidia Bancorp Inc,AVBC,Regional Banks
+,Keros Therapeutics Inc,KROS,Biotechnology
+,Boston Omaha Corp,BOC,Advertising
+,Bed Bath & Beyond Inc,BBBY,Homefurnishing Retail
+,Organogenesis Holdings Inc,ORGO,Biotechnology
+,GBank Financial Holdings Inc,GBFH,Regional Banks
+,American Battery Technology Co,ABAT,Diversified Metals & Mining
+,Abacus Global Management Inc,ABL,Insurance Brokers
+,Sable Offshore Corp,SOC,Oil & Gas Exploration & Production
+,Industrial Logistics Properties Trust,ILPT,Industrial REITs
+,Cross Country Healthcare Inc,CCRN,Health Care Services
+,Solid Biosciences Inc,SLDB,Biotechnology
+,Lineage Cell Therapeutics Inc,LCTX,Biotechnology
+,Diamond Hill Investment Group Inc,DHIL,Asset Management & Custody Banks
+,Cerus Corp,CERS,Health Care Supplies
+,Haverty Furniture Cos Inc,HVT,Homefurnishing Retail
+,Gladstone Land Corp,LAND,Other Specialized REITs
+,RBB Bancorp,RBB,Regional Banks
+,FS Bancorp Inc,FSBW,Regional Banks
+,Chatham Lodging Trust,CLDT,Hotel & Resort REITs
+,Xerox Holdings Corp,XRX,"Technology Hardware, Storage & Peripherals"
+,Ponce Financial Group Inc,PDLB,Regional Banks
+,Capital Bancorp Inc,CBNK,Regional Banks
+,Movado Group Inc,MOV,"Apparel, Accessories & Luxury Goods"
+,Redwire Corp,RDW,Aerospace & Defense
+,Anavex Life Sciences Corp,AVXL,Biotechnology
+,Flowco Holdings Inc,FLOC,Oil & Gas Equipment & Services
+,TruBridge Inc,TBRG,Health Care Technology
+,Atlanticus Holdings Corp,ATLC,Consumer Finance
+,Entrada Therapeutics Inc,TRDA,Biotechnology
+,Aldeyra Therapeutics Inc,ALDX,Biotechnology
+,National Research Corp,NRC,Health Care Services
+,Byrna Technologies Inc,BYRN,Aerospace & Defense
+,CEA Industries Inc,BNC,Building Products
+,Atlanta Braves Holdings Inc,BATRA,Movies & Entertainment
+,Corsair Gaming Inc,CRSR,"Technology Hardware, Storage & Peripherals"
+,Strattec Security Corp,STRT,Automotive Parts & Equipment
+,Aura Biosciences Inc,AURA,Biotechnology
+,MVB Financial Corp,MVBF,Regional Banks
+,GrafTech International Ltd,EAF,Electrical Components & Equipment
+,NVE Corp,NVEC,Semiconductors
+,Matrix Service Co,MTRX,Construction & Engineering
+,ACCO Brands Corp,ACCO,Office Services & Supplies
+,ZipRecruiter Inc,ZIP,Interactive Media & Services
+,Delcath Systems Inc,DCTH,Health Care Equipment
+,Covenant Logistics Group Inc,CVLG,Cargo Ground Transportation
+,Venu Holding Corp,VENU,Restaurants
+,Denny's Corp,DENN,Restaurants
+,Village Super Market Inc,VLGEA,Food Retail
+,Vanda Pharmaceuticals Inc,VNDA,Biotechnology
+,Kura Sushi USA Inc,KRUS,Restaurants
+,LightPath Technologies Inc,LPTH,Electronic Equipment & Instruments
+,OrthoPediatrics Corp,KIDS,Health Care Supplies
+,MasterCraft Boat Holdings Inc,MCFT,Leisure Products
+,National CineMedia Inc,NCMI,Advertising
+,Summit Midstream Corp,SMC,Oil & Gas Storage & Transportation
+,Intrepid Potash Inc,IPI,Fertilizers & Agricultural Chemicals
+,FrontView REIT Inc,FVR,Retail REITs
+,Colony Bankcorp Inc,CBAN,Regional Banks
+,Cadiz Inc,CDZI,Water Utilities
+,Mayville Engineering Co Inc,MEC,Industrial Machinery & Supplies & Components
+,Telos Corp,TLS,Systems Software
+,Rocket Pharmaceuticals Inc,RCKT,Biotechnology
+,Regional Management Corp,RM,Consumer Finance
+,Commerce.com Inc,CMRC,Internet Services & Infrastructure
+,Shoe Carnival Inc,SCVL,Apparel Retail
+,Conduent Inc,CNDT,Data Processing & Outsourced Services
+,Simulations Plus Inc,SLP,Health Care Technology
+,SmartRent Inc,SMRT,Electronic Equipment & Instruments
+,Quanterix Corp,QTRX,Life Sciences Tools & Services
+,EW Scripps Co/The,SSP,Broadcasting
+,HBT Financial Inc,HBT,Regional Banks
+,PepGen Inc,PEPG,Biotechnology
+,Citizens & Northern Corp,CZNC,Regional Banks
+,Bankwell Financial Group Inc,BWFG,Regional Banks
+,Farmers & Merchants Bancorp Inc/Archbold OH,FMAO,Regional Banks
+,PCB Bancorp,PCB,Regional Banks
+,SANUWAVE Health Inc,SNWV,Health Care Equipment
+,Design Therapeutics Inc,DSGN,Biotechnology
+,Aclaris Therapeutics Inc,ACRS,Pharmaceuticals
+,Voyager Technologies Inc,VOYG,Aerospace & Defense
+,Hyster-Yale Inc,HY,Industrial Machinery & Supplies & Components
+,MicroVision Inc,MVIS,Electronic Equipment & Instruments
+,Clearwater Paper Corp,CLW,Paper Products
+,Service Properties Trust,SVC,Hotel & Resort REITs
+,Holley Inc,HLLY,Automotive Parts & Equipment
+,NewtekOne Inc,NEWT,Diversified Financial Services
+,Red River Bancshares Inc,RRBI,Regional Banks
+,Sight Sciences Inc,SGHT,Health Care Equipment
+,Mistras Group Inc,MG,Research & Consulting Services
+,Mechanics Bancorp,MCHB,Regional Banks
+,Ooma Inc,OOMA,Application Software
+,Blue Ridge Bankshares Inc,BRBS,Regional Banks
+,Nature's Sunshine Products Inc,NATR,Personal Care Products
+,Avalo Therapeutics Inc,AVTX,Biotechnology
+,Artesian Resources Corp,ARTNA,Water Utilities
+,Distribution Solutions Group Inc,DSGR,Trading Companies & Distributors
+,Ares Commercial Real Estate Corp,ACRE,Mortgage REITs
+,Semler Scientific Inc,SMLR,Health Care Equipment
+,Genie Energy Ltd,GNE,Electric Utilities
+,Protara Therapeutics Inc,TARA,Biotechnology
+,AMC Networks Inc,AMCX,Broadcasting
+,USCB Financial Holdings Inc,USCB,Regional Banks
+,Citizens Inc/TX,CIA,Life & Health Insurance
+,Veritone Inc,VERI,Application Software
+,El Pollo Loco Holdings Inc,LOCO,Restaurants
+,Onity Group Inc,ONIT,Commercial & Residential Mortgage Finance
+,Orange County Bancorp Inc,OBT,Regional Banks
+,FRP Holdings Inc,FRPH,Real Estate Operating Companies
+,3D Systems Corp,DDD,Industrial Machinery & Supplies & Components
+,OppFi Inc,OPFI,Consumer Finance
+,Arko Corp,ARKO,Automotive Retail
+,Aeva Technologies Inc,AEVA,Electronic Equipment & Instruments
+,Western New England Bancorp Inc,WNEB,Regional Banks
+,Ranger Energy Services Inc,RNGR,Oil & Gas Equipment & Services
+,Aspen Aerogels Inc,ASPN,Specialty Chemicals
+,Bumble Inc,BMBL,Interactive Media & Services
+,Waterstone Financial Inc,WSBF,Commercial & Residential Mortgage Finance
+,Strata Critical Medical Inc,SRTA,Health Care Services
+,Pulse Biosciences Inc,PLSE,Health Care Equipment
+,Anterix Inc,ATEX,Alternative Carriers
+,Oncology Institute Inc/The,TOI,Health Care Facilities
+,Timberland Bancorp Inc/WA,TSBK,Regional Banks
+,WideOpenWest Inc,WOW,Cable & Satellite
+,City Office REIT Inc,CIO,Office REITs
+,Kelly Services Inc,KELYA,Human Resource & Employment Services
+,Primis Financial Corp,FRST,Regional Banks
+,Lexicon Pharmaceuticals Inc,LXRX,Pharmaceuticals
+,Benitec Biopharma Inc,BNTC,Biotechnology
+,Middlefield Banc Corp,MBCN,Regional Banks
+,Hudson Technologies Inc,HDSN,Trading Companies & Distributors
+,Methode Electronics Inc,MEI,Electronic Manufacturing Services
+,Investar Holding Corp,ISTR,Regional Banks
+,Blue Foundry Bancorp,BLFY,Regional Banks
+,Repay Holdings Corp,RPAY,Transaction & Payment Processing Services
+,Xperi Inc,XPER,Systems Software
+,Limoneira Co,LMNR,Agricultural Products & Services
+,Target Hospitality Corp,TH,"Hotels, Resorts & Cruise Lines"
+,Rimini Street Inc,RMNI,Application Software
+,Bioventus Inc,BVS,Health Care Supplies
+,Alpine Income Property Trust Inc,PINE,Diversified REITs
+,FB Bancorp Inc,FBLA,Regional Banks
+,Aviat Networks Inc,AVNW,Communications Equipment
+,Citizens Financial Services Inc,CZFS,Regional Banks
+,Willis Lease Finance Corp,WLFC,Trading Companies & Distributors
+,Ribbon Communications Inc,RBBN,Communications Equipment
+,American Integrity Insurance Group Inc,AII,Property & Casualty Insurance
+,Northeast Community Bancorp Inc,NECB,Regional Banks
+,Citi Trends Inc,CTRN,Apparel Retail
+,Abeona Therapeutics Inc,ABEO,Biotechnology
+,Galectin Therapeutics Inc,GALT,Biotechnology
+,Crescent Biopharma Inc,CBIO,Biotechnology
+,GoodRx Holdings Inc,GDRX,Health Care Technology
+,Parke Bancorp Inc,PKBK,Regional Banks
+,8x8 Inc,EGHT,Application Software
+,Crawford & Co,CRD/B,Insurance Brokers
+,Richtech Robotics Inc,RR,Industrial Machinery & Supplies & Components
+,Hyliion Holdings Corp,HYLN,Electrical Components & Equipment
+,John Marshall Bancorp Inc,JMSB,Regional Banks
+,Honest Co Inc/The,HNST,Personal Care Products
+,OptimizeRx Corp,OPRX,Health Care Technology
+,Bally's Corp,BALY,Casinos & Gaming
+,Tectonic Therapeutic Inc,TECX,Biotechnology
+,Sonida Senior Living Inc,SNDA,Health Care Facilities
+,Information Services Group Inc,III,IT Consulting & Other Services
+,First United Corp,FUNC,Regional Banks
+,Petco Health & Wellness Co Inc,WOOF,Other Specialty Retail
+,Achieve Life Sciences Inc,ACHV,Biotechnology
+,loanDepot Inc,LDI,Commercial & Residential Mortgage Finance
+,First Bancorp Inc/The,FNLC,Regional Banks
+,Pyxis Oncology Inc,PYXS,Biotechnology
+,Atea Pharmaceuticals Inc,AVIR,Pharmaceuticals
+,ALT5 Sigma Corp,ALTS,Financial Exchanges & Data
+,Plumas Bancorp,PLBC,Regional Banks
+,Motorcar Parts of America Inc,MPAA,Automotive Parts & Equipment
+,SIGA Technologies Inc,SIGA,Pharmaceuticals
+,Kyverna Therapeutics Inc,KYTX,Biotechnology
+,Thryv Holdings Inc,THRY,Advertising
+,First Community Corp/SC,FCCO,Regional Banks
+,American Coastal Insurance Corp,ACIC,Property & Casualty Insurance
+,L B Foster Co,FSTR,Industrial Machinery & Supplies & Components
+,Neurogene Inc,NGNE,Biotechnology
+,Fennec Pharmaceuticals Inc,FENC,Biotechnology
+,Contineum Therapeutics Inc,CTNM,Pharmaceuticals
+,Franklin Financial Services Corp,FRAF,Regional Banks
+,Spok Holdings Inc,SPOK,Wireless Telecommunication Services
+,Allogene Therapeutics Inc,ALLO,Biotechnology
+,Unusual Machines Inc /US,UMAC,Electronic Equipment & Instruments
+,Ranpak Holdings Corp,PACK,Paper & Plastic Packaging Products & Materials
+,RMR Group Inc/The,RMR,Diversified Real Estate Activities
+,eGain Corp,EGAN,Application Software
+,Eagle Financial Services Inc,EFSI,Regional Banks
+,Forte Biosciences Inc,FBRX,Biotechnology
+,Cabaletta Bio Inc,CABA,Biotechnology
+,X4 Pharmaceuticals Inc,XFOR,Biotechnology
+,AG Mortgage Investment Trust Inc,MITT,Mortgage REITs
+,Westrock Coffee Co,WEST,Packaged Foods & Meats
+,USANA Health Sciences Inc,USNA,Personal Care Products
+,New Fortress Energy Inc,NFE,Oil & Gas Storage & Transportation
+,Radiant Logistics Inc,RLGT,Air Freight & Logistics
+,Larimar Therapeutics Inc,LRMR,Biotechnology
+,Quantum-Si Inc,QSI,Life Sciences Tools & Services
+,Rocky Brands Inc,RCKY,Footwear
+,Virginia National Bankshares Corp,VABK,Regional Banks
+,Voyager Therapeutics Inc,VYGR,Biotechnology
+,Jefferson Capital Inc,JCAP,Consumer Finance
+,Capricor Therapeutics Inc,CAPR,Biotechnology
+,Medallion Financial Corp,MFIN,Consumer Finance
+,Puma Biotechnology Inc,PBYI,Biotechnology
+,Cricut Inc,CRCT,Household Appliances
+,Pure Cycle Corp,PCYO,Water Utilities
+,Editas Medicine Inc,EDIT,Biotechnology
+,Norwood Financial Corp,NWFL,Regional Banks
+,Perma-Fix Environmental Services Inc,PESI,Environmental & Facilities Services
+,C&F Financial Corp,CFFI,Regional Banks
+,Chemung Financial Corp,CHMG,Regional Banks
+,CVRx Inc,CVRX,Health Care Equipment
+,JELD-WEN Holding Inc,JELD,Building Products
+,Virgin Galactic Holdings Inc,SPCE,Aerospace & Defense
+,Amplify Energy Corp,AMPY,Oil & Gas Exploration & Production
+,Turtle Beach Corp,TBCH,"Technology Hardware, Storage & Peripherals"
+,Rekor Systems Inc,REKR,Application Software
+,Electromed Inc,ELMD,Health Care Equipment
+,Berry Corp,BRY,Oil & Gas Exploration & Production
+,Nathan's Famous Inc,NATH,Restaurants
+,Oak Valley Bancorp,OVLY,Regional Banks
+,Park-Ohio Holdings Corp,PKOH,Industrial Machinery & Supplies & Components
+,Immersion Corp,IMMR,"Technology Hardware, Storage & Peripherals"
+,Lifecore Biomedical Inc,LFCR,Life Sciences Tools & Services
+,Ames National Corp,ATLO,Regional Banks
+,Princeton Bancorp Inc,BPRN,Regional Banks
+,KORU Medical Systems Inc,KRMD,Health Care Equipment
+,Tredegar Corp,TG,Aluminum
+,Douglas Elliman Inc,DOUG,Real Estate Services
+,FVCBankcorp Inc,FVCB,Regional Banks
+,Chicago Atlantic Real Estate Finance Inc,REFI,Mortgage REITs
+,Frequency Electronics Inc,FEIM,Electronic Equipment & Instruments
+,James River Group Holdings Inc,JRVR,Property & Casualty Insurance
+,ATN International Inc,ATNI,Integrated Telecommunication Services
+,Biglari Holdings Inc,BH,Restaurants
+,Infinity Natural Resources Inc,INR,Oil & Gas Exploration & Production
+,First Western Financial Inc,MYFW,Regional Banks
+,Owens & Minor Inc,OMI,Health Care Distributors
+,Backblaze Inc,BLZE,Internet Services & Infrastructure
+,Viemed Healthcare Inc,VMD,Health Care Services
+,TaskUS Inc,TASK,Data Processing & Outsourced Services
+,agilon health Inc,AGL,Health Care Services
+,Neumora Therapeutics Inc,NMRA,Pharmaceuticals
+,Contango ORE Inc,CTGO,Diversified Metals & Mining
+,Senseonics Holdings Inc,SENS,Health Care Equipment
+,Karat Packaging Inc,KRT,Trading Companies & Distributors
+,Ardent Health Inc,ARDT,Health Care Facilities
+,Asure Software Inc,ASUR,Human Resource & Employment Services
+,Selectquote Inc,SLQT,Insurance Brokers
+,Central Garden & Pet Co,CENT,Household Products
+,AerSale Corp,ASLE,Aerospace & Defense
+,Kingsway Financial Services Inc,KFS,Property & Casualty Insurance
+,Corbus Pharmaceuticals Holdings Inc,CRBP,Biotechnology
+,Health Catalyst Inc,HCAT,Health Care Technology
+,Lovesac Co/The,LOVE,Home Furnishings
+,ON24 Inc,ONTF,Application Software
+,CuriosityStream Inc,CURI,Movies & Entertainment
+,Weyco Group Inc,WEYS,Distributors
+,RCI Hospitality Holdings Inc,RICK,Restaurants
+,Hawthorn Bancshares Inc,HWBK,Regional Banks
+,GoPro Inc,GPRO,Consumer Electronics
+,SELLAS Life Sciences Group Inc,SLS,Biotechnology
+,BK Technologies Corp,BKTI,Communications Equipment
+,Blaize Holdings Inc,BZAI,Semiconductors
+,Owlet Inc,OWLT,Health Care Equipment
+,Twin Disc Inc,TWIN,Construction Machinery & Heavy Transportation Equipment
+,TSS Inc/MD,TSSI,IT Consulting & Other Services
+,Spire Global Inc,SPIR,Research & Consulting Services
+,LCNB Corp,LCNB,Regional Banks
+,American Resources Corp,AREC,Coal & Consumable Fuels
+,Getty Images Holdings Inc,GETY,Interactive Media & Services
+,Open Lending Corp,LPRO,Financial Exchanges & Data
+,Stratus Properties Inc,STRS,Real Estate Development
+,Fidelity D&D Bancorp Inc,FDBC,Regional Banks
+,Bakkt Holdings Inc/US,BKKT,Financial Exchanges & Data
+,Bank7 Corp,BSVN,Regional Banks
+,ReposiTrak Inc,TRAK,Application Software
+,Sky Harbour Group Corp,SKYH,Airport Services
+,Eventbrite Inc,EB,Movies & Entertainment
+,LINKBANCORP Inc,LNKB,Regional Banks
+,Innventure Inc,INV,Asset Management & Custody Banks
+,Quad/Graphics Inc,QUAD,Commercial Printing
+,Perma-Pipe International Holdings Inc,PPIH,Industrial Machinery & Supplies & Components
+,Citizens Community Bancorp Inc/WI,CZWI,Regional Banks
+,Meridian Corp,MRBK,Regional Banks
+,C4 Therapeutics Inc,CCCC,Biotechnology
+,Utah Medical Products Inc,UTMD,Health Care Supplies
+,First National Corp/VA,FXNC,Regional Banks
+,NACCO Industries Inc,NC,Coal & Consumable Fuels
+,Tucows Inc,TCX,Internet Services & Infrastructure
+,Johnson Outdoors Inc,JOUT,Leisure Products
+,Oportun Financial Corp,OPRT,Consumer Finance
+,Alto Ingredients Inc,ALTO,Specialty Chemicals
+,Vistagen Therapeutics Inc,VTGN,Biotechnology
+,InfuSystem Holdings Inc,INFU,Health Care Services
+,Candel Therapeutics Inc,CADL,Biotechnology
+,RGC Resources Inc,RGCO,Gas Utilities
+,Gyre Therapeutics Inc,GYRE,Biotechnology
+,Smith Douglas Homes Corp,SDHC,Homebuilding
+,Sagimet Biosciences Inc,SGMT,Biotechnology
+,OP Bancorp,OPBK,Regional Banks
+,Proficient Auto Logistics Inc,PAL,Cargo Ground Transportation
+,Humacyte Inc,HUMA,Biotechnology
+,Lands' End Inc,LE,Apparel Retail
+,MNTN Inc,MNTN,Advertising
+,Velocity Financial Inc,VEL,Commercial & Residential Mortgage Finance
+,Vuzix Corp,VUZI,Electronic Equipment & Instruments
+,National Bankshares Inc,NKSH,Regional Banks
+,Faraday Future Intelligent Electric Inc,FFAI,Automobile Manufacturers
+,Peoples Bancorp of North Carolina Inc,PEBK,Regional Banks
+,Geospace Technologies Corp,GEOS,Oil & Gas Equipment & Services
+,Franklin Covey Co,FC,Research & Consulting Services
+,Xponential Fitness Inc,XPOF,Leisure Facilities
+,Flexsteel Industries Inc,FLXS,Home Furnishings
+,SEACOR Marine Holdings Inc,SMHI,Oil & Gas Equipment & Services
+,BV Financial Inc,BVFL,Regional Banks
+,US Gold Corp,USAU,Diversified Metals & Mining
+,Unisys Corp,UIS,IT Consulting & Other Services
+,Braemar Hotels & Resorts Inc,BHR,Hotel & Resort REITs
+,Kingstone Cos Inc,KINS,Property & Casualty Insurance
+,CS Disco Inc,LAW,Application Software
+,Fermi Inc,FRMI,Data Center REITs
+,Pioneer Bancorp Inc/NY,PBFS,Regional Banks
+,TrueCar Inc,TRUE,Interactive Media & Services
+,Barnes & Noble Education Inc,BNED,Other Specialty Retail
+,Ategrity Specialty Holdings LLC,ASIC,Property & Casualty Insurance
+,Designer Brands Inc,DBI,Apparel Retail
+,Heron Therapeutics Inc,HRTX,Biotechnology
+,Caribou Biosciences Inc,CRBU,Biotechnology
+,Isabella Bank Corp,ISBA,Regional Banks
+,Genelux Corp,GNLX,Biotechnology
+,Angel Oak Mortgage REIT Inc,AOMR,Mortgage REITs
+,Inogen Inc,INGN,Health Care Equipment
+,Omada Health Inc,OMDA,Health Care Services
+,Legacy Housing Corp,LEGH,Homebuilding
+,HighPeak Energy Inc,HPK,Oil & Gas Exploration & Production
+,Inhibikase Therapeutics Inc,IKT,Biotechnology
+,ECB Bancorp Inc/MD,ECBK,Regional Banks
+,ChargePoint Holdings Inc,CHPT,Electrical Components & Equipment
+,W&T Offshore Inc,WTI,Oil & Gas Exploration & Production
+,1stdibs.com Inc,DIBS,Broadline Retail
+,Paysign Inc,PAYS,Transaction & Payment Processing Services
+,Duos Technologies Group Inc,DUOT,Systems Software
+,OraSure Technologies Inc,OSUR,Health Care Supplies
+,ACRES Commercial Realty Corp,ACR,Mortgage REITs
+,Gemini Space Station Inc,GEMI,Financial Exchanges & Data
+,Outdoor Holding Co,POWW,Other Specialty Retail
+,Entravision Communications Corp,EVC,Broadcasting
+,Ring Energy Inc,REI,Oil & Gas Exploration & Production
+,Tenaya Therapeutics Inc,TNYA,Biotechnology
+,CB Financial Services Inc,CBFV,Regional Banks
+,Orchestra BioMed Holdings Inc,OBIO,Health Care Equipment
+,Seaport Entertainment Group Inc,SEG,Real Estate Operating Companies
+,Sui Group Holdings Ltd,SUIG,Specialized Finance
+,Acacia Research Corp,ACTG,Specialized Finance
+,Finwise Bancorp,FINW,Regional Banks
+,Viant Technology Inc,DSP,Application Software
+,908 Devices Inc,MASS,Electronic Equipment & Instruments
+,Black Diamond Therapeutics Inc,BDTX,Biotechnology
+,Richmond Mutual BanCorp Inc,RMBI,Regional Banks
+,America's Car-Mart Inc/TX,CRMT,Automotive Retail
+,Coherus Oncology Inc,CHRS,Biotechnology
+,Arcturus Therapeutics Holdings Inc,ARCT,Biotechnology
+,Tile Shop Holdings Inc,TTSH,Home Improvement Retail
+,Flotek Industries Inc,FTK,Specialty Chemicals
+,Palladyne AI Corp,PDYN,Industrial Machinery & Supplies & Components
+,Foghorn Therapeutics Inc,FHTX,Biotechnology
+,RE/MAX Holdings Inc,RMAX,Real Estate Services
+,Concrete Pumping Holdings Inc,BBCP,Construction & Engineering
+,First Savings Financial Group Inc,FSFG,Regional Banks
+,Priority Technology Holdings Inc,PRTH,Transaction & Payment Processing Services
+,MaxCyte Inc,MXCT,Life Sciences Tools & Services
+,SB Financial Group Inc,SBFG,Regional Banks
+,FuelCell Energy Inc,FCEL,Electrical Components & Equipment
+,Alico Inc,ALCO,Agricultural Products & Services
+,Fold Holdings Inc,FLD,Financial Exchanges & Data
+,Finance Of America Cos Inc,FOA,Commercial & Residential Mortgage Finance
+,Bassett Furniture Industries Inc,BSET,Home Furnishings
+,BRT Apartments Corp,BRT,Multi-Family Residential REITs
+,Gulf Island Fabrication Inc,GIFI,Oil & Gas Equipment & Services
+,Lifeway Foods Inc,LWAY,Packaged Foods & Meats
+,Resources Connection Inc,RGP,Research & Consulting Services
+,Taylor Devices Inc,TAYD,Industrial Machinery & Supplies & Components
+,Cardiff Oncology Inc,CRDF,Biotechnology
+,Quince Therapeutics Inc,QNCX,Biotechnology
+,Datavault AI Inc,DVLT,Semiconductors
+,Lantronix Inc,LTRX,Communications Equipment
+,Everspin Technologies Inc,MRAM,Semiconductors
+,Core Molding Technologies Inc,CMT,Commodity Chemicals
+,Greene County Bancorp Inc,GCBC,Regional Banks
+,OmniAb Inc,OABI,Life Sciences Tools & Services
+,TechTarget Inc,TTGT,Advertising
+,GSI Technology Inc,GSIT,Semiconductors
+,First Internet Bancorp,INBK,Regional Banks
+,Stoneridge Inc,SRI,Automotive Parts & Equipment
+,Tonix Pharmaceuticals Holding Corp,TNXP,Biotechnology
+,Agenus Inc,AGEN,Biotechnology
+,Comstock Inc,LODE,Oil & Gas Refining & Marketing
+,Codexis Inc,CDXS,Life Sciences Tools & Services
+,Stereotaxis Inc,STXS,Health Care Equipment
+,SKYX Platforms Corp,SKYX,Electrical Components & Equipment
+,Ohio Valley Banc Corp,OVBC,Regional Banks
+,Starz Entertainment Corp,STRZ,Movies & Entertainment
+,Smith-Midland Corp,SMID,Construction Materials
+,MainStreet Bancshares Inc,MNSB,Regional Banks
+,AlTi Global Inc,ALTI,Asset Management & Custody Banks
+,Satellogic Inc,SATL,Aerospace & Defense
+,Cassava Sciences Inc,SAVA,Pharmaceuticals
+,Digimarc Corp,DMRC,Application Software
+,Silvercrest Asset Management Group Inc,SAMG,Asset Management & Custody Banks
+,Hanover Bancorp Inc,HNVR,Regional Banks
+,Perspective Therapeutics Inc,CATX,Biotechnology
+,TriSalus Life Sciences Inc,TLSI,Biotechnology
+,Gencor Industries Inc,GENC,Industrial Machinery & Supplies & Components
+,BankFinancial Corp,BFIN,Regional Banks
+,Tecogen Inc,TGEN,Building Products
+,Granite Point Mortgage Trust Inc,GPMT,Mortgage REITs
+,Fossil Group Inc,FOSL,"Apparel, Accessories & Luxury Goods"
+,Hooker Furnishings Corp,HOFT,Home Furnishings
+,TrueBlue Inc,TBI,Human Resource & Employment Services
+,Inovio Pharmaceuticals Inc,INO,Biotechnology
+,Stem Inc,STEM,Electrical Components & Equipment
+,OneWater Marine Inc,ONEW,Automotive Retail
+,Finward Bancorp,FNWD,Regional Banks
+,Treace Medical Concepts Inc,TMCI,Health Care Equipment
+,BTCS Inc,BTCS,Application Software
+,Anika Therapeutics Inc,ANIK,Biotechnology
+,Intellicheck Inc,IDN,Application Software
+,SR Bancorp Inc,SRBK,Regional Banks
+,United Security Bancshares/Fresno CA,UBFO,Regional Banks
+,Eagle Bancorp Montana Inc,EBMT,Regional Banks
+,JAKKS Pacific Inc,JAKK,Leisure Products
+,KinderCare Learning Cos Inc,KLC,Education Services
+,Friedman Industries Inc,FRD,Steel
+,Anixa Biosciences Inc,ANIX,Biotechnology
+,Security National Financial Corp,SNFCA,Commercial & Residential Mortgage Finance
+,Seven Hills Realty Trust,SEVN,Mortgage REITs
+,Lakeland Industries Inc,LAKE,"Apparel, Accessories & Luxury Goods"
+,Quipt Home Medical Corp,QIPT,Health Care Services
+,Superior Group of Cos Inc,SGC,"Apparel, Accessories & Luxury Goods"
+,Inseego Corp,INSG,Communications Equipment
+,Westwood Holdings Group Inc,WHG,Asset Management & Custody Banks
+,Landmark Bancorp Inc/Manhattan KS,LARK,Regional Banks
+,Definitive Healthcare Corp,DH,Health Care Technology
+,Aardvark Therapeutics Inc,AARD,Pharmaceuticals
+,Hamilton Beach Brands Holding Co,HBB,Household Appliances
+,Exagen Inc,XGN,Biotechnology
+,Innovative Solutions and Support Inc,ISSC,Aerospace & Defense
+,Orion Properties Inc,ONL,Office REITs
+,Escalade Inc,ESCA,Leisure Products
+,Seritage Growth Properties,SRG,Real Estate Operating Companies
+,LifeMD Inc,LFMD,Health Care Technology
+,Streamex Corp,STEX,Health Care Equipment
+,Vor BioPharma Inc,VOR,Biotechnology
+,Apyx Medical Corp,APYX,Health Care Equipment
+,EVI Industries Inc,EVI,Trading Companies & Distributors
+,Arq Inc,ARQ,Specialty Chemicals
+,Microbot Medical Inc,MBOT,Health Care Equipment
+,Alta Equipment Group Inc,ALTG,Trading Companies & Distributors
+,Kaltura Inc,KLTR,Application Software
+,FONAR Corp,FONR,Health Care Equipment
+,Blink Charging Co,BLNK,Electrical Components & Equipment
+,Joint Corp/The,JYNT,Health Care Facilities
+,Modiv Industrial Inc,MDV,Diversified REITs
+,Eledon Pharmaceuticals Inc,ELDN,Biotechnology
+,Nautilus Biotechnology Inc,NAUT,Life Sciences Tools & Services
+,Global Water Resources Inc,GWRS,Water Utilities
+,Arena Group Holdings Inc/The,AREN,Interactive Media & Services
+,Ascent Industries Co,ACNT,Steel
+,Ambiq Micro Inc,AMBQ,Semiconductors
+,Mersana Therapeutics Inc,MRSN,Biotechnology
+,Richardson Electronics Ltd/United States,RELL,Technology Distributors
+,inTEST Corp,INTT,Semiconductor Materials & Equipment
+,American Vanguard Corp,AVD,Fertilizers & Agricultural Chemicals
+,Seres Therapeutics Inc,MCRB,Biotechnology
+,Beauty Health Co/The,SKIN,Personal Care Products
+,Acme United Corp,ACU,Health Care Supplies
+,KVH Industries Inc,KVHI,Communications Equipment
+,Envela Corp,ELA,Other Specialty Retail
+,Amtech Systems Inc,ASYS,Semiconductor Materials & Equipment
+,Falcon's Beyond Global Inc,FBYD,Research & Consulting Services
+,SunPower Inc,SPWR,Electrical Components & Equipment
+,Kronos Worldwide Inc,KRO,Commodity Chemicals
+,DMC Global Inc,BOOM,Oil & Gas Equipment & Services
+,Ovid therapeutics Inc,OVID,Biotechnology
+,Rithm Property Trust Inc,RPT,Mortgage REITs
+,Surrozen Inc,SRZN,Biotechnology
+,European Wax Center Inc,EWCZ,Specialized Consumer Services
+,KULR Technology Group Inc,KULR,Electrical Components & Equipment
+,DeFi Development Corp,DFDV,Consumer Finance
+,Coya Therapeutics Inc,COYA,Biotechnology
+,BCB Bancorp Inc,BCBP,Regional Banks
+,Medifast Inc,MED,Personal Care Products
+,Pro-Dex Inc,PDEX,Health Care Equipment
+,Funko Inc,FNKO,Leisure Products
+,Olaplex Holdings Inc,OLPX,Personal Care Products
+,Scilex Holding Co,SCLX,Pharmaceuticals
+,Evolution Petroleum Corp,EPM,Oil & Gas Exploration & Production
+,GCI LIBERTY INC-CL A,GLIBA,Integrated Telecommunication Services
+,J Jill Inc,JILL,Apparel Retail
+,Nexpoint Real Estate Finance Inc,NREF,Mortgage REITs
+,Fate Therapeutics Inc,FATE,Biotechnology
+,Universal Logistics Holdings Inc,ULH,Cargo Ground Transportation
+,NexPoint Diversified Real Estate Trust,NXDT,Diversified REITs
+,Alector Inc,ALEC,Biotechnology
+,Accuray Inc,ARAY,Health Care Equipment
+,M-Tron Industries Inc,MPTI,Electronic Components
+,Maui Land & Pineapple Co Inc,MLP,Real Estate Operating Companies
+,American Outdoor Brands Inc,AOUT,Leisure Products
+,eHealth Inc,EHTH,Insurance Brokers
+,Sunrise Realty Trust Inc,SUNS,Mortgage REITs
+,Sleep Number Corp,SNBR,Homefurnishing Retail
+,One Stop Systems Inc,OSS,"Technology Hardware, Storage & Peripherals"
+,Cognition Therapeutics Inc,CGTX,Pharmaceuticals
+,Aemetis Inc,AMTX,Oil & Gas Refining & Marketing
+,Opus Genetics Inc,IRD,Biotechnology
+,CF Bankshares Inc,CFBK,Regional Banks
+,Innovage Holding Corp,INNV,Health Care Services
+,Riverview Bancorp Inc,RVSB,Regional Banks
+,Kewaunee Scientific Corp,KEQU,Health Care Equipment
+,Net Power Inc,NPWR,Heavy Electrical Equipment
+,TuHURA Biosciences Inc,HURA,Biotechnology
+,Carlsmed Inc,CARL,Health Care Equipment
+,Context Therapeutics Inc,CNTX,Pharmaceuticals
+,Clarus Corp,CLAR,Leisure Products
+,Chegg Inc,CHGG,Education Services
+,CSP Inc,CSPI,IT Consulting & Other Services
+,Zevia PBC,ZVIA,Soft Drinks & Non-alcoholic Beverages
+,Hain Celestial Group Inc/The,HAIN,Packaged Foods & Meats
+,FreightCar America Inc,RAIL,Construction Machinery & Heavy Transportation Equipment
+,Eastern Co/The,EML,Industrial Machinery & Supplies & Components
+,Star Holdings,STHO,Real Estate Development
+,Montauk Renewables Inc,MNTK,Renewable Electricity
+,Hurco Cos Inc,HURC,Industrial Machinery & Supplies & Components
+,CareCloud Inc,CCLD,Health Care Technology
+,RCM Technologies Inc,RCMT,Research & Consulting Services
+,HF Foods Group Inc,HFFG,Food Distributors
+,Unicycive Therapeutics Inc,UNCY,Biotechnology
+,Virco Mfg. Corp,VIRC,Office Services & Supplies
+,Lucky Strike Entertainment Corp,LUCK,Leisure Facilities
+,AudioEye Inc,AEYE,Application Software
+,Epsilon Energy Ltd,EPSN,Oil & Gas Exploration & Production
+,Atossa Therapeutics Inc,ATOS,Biotechnology
+,Avita Medical Inc,RCEL,Biotechnology
+,Energy Services of America Corp,ESOA,Oil & Gas Equipment & Services
+,Spero Therapeutics Inc,SPRO,Biotechnology
+,Seer Inc,SEER,Life Sciences Tools & Services
+,Playboy Inc,PLBY,"Apparel, Accessories & Luxury Goods"
+,Grabagun Digital Holdings Inc,PEW,Other Specialty Retail
+,MacroGenics Inc,MGNX,Biotechnology
+,Quantum Corp,QMCO,"Technology Hardware, Storage & Peripherals"
+,Genasys Inc,GNSS,Communications Equipment
+,AIRO Group Holdings Inc,AIRO,Aerospace & Defense
+,Gold Resource Corp,GORO,Gold
+,Legacy Education Inc,LGCY,Education Services
+,BARK Inc,BARK,Other Specialty Retail
+,Pliant Therapeutics Inc,PLRX,Pharmaceuticals
+,LENSAR Inc,LNSR,Health Care Equipment
+,Franklin Street Properties Corp,FSP,Office REITs
+,Chain Bridge Bancorp Inc,CBNA,Regional Banks
+,Lucid Diagnostics Inc,LUCD,Health Care Equipment
+,Tigo Energy Inc,TYGO,Electrical Components & Equipment
+,DocGo Inc,DCGO,Health Care Services
+,Nuvectis Pharma Inc,NVCT,Biotechnology
+,Kestrel Group Ltd,KG,Reinsurance
+,Exodus Movement Inc,EXOD,Application Software
+,Strawberry Fields REIT Inc,STRW,Health Care REITs
+,Full House Resorts Inc,FLL,Casinos & Gaming
+,Surf Air Mobility Inc,SRFM,Passenger Airlines
+,Elicio Therapeutics Inc,ELTX,Biotechnology
+,TTEC Holdings Inc,TTEC,Data Processing & Outsourced Services
+,Marine Products Corp,MPX,Leisure Products
+,Identiv Inc,INVE,Electronic Equipment & Instruments
+,Shattuck Labs Inc,STTK,Biotechnology
+,Sangamo Therapeutics Inc,SGMO,Biotechnology
+,Provident Financial Holdings Inc,PROV,Regional Banks
+,Nkarta Inc,NKTX,Biotechnology
+,Rapid Micro Biosystems Inc,RPID,Life Sciences Tools & Services
+,FutureFuel Corp,FF,Oil & Gas Refining & Marketing
+,WM Technology Inc,MAPS,Application Software
+,Fractyl Health Inc,GUTS,Health Care Equipment
+,GrowGeneration Corp,GRWG,Home Improvement Retail
+,Crexendo Inc,CXDO,Internet Services & Infrastructure
+,Expensify Inc,EXFY,Application Software
+,Comtech Telecommunications Corp,CMTL,Communications Equipment
+,QuickLogic Corp,QUIK,Semiconductors
+,Consumer Portfolio Services Inc,CPSS,Consumer Finance
+,Annovis Bio Inc,ANVS,Biotechnology
+,NI Holdings Inc,NODK,Property & Casualty Insurance
+,Research Solutions Inc/CA,RSSS,IT Consulting & Other Services
+,Forrester Research Inc,FORR,Research & Consulting Services
+,Outset Medical Inc,OM,Health Care Equipment
+,VirnetX Holding Corp,VHC,Application Software
+,AMREP Corp,AXR,Real Estate Development
+,Hyperfine Inc,HYPR,Health Care Equipment
+,B Riley Financial Inc,RILY,Investment Banking & Brokerage
+,CervoMed Inc,CRVO,Biotechnology
+,CPI Card Group Inc,PMTS,"Technology Hardware, Storage & Peripherals"
+,Union Bankshares Inc/Morrisville VT,UNB,Regional Banks
+,Sera Prognostics Inc,SERA,Biotechnology
+,Smart Sand Inc,SND,Oil & Gas Equipment & Services
+,Omega Flex Inc,OFLX,Industrial Machinery & Supplies & Components
+,BitMine Immersion Technologies Inc,BMNR,Application Software
+,KORRO BIO INC - CVR (NOV 2023),---,Biotechnology
+,Sportsman's Warehouse Holdings Inc,SPWH,Other Specialty Retail
+,Journey Medical Corp,DERM,Pharmaceuticals
+,Airship AI Holdings Inc,AISP,Systems Software
+,First Northwest Bancorp,FNWB,Regional Banks
+,Neuronetics Inc,STIM,Health Care Equipment
+,DHI Group Inc,DHX,Interactive Media & Services
+,Cherry Hill Mortgage Investment Corp,CHMI,Mortgage REITs
+,Adverum Biotechnologies Inc,ADVM,Biotechnology
+,Fifth District Bancorp Inc,FDSB,Regional Banks
+,BRC Inc,BRCC,Packaged Foods & Meats
+,Aeluma Inc,ALMU,Semiconductor Materials & Equipment
+,Wrap Technologies Inc,WRAP,Electronic Equipment & Instruments
+,Nerdy Inc,NRDY,Education Services
+,Westwater Resources Inc,WWR,Electrical Components & Equipment
+,SWK Holdings Corp,SWKH,Specialized Finance
+,Castellum Inc,CTM,IT Consulting & Other Services
+,Chime Financial Inc,CHYM,Transaction & Payment Processing Services
+,Biote Corp,BTMD,Pharmaceuticals
+,Rackspace Technology Inc,RXT,Internet Services & Infrastructure
+,Biglari Holdings Inc,BH/A,Restaurants
+,Beyond Meat Inc,BYND,Packaged Foods & Meats
+,Catalyst Bancorp Inc,CLST,Regional Banks
+,Atomera Inc,ATOM,Semiconductor Materials & Equipment
+,Northern Technologies International Corp,NTIC,Specialty Chemicals
+,Zentalis Pharmaceuticals Inc,ZNTL,Biotechnology
+,Actuate Therapeutics Inc,ACTU,Biotechnology
+,Comstock Holding Cos Inc,CHCI,Diversified Real Estate Activities
+,Sutro Biopharma Inc,STRO,Biotechnology
+,Avidbank Holdings Inc,AVBH,Regional Banks
+,RideNow Group Inc,RDNW,Automotive Retail
+,Immix Biopharma Inc,IMMX,Biotechnology
+,Ramaco Resources Inc,METCB,Steel
+,Vera Bradley Inc,VRA,"Apparel, Accessories & Luxury Goods"
+,Lifevantage Corp,LFVN,Personal Care Products
+,Cartesian Therapeutics Inc,RNAC,Biotechnology
+,Spruce Power Holding Corp,SPRU,Renewable Electricity
+,Acumen Pharmaceuticals Inc,ABOS,Biotechnology
+,Assertio Holdings Inc,ASRT,Pharmaceuticals
+,Whitehawk Therapeutics Inc,WHWK,Biotechnology
+,Alpha Pro Tech Ltd,APT,Building Products
+,Sensus Healthcare Inc,SRTS,Health Care Equipment
+,aTyr Pharma Inc,ATYR,Biotechnology
+,FitLife Brands Inc,FTLF,Personal Care Products
+,Biomea Fusion Inc,BMEA,Biotechnology
+,AirJoule Technologies Corp,AIRJ,Industrial Machinery & Supplies & Components
+,IZEA Worldwide Inc,IZEA,Interactive Media & Services
+,Espey Mfg. & Electronics Corp,ESP,Electrical Components & Equipment
+,Paramount Gold Nevada Corp,PZG,Gold
+,Sanara Medtech Inc,SMTI,Health Care Supplies
+,Red Robin Gourmet Burgers Inc,RRGB,Restaurants
+,Broadwind Inc,BWEN,Heavy Electrical Equipment
+,GCI LIBERTY INC-CL C - RTS (NOV 25),GLIBR,Integrated Telecommunication Services
+,Fortress Biotech Inc,FBIO,Biotechnology
+,Altisource Portfolio Solutions SA,ASPS,Real Estate Services
+,PMV Pharmaceuticals Inc,PMVP,Biotechnology
+,Atara Biotherapeutics Inc,ATRA,Biotechnology
+,QVC Group Inc,QVCGA,Broadline Retail
+,Ultralife Corp,ULBI,Electrical Components & Equipment
+,Summit State Bank,SSBI,Regional Banks
+,Bank of the James Financial Group Inc,BOTJ,Regional Banks
+,DLH Holdings Corp,DLHC,Human Resource & Employment Services
+,Coda Octopus Group Inc,CODA,Electronic Equipment & Instruments
+,Cypherpunk Technologies Inc,CYPH,Biotechnology
+,FTC Solar Inc,FTCI,Electrical Components & Equipment
+,Cato Corp/The,CATO,Apparel Retail
+,Pulmonx Corp,LUNG,Health Care Equipment
+,Cardlytics Inc,CDLX,Advertising
+,AstroNova Inc,ALOT,"Technology Hardware, Storage & Peripherals"
+,Hennessy Advisors Inc,HNNA,Asset Management & Custody Banks
+,Flexible Solutions International Inc,FSI,Specialty Chemicals
+,Heritage Global Inc,HGBL,Asset Management & Custody Banks
+,Immunic Inc,IMUX,Biotechnology
+,SoundThinking Inc,SSTI,Application Software
+,Townsquare Media Inc,TSQ,Broadcasting
+,WidePoint Corp,WYY,IT Consulting & Other Services
+,NN Inc,NNBR,Industrial Machinery & Supplies & Components
+,OPAL Fuels Inc,OPAL,Oil & Gas Refining & Marketing
+,Commercial Vehicle Group Inc,CVGI,Construction Machinery & Heavy Transportation Equipment
+,Travelzoo,TZOO,Interactive Media & Services
+,Luminar Technologies Inc,LAZR,Automotive Parts & Equipment
+,Central Plains Bancshares Inc,CPBI,Regional Banks
+,Playstudios Inc,MYPS,Interactive Home Entertainment
+,Children's Place Inc/The,PLCE,Apparel Retail
+,AirSculpt Technologies Inc,AIRS,Health Care Services
+,Upland Software Inc,UPLD,Application Software
+,First Seacoast Bancorp Inc,FSEA,Regional Banks
+,Outlook Therapeutics Inc,OTLK,Biotechnology
+,TScan Therapeutics Inc,TCRX,Biotechnology
+,Gaia Inc,GAIA,Movies & Entertainment
+,Wheels Up Experience Inc,UP,Passenger Airlines
+,Unifi Inc,UFI,Textiles
+,NSTS Bancorp Inc,NSTS,Regional Banks
+,BGSF Inc,BGSF,Human Resource & Employment Services
+,Ocean Power Technologies Inc,OPTT,Heavy Electrical Equipment
+,Prairie Operating Co,PROP,Oil & Gas Exploration & Production
+,Climb Bio Inc,CLYM,Biotechnology
+,ONE Group Hospitality Inc/The,STKS,Restaurants
+,Global Self Storage Inc,SELF,Self-Storage REITs
+,WaterBridge Infrastructure LLC,WBI,Oil & Gas Equipment & Services
+,CoastalSouth Bancshares Inc,COSO,Regional Banks
+,NextNRG Inc,NXXT,Oil & Gas Storage & Transportation
+,VirTra Inc,VTSI,Aerospace & Defense
+,Broadway Financial Corp/DE,BYFC,Regional Banks
+,Precision BioSciences Inc,DTIL,Biotechnology
+,Century Casinos Inc,CNTY,Casinos & Gaming
+,Bridger Aerospace Group Holdings Inc,BAER,Diversified Support Services
+,Sachem Capital Corp,SACH,Mortgage REITs
+,Prelude Therapeutics Inc,PRLD,Biotechnology
+,Lument Finance Trust Inc,LFT,Mortgage REITs
+,Traeger Inc,COOK,Household Appliances
+,Affinity Bancshares Inc,AFBI,Regional Banks
+,OneMedNet Corp,ONMD,Health Care Technology
+,Destination XL Group Inc,DXLG,Apparel Retail
+,Whitefiber Inc,WYFI,Internet Services & Infrastructure
+,Origin Materials Inc,ORGN,Commodity Chemicals
+,Saga Communications Inc,SGA,Broadcasting
+,Duluth Holdings Inc,DLTH,Apparel Retail
+,American Well Corp,AMWL,Health Care Technology
+,Lifetime Brands Inc,LCUT,Housewares & Specialties
+,OnKure Therapeutics Inc,OKUR,Biotechnology
+,Alpha Teknova Inc,TKNO,Life Sciences Tools & Services
+,Republic Airways Holdings Inc,RJET,Passenger Airlines
+,Jasper Therapeutics Inc,JSPR,Biotechnology
+,Skillsoft Corp,SKIL,Human Resource & Employment Services
+,Instil Bio Inc,TIL,Biotechnology
+,PAMT CORP,PAMT,Cargo Ground Transportation
+,RF Industries Ltd,RFIL,Electronic Manufacturing Services
+,Champions Oncology Inc,CSBR,Life Sciences Tools & Services
+,1-800-Flowers.com Inc,FLWS,Other Specialty Retail
+,Rhinebeck Bancorp Inc,RBKB,Regional Banks
+,Where Food Comes From Inc,WFCF,Research & Consulting Services
+,Advanced Flower Capital Inc,AFCG,Mortgage REITs
+,Stubhub Holdings Inc,STUB,Movies & Entertainment
+,GCT Semiconductor Holding Inc,GCTS,Semiconductors
+,HireQuest Inc,HQI,Human Resource & Employment Services
+,Pelthos Therapeutics Inc,PTHS,Biotechnology
+,CompX International Inc,CIX,Office Services & Supplies
+,Airgain Inc,AIRG,Electronic Components
+,Clipper Realty Inc,CLPR,Multi-Family Residential REITs
+,AmeriServ Financial Inc,ASRV,Regional Banks
+,iRobot Corp,IRBT,Household Appliances
+,CPS Technologies Corp,CPSH,Electronic Components
+,Kezar Life Sciences Inc,KZR,Biotechnology
+,AgEagle Aerial Systems Inc,UAVS,Agricultural & Farm Machinery
+,Pixelworks Inc,PXLW,Semiconductors
+,Aware Inc/MA,AWRE,Application Software
+,Armata Pharmaceuticals Inc,ARMP,Biotechnology
+,Solesence Inc,SLSN,Specialty Chemicals
+,Phunware Inc,PHUN,Application Software
+,Caris Life Sciences Inc,CAI,Biotechnology
+,Tenax Therapeutics Inc,TENX,Biotechnology
+,Evommune Inc,EVMN,Biotechnology
+,Culp Inc,CULP,Textiles
+,Korro Bio Inc,KRRO,Biotechnology
+,Rani Therapeutics Holdings Inc,RANI,Pharmaceuticals
+,Tela Bio Inc,TELA,Health Care Supplies
+,NetSol Technologies Inc,NTWK,Application Software
+,Franklin Wireless Corp,FKWL,Communications Equipment
+,Fuel Tech Inc,FTEK,Environmental & Facilities Services
+,ALX Oncology Holdings Inc,ALXO,Biotechnology
+,Greenwich Lifesciences Inc,GLSI,Biotechnology
+,Adicet Bio Inc,ACET,Biotechnology
+,Synchronoss Technologies Inc,SNCR,Application Software
+,Metagenomi Inc,MGX,Biotechnology
+,NL Industries Inc,NL,Office Services & Supplies
+,Central BanCo Inc,CBC,Regional Banks
+,PrimeEnergy Resources Corp,PNRG,Oil & Gas Exploration & Production
+,Purple Innovation Inc,PRPL,Home Furnishings
+,Grace Therapeutics Inc,GRCE,Pharmaceuticals
+,GameSquare Holdings Inc,GAME,Interactive Media & Services
+,Actinium Pharmaceuticals Inc,ATNM,Biotechnology
+,Equillium Inc,EQ,Biotechnology
+,Karyopharm Therapeutics Inc,KPTI,Biotechnology
+,Team Inc,TISI,Environmental & Facilities Services
+,Pathfinder Bancorp Inc,PBHC,Regional Banks
+,Shoulder Innovations Inc,SI,Health Care Equipment
+,Orion Energy Systems Inc,OESX,Electrical Components & Equipment
+,Universal Electronics Inc,UEIC,Consumer Electronics
+,Manhattan Bridge Capital Inc,LOAN,Mortgage REITs
+,MIND Technology Inc,MIND,Oil & Gas Equipment & Services
+,LiveOne Inc,LVO,Movies & Entertainment
+,TransAct Technologies Inc,TACT,"Technology Hardware, Storage & Peripherals"
+,Bogota Financial Corp,BSBK,Regional Banks
+,Verrica Pharmaceuticals Inc,VRCA,Pharmaceuticals
+,Optical Cable Corp,OCC,Communications Equipment
+,Rein Therapeutics Inc,RNTX,Biotechnology
+,Optex Systems Holdings Inc,OPXS,Aerospace & Defense
+,Aligos Therapeutics Inc,ALGS,Biotechnology
+,CEL-SCI Corp,CVM,Biotechnology
+,CalciMedica Inc,CALC,Pharmaceuticals
+,Insight Molecular Diagnostics Inc,IMDX,Biotechnology
+,Black Rock Coffee Bar Inc,BRCB,Restaurants
+,Vivani Medical Inc,VANI,Health Care Equipment
+,Ampco-Pittsburgh Corp,AP,Steel
+,Kalaris Therapeutics Inc,KLRS,Biotechnology
+,PB Bankshares Inc,PBBK,Regional Banks
+,Inuvo Inc,INUV,Application Software
+,Telomir Pharmaceuticals Inc,TELO,Pharmaceuticals
+,Vivid Seats Inc,SEAT,Movies & Entertainment
+,BioAtla Inc,BCAB,Biotechnology
+,Mobile Infrastructure Corp,BEEP,Environmental & Facilities Services
+,Star Equity Holdings Inc,STRR,Human Resource & Employment Services
+,Offerpad Solutions Inc,OPAD,Real Estate Services
+,Tvardi Therapeutics Inc,TVRD,Pharmaceuticals
+,Dominari Holdings Inc,DOMH,Investment Banking & Brokerage
+,PSQ Holdings Inc,PSQH,Interactive Media & Services
+,Usio Inc,USIO,Transaction & Payment Processing Services
+,PetMed Express Inc,PETS,Other Specialty Retail
+,Cibus Inc,CBUS,Biotechnology
+,Marchex Inc,MCHX,Advertising
+,Empire Petroleum Corp,EP,Oil & Gas Exploration & Production
+,Forian Inc,FORA,Health Care Technology
+,Noodles & Co,NDLS,Restaurants
+,Auburn National BanCorp Inc,AUBN,Regional Banks
+,ImageneBio Inc,IMA,Pharmaceuticals
+,Siebert Financial Corp,SIEB,Investment Banking & Brokerage
+,CytoSorbents Corp,CTSO,Health Care Equipment
+,Torrid Holdings Inc,CURV,Apparel Retail
+,Zedge Inc,ZDGE,Interactive Media & Services
+,Silvaco Group Inc,SVCO,Systems Software
+,Quest Resource Holding Corp,QRHC,Environmental & Facilities Services
+,Bluerock Homes Trust Inc,BHM,Single-Family Residential REITs
+,FibroGen Inc,FGEN,Biotechnology
+,Gloo Holdings Inc,GLOO,Application Software
+,Applied Therapeutics Inc,APLT,Biotechnology
+,Tilly's Inc,TLYS,Apparel Retail
+,Cineverse Corp,CNVS,Movies & Entertainment
+,OptimumBank Holdings Inc,OPHC,Regional Banks
+,Clene Inc,CLNN,Biotechnology
+,Acrivon Therapeutics Inc,ACRV,Biotechnology
+,Southland Holdings Inc,SLND,Construction & Engineering
+,Bitcoin Depot Inc,BTM,Diversified Support Services
+,NRX Pharmaceuticals Inc,NRXP,Pharmaceuticals
+,Cue Biopharma Inc,CUE,Biotechnology
+,RenovoRx Inc,RNXT,Biotechnology
+,AmpliTech Group Inc,AMPG,Electronic Components
+,Veru Inc,VERU,Pharmaceuticals
+,GREAT ELM GROUP INC,GEG,Asset Management & Custody Banks
+,Harvard Bioscience Inc,HBIO,Life Sciences Tools & Services
+,Grove Collaborative Holdings,GROV,Other Specialty Retail
+,Teads Holding Co,TEAD,Interactive Media & Services
+,Biodesix Inc,BDSX,Health Care Services
+,KORE Group Holdings Inc,KORE,Wireless Telecommunication Services
+,First Guaranty Bancshares Inc,FGBI,Regional Banks
+,CarParts.com Inc,PRTS,Automotive Retail
+,Trio-Tech International,TRT,Semiconductor Materials & Equipment
+,TOBIRA THERAPEUTICS INC - CVR 2018,---,---
+,Lantern Pharma Inc,LTRN,Biotechnology
+,SAB Biotherapeutics Inc,SABS,Biotechnology
+,US Global Investors Inc,GROW,Asset Management & Custody Banks
+,ACCESS Newswire Inc,ACCS,Application Software
+,Celularity Inc,CELU,Biotechnology
+,CAMP4 Therapeutics Corp,CAMP,Biotechnology
+,Xtant Medical Holdings Inc,XTNT,Health Care Supplies
+,Rafael Holdings Inc,RFL,Pharmaceuticals
+,Zynex Inc,ZYXI,Health Care Equipment
+,Ideal Power Inc,IPWR,Electrical Components & Equipment
+,vTv Therapeutics Inc,VTVT,Biotechnology
+,ImmuCell Corp,ICCC,Biotechnology
+,Werewolf Therapeutics Inc,HOWL,Biotechnology
+,Bayfirst Financial Corp,BAFN,Regional Banks
+,Beam Global,BEEM,Electrical Components & Equipment
+,Crown Crafts Inc,CRWS,Textiles
+,ESS Tech Inc,GWH,Electrical Components & Equipment
+,AMCON Distributing Co,DIT,Distributors
+,Nukkleus Inc,NUKK,Application Software
+,Kartoon Studios Inc,TOON,Movies & Entertainment
+,Inmune Bio Inc,INMB,Biotechnology
+,BranchOut Food Inc,BOF,Packaged Foods & Meats
+,CPI Aerostructures Inc,CVU,Aerospace & Defense
+,TechPrecision Corp,TPCS,Industrial Machinery & Supplies & Components
+,Sypris Solutions Inc,SYPR,Automotive Parts & Equipment
+,Wolfspeed Inc,WOLF,Semiconductors
+,IF Bancorp Inc,IROQ,Regional Banks
+,SurgePays Inc,SURG,Wireless Telecommunication Services
+,Barfresh Food Group Inc,BRFH,Packaged Foods & Meats
+,Inotiv Inc,NOTV,Life Sciences Tools & Services
+,Senti Biosciences Inc,SNTI,Biotechnology
+,Lite Strategy Inc,LITS,Biotechnology
+,Key Tronic Corp,KTCC,Electronic Manufacturing Services
+,INNOVATE CORP,VATE,Construction & Engineering
+,Mammoth Energy Services Inc,TUSK,Oil & Gas Equipment & Services
+,Skillz Inc,SKLZ,Interactive Home Entertainment
+,Generation Bio Co,GBIO,Biotechnology
+,LivePerson Inc,LPSN,Application Software
+,Sono-Tek Corp,SOTK,Electronic Equipment & Instruments
+,Farmer Bros Co,FARM,Packaged Foods & Meats
+,comScore Inc,SCOR,Advertising
+,Spectral AI Inc,MDAI,Health Care Equipment
+,AN2 Therapeutics Inc,ANTX,Pharmaceuticals
+,5E Advanced Materials Inc,FEAM,Diversified Metals & Mining
+,Rockwell Medical Inc,RMTI,Health Care Supplies
+,SCYNEXIS Inc,SCYX,Pharmaceuticals
+,INHIBRX INC - CVR (MAY 2024),---,Biotechnology
+,Flux Power Holdings Inc,FLUX,Electrical Components & Equipment
+,Knightscope Inc,KSCP,Security & Alarm Services
+,Stabilis Solutions Inc,SLNG,Oil & Gas Storage & Transportation
+,PDS Biotechnology Corp,PDSB,Biotechnology
+,Beachbody Co Inc/The,BODI,Specialized Consumer Services
+,Allbirds Inc,BIRD,Footwear
+,Old Market Capital Corp,OMCC,Consumer Finance
+,Myomo Inc,MYO,Health Care Equipment
+,Mastech Digital Inc,MHH,Human Resource & Employment Services
+,Sotherly Hotels Inc,SOHO,Hotel & Resort REITs
+,Skye Bioscience Inc,SKYE,Biotechnology
+,Harte Hanks Inc,HHS,Advertising
+,Minerva Neurosciences Inc,NERV,Biotechnology
+,Laser Photonics Corp,LASE,Industrial Machinery & Supplies & Components
+,Koss Corp,KOSS,Consumer Electronics
+,GEE Group Inc,JOB,Human Resource & Employment Services
+,ElectroCore Inc,ECOR,Health Care Equipment
+,NextCure Inc,NXTC,Biotechnology
+,Safe Pro Group Inc,SPAI,Aerospace & Defense
+,Century Therapeutics Inc,IPSC,Biotechnology
+,Fathom Holdings Inc,FTHM,Real Estate Services
+,Drilling Tools International Corp,DTI,Oil & Gas Equipment & Services
+,MAIA Biotechnology Inc,MAIA,Biotechnology
+,Brilliant Earth Group Inc,BRLT,Other Specialty Retail
+,KLX Energy Services Holdings Inc,KLXE,Oil & Gas Equipment & Services
+,Reviva Pharmaceuticals Holdings Inc,RVPH,Pharmaceuticals
+,Cloudastructure Inc,CSAI,Internet Services & Infrastructure
+,Precision Optics Corp Inc/Mass,POCI,Health Care Equipment
+,FiscalNote Holdings Inc,NOTE,Research & Consulting Services
+,JFB Construction Holdings,JFB,Construction & Engineering
+,MarketWise Inc,MKTW,Financial Exchanges & Data
+,Passage Bio Inc,PASG,Biotechnology
+,Reading International Inc,RDI,Movies & Entertainment
+,374Water Inc,SCWO,Industrial Machinery & Supplies & Components
+,CVD Equipment Corp,CVV,Semiconductor Materials & Equipment
+,Nephros Inc,NEPH,Industrial Machinery & Supplies & Components
+,Daxor Corp,DXR,Health Care Equipment
+,Femasys Inc,FEMY,Health Care Equipment
+,Cumberland Pharmaceuticals Inc,CPIX,Pharmaceuticals
+,Lee Enterprises Inc,LEE,Publishing
+,Marathon Bancorp Inc,MBBC,Regional Banks
+,Air T Inc,AIRT,Air Freight & Logistics
+,Health In Tech Inc,HIT,Insurance Brokers
+,Anebulo Pharmaceuticals Inc,ANEB,Pharmaceuticals
+,LanzaTech Global Inc,LNZA,Environmental & Facilities Services
+,Nutriband Inc,NTRB,Pharmaceuticals
+,iBio Inc,IBIO,Biotechnology
+,NeuroOne Medical Technologies Corp,NMTC,Health Care Equipment
+,Ashford Hospitality Trust Inc,AHT,Hotel & Resort REITs
+,Data I/O Corp,DAIO,Electronic Manufacturing Services
+,Natural Alternatives International Inc,NAII,Personal Care Products
+,BuzzFeed Inc,BZFD,Interactive Media & Services
+,Firefly Neuroscience Inc,AIFF,Health Care Technology
+,Estrella Immunopharma Inc,ESLA,Biotechnology
+,Urban One Inc,UONEK,Broadcasting
+,Crawford & Co,CRD/A,Insurance Brokers
+,Artiva Biotherapeutics Inc,ARTV,Biotechnology
+,WOLFSPEED INC - ESCROW 25,---,---
+,Dyadic International Inc,DYAI,Biotechnology
+,Xilio Therapeutics Inc,XLO,Biotechnology
+,Leslie's Inc,LESL,Other Specialty Retail
+,Network-1 Technologies Inc,NTIP,Communications Equipment
+,Serina Therapeutics Inc,SER,Biotechnology
+,Glimpse Group Inc/The,VRAR,IT Consulting & Other Services
+,Boundless Bio Inc,BOLD,Biotechnology
+,MiNK Therapeutics Inc,INKT,Biotechnology
+,United-Guardian Inc,UG,Personal Care Products
+,Thumzup Media Corp,TZUP,Application Software
+,Brand House Collective Inc/The,TBHC,Homefurnishing Retail
+,Research Frontiers Inc,REFR,Electronic Equipment & Instruments
+,Sidus Space Inc,SIDU,Aerospace & Defense
+,Data Storage Corp,DTST,Internet Services & Infrastructure
+,Zeo Energy Corp,ZEO,Electrical Components & Equipment
+,Citius Oncology Inc,CTOR,Biotechnology
+,Texas Community Bancshares Inc,TCBS,Regional Banks
+,Phoenix Education Partners Inc,PXED,Education Services
+,Lipocine Inc,LPCN,Pharmaceuticals
+,SPECTRUM PHARMACEUTICALS INC - CVR (AUGUST 2023),---,Biotechnology
+,Creative Realities Inc,CREX,Advertising
+,Elutia Inc,ELUT,Biotechnology
+,Vivos Therapeutics Inc,VVOS,Health Care Services
+,Bel Fuse Inc,BELFA,Electronic Components
+,Co-Diagnostics Inc,CODX,Health Care Equipment
+,Flanigan's Enterprises Inc,BDL,Restaurants
+,Athira Pharma Inc,ATHA,Pharmaceuticals
+,HeartBeam inc,BEAT,Health Care Equipment
+,Milestone Scientific Inc,MLSS,Health Care Equipment
+,Good Times Restaurants Inc,GTIM,Restaurants
+,Dare Bioscience Inc,DARE,Pharmaceuticals
+,ClearSign Technologies Corp,CLIR,Industrial Machinery & Supplies & Components
+,Beyondspring Inc,BYSI,Biotechnology
+,Stardust Power Inc,SDST,Electrical Components & Equipment
+,Live Ventures Inc,LIVE,Home Furnishings
+,Nixxy Inc,NIXX,Human Resource & Employment Services
+,LGL Group Inc/The,LGL,Electronic Components
+,NanoViricides Inc,NNVC,Biotechnology
+,Willamette Valley Vineyards Inc,WVVI,Distillers & Vintners
+,TherapeuticsMD Inc,TXMD,Pharmaceuticals
+,Aureus Greenway Holdings Inc,AGH,Leisure Facilities
+,Rallybio Corp,RLYB,Biotechnology
+,Q32 Bio Inc,QTTB,Biotechnology
+,Jerash Holdings US Inc,JRSH,"Apparel, Accessories & Luxury Goods"
+,Cryo-Cell International Inc,CCEL,Health Care Services
+,Transcontinental Realty Investors Inc,TCI,Real Estate Operating Companies
+,Lisata Therapeutics Inc,LSTA,Biotechnology
+,Ark Restaurants Corp,ARKR,Restaurants
+,Pioneer Power Solutions Inc,PPSI,Heavy Electrical Equipment
+,US Energy Corp,USEG,Oil & Gas Exploration & Production
+,Katapult Holdings Inc,KPLT,Consumer Finance
+,Home Federal Bancorp Inc of Louisiana,HFBL,Regional Banks
+,IRIDEX Corp,IRIX,Health Care Equipment
+,Mexco Energy Corp,MXC,Oil & Gas Exploration & Production
+,Lunai Bioworks Inc,LNAI,Biotechnology
+,Focus Universal Inc,FCUV,Electronic Equipment & Instruments
+,Bridgford Foods Corp,BRID,Packaged Foods & Meats
+,TOMI Environmental Solutions Inc,TOMZ,Environmental & Facilities Services
+,PEDEVCO Corp,PED,Oil & Gas Exploration & Production
+,Aytu BioPharma Inc,AYTU,Pharmaceuticals
+,Stran & Co Inc,SWAG,Advertising
+,authID Inc,AUID,Systems Software
+,MultiSensor AI Holdings Inc,MSAI,Electronic Equipment & Instruments
+,Laird Superfood Inc,LSF,Packaged Foods & Meats
+,Retractable Technologies Inc,RVP,Health Care Supplies
+,Modular Medical Inc,MODD,Health Care Equipment
+,Tempest Therapeutics Inc,TPST,Biotechnology
+,Enliven Therapeutics Inc -- CVR,---,Pharmaceuticals
+,Tevogen Bio Holdings Inc,TVGN,Biotechnology
+,Mangoceuticals Inc,MGRX,Drug Retail
+,GoHealth Inc,GOCO,Insurance Brokers
+,Fluent Inc,FLNT,Advertising
+,GEN Restaurant Group Inc,GENK,Restaurants
+,SPAR Group Inc,SGRP,Advertising
+,United Homes Group Inc,UHG,Homebuilding
+,Local Bounti Corp,LOCL,Agricultural Products & Services
+,Cadrenal Therapeutics Inc,CVKD,Pharmaceuticals
+,Rent the Runway Inc,RENT,Other Specialty Retail
+,Barnwell Industries Inc,BRN,Oil & Gas Exploration & Production
+,Mannatech Inc,MTEX,Personal Care Products
+,Curis Inc,CRIS,Biotechnology
+,Rave Restaurant Group Inc,RAVE,Restaurants
+,ALTISOURCE PORTFOLIO - 30,ASPSW,Real Estate Services
+,Tandy Leather Factory Inc,TLF,Apparel Retail
+,Vicarious Surgical Inc,RBOT,Health Care Equipment
+,Nine Energy Service Inc,NINE,Oil & Gas Equipment & Services
+,United Bancorp Inc/OH,UBCP,Regional Banks
+,OS Therapies Inc,OSTX,Biotechnology
+,MapLight Therapeutics Inc,MPLT,Biotechnology
+,Binah Capital Group Inc,BCG,Asset Management & Custody Banks
+,Intelligent Protection Management Corp,IPM,Interactive Media & Services
+,NCS Multistage Holdings Inc,NCSM,Oil & Gas Equipment & Services
+,SolarMax Technology Inc,SMXT,Electrical Components & Equipment
+,Strive Inc,ASST,Asset Management & Custody Banks
+,ALTISOURCE PORTFOLIO - 29C,ASPSZ,Real Estate Services
+,Battalion Oil Corp,BATL,Oil & Gas Exploration & Production
+,Longeveron Inc,LGVN,Biotechnology
+,Sphere 3D Corp,ANY,Application Software
+,CISO Global Inc,CISO,IT Consulting & Other Services
+,Envoy Medical Inc,COCH,Health Care Equipment
+,Verde Clean Fuels Inc,VGAS,Oil & Gas Refining & Marketing
+,Marker Therapeutics Inc,MRKR,Biotechnology
+,CXApp Inc,CXAI,Application Software
+,Hydrofarm Holdings Group Inc,HYFM,Agricultural & Farm Machinery
+,Lulu's Fashion Lounge Holdings Inc,LVLU,Apparel Retail
+,Mobix Labs Inc,MOBX,Semiconductors
+,Fibrobiologics Inc,FBLG,Biotechnology
+,Dolphin Entertainment Inc,DLPN,Movies & Entertainment
+,enVVeno Medical Corp,NVNO,Health Care Equipment
+,American Shared Hospital Services,AMS,Health Care Services
+,Synlogic Inc,SYBX,Biotechnology
+,Cocrystal Pharma Inc,COCP,Pharmaceuticals
+,Armlogi Holding Corp,BTOC,Cargo Ground Transportation
+,BioVie Inc,BIVI,Biotechnology
+,Xos Inc,XOS,Construction Machinery & Heavy Transportation Equipment
+,Cingulate Inc,CING,Pharmaceuticals
+,KALA BIO Inc,KALA,Biotechnology
+,Veea Inc,VEEA,Application Software
+,Inspirato Inc,ISPO,"Hotels, Resorts & Cruise Lines"
+,First US Bancshares Inc,FUSB,Regional Banks
+,Intellinetics Inc,INLX,Systems Software
+,SIFCO Industries Inc,SIF,Aerospace & Defense
+,COHERUS BIOSCIENCES INC - CVR (SEP 2023),---,Biotechnology
+,Giftify Inc,GIFT,Interactive Media & Services
+,P3 Health Partners Inc,PIII,Health Care Services
+,reAlpha Tech Corp,AIRE,Application Software
+,PodcastOne Inc,PODC,Movies & Entertainment
+,Taitron Components Inc,TAIT,Technology Distributors
+,Cellectar Biosciences Inc,CLRB,Biotechnology
+,iPower Inc,IPW,Trading Companies & Distributors
+,Neuraxis Inc,NRXS,Health Care Equipment
+,Worksport Ltd,WKSP,Automotive Parts & Equipment
+,Jewett-Cameron Trading Co Ltd,JCTC,Building Products
+,Luby's Inc Escrow,---,---
+,Synergy CHC Corp,SNYR,Personal Care Products
+,Brand Engagement Network Inc,BNAI,IT Consulting & Other Services
+,FAT Brands Inc,FAT,Restaurants
+,Bullfrog AI Holdings Inc,BFRG,Health Care Technology
+,Electro-Sensors Inc,ELSE,Electronic Equipment & Instruments
+,flyExclusive Inc,FLYX,Passenger Airlines
+,CATALYST BIOSCIENCES INC - CVR (JAN 2023),---,---
+,FUNDAMENTAL GLOBAL INC - CVR (AUG 2025),---,Property & Casualty Insurance
+,Mira Pharmaceuticals Inc,MIRA,Pharmaceuticals
+,ADURO BIOTECH CVR,---,---
+,Allied Gaming & Entertainment Inc,AGAE,Leisure Facilities
+,ADAMAS PHARMACEUTICALS INC CVR 2025,---,Pharmaceuticals
+,Nexgel Inc,NXGL,Health Care Supplies
+,Lyra Therapeutics Inc,LYRA,Pharmaceuticals
+,Acorn Energy Inc,ACFN,Electronic Equipment & Instruments
+,Cohen & Co Inc,COHN,Diversified Capital Markets
+,Kentucky First Federal Bancorp,KFFB,Regional Banks
+,Alpha Modus Holdings Inc,AMOD,Application Software
+,System1 Inc,SST,Interactive Media & Services
+,Nortech Systems Inc,NSYS,Electronic Manufacturing Services
+,IN8bio Inc,INAB,Biotechnology
+,Glen Burnie Bancorp,GLBZ,Regional Banks
+,Beyond Air Inc,XAIR,Health Care Equipment
+,Imunon Inc,IMNN,Biotechnology
+,M-TRON INDUSTRIES INC -28,MPTI/WS,Electronic Components
+,Bonk Inc,BNKK,Personal Care Products
+,FG Nexus Inc,FGNX,Property & Casualty Insurance
+,Urban One Inc,UONE,Broadcasting
+,Regis Corp,RGS,Specialized Consumer Services
+,Royalty Management Holding Corp,RMCO,Environmental & Facilities Services
+,SRAX INC-PFD,---,Application Software
+,Jupiter Neurosciences Inc,JUNS,Pharmaceuticals
+,NEW YORK REIT IN,---,---
+,SHF Holdings Inc,SHFS,Specialized Finance
+,RYTHM Inc,RYM,Agricultural & Farm Machinery
+,Nauticus Robotics Inc,KITT,Construction Machinery & Heavy Transportation Equipment
+,Maison Solutions Inc,MSS,Food Retail
+,FAT Brands Inc,FATBB,Restaurants
+,Ernexa Therapeutics Inc,ERNA,Biotechnology
+,Snail Inc,SNAL,Interactive Home Entertainment
+,MetaVia Inc,MTVA,Biotechnology
+,NextPlat Corp,NXPL,Alternative Carriers
+,Vivakor Inc,VIVK,Oil & Gas Storage & Transportation
+,iQSTEL Inc,IQST,Alternative Carriers
+,American Strategic Investment Co,NYC,Real Estate Operating Companies
+,Atlantic International Corp,ATLN,Life Sciences Tools & Services
+,SEVEN HILLS REALTY TRUST RTS (NOV 2025),---,Mortgage REITs
+,Q32 BIO INC - CVR (MARCH 2024),---,Biotechnology
+,ALEXZA PHARMACEUTICALS INC-CVR,---,---
+,Yunhong Green CTI Ltd,YHGJ,Housewares & Specialties
+,Direct Digital Holdings Inc,DRCT,Advertising
+,AXIL Brands Inc,AXIL,Personal Care Products
+,GTX INC CVR,---,---
+,CKX Lands Inc,CKX,Real Estate Operating Companies
+,MAGENTA THERAPEUTICS INC - CVR (SEP 2023),---,Biotechnology
+,Clean Energy Technologies Inc,CETY,Oil & Gas Storage & Transportation
+,Senestech Inc,SNES,Pharmaceuticals
+,Dawson Geophysical Co,DWSN,Oil & Gas Equipment & Services
+,CLEARONE INC-PFD CL A,---,---
+,CVR F STAR,---,---
+,CVR F STAR THERAPEUTIC,---,Biotechnology
+,PRESIDIO PROPERTY TRST -CW27,SQFTW,Diversified REITs
+,Adapti Inc,ADTI,---
+,Adagio Medical Holdings Inc,ADGM,Health Care Equipment
+,AMERICAN INFRASTRUCTURE CORP,---,Coal & Consumable Fuels
+,Callan Jmb Inc,CJMB,Air Freight & Logistics
+,Gray Media Inc,GTN/A,Broadcasting
+,PFIZER INC - CVR (NOV 25),---,Pharmaceuticals
+,LGL GROUP INC/THE -CW25,LGL/WS,Electronic Components
+,ABIOMED INC-CVR,2223637D,Health Care Equipment
+,TRAWS PHARMA INC - CVR (APR 2024),---,Pharmaceuticals
+,CARISMA THERAPEUTICS INC - CVR (MAR 2023),---,Biotechnology
+,GCI Liberty Inc ESCROW DUMMY,---,Alternative Carriers
+,PIVOTAL SOFTWARE INC - TempLine,---,---
+,Next Bridge Hydrocarbons Inc - Private Equity,---,---
+,Sterling Bancorp Inc/MI,SBT,Regional Banks
+,IKENA ONCOLOGY INC - CVR (JULY 2025),---,Pharmaceuticals
+,ReElement Technologies Corp,RLMT,---
+,Aravive Inc,ARAV,Biotechnology
+,BTCS INC - SPIN OFF,BTCSP,---
+,AMBIT BIOSCIENCE RTS,---,Pharmaceuticals
+,OMNIAB INC - 12.5 EARNOUT,---,Life Sciences Tools & Services
+,OMNIAB INC - 15 EARNOUT,---,---
+,Novusterra Inc,NOVS,Coal & Consumable Fuels
+,TECTONIC THERAPEUTIC INC - CVR (JUNE 2024),---,Biotechnology
+,NEUROGENE INC - CVR (DEC 2023),---,Biotechnology
+,AMPLITECH GROUP INC RIGHTS NOV 2025,---,Electronic Components
+,PINEAPPLE HOLDINGS INC - CVR (MAR 2022),---,Communications Equipment
+,Hyzon Motors Inc,HYZN,Construction Machinery & Heavy Transportation Equipment
+,SELLAS LIFE SCIENCES GROUP WARRANT,---,Biotechnology
+,NUTRIBAND INC-PFD (July 2025),---,Pharmaceuticals
+,BOWL AMERICA INC ESCOW LINE - NOV 2025,---,---
+,AGEX THERAPEUTICS INC-25,---,Biotechnology
+,,,
+,,,
+Fixed income,,,
+,,,
+,HOLDINGS,TICKER,MARKET VALUE*
+,,,
+,,,
+,,,
+Short-term reserves,,,
+,,,
+,HOLDINGS,TICKER,MARKET VALUE*
+,SLCMT1142,---,"$4,953,891,891.00 "
+,MKTLIQ,---,"$4,728,483,546.50 "
+,US Dollar,USD,"$240,412,868.24 "
+,Synthetic Cash - CML USD,---,"$175,019,500.00 "
+,Synthetic Cash - BBAM USD,---,"$70,190,001.00 "
+,Synthetic Cash - PBAM USD,---,"$59,774,280.00 "
+,Synthetic Cash - ZVGI USD,---,"$49,102,000.00 "
+,Synthetic Cash - PCIT USD,---,$0.01 
+,Synthetic Cash - QML USD,---,"($40,308,565.91)"
+,,,
+,,,
+,,,
+** There may be deviations when applying fair value and other considerations.,,,
+,,,
+,,,
+,,,
+"Sector categories are based on the Industry Classification Benchmark system (“ICB”), except for the “Other” category (if applicable), which includes securities that have not been provided an ICB classification as of the effective reporting period.",,,
+,,,
+,,,
+,,,
+"For more information about Vanguard funds and Vanguard ETF Shares, visit advisors.vanguard.com or call 800-997-2798 to obtain a prospectus or, if available, a summary prospectus. Investment objectives, risks, charges, expenses, and other important information about a fund are contained in the prospectus; read and consider it carefully before investing.",,,
