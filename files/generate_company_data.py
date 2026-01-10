@@ -48,19 +48,13 @@ DATA_DIR = "data"
 # - Take 5-minute break between batches
 # - This gives rate limits time to fully reset
 TICKERS = [
-    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "TSLA", "BRK.B",
-    "V", "UNH", "JNJ", "WMT", "JPM", "MA", "PG", "XOM", "HD", "CVX",
-    "MRK", "ABBV", "KO", "PEP", "COST", "AVGO", "TMO", "MCD", "CSCO",
-    "ABT", "ACN", "DHR", "VZ", "ADBE", "NKE", "TXN", "CRM", "NFLX",
-    "PM", "CMCSA", "NEE", "UPS", "BMY", "ORCL", "AMD", "QCOM", "HON",
-    "RTX", "UNP", "INTC", "AMGN", "COP", "LOW", "BA", "SPGI", "IBM",
-    # Add more tickers here...
+    "AAPL", "NVDA", "MSFT", "AMZN", "AVGO", "GOOGL", "TSLA", "PLTR", "AMD", "PATH", "SYM", "SOUN", "EOSE", "INOD", "APPN", "QUBT", "NVTS", "RDVT",
 ]
 
 # API settings
 MAX_RETRIES = 5  # Increased retries
 RETRY_DELAY = 120  # Wait 2 minutes on retry to let web search limits reset
-REQUEST_DELAY = 180  # 3 FULL MINUTES between requests to account for web search limits (30/second)
+REQUEST_DELAY = 20  # 20 seconds between requests to account for web search limits (30/second)
 
 
 # ============================================================================
