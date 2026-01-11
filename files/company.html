@@ -333,6 +333,42 @@
             color: var(--accent-cyan);
         }
 
+        /* Disclaimer box styling */
+        .disclaimer {
+            background: rgba(0, 212, 255, 0.05);
+            border-left: 4px solid var(--accent-cyan);
+            border-radius: 8px;
+            padding: 20px 25px;
+            margin: 0 0 40px 0;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .disclaimer p {
+            margin: 0 0 15px 0;
+            color: var(--text-secondary);
+        }
+
+        .disclaimer p:last-child {
+            margin-bottom: 0;
+        }
+
+        .disclaimer strong {
+            color: var(--accent-cyan);
+            font-weight: 700;
+        }
+
+        .disclaimer a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .disclaimer a:hover {
+            border-bottom-color: var(--accent-cyan);
+        }
+
         .company-info ul, .company-info ol {
             margin: 15px 0 20px 25px;
             color: var(--text-secondary);
@@ -514,7 +550,33 @@
             // Convert markdown-style formatting to HTML
             let formatted = text;
             
-            // Handle tables (markdown style)
+            // STEP 1: Extract and style the disclaimer section
+            // Look for text starting with **Disclaimer:** up to the --- separator
+            const disclaimerMatch = formatted.match(/(\*\*Disclaimer:\*\*[\s\S]*?)(?=\n---\n|$)/);
+            let disclaimerHTML = '';
+            
+            if (disclaimerMatch) {
+                let disclaimerText = disclaimerMatch[1];
+                
+                // Process the disclaimer text (convert markdown)
+                disclaimerText = disclaimerText.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+                disclaimerText = disclaimerText.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+                
+                // Split into paragraphs
+                const disclaimerParas = disclaimerText.split(/\n\n+/).filter(p => p.trim());
+                
+                // Build disclaimer HTML with proper div wrapper
+                disclaimerHTML = '<div class="disclaimer">';
+                disclaimerParas.forEach(para => {
+                    disclaimerHTML += `<p>${para.trim()}</p>`;
+                });
+                disclaimerHTML += '</div>';
+                
+                // Remove disclaimer from the main content
+                formatted = formatted.replace(/\*\*Disclaimer:\*\*[\s\S]*?\n---\n/, '');
+            }
+            
+            // STEP 2: Handle tables (markdown style)
             formatted = formatted.replace(/\n\|(.+)\|\n\|[-:\s|]+\|\n((?:\|.+\|\n)+)/g, function(match, header, rows) {
                 let tableHTML = '<table class="data-table"><thead><tr>';
                 
@@ -537,24 +599,27 @@
                 return '\n' + tableHTML + '\n';
             });
             
-            // Bold and italic
+            // STEP 3: Links (before bold/italic to avoid conflicts)
+            formatted = formatted.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+            
+            // STEP 4: Bold and italic
             formatted = formatted.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
             formatted = formatted.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
             formatted = formatted.replace(/\*(.+?)\*/g, '<em>$1</em>');
             formatted = formatted.replace(/`(.+?)`/g, '<code>$1</code>');
             
-            // Headers
+            // STEP 5: Headers
             formatted = formatted.replace(/^### (.+)$/gm, '<h3>$1</h3>');
             formatted = formatted.replace(/^## (.+)$/gm, '<h2>$1</h2>');
             formatted = formatted.replace(/^# (.+)$/gm, '<h2>$1</h2>');
             
-            // Bullet points (both - and • styles)
+            // STEP 6: Bullet points (both - and • styles)
             formatted = formatted.replace(/^[•\-]\s+(.+)$/gm, '<li>$1</li>');
             
             // Wrap consecutive list items in ul tags
             formatted = formatted.replace(/(<li>.*?<\/li>\s*)+/gs, '<ul>$&</ul>');
             
-            // Paragraphs
+            // STEP 7: Paragraphs
             formatted = formatted.replace(/\n\n/g, '</p><p>');
             
             // Wrap content in paragraphs if not already wrapped
@@ -565,7 +630,8 @@
                 formatted = formatted + '</p>';
             }
 
-            return formatted;
+            // STEP 8: Prepend disclaimer at the top
+            return disclaimerHTML + formatted;
         }
 
         // Load company data

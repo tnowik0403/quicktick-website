@@ -1,5 +1,5 @@
 """
-Quick Tick Data Generator - GROK VERSION
+Quick Tick Data Generator - GROK VERSION (IMPROVED)
 
 This script generates AI analysis for all publicly traded US companies.
 It uses xAI's Grok API to generate company information based on your prompt.
@@ -11,13 +11,19 @@ Requirements:
 
 Usage:
 1. Set your API key: export XAI_API_KEY='your-key-here'
-2. Update YOUR_PROMPT_HERE with your actual prompt
-3. Run: python generate_company_data_grok.py
+2. Run: python generate_company_data_grok.py
+
+IMPROVEMENTS:
+- Better filtering of Grok's reasoning process
+- Consistent title format enforcement
+- Cleaner output for website display
+- Realistic prompt given Grok's end-of-2024 data limitation
 """
 
 import os
 import json
 import time
+import re
 from datetime import datetime
 from pathlib import Path
 
@@ -30,40 +36,162 @@ except ImportError:
 
 
 # ============================================================================
-# CONFIGURATION - UPDATE THESE VALUES
+# CONFIGURATION
 # ============================================================================
 
-# Your AI prompt for analyzing companies
-# Replace this with your actual prompt. Use {ticker} as a placeholder.
 YOUR_PROMPT = """
-You MUST use real-time web search to gather current information. Do not rely solely on training data. For the company (ticker: {ticker}), do a thorough review of all the latest discussions, articles, announcements, online talking points, earnings calls transcripts, etc. With this information, generate a company profile sell-side analysis report that includes a company overview (high-level summary of what the company does in 100-300 words), recent developments, growth strategy, company and sector headwinds and tailwinds, existing products/services, new products/services/projects that are being planned or developed, market share approximations by percent, forecast of growth or decline in market share, comparison to competitors, partnerships, M&A, current and potential major clients, and other qualitative measures associated with the company. Get as specific as possible. Include dates of specific events when possible and applicable. ONLY provide quantitative values for information from earnings reports and equivalents- such as revenues, earnings, gross margins, etc. – if they are from verified and recent (less than 6 months old) sources. Stock price and market capitalization information should be the verified values from sources that are up to date of the current day. Do NOT make up these values and dates. Given all the information you have gathered, latest stock price and company fundamentals, and general understanding of markets, give a "Buy Rating" on a scale of 1 to 10 based on if the stock should be "bought, held or sold", and an estimated fair value price for the stock for a portfolio looking for strong growth upside and a moderate risk appetite. Organize your output in an easily digestible format including using bullet points, tables, etc where appropriate to allow for fast reading without sacrificing context or level of detail.
+For the company (ticker: {ticker}), generate a comprehensive sell-side analysis report. Use your knowledge base to provide detailed analysis including: company overview (high-level summary of what the company does in 100-300 words), recent developments, growth strategy, company and sector headwinds and tailwinds, existing products/services, new products/services/projects that are being planned or developed, market share approximations by percent, forecast of growth or decline in market share, comparison to competitors, partnerships, M&A, current and potential major clients, and other qualitative measures associated with the company. 
+
+Get as specific as possible. Include dates of specific events when possible and applicable. ONLY provide quantitative values for information from earnings reports (revenues, earnings, gross margins, etc.) if they are from verified sources. For stock price and market capitalization, use the most recent data you have available. Do NOT make up values and dates.
+
+Given all the information you have, provide a "Buy Rating" on a scale of 1 to 10 based on whether the stock should be "bought, held or sold", and an estimated fair value price for the stock for a portfolio looking for strong growth upside and a moderate risk appetite. Organize your output in an easily digestible format including using bullet points, tables, etc where appropriate to allow for fast reading without sacrificing context or level of detail.
+
+CRITICAL: Start your report with EXACTLY this title format (replace with actual company name):
+# [Company Name] ({ticker}) - Comprehensive Analysis Report
+
+Then organize the report in the following sections:
+
+## 1. Company Overview
+## 2. Current Market Data
+## 3. Existing Products/Services
+## 4. Planned Products/Services/Projects
+## 5. Growth Strategy
+## 6. Current and Potential Major Clients
+## 7. Financial Data & Performance
+## 8. Market Shares
+## 9. Comparison to Competitors
+## 10. Partnerships, Mergers and Acquisitions
+## 11. Recent Developments
+## 12. AI Investment Rating & Fair Value Assessment
+
+Do NOT include any preamble, reasoning steps, or explanatory text before the title. Start directly with the # title.
 """
 
-# Directory to save the generated data
 DATA_DIR = "data"
 
-# List of US stock tickers to process
-# NOTE: For large lists, consider processing in batches to manage rate limits
+# Tickers to process - customize this list
 TICKERS = [
     "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "TSLA", "BRK.B",
     "V", "UNH", "JNJ", "WMT", "JPM", "MA", "PG", "XOM", "HD", "CVX",
-    "MRK", "ABBV", "KO", "PEP", "COST", "AVGO", "TMO", "MCD", "CSCO",
-    "ABT", "ACN", "DHR", "VZ", "ADBE", "NKE", "TXN", "CRM", "NFLX",
-    "PM", "CMCSA", "NEE", "UPS", "BMY", "ORCL", "AMD", "QCOM", "HON",
-    "RTX", "UNP", "INTC", "AMGN", "COP", "LOW", "BA", "SPGI", "IBM",
-    # Add more tickers here...
 ]
 
 # API settings
-# NOTE: Grok has different rate limits than Claude
-# Adjust these based on your actual rate limit experience
-MAX_RETRIES = 5  # Increased retries
-RETRY_DELAY = 120  # Wait 2 minutes on retry
+MAX_RETRIES = 5
+RETRY_DELAY = 120  # 2 minutes
 REQUEST_DELAY = 10  # 10 seconds between requests
 
 
 # ============================================================================
-# MAIN CODE
+# HELPER FUNCTIONS
+# ============================================================================
+
+def clean_thinking_text(content):
+    """
+    Remove Grok's reasoning/thinking text and extract only the final report.
+    """
+    
+    # Common thinking patterns to remove (case-insensitive)
+    thinking_patterns = [
+        r"(?i)^.*?I'll (conduct|search|analyze|gather|provide|create).*?(?=\n#|\n##|$)",
+        r"(?i)^.*?Let me (search|conduct|analyze|gather|compile|create).*?(?=\n#|\n##|$)",
+        r"(?i)^.*?Now (I'll|let me|I will).*?(?=\n#|\n##|$)",
+        r"(?i)^.*?Based on (my|the) (research|search|analysis|information).*?(?=\n#|\n##|$)",
+        r"(?i)^.*?I (have|will) (gathered|compiled|analyzed).*?(?=\n#|\n##|$)",
+        r"(?i)^.*?After (searching|analyzing|reviewing).*?(?=\n#|\n##|$)",
+        r"(?i)^.*?First,? (I'll|let me|I will).*?(?=\n#|\n##|$)",
+        r"(?i)^.*?Here's (a|the) (comprehensive|detailed).*?(?=\n#|\n##|$)",
+    ]
+    
+    # Apply all thinking patterns
+    for pattern in thinking_patterns:
+        content = re.sub(pattern, '', content, flags=re.DOTALL | re.MULTILINE)
+    
+    # Remove any lines that look like thinking before the first header
+    lines = content.split('\n')
+    clean_lines = []
+    found_header = False
+    
+    for line in lines:
+        # Check if this is a markdown header (# or ##)
+        if re.match(r'^#{1,6}\s+', line):
+            found_header = True
+            clean_lines.append(line)
+        elif found_header:
+            # After finding first header, include everything
+            clean_lines.append(line)
+        elif not line.strip():
+            # Keep blank lines
+            clean_lines.append(line)
+        elif any(phrase in line.lower() for phrase in [
+            "i'll", "let me", "now i", "first,", "based on", "here's",
+            "after searching", "i have", "i will", "i've compiled"
+        ]):
+            # Skip lines that look like thinking
+            continue
+        else:
+            # If we haven't found a header yet but line looks like content, keep it
+            if len(line) > 50:  # Substantial content line
+                clean_lines.append(line)
+    
+    return '\n'.join(clean_lines).strip()
+
+
+def enforce_title_format(content, ticker):
+    """
+    Ensure the report starts with the correct title format.
+    """
+    
+    lines = content.split('\n')
+    
+    # Look for the first # header
+    first_header_idx = -1
+    for i, line in enumerate(lines):
+        if re.match(r'^#\s+', line):
+            first_header_idx = i
+            break
+    
+    # If no title found, add one at the beginning
+    if first_header_idx == -1:
+        # Try to extract company name from any h2 headers
+        company_name = None
+        for line in lines:
+            if re.match(r'^##\s+', line):
+                match = re.search(r'##\s+([^-\(]+)', line)
+                if match:
+                    company_name = match.group(1).strip()
+                    break
+        
+        if not company_name:
+            company_name = ticker  # Fallback
+        
+        title = f"# {company_name} ({ticker}) - Comprehensive Analysis Report\n\n"
+        return title + content
+    
+    # Title exists, check if it's in the right format
+    current_title = lines[first_header_idx]
+    
+    # Check if it already has the correct format
+    if f"({ticker})" in current_title and "Comprehensive Analysis Report" in current_title:
+        return content  # Already correct
+    
+    # Otherwise, try to extract company name and fix the title
+    match = re.search(r'#\s+([^-\(]+)', current_title)
+    if match:
+        company_name = match.group(1).strip()
+        company_name = re.sub(r'\s*(Inc\.?|Corp\.?|Corporation|Company|Ltd\.?).*$', '', company_name, flags=re.IGNORECASE)
+        company_name = re.sub(r'\s*\([A-Z]+\).*$', '', company_name)
+    else:
+        company_name = ticker  # Fallback
+    
+    # Create corrected title
+    new_title = f"# {company_name} ({ticker}) - Comprehensive Analysis Report"
+    lines[first_header_idx] = new_title
+    
+    return '\n'.join(lines)
+
+
+# ============================================================================
+# MAIN FUNCTIONS
 # ============================================================================
 
 def setup_data_directory():
@@ -89,13 +217,6 @@ def check_api_key():
 def generate_company_data(client, ticker):
     """
     Generate company data for a single ticker using Grok API
-    
-    Args:
-        client: OpenAI client instance configured for xAI
-        ticker: Stock ticker symbol
-        
-    Returns:
-        dict: Company data or None if failed
     """
     prompt = YOUR_PROMPT.format(ticker=ticker)
     
@@ -108,7 +229,7 @@ def generate_company_data(client, ticker):
                 messages=[
                     {
                         "role": "system",
-                        "content": "You have access to real-time information. Provide comprehensive, accurate analysis with verified financial data from reliable sources. Only report events and dates that have actually occurred."
+                        "content": "You are a financial analyst creating sell-side research reports. Provide comprehensive, accurate analysis based on verified data. Only report events and dates that have actually occurred. Be concise and start directly with the report title."
                     },
                     {
                         "role": "user", 
@@ -121,31 +242,18 @@ def generate_company_data(client, ticker):
             
             content = response.choices[0].message.content
             
-            # Filter out any thinking process if present
-            # Grok may include reasoning steps, we only want the final report
-            if "I'll conduct" in content or "Let me search" in content:
-                # Try to extract just the report section
-                lines = content.split('\n')
-                filtered_lines = []
-                skip_thinking = True
-                
-                for line in lines:
-                    # Look for report start indicators
-                    if any(indicator in line.lower() for indicator in ['# ', '## ', 'company overview', 'executive summary', 'sell-side']):
-                        skip_thinking = False
-                    
-                    if not skip_thinking:
-                        filtered_lines.append(line)
-                
-                if filtered_lines:
-                    content = '\n'.join(filtered_lines)
+            # Clean up any thinking/reasoning text
+            content = clean_thinking_text(content)
+            
+            # Enforce consistent title format
+            content = enforce_title_format(content, ticker)
             
             # Add disclaimer at the top
             disclaimer = """**Disclaimer:** This sell-side report was generated using Grok 4.1 Fast Reasoning (grok-4-1-fast-reasoning). Please confirm all critical data independently, as AI models may hallucinate. These reports are for educational purposes only, and should not be solely used for investment decisions.
 
-Grok's API is currently limited to information up to the **end of 2024**. Claude's Sonnet 4.5 has access to up-to-date information, but is considerably more expensive per output (nearly $1 per ticker). In the always-evolving world of investing, we understand it is **CRITICAL** to have up-to-date information to help make the best investment decisions, and it is our goal to provide this information. But considering there are thousands of companies that we would ideally be updating monthly, as well as future goals of also providing quick and digestible summaries and insights for newly released earnings and conference calls, breaking news, FED speeches, etc, this quickly becomes very costly.
+**Data Limitation:** Grok's knowledge is limited to information available through the **end of 2024**. For the most current market data, earnings reports, and recent developments, please verify with up-to-date sources or consider our Claude Sonnet 4.5-powered reports which have real-time web search capabilities.
 
-For this reason, please consider **subscribing to our Patreon** or donating to enable QuickTick AI to provide as much value and up-to-date insight as possible to **allow you to make the most informed investment decisions with a level of efficiency not possible even a few years ago.** 100% of the funds will go straight to purchasing more API credits to continue expanding our high quality, up-to-date analysis for more and more companies, and further then into our future value-generating plans. Thanks! - QuickTick AI
+**Support QuickTick AI:** Claude Sonnet 4.5 provides superior, real-time analysis but costs significantly more per report (~$0.18 vs ~$0.01). To help us provide the most current analysis across all companies, plus future features like earnings summaries, breaking news digests, and Fed speech analysis, please consider supporting us on **[Patreon](https://patreon.com/QuickTickAI)**. 100% of funds go toward API costs to bring you the best investment intelligence tools.
 
 ---
 
@@ -166,14 +274,12 @@ For this reason, please consider **subscribing to our Patreon** or donating to e
             print(f"✗ (Attempt {attempt + 1}/{MAX_RETRIES})")
             print(f"    Error: {error_msg}")
             
-            # Check if it's a rate limit error
             is_rate_limit = "rate_limit" in error_msg.lower() or "429" in error_msg
             
             if is_rate_limit:
                 print(f"    Rate limit hit - waiting longer before retry")
             
             if attempt < MAX_RETRIES - 1:
-                # Use exponential backoff for rate limits
                 wait_time = RETRY_DELAY * (2 ** attempt) if is_rate_limit else RETRY_DELAY
                 print(f"    Retrying in {wait_time} seconds...")
                 time.sleep(wait_time)
@@ -206,11 +312,9 @@ def main():
     print("=" * 60)
     print()
     
-    # Setup
     setup_data_directory()
     api_key = check_api_key()
     
-    # Initialize OpenAI client with xAI endpoint
     client = OpenAI(
         api_key=api_key,
         base_url="https://api.x.ai/v1"
@@ -219,30 +323,24 @@ def main():
     print(f"\nProcessing {len(TICKERS)} tickers...")
     print("=" * 60)
     
-    # Statistics
     successful = 0
     failed = 0
     start_time = time.time()
     
-    # Process each ticker
     for i, ticker in enumerate(TICKERS, 1):
         print(f"\n[{i}/{len(TICKERS)}] Processing {ticker}:")
         
-        # Generate data
         data = generate_company_data(client, ticker)
         
-        # Save data
         if save_company_data(data, ticker):
             print(f"  Saved to {DATA_DIR}/{ticker}.json")
             successful += 1
         else:
             failed += 1
         
-        # Rate limiting - wait between requests
         if i < len(TICKERS):
             time.sleep(REQUEST_DELAY)
     
-    # Final statistics
     elapsed_time = time.time() - start_time
     print("\n" + "=" * 60)
     print("GENERATION COMPLETE")
