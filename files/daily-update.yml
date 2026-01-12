@@ -1,0 +1,85 @@
+name: Daily QuickTick Update
+
+# Runs every day at 1 AM EST (6 AM UTC in winter, 5 AM UTC in summer)
+# Using 6 AM UTC as the schedule (works for standard time)
+on:
+  schedule:
+    - cron: '0 6 * * *'  # 6 AM UTC = 1 AM EST
+  workflow_dispatch:  # Allows manual triggering from GitHub UI
+
+jobs:
+  update-companies:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      # Step 2: Set up Python
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install anthropic
+      
+      # Step 4: Run the data generation script
+      - name: Generate company data
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python generate_company_data.py
+      
+      # Step 5: Configure Git
+      - name: Configure Git
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "GitHub Actions Bot"
+      
+      # Step 6: Commit and push changes
+      - name: Commit and push changes
+        run: |
+          git add data/*.json
+          git add current_day.txt
+          
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            # Get current day for commit message
+            CURRENT_DAY=$(cat current_day.txt)
+            PREV_DAY=$((CURRENT_DAY - 1))
+            if [ $PREV_DAY -eq 0 ]; then
+              PREV_DAY=91
+            fi
+            
+            git commit -m "Auto-update: Day ${PREV_DAY} companies refreshed"
+            git push
+          fi
+      
+      # Step 7: Summary
+      - name: Job summary
+        if: always()
+        run: |
+          echo "## QuickTick Update Complete! 🎉" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f current_day.txt ]; then
+            NEXT_DAY=$(cat current_day.txt)
+            PREV_DAY=$((NEXT_DAY - 1))
+            if [ $PREV_DAY -eq 0 ]; then
+              PREV_DAY=91
+            fi
+            echo "- ✅ Completed: Day ${PREV_DAY}/91" >> $GITHUB_STEP_SUMMARY
+            echo "- 📅 Next scheduled: Day ${NEXT_DAY}/91" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Updated files will automatically deploy to Cloudflare Pages." >> $GITHUB_STEP_SUMMARY

@@ -1,29 +1,31 @@
 """
-Quick Tick Data Generator - CLAUDE VERSION (IMPROVED)
+Quick Tick Data Generator - CLAUDE VERSION (ENHANCED)
 
-This script generates AI analysis for all publicly traded US companies.
-It uses Anthropic's Claude API to generate company information based on your prompt.
+This script generates AI analysis for publicly traded US companies.
+It uses Anthropic's Claude API with automatic day rotation for quarterly updates.
 
 Requirements:
 - Python 3.7+
 - anthropic library (install: pip install anthropic)
 - ANTHROPIC_API_KEY environment variable set
+- daily_buckets.py in the same directory
 
 Usage:
 1. Set your API key: export ANTHROPIC_API_KEY='your-key-here'
 2. Run: python generate_company_data.py
 
-IMPROVEMENTS:
-- Better filtering of Claude's thinking process
-- Consistent title format enforcement
-- Cleaner output for website display
+Features:
+- Automatic day tracking (1-91, cycles back to 1)
+- Generated date and next refresh date in reports
+- Prompt caching for cost savings
+- Better thinking text filtering
 """
 
 import os
 import json
 import time
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 try:
@@ -31,6 +33,13 @@ try:
 except ImportError:
     print("ERROR: anthropic library not installed")
     print("Install it with: pip install anthropic")
+    exit(1)
+
+try:
+    from daily_buckets import get_bucket
+except ImportError:
+    print("ERROR: daily_buckets.py not found")
+    print("Make sure daily_buckets.py is in the same directory")
     exit(1)
 
 
@@ -63,31 +72,42 @@ Do NOT include any preamble, thinking process, or explanatory text before the ti
 """
 
 DATA_DIR = "data"
-
-# Tickers to process - customize this list
-TICKERS = [
-    "TSLA", "NVDA", "PLTR", "AMZN", "AMD", "HOOD", "NVO", "GOOG", "GOOGL",
-    "MSFT", "MSTR", "AAPL", "TTD", "MU", "ORCL", "SOUN", "RBLX",
-    "OUST", "INOD", "RGTI", "PDYN", "SMR", "PATH", "BBAI", "SYM",
-    "CRM", "MVST", "ANET", "CLS", "CRWD", "ISRG", "ARM", "ZS",
-    "DDOG", "QBTS", "AMBA", "LSCC", "FTNT", "TOST", "NNE", "AMSC",
-    "APLD", "BKSY", "CELH", "PEGA", "IREN", "CRNC", "MS", "QUBT",
-    "AMPX", "CCJ", "EOSE", "ENVX", "ALAB", "AMAT", "ADP", "TER",
-    "TSM", "IONQ", "LWLG", "AI", "TEM", "NBIS", "AEVA", "SNOW",
-    "PANW", "S", "NOW", "UPST", "ROK", "VERI", "HOVR", "OSS",
-    "GEV", "EVLV", "CD", "PGY", "MP", "MOB", "SPAI", "DPRO",
-    "NVTS", "CRCL", "MDAI", "RZLV", "BZAI", "SUPX", "CGNX", "MDB",
-    "NET", "ESTC", "CFLT", "RDVT", "LTBR", "ARAI", "HIVE", "LIDR",
-    "BABA", "NKE", "V", "MA", "PGR", "RIOT", "GLXY", "IMSR",
-    "BE", "IDN", "APPN", "TSEM", "LITE", "COHR", "INFY", "CTSH",
-    "HCKT", "ACN",
-
-]
+DAY_TRACKER_FILE = "current_day.txt"
 
 # API settings
 MAX_RETRIES = 5
 RETRY_DELAY = 120  # 2 minutes
 REQUEST_DELAY = 20  # 20 seconds between requests
+
+
+# ============================================================================
+# DAY TRACKING FUNCTIONS
+# ============================================================================
+
+def get_current_day():
+    """Get the current day number (1-91) from tracker file"""
+    if Path(DAY_TRACKER_FILE).exists():
+        with open(DAY_TRACKER_FILE, 'r') as f:
+            try:
+                day = int(f.read().strip())
+                # Validate day is in range
+                if 1 <= day <= 91:
+                    return day
+            except ValueError:
+                pass
+    # Default to day 1 if file doesn't exist or is invalid
+    return 1
+
+
+def increment_day():
+    """Increment the day counter, cycling back to 1 after 91"""
+    current_day = get_current_day()
+    next_day = (current_day % 91) + 1  # Cycles: 1->2->...->91->1
+    
+    with open(DAY_TRACKER_FILE, 'w') as f:
+        f.write(str(next_day))
+    
+    return next_day
 
 
 # ============================================================================
@@ -302,8 +322,19 @@ def generate_company_data(client, ticker):
             # Enforce consistent title format
             content = enforce_title_format(content, ticker)
             
-            # Add disclaimer at the top
-            disclaimer = """**Disclaimer:** This sell-side report was generated using Claude Sonnet 4 (claude-sonnet-4-20250514). Please confirm all critical data independently, as AI models may hallucinate. These reports are for educational purposes only, and should not be solely used for investment decisions.
+            # Calculate dates
+            generated_date = datetime.now()
+            next_refresh_date = generated_date + timedelta(days=91)
+            
+            # Format dates for display
+            generated_str = generated_date.strftime("%B %d, %Y")
+            next_refresh_str = next_refresh_date.strftime("%B %d, %Y")
+            
+            # Add disclaimer at the top with date information
+            disclaimer = f"""**Report Generated:** {generated_str}  
+**Next Refresh:** {next_refresh_str}
+
+**Disclaimer:** This sell-side report was generated using Claude Sonnet 4 (claude-sonnet-4-20250514). Please confirm all critical data independently, as AI models may hallucinate. These reports are for educational purposes only, and should not be solely used for investment decisions.
 
 ---
 
@@ -313,7 +344,8 @@ def generate_company_data(client, ticker):
             return {
                 "ticker": ticker,
                 "content": content,
-                "generated_date": datetime.now().isoformat(),
+                "generated_date": generated_date.isoformat(),
+                "next_refresh_date": next_refresh_date.isoformat(),
                 "model": "claude-sonnet-4-20250514",
                 "cost": cost,
                 "tokens": {
@@ -373,9 +405,20 @@ def main():
     setup_data_directory()
     api_key = check_api_key()
     
+    # Get current day and tickers
+    current_day = get_current_day()
+    print(f"✓ Current day: {current_day}/91")
+    
+    try:
+        TICKERS = get_bucket(current_day)
+        print(f"✓ Loaded {len(TICKERS)} tickers for day {current_day}")
+    except Exception as e:
+        print(f"ERROR: Could not load tickers for day {current_day}: {e}")
+        exit(1)
+    
     client = Anthropic(api_key=api_key)
     
-    print(f"\nProcessing {len(TICKERS)} tickers...")
+    print(f"\nProcessing {len(TICKERS)} tickers for Day {current_day}...")
     print("=" * 60)
     
     successful = 0
@@ -391,7 +434,6 @@ def main():
         if save_company_data(data, ticker):
             print(f"  Saved to {DATA_DIR}/{ticker}.json")
             successful += 1
-            # Extract cost from the data if we tracked it
             if data and 'cost' in data:
                 total_cost += data['cost']
         else:
@@ -401,9 +443,15 @@ def main():
             time.sleep(REQUEST_DELAY)
     
     elapsed_time = time.time() - start_time
+    
+    # Increment day for next run
+    next_day = increment_day()
+    
     print("\n" + "=" * 60)
     print("GENERATION COMPLETE")
     print("=" * 60)
+    print(f"Day completed: {current_day}/91")
+    print(f"Next day: {next_day}/91")
     print(f"Successful: {successful}")
     print(f"Failed: {failed}")
     print(f"Total time: {elapsed_time:.1f} seconds ({elapsed_time/60:.1f} minutes)")
