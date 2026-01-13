@@ -138,7 +138,9 @@
         }
 
         .nav-link {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             color: var(--accent-cyan);
             text-decoration: none;
             font-size: 1rem;
@@ -167,6 +169,48 @@
         .nav-link.patreon-link:hover {
             border-color: #ff5a63;
             box-shadow: 0 5px 20px rgba(255, 66, 77, 0.5);
+        }
+
+        .nav-link.yolo-link {
+            background: linear-gradient(135deg, var(--accent-green), #00cc82);
+            color: var(--bg-primary);
+            border-color: var(--accent-green);
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .nav-link.yolo-link {
+            background: linear-gradient(135deg, var(--accent-green), #00cc82);
+            color: var(--bg-primary);
+            border-color: var(--accent-green);
+            text-align: center;
+            line-height: 1.2;
+            padding: 8px 16px;
+            min-width: 120px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-link.yolo-link:hover {
+            border-color: var(--accent-green);
+            box-shadow: 0 5px 20px rgba(0, 255, 163, 0.5);
+            transform: translateY(-2px) scale(1.02);
+        }
+
+        .nav-link.yolo-link .yolo-text {
+            display: block;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .nav-link.yolo-link .random-text {
+            display: block;
+            font-size: 0.65rem;
+            font-weight: 600;
+            opacity: 0.9;
+            text-transform: none;
         }
 
         @keyframes fadeInDown {
@@ -440,6 +484,10 @@
             <p class="tagline">Intelligent Investing. Instant Insights.</p>
             <nav class="main-nav">
                 <a href="about.html" class="nav-link">About</a>
+                <a href="#" class="nav-link yolo-link" id="randomButton">
+                    <span class="yolo-text">YOLO</span>
+                    <span class="random-text">Random Ticker</span>
+                </a>
                 <a href="patreon.html" class="nav-link patreon-link">Patreon</a>
             </nav>
         </header>
@@ -553,6 +601,31 @@
         // Auto-uppercase input
         searchInput.addEventListener('input', (e) => {
             e.target.value = e.target.value.toUpperCase();
+        });
+
+        // Random ticker button (YOLO)
+        const randomButton = document.getElementById('randomButton');
+        randomButton.addEventListener('click', async (e) => {
+            e.preventDefault();
+            
+            try {
+                // Fetch the company lookup JSON
+                const response = await fetch('company_lookup.json');
+                const companies = await response.json();
+                
+                // Get all ticker symbols
+                const tickers = Object.keys(companies);
+                
+                // Select a random ticker
+                const randomIndex = Math.floor(Math.random() * tickers.length);
+                const randomTicker = tickers[randomIndex];
+                
+                // Redirect to the random company page
+                window.location.href = `company.html?ticker=${randomTicker}`;
+            } catch (error) {
+                console.error('Error loading random ticker:', error);
+                showError('Unable to load random ticker. Please try searching manually.');
+            }
         });
     </script>
 </body>
