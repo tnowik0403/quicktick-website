@@ -34,6 +34,7 @@ jobs:
       - name: Generate company data
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        working-directory: ./files
         run: |
           python generate_company_data.py
       
@@ -46,15 +47,15 @@ jobs:
       # Step 6: Commit and push changes
       - name: Commit and push changes
         run: |
-          git add data/*.json
-          git add current_day.txt
+          git add files/data/*.json
+          git add files/current_day.txt
           
           # Check if there are changes to commit
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
             # Get current day for commit message
-            CURRENT_DAY=$(cat current_day.txt)
+            CURRENT_DAY=$(cat files/current_day.txt)
             PREV_DAY=$((CURRENT_DAY - 1))
             if [ $PREV_DAY -eq 0 ]; then
               PREV_DAY=91
@@ -71,8 +72,8 @@ jobs:
           echo "## QuickTick Update Complete! 🎉" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
-          if [ -f current_day.txt ]; then
-            NEXT_DAY=$(cat current_day.txt)
+          if [ -f files/current_day.txt ]; then
+            NEXT_DAY=$(cat files/current_day.txt)
             PREV_DAY=$((NEXT_DAY - 1))
             if [ $PREV_DAY -eq 0 ]; then
               PREV_DAY=91
