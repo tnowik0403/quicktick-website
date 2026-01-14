@@ -366,6 +366,71 @@
             border-bottom-color: var(--accent-cyan);
         }
 
+        /* TLDR Summary Panel */
+        .tldr-container {
+            background: rgba(0, 212, 255, 0.05);
+            border-left: 4px solid var(--accent-cyan);
+            border-radius: 8px;
+            margin: 0 0 30px 0;
+            overflow: hidden;
+        }
+
+        .tldr-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.3s ease;
+        }
+
+        .tldr-header:hover {
+            background: rgba(0, 212, 255, 0.08);
+        }
+
+        .tldr-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            letter-spacing: 0.5px;
+        }
+
+        .tldr-arrow {
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            transition: transform 0.3s ease;
+        }
+
+        .tldr-arrow.open {
+            transform: rotate(180deg);
+        }
+
+        .tldr-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .tldr-content.open {
+            max-height: 1000px;
+        }
+
+        .tldr-text {
+            padding: 0 20px 20px 20px;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .tldr-unavailable {
+            padding: 0 20px 20px 20px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            opacity: 0.7;
+        }
+
         .company-info ul, .company-info ol {
             margin: 15px 0 20px 25px;
             color: var(--text-secondary);
@@ -553,9 +618,38 @@
         }
 
         // Function to format the company data nicely
-        function formatCompanyData(text) {
+        function formatCompanyData(text, tldrSummary) {
             // Convert markdown-style formatting to HTML
             let formatted = text;
+            
+            // STEP 0: Create TLDR panel if summary exists
+            let tldrHTML = '';
+            if (tldrSummary && tldrSummary.trim()) {
+                tldrHTML = `
+                    <div class="tldr-container">
+                        <div class="tldr-header" onclick="toggleTLDR()">
+                            <span class="tldr-title">TLDR SUMMARY</span>
+                            <span class="tldr-arrow" id="tldrArrow">▼</span>
+                        </div>
+                        <div class="tldr-content" id="tldrContent">
+                            <div class="tldr-text">${tldrSummary}</div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                // Show panel with "not available" message
+                tldrHTML = `
+                    <div class="tldr-container">
+                        <div class="tldr-header" onclick="toggleTLDR()">
+                            <span class="tldr-title">TLDR SUMMARY</span>
+                            <span class="tldr-arrow" id="tldrArrow">▼</span>
+                        </div>
+                        <div class="tldr-content" id="tldrContent">
+                            <div class="tldr-unavailable">Summary not yet available</div>
+                        </div>
+                    </div>
+                `;
+            }
             
             // STEP 1: Extract and style the disclaimer section
             // Look for text starting with **Disclaimer:** up to the --- separator
@@ -637,8 +731,17 @@
                 formatted = formatted + '</p>';
             }
 
-            // STEP 8: Prepend disclaimer at the top
-            return disclaimerHTML + formatted;
+            // STEP 8: Prepend TLDR and disclaimer at the top
+            return tldrHTML + disclaimerHTML + formatted;
+        }
+
+        // Toggle TLDR panel
+        function toggleTLDR() {
+            const content = document.getElementById('tldrContent');
+            const arrow = document.getElementById('tldrArrow');
+            
+            content.classList.toggle('open');
+            arrow.classList.toggle('open');
         }
 
         // Load company data
@@ -668,8 +771,9 @@
 
                 const data = await response.json();
                 
-                // Display the data
-                companyInfo.innerHTML = formatCompanyData(data.content);
+                // Display the data with TLDR summary
+                const tldrSummary = data.tldr_summary || '';
+                companyInfo.innerHTML = formatCompanyData(data.content, tldrSummary);
                 
                 // Update ticker display with company name and sub-industry
                 if (companyMeta) {

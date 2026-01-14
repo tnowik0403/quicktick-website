@@ -38,13 +38,21 @@ jobs:
         run: |
           python generate_company_data.py
       
-      # Step 5: Configure Git
+      # Step 5: Generate TLDR summaries
+      - name: Generate TLDR summaries
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        working-directory: ./files
+        run: |
+          python generate_summaries.py
+      
+      # Step 6: Configure Git
       - name: Configure Git
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "GitHub Actions Bot"
       
-      # Step 6: Commit and push changes
+      # Step 7: Commit and push changes
       - name: Commit and push changes
         run: |
           git add files/data/*.json
@@ -65,7 +73,7 @@ jobs:
             git push
           fi
       
-      # Step 7: Summary
+      # Step 8: Job summary
       - name: Job summary
         if: always()
         run: |
