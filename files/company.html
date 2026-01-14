@@ -32,15 +32,15 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #0a0e1a;
-            --bg-secondary: #141b2d;
-            --bg-card: #1a2332;
-            --text-primary: #e8eaed;
-            --text-secondary: #9aa0aa;
+            --bg-primary: #1a1a2e;
+            --bg-secondary: #252547;
+            --bg-card: #1f2937;
+            --text-primary: #d4d4d4;
+            --text-secondary: #9ca3af;
             --accent-green: #00ffa3;
             --accent-cyan: #00d4ff;
-            --accent-red: #ff4d6d;
-            --border: #2a3447;
+            --accent-red: #ef4444;
+            --border: #374151;
         }
 
         * {
@@ -54,7 +54,8 @@
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
-            line-height: 1.6;
+            line-height: 1.7;
+            font-size: 17px;
         }
 
         body::before {
@@ -84,6 +85,12 @@
             padding: 20px;
             position: relative;
             z-index: 1;
+        }
+
+        /* Content wrapper for optimal reading width */
+        .content-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         nav {
@@ -278,7 +285,7 @@
 
         .company-info p {
             margin-bottom: 20px;
-            color: var(--text-secondary);
+            color: var(--text-primary);
         }
 
         /* Disclaimer styling - targets the first few paragraphs before the separator */
@@ -420,7 +427,7 @@
             padding: 0 20px 20px 20px;
             font-size: 0.9rem;
             line-height: 1.8;
-            color: var(--text-secondary);
+            color: var(--text-primary);
         }
 
         .tldr-unavailable {
@@ -433,7 +440,7 @@
 
         .company-info ul, .company-info ol {
             margin: 15px 0 20px 25px;
-            color: var(--text-secondary);
+            color: var(--text-primary);
         }
 
         .company-info li {
@@ -563,22 +570,24 @@
             <a href="index.html" class="retry-button">Search Another Ticker</a>
         </div>
 
-        <div class="content-card" id="contentCard">
-            <div class="company-info" id="companyInfo"></div>
-            <div class="data-notice">
-                This information is AI-generated and updated quarterly. Always verify critical information with official sources.
+        <div class="content-wrapper">
+            <div class="content-card" id="contentCard">
+                <div class="company-info" id="companyInfo"></div>
+                <div class="data-notice">
+                    This information is AI-generated and updated quarterly. Always verify critical information with official sources.
+                </div>
             </div>
-        </div>
 
-        <footer style="text-align: center; padding: 40px 20px 30px; color: var(--text-secondary); font-size: 0.85rem;">
-            <p>Quick Tick &copy; 2026 | AI-Powered Stock Analysis</p>
-            <p style="margin-top: 10px; font-size: 0.85rem;">
-                <a href="index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> | 
-                <a href="about.html" style="color: var(--accent-cyan); text-decoration: none;">About</a> | 
-                <a href="patreon.html" style="color: var(--accent-cyan); text-decoration: none;">Support Us</a> | 
-                <a href="disclaimer.html" style="color: var(--accent-cyan); text-decoration: none;">Disclaimer</a>
-            </p>
-        </footer>
+            <footer style="text-align: center; padding: 40px 20px 30px; color: var(--text-secondary); font-size: 0.85rem;">
+                <p>Quick Tick &copy; 2026 | AI-Powered Stock Analysis</p>
+                <p style="margin-top: 10px; font-size: 0.85rem;">
+                    <a href="index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> | 
+                    <a href="about.html" style="color: var(--accent-cyan); text-decoration: none;">About</a> | 
+                    <a href="patreon.html" style="color: var(--accent-cyan); text-decoration: none;">Support Us</a> | 
+                    <a href="disclaimer.html" style="color: var(--accent-cyan); text-decoration: none;">Disclaimer</a>
+                </p>
+            </footer>
+        </div>
     </div>
 
     <script>
