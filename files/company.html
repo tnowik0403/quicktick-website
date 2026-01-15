@@ -1088,6 +1088,11 @@
                 loadingContainer.style.display = 'none';
                 contentCard.style.display = 'block';
 
+                // Build navigation after content is visible
+                setTimeout(() => {
+                    buildNavigation();
+                }, 100);
+
             } catch (error) {
                 console.error('Error loading company data:', error);
                 loadingContainer.style.display = 'none';
@@ -1103,52 +1108,63 @@
             const companyInfo = document.getElementById('companyInfo');
             const navList = document.getElementById('navSidebarList');
             
-            // Wait a bit for content to be fully rendered
-            setTimeout(() => {
-                // Find all H2 headings in the company info
-                const headings = companyInfo.querySelectorAll('h2');
+            if (!companyInfo || !navList) {
+                console.log('Navigation elements not found');
+                return;
+            }
+            
+            // Find all H2 headings in the company info
+            const headings = companyInfo.querySelectorAll('h2');
+            
+            console.log('Found headings:', headings.length);
+            
+            if (headings.length === 0) {
+                console.log('No H2 headings found, retrying...');
+                // Retry after a bit more time
+                setTimeout(buildNavigation, 500);
+                return;
+            }
+            
+            // Clear existing nav items
+            navList.innerHTML = '';
+            
+            // Create nav items for each heading
+            headings.forEach((heading, index) => {
+                // Add an ID to the heading if it doesn't have one
+                if (!heading.id) {
+                    heading.id = `section-${index}`;
+                }
                 
-                if (headings.length === 0) return;
+                const li = document.createElement('li');
+                li.className = 'nav-sidebar-item';
                 
-                // Clear existing nav items
-                navList.innerHTML = '';
+                const a = document.createElement('a');
+                a.className = 'nav-sidebar-link';
+                a.href = `#${heading.id}`;
+                a.textContent = heading.textContent.trim();
+                a.dataset.sectionId = heading.id;
                 
-                // Create nav items for each heading
-                headings.forEach((heading, index) => {
-                    // Add an ID to the heading if it doesn't have one
-                    if (!heading.id) {
-                        heading.id = `section-${index}`;
+                // Smooth scroll on click
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                    // Close mobile nav if open
+                    if (window.innerWidth <= 1200) {
+                        document.getElementById('navSidebar').classList.remove('mobile-open');
                     }
-                    
-                    const li = document.createElement('li');
-                    li.className = 'nav-sidebar-item';
-                    
-                    const a = document.createElement('a');
-                    a.className = 'nav-sidebar-link';
-                    a.href = `#${heading.id}`;
-                    a.textContent = heading.textContent.trim();
-                    a.dataset.sectionId = heading.id;
-                    
-                    // Smooth scroll on click
-                    a.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        
-                        // Close mobile nav if open
-                        if (window.innerWidth <= 1200) {
-                            document.getElementById('navSidebar').classList.remove('mobile-open');
-                        }
-                    });
-                    
-                    li.appendChild(a);
-                    navList.appendChild(li);
                 });
                 
-                // Start tracking scroll position
-                updateActiveSection();
-                window.addEventListener('scroll', updateActiveSection);
-                window.addEventListener('resize', updateActiveSection);
-            }, 500);
+                li.appendChild(a);
+                navList.appendChild(li);
+            });
+            
+            console.log('Navigation built successfully');
+            
+            // Start tracking scroll position
+            updateActiveSection();
+            window.addEventListener('scroll', updateActiveSection);
+            window.addEventListener('resize', updateActiveSection);
         }
 
         function updateActiveSection() {
@@ -1228,12 +1244,8 @@
             }
         }
 
-        // Build navigation after content loads
-        const originalLoadCompanyData = loadCompanyData;
-        loadCompanyData = async function() {
-            await originalLoadCompanyData();
-            buildNavigation();
-        };
+        // Start loading
+        loadCompanyData();
     </script>
 </body>
 </html>
