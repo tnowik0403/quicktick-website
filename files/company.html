@@ -220,16 +220,11 @@
         /* Mobile styles */
         @media (max-width: 1200px) {
             .nav-sidebar {
-                left: -200px;
-                transition: left 0.3s ease;
-            }
-
-            .nav-sidebar.mobile-open {
-                left: 15px;
+                display: none; /* Completely hide sidebar on mobile */
             }
 
             .mobile-nav-toggle {
-                display: flex;
+                display: none; /* Completely hide hamburger button on mobile */
             }
         }
 
@@ -551,7 +546,7 @@
             background: rgba(0, 212, 255, 0.05);
             border-left: 4px solid var(--accent-cyan);
             border-radius: 8px;
-            padding: 20px 25px;
+            padding: 12px 25px 20px 25px;
             margin: 0 0 40px 0;
             font-size: 0.9rem;
             line-height: 1.8;
@@ -716,14 +711,7 @@
         }
 
         .data-notice {
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+            display: none; /* Hide this box completely */
         }
 
         @media (max-width: 768px) {
