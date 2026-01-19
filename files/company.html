@@ -1691,15 +1691,16 @@
             }
             
             try {
-                // Using alternative API that works from browser
                 const period2 = Math.floor(Date.now() / 1000);
                 const period1 = period2 - (180 * 24 * 60 * 60); // 6 months
                 
-                // Yahoo Finance API (free, no CORS issues)
+                // Using CORS proxy
                 const apiUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?period1=${period1}&period2=${period2}&interval=1d`;
-                console.log('Fetching chart data from Yahoo Finance...');
+                const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`;
                 
-                const response = await fetch(apiUrl);
+                console.log('Fetching chart data via CORS proxy...');
+                
+                const response = await fetch(proxyUrl);
                 
                 console.log('API Response status:', response.status);
                 
@@ -1738,7 +1739,7 @@
                 }
             } catch (error) {
                 console.error('Error loading chart:', error);
-                document.getElementById('chartLoading').textContent = 'Error: ' + error.message;
+                document.getElementById('chartLoading').textContent = 'Unable to load chart. Try refreshing the page.';
             }
         }
 
@@ -1804,9 +1805,11 @@
             try {
                 // Yahoo Finance quoteSummary API for fundamentals
                 const apiUrl = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${ticker}?modules=defaultKeyStatistics,financialData,summaryDetail`;
-                console.log('Fetching key ratios from Yahoo Finance...');
+                const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(apiUrl)}`;
                 
-                const response = await fetch(apiUrl);
+                console.log('Fetching key ratios via CORS proxy...');
+                
+                const response = await fetch(proxyUrl);
                 
                 if (!response.ok) throw new Error('Failed to fetch ratios');
                 
@@ -1827,7 +1830,7 @@
                 }
             } catch (error) {
                 console.error('Error loading ratios:', error);
-                document.getElementById('ratiosGrid').innerHTML = '<div class="chart-loading">Error loading ratios</div>';
+                document.getElementById('ratiosGrid').innerHTML = '<div class="chart-loading">Unable to load ratios. Try refreshing the page.</div>';
             }
         }
 
