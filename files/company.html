@@ -1706,10 +1706,10 @@
                 "width": "100%",
                 "height": 350,
                 "symbol": ticker,
-                "interval": "D", // Daily candlesticks as default
+                "interval": "D",
                 "timezone": "America/New_York",
                 "theme": "dark",
-                "style": "1", // Candlestick style
+                "style": "1",
                 "locale": "en",
                 "toolbar_bg": "#131426",
                 "enable_publishing": false,
@@ -1725,13 +1725,9 @@
                 "show_popup_button": false,
                 "popup_width": "1000",
                 "popup_height": "650",
-                "range": "6M", // Show 6 months of data by default
-                "time_frames": [
-                    { "text": "5m", "resolution": "5" },
-                    { "text": "1h", "resolution": "60" },
-                    { "text": "1d", "resolution": "D" },
-                    { "text": "1w", "resolution": "W" }
-                ]
+                "disabled_features": ["use_localstorage_for_settings"],
+                "client_id": "quicktick_" + Date.now(),
+                "user_id": "quicktick_user"
             });
         }
 
