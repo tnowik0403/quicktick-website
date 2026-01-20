@@ -1819,20 +1819,17 @@
             try {
                 console.log('Fetching fundamentals data for:', ticker);
                 
-                // Fetch data sources (hybrid: Finnhub + Yahoo Finance for missing metrics)
-                const [metricsResponse, earningsResponse, quoteResponse, yahooResponse] = await Promise.all([
+                // Fetch data sources - Finnhub only
+                const [metricsResponse, earningsResponse, quoteResponse] = await Promise.all([
                     fetch(`https://finnhub.io/api/v1/stock/metric?symbol=${ticker}&metric=all&token=${FINNHUB_API_KEY}`),
                     fetch(`https://finnhub.io/api/v1/calendar/earnings?symbol=${ticker}&token=${FINNHUB_API_KEY}`),
-                    fetch(`https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${FINNHUB_API_KEY}`),
-                    // Yahoo Finance for: Income, Debt/Equity, Next Earnings
-                    fetch(`https://query1.finance.yahoo.com/v10/finance/quoteSummary/${ticker}?modules=defaultKeyStatistics,financialData,calendarEvents`)
+                    fetch(`https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${FINNHUB_API_KEY}`)
                 ]);
                 
                 console.log('API responses received:', {
                     finnhubMetrics: metricsResponse.status,
                     finnhubEarnings: earningsResponse.status,
-                    finnhubQuote: quoteResponse.status,
-                    yahooFinance: yahooResponse.status
+                    finnhubQuote: quoteResponse.status
                 });
                 
                 if (!metricsResponse.ok) {
@@ -1843,21 +1840,18 @@
                 const metrics = await metricsResponse.json();
                 const earnings = earningsResponse.ok ? await earningsResponse.json() : null;
                 const quote = quoteResponse.ok ? await quoteResponse.json() : null;
-                const yahoo = yahooResponse.ok ? await yahooResponse.json() : null;
                 
                 console.log('Parsed data:', {
                     finnhubMetrics: !!metrics.metric,
                     finnhubEarnings: !!earnings,
-                    finnhubQuote: !!quote,
-                    yahooData: !!yahoo
+                    finnhubQuote: !!quote
                 });
                 
-                // Combine all data (hybrid approach)
+                // Combine all data
                 const combinedData = {
                     metrics: metrics,
                     earnings: earnings,
                     quote: quote,
-                    yahoo: yahoo,  // Yahoo Finance for missing metrics
                     chartData: null
                 };
                 
@@ -1920,18 +1914,6 @@
             const quote = data.quote || {};
             const chartData = data.chartData || null;
             
-            // Yahoo Finance data (for missing metrics)
-            const yahooResult = data.yahoo?.quoteSummary?.result?.[0] || {};
-            const yahooFinancials = yahooResult.financialData || {};
-            const yahooStats = yahooResult.defaultKeyStatistics || {};
-            const yahooCalendar = yahooResult.calendarEvents || {};
-            
-            console.log('Yahoo Finance data extracted:', {
-                financialData: yahooFinancials,
-                keyStats: yahooStats,
-                calendar: yahooCalendar
-            });
-            
             const ratiosGrid = document.getElementById('ratiosGrid');
             
             // Helper function to safely get values
@@ -1973,13 +1955,10 @@
                 ? (peRatio / (Math.abs(epsGrowth5Y) > 1 ? epsGrowth5Y : epsGrowth5Y * 100)).toFixed(2) 
                 : null;
             
-            // Next Earnings Date - Use Yahoo Finance (more reliable)
-            const yahooEarningsDate = yahooCalendar.earnings?.earningsDate?.[0];
-            const nextEarnings = yahooEarningsDate 
-                ? new Date(yahooEarningsDate.raw * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
-                : (earnings.length > 0 
-                    ? new Date(earnings[0].date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
-                    : null);
+            // Next Earnings Date - Use Finnhub earnings calendar
+            const nextEarnings = earnings.length > 0 
+                ? new Date(earnings[0].date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+                : null;
             
             // Performance calculations
             const week52High = getValue(metricsData['52WeekHigh']);
@@ -2034,10 +2013,9 @@
                 {
                     name: 'Profitability',
                     metrics: [
-                        // Use Yahoo Finance for Income (Finnhub doesn't have it)
-                        { label: 'Income', value: getValue(yahooFinancials.totalRevenue?.raw) ? `$${(yahooFinancials.totalRevenue.raw / 1000000000).toFixed(2)}B` : 'N/A' },
                         { label: 'Gross Margin', value: formatPercent(getValue(metricsData.grossMarginTTM)) || 'N/A' },
                         { label: 'Oper. Margin', value: formatPercent(getValue(metricsData.operatingMarginTTM)) || 'N/A' },
+                        { label: 'Net Margin', value: formatPercent(getValue(metricsData.netProfitMarginTTM)) || 'N/A' },
                         { label: 'Dividend', value: formatPercent(getValue(metricsData.dividendYieldIndicatedAnnual), 2) || 'N/A' },
                     ]
                 },
@@ -2067,8 +2045,8 @@
                 {
                     name: 'Balance Sheet',
                     metrics: [
-                        // Use Yahoo Finance for Debt/Equity (Finnhub doesn't have it)
-                        { label: 'Debt/Eq', value: getValue(yahooFinancials.debtToEquity?.raw) ? yahooFinancials.debtToEquity.raw.toFixed(2) : 'N/A' },
+                        // Use Finnhub's actual field name with slash
+                        { label: 'Debt/Eq', value: getValue(metricsData['totalDebt/totalEquityAnnual']) ? metricsData['totalDebt/totalEquityAnnual'].toFixed(2) : 'N/A' },
                         { label: 'Quick Ratio', value: getValue(metricsData.quickRatioAnnual) ? metricsData.quickRatioAnnual.toFixed(2) : 'N/A' },
                     ]
                 },
