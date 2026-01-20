@@ -1810,11 +1810,17 @@
         async function loadKeyRatios() {
             const cacheKey = `ratios_${ticker}`;
             
-            if (isCacheValid(cacheKey)) {
-                console.log('Using cached fundamentals data');
-                const cached = JSON.parse(localStorage.getItem(cacheKey));
-                renderKeyRatios(cached.data);
-                return;
+            // Check cache (but don't fail if it's corrupted)
+            try {
+                if (isCacheValid(cacheKey)) {
+                    console.log('Using cached fundamentals data');
+                    const cached = JSON.parse(localStorage.getItem(cacheKey));
+                    renderKeyRatios(cached.data);
+                    return;
+                }
+            } catch (e) {
+                console.log('Cache read error, fetching fresh data:', e.message);
+                localStorage.removeItem(cacheKey);
             }
             
             try {
@@ -1844,11 +1850,7 @@
                 const earnings = earningsResponse.ok ? await earningsResponse.json() : null;
                 const quote = quoteResponse.ok ? await quoteResponse.json() : null;
                 
-                console.log('Alpha Vantage data received:', {
-                    overview: overview,
-                    earnings: earnings,
-                    quote: quote
-                });
+                console.log('Alpha Vantage data received');
                 
                 // Combine all data
                 const combinedData = {
@@ -1857,10 +1859,16 @@
                     quote: quote
                 };
                 
-                localStorage.setItem(cacheKey, JSON.stringify({
-                    timestamp: new Date().toISOString(),
-                    data: combinedData
-                }));
+                // Try to cache, but don't fail if quota exceeded
+                try {
+                    localStorage.setItem(cacheKey, JSON.stringify({
+                        timestamp: new Date().toISOString(),
+                        data: combinedData
+                    }));
+                } catch (storageError) {
+                    console.warn('Could not cache data (quota exceeded), continuing without cache:', storageError.message);
+                    // Not critical - continue without caching
+                }
                 
                 renderKeyRatios(combinedData);
             } catch (error) {
@@ -2135,10 +2143,16 @@
         async function loadNews() {
             const cacheKey = `news_${ticker}`;
             
-            if (isCacheValid(cacheKey)) {
-                const cached = JSON.parse(localStorage.getItem(cacheKey));
-                renderNews(cached.data);
-                return;
+            // Check cache (but don't fail if it's corrupted)
+            try {
+                if (isCacheValid(cacheKey)) {
+                    const cached = JSON.parse(localStorage.getItem(cacheKey));
+                    renderNews(cached.data);
+                    return;
+                }
+            } catch (e) {
+                console.log('Cache read error, fetching fresh news:', e.message);
+                localStorage.removeItem(cacheKey);
             }
             
             try {
@@ -2149,10 +2163,15 @@
                 
                 const data = await response.json();
                 
-                localStorage.setItem(cacheKey, JSON.stringify({
-                    timestamp: new Date().toISOString(),
-                    data: data
-                }));
+                // Try to cache, but don't fail if quota exceeded
+                try {
+                    localStorage.setItem(cacheKey, JSON.stringify({
+                        timestamp: new Date().toISOString(),
+                        data: data
+                    }));
+                } catch (storageError) {
+                    console.warn('Could not cache news (quota exceeded), continuing without cache:', storageError.message);
+                }
                 
                 renderNews(data);
             } catch (error) {
