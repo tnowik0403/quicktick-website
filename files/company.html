@@ -1654,7 +1654,8 @@
         // ============================================
 
         // Finnhub API configuration
-        const FINNHUB_API_KEY = 'd5n9k69r01ql6sfq9l20d5n9k69r01ql6sfq9l2g'; // <<< REPLACE THIS WITH YOUR API KEY
+        const FINNHUB_API_KEY = 'd5n9k69r01ql6sfq9l20d5n9k69r01ql6sfq9l2g'; // Keeping for backward compatibility
+        const ALPHAVANTAGE_API_KEY = 'RVHFHHBEGVY6M4MI'; // Alpha Vantage Premium API Key
         const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
         let chartInstance = null;
 
@@ -1817,42 +1818,43 @@
             }
             
             try {
-                console.log('Fetching fundamentals data for:', ticker);
+                console.log('Fetching fundamentals data from Alpha Vantage for:', ticker);
                 
-                // Fetch data sources - Finnhub only
-                const [metricsResponse, earningsResponse, quoteResponse] = await Promise.all([
-                    fetch(`https://finnhub.io/api/v1/stock/metric?symbol=${ticker}&metric=all&token=${FINNHUB_API_KEY}`),
-                    fetch(`https://finnhub.io/api/v1/calendar/earnings?symbol=${ticker}&token=${FINNHUB_API_KEY}`),
-                    fetch(`https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${FINNHUB_API_KEY}`)
+                // Fetch from Alpha Vantage Premium API
+                const [overviewResponse, earningsResponse, quoteResponse] = await Promise.all([
+                    // Company Overview - Has all valuation metrics, financials, analyst data
+                    fetch(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${ALPHAVANTAGE_API_KEY}`),
+                    // Earnings - Has EPS estimates and earnings dates
+                    fetch(`https://www.alphavantage.co/query?function=EARNINGS&symbol=${ticker}&apikey=${ALPHAVANTAGE_API_KEY}`),
+                    // Global Quote - Current price
+                    fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${ALPHAVANTAGE_API_KEY}`)
                 ]);
                 
-                console.log('API responses received:', {
-                    finnhubMetrics: metricsResponse.status,
-                    finnhubEarnings: earningsResponse.status,
-                    finnhubQuote: quoteResponse.status
+                console.log('Alpha Vantage API responses:', {
+                    overview: overviewResponse.status,
+                    earnings: earningsResponse.status,
+                    quote: quoteResponse.status
                 });
                 
-                if (!metricsResponse.ok) {
-                    console.error('Metrics API failed:', metricsResponse.status, metricsResponse.statusText);
-                    throw new Error('Failed to fetch metrics');
+                if (!overviewResponse.ok) {
+                    throw new Error(`Overview API failed: ${overviewResponse.status}`);
                 }
                 
-                const metrics = await metricsResponse.json();
+                const overview = await overviewResponse.json();
                 const earnings = earningsResponse.ok ? await earningsResponse.json() : null;
                 const quote = quoteResponse.ok ? await quoteResponse.json() : null;
                 
-                console.log('Parsed data:', {
-                    finnhubMetrics: !!metrics.metric,
-                    finnhubEarnings: !!earnings,
-                    finnhubQuote: !!quote
+                console.log('Alpha Vantage data received:', {
+                    overview: overview,
+                    earnings: earnings,
+                    quote: quote
                 });
                 
                 // Combine all data
                 const combinedData = {
-                    metrics: metrics,
+                    overview: overview,
                     earnings: earnings,
-                    quote: quote,
-                    chartData: null
+                    quote: quote
                 };
                 
                 localStorage.setItem(cacheKey, JSON.stringify({
@@ -1907,36 +1909,27 @@
         }
 
         function renderKeyRatios(data) {
-            // Finnhub data
-            const metricsData = data.metrics?.metric || data.metrics?.metrics || data.metrics || {};
-            const seriesData = data.metrics?.series || {};
-            const earnings = data.earnings?.earningsCalendar || [];
-            const quote = data.quote || {};
-            const chartData = data.chartData || null;
-            
+            const overview = data.overview || {};
+            const earnings = data.earnings || {};
+            const quote = data.quote?.['Global Quote'] || {};
             const ratiosGrid = document.getElementById('ratiosGrid');
             
-            // Helper function to safely get values
+            // Helper functions
             const getValue = (value) => {
-                if (value === null || value === undefined || isNaN(value)) return null;
-                return value;
+                if (value === null || value === undefined || value === 'None' || value === '-') return null;
+                const parsed = parseFloat(value);
+                return isNaN(parsed) ? null : parsed;
             };
             
-            // Helper to format percentages correctly (check if already percentage or decimal)
             const formatPercent = (value, decimals = 1) => {
-                if (!value && value !== 0) return null;
-                // If value is greater than 1, it's already a percentage
-                if (Math.abs(value) > 1) {
-                    return `${value.toFixed(decimals)}%`;
-                }
-                // If value is between -1 and 1, it's a decimal that needs to be converted
-                return `${(value * 100).toFixed(decimals)}%`;
+                const num = getValue(value);
+                if (!num && num !== 0) return null;
+                return `${num.toFixed(decimals)}%`;
             };
             
-            // Helper to determine if value is positive/negative for color coding
             const getValueClass = (value, label) => {
                 if (!value || value === 'N/A') return '';
-                if (label.includes('Perf') || label.includes('Y/Y') || label.includes('Q/Q') || label.includes('Past')) {
+                if (label.includes('Perf') || label.includes('Y/Y') || label.includes('Q/Q') || label.includes('Past') || label.includes('Growth')) {
                     const numValue = parseFloat(value);
                     if (numValue > 0) return 'positive';
                     if (numValue < 0) return 'negative';
@@ -1944,137 +1937,114 @@
                 return '';
             };
             
-            // Calculate derived metrics
-            const currentPrice = getValue(quote.c);
-            const peRatio = getValue(metricsData.peBasicExclExtraTTM);
-            const epsTTM = getValue(metricsData.epsExclExtraItemsTTM);
-            const epsGrowth5Y = getValue(metricsData.epsGrowth5Y);
+            // Extract metrics
+            const currentPrice = getValue(quote['05. price']);
             
-            // PEG Ratio = P/E / EPS Growth
-            const pegRatio = (peRatio && epsGrowth5Y && epsGrowth5Y > 0) 
-                ? (peRatio / (Math.abs(epsGrowth5Y) > 1 ? epsGrowth5Y : epsGrowth5Y * 100)).toFixed(2) 
-                : null;
+            // Next Earnings Date
+            let nextEarnings = null;
+            if (earnings.quarterlyEarnings && earnings.quarterlyEarnings.length > 0) {
+                const sorted = earnings.quarterlyEarnings.sort((a, b) => new Date(b.reportedDate) - new Date(a.reportedDate));
+                nextEarnings = new Date(sorted[0].reportedDate).toLocaleDateString('en-US', { 
+                    month: 'short', day: 'numeric', year: 'numeric' 
+                });
+            }
             
-            // Next Earnings Date - Use Finnhub earnings calendar
-            const nextEarnings = earnings.length > 0 
-                ? new Date(earnings[0].date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
-                : null;
-            
-            // Performance calculations
-            const week52High = getValue(metricsData['52WeekHigh']);
-            const week52Low = getValue(metricsData['52WeekLow']);
+            // Performance
+            const week52High = getValue(overview['52WeekHigh']);
+            const week52Low = getValue(overview['52WeekLow']);
             const perfYear = (currentPrice && week52Low && week52Low > 0)
                 ? (((currentPrice - week52Low) / week52Low) * 100).toFixed(2)
                 : null;
             
-            // Technical indicators from chart data
-            let rsi14 = null;
-            let atr14 = null;
-            let perfWeek = null;
-            let avgVol14 = null;
-            
-            if (chartData && chartData.close && chartData.close.length > 14) {
-                // RSI
-                rsi14 = calculateRSI(chartData.close, 14);
-                
-                // ATR
-                atr14 = calculateATR(chartData.high, chartData.low, chartData.close, 14);
-                
-                // Performance over past week (last 7 days)
-                if (chartData.close.length >= 7) {
-                    const priceWeekAgo = chartData.close[chartData.close.length - 7];
-                    const priceNow = chartData.close[chartData.close.length - 1];
-                    if (priceWeekAgo > 0) {
-                        perfWeek = (((priceNow - priceWeekAgo) / priceWeekAgo) * 100).toFixed(2);
-                    }
-                }
-                
-                // Average volume (14 days)
-                if (chartData.volume && chartData.volume.length >= 14) {
-                    const recent14Vol = chartData.volume.slice(-14);
-                    const sumVol = recent14Vol.reduce((a, b) => a + b, 0);
-                    avgVol14 = sumVol / 14;
-                }
-            }
-            
-            // Organize fundamentals by category
+            // Categories with Alpha Vantage fields
             const categories = [
                 {
                     name: 'Valuation',
                     metrics: [
-                        { label: 'P/E', value: peRatio ? peRatio.toFixed(2) : 'N/A' },
-                        { label: 'PEG', value: pegRatio || 'N/A' },
-                        { label: 'P/S', value: getValue(metricsData.psAnnual) ? metricsData.psAnnual.toFixed(2) : 'N/A' },
-                        { label: 'P/B', value: getValue(metricsData.pbAnnual) ? metricsData.pbAnnual.toFixed(2) : 'N/A' },
-                        { label: 'P/FCF', value: getValue(metricsData.pfcfShareTTM) ? metricsData.pfcfShareTTM.toFixed(2) : 'N/A' },
-                        { label: 'Market Cap', value: getValue(metricsData.marketCapitalization) ? `$${(metricsData.marketCapitalization / 1000).toFixed(2)}B` : 'N/A' },
+                        { label: 'P/E', value: getValue(overview.PERatio) ? getValue(overview.PERatio).toFixed(2) : 'N/A' },
+                        { label: 'PEG', value: getValue(overview.PEGRatio) ? getValue(overview.PEGRatio).toFixed(2) : 'N/A' },
+                        { label: 'P/S', value: getValue(overview.PriceToSalesRatioTTM) ? getValue(overview.PriceToSalesRatioTTM).toFixed(2) : 'N/A' },
+                        { label: 'P/B', value: getValue(overview.PriceToBookRatio) ? getValue(overview.PriceToBookRatio).toFixed(2) : 'N/A' },
+                        { label: 'Forward P/E', value: getValue(overview.ForwardPE) ? getValue(overview.ForwardPE).toFixed(2) : 'N/A' },
+                        { label: 'Market Cap', value: getValue(overview.MarketCapitalization) ? `$${(getValue(overview.MarketCapitalization) / 1000000000).toFixed(2)}B` : 'N/A' },
                     ]
                 },
                 {
                     name: 'Profitability',
                     metrics: [
-                        { label: 'Gross Margin', value: formatPercent(getValue(metricsData.grossMarginTTM)) || 'N/A' },
-                        { label: 'Oper. Margin', value: formatPercent(getValue(metricsData.operatingMarginTTM)) || 'N/A' },
-                        { label: 'Net Margin', value: formatPercent(getValue(metricsData.netProfitMarginTTM)) || 'N/A' },
-                        { label: 'Dividend', value: formatPercent(getValue(metricsData.dividendYieldIndicatedAnnual), 2) || 'N/A' },
+                        { label: 'Revenue TTM', value: getValue(overview.RevenueTTM) ? `$${(getValue(overview.RevenueTTM) / 1000000000).toFixed(2)}B` : 'N/A' },
+                        { label: 'Gross Margin', value: formatPercent(overview.GrossProfitTTM && overview.RevenueTTM ? (getValue(overview.GrossProfitTTM) / getValue(overview.RevenueTTM) * 100) : null) || 'N/A' },
+                        { label: 'Oper. Margin', value: formatPercent(overview.OperatingMarginTTM) || 'N/A' },
+                        { label: 'Profit Margin', value: formatPercent(overview.ProfitMargin) || 'N/A' },
                     ]
                 },
                 {
                     name: 'Earnings',
                     metrics: [
-                        { label: 'EPS (TTM)', value: epsTTM ? `$${epsTTM.toFixed(2)}` : 'N/A' },
-                        { label: 'EPS Y/Y', value: formatPercent(getValue(metricsData.epsGrowthTTMYoy)) || 'N/A' },
-                        { label: 'EPS Q/Q', value: formatPercent(getValue(metricsData.epsGrowthQuarterlyYoy)) || 'N/A' },
-                        { label: 'EPS Past 5Y', value: formatPercent(epsGrowth5Y) || 'N/A' },
+                        { label: 'EPS (TTM)', value: getValue(overview.EPS) ? `$${getValue(overview.EPS).toFixed(2)}` : 'N/A' },
+                        { label: 'EPS Growth YoY', value: formatPercent(overview.QuarterlyEarningsGrowthYOY) || 'N/A' },
+                        { label: 'EPS Past 5Y', value: 'N/A' },
+                        { label: 'Diluted EPS', value: getValue(overview.DilutedEPSTTM) ? `$${getValue(overview.DilutedEPSTTM).toFixed(2)}` : 'N/A' },
                     ]
                 },
                 {
                     name: 'Sales',
                     metrics: [
-                        { label: 'Sales Y/Y', value: formatPercent(getValue(metricsData.revenueGrowthTTMYoy)) || 'N/A' },
-                        { label: 'Sales Q/Q', value: formatPercent(getValue(metricsData.revenueGrowthQuarterlyYoy)) || 'N/A' },
-                        { label: 'Sales Past 5Y', value: formatPercent(getValue(metricsData.revenueGrowth5Y)) || 'N/A' },
+                        { label: 'Revenue Growth YoY', value: formatPercent(overview.QuarterlyRevenueGrowthYOY) || 'N/A' },
+                        { label: 'Revenue Per Share', value: getValue(overview.RevenuePerShareTTM) ? `$${getValue(overview.RevenuePerShareTTM).toFixed(2)}` : 'N/A' },
+                        { label: 'Sales Past 5Y', value: 'N/A' },
                     ]
                 },
                 {
                     name: 'Calendar',
                     metrics: [
                         { label: 'Next Earnings', value: nextEarnings || 'N/A' },
+                        { label: 'Ex-Dividend Date', value: overview.ExDividendDate || 'N/A' },
                     ]
                 },
                 {
                     name: 'Balance Sheet',
                     metrics: [
-                        // Use Finnhub's actual field name with slash
-                        { label: 'Debt/Eq', value: getValue(metricsData['totalDebt/totalEquityAnnual']) ? metricsData['totalDebt/totalEquityAnnual'].toFixed(2) : 'N/A' },
-                        { label: 'Quick Ratio', value: getValue(metricsData.quickRatioAnnual) ? metricsData.quickRatioAnnual.toFixed(2) : 'N/A' },
+                        { label: 'Debt/Equity', value: getValue(overview.DebtToEquity) ? getValue(overview.DebtToEquity).toFixed(2) : 'N/A' },
+                        { label: 'Current Ratio', value: getValue(overview.CurrentRatio) ? getValue(overview.CurrentRatio).toFixed(2) : 'N/A' },
+                        { label: 'Book Value', value: getValue(overview.BookValue) ? `$${getValue(overview.BookValue).toFixed(2)}` : 'N/A' },
                     ]
                 },
                 {
                     name: 'Performance',
                     metrics: [
-                        { label: 'Perf Week', value: perfWeek ? `${perfWeek}%` : 'N/A' },
+                        { label: 'Perf Week', value: getValue(quote['10. change percent']) || 'N/A' },
                         { label: 'Perf Year', value: perfYear ? `${perfYear}%` : 'N/A' },
+                        { label: '52W High', value: week52High ? `$${week52High.toFixed(2)}` : 'N/A' },
+                        { label: '52W Low', value: week52Low ? `$${week52Low.toFixed(2)}` : 'N/A' },
                     ]
                 },
                 {
-                    name: 'Technical',
+                    name: 'Returns',
                     metrics: [
-                        { label: 'RSI (14d)', value: rsi14 ? rsi14.toFixed(1) : 'N/A' },
-                        { label: 'ATR (14d)', value: atr14 ? atr14.toFixed(2) : 'N/A' },
-                        { label: 'Avg Vol (14d)', value: avgVol14 ? `${(avgVol14 / 1000000).toFixed(1)}M` : 'N/A' },
+                        { label: 'ROE', value: formatPercent(overview.ReturnOnEquityTTM) || 'N/A' },
+                        { label: 'ROA', value: formatPercent(overview.ReturnOnAssetsTTM) || 'N/A' },
                     ]
                 },
                 {
-                    name: 'Short Interest',
+                    name: 'Dividends',
                     metrics: [
-                        { label: 'Short Float', value: formatPercent(getValue(metricsData.shortInterestSharePercent), 2) || 'N/A' },
-                        { label: 'Short Ratio', value: getValue(metricsData.shortInterestDaysToCover) ? `${metricsData.shortInterestDaysToCover.toFixed(1)}d` : 'N/A' },
+                        { label: 'Dividend Yield', value: formatPercent(overview.DividendYield) || 'N/A' },
+                        { label: 'Dividend Per Share', value: getValue(overview.DividendPerShare) ? `$${getValue(overview.DividendPerShare).toFixed(2)}` : 'N/A' },
+                        { label: 'Payout Ratio', value: formatPercent(overview.PayoutRatio) || 'N/A' },
+                    ]
+                },
+                {
+                    name: 'Trading',
+                    metrics: [
+                        { label: 'Beta', value: getValue(overview.Beta) ? getValue(overview.Beta).toFixed(2) : 'N/A' },
+                        { label: 'Shares Outstanding', value: getValue(overview.SharesOutstanding) ? `${(getValue(overview.SharesOutstanding) / 1000000).toFixed(2)}M` : 'N/A' },
+                        { label: 'Avg Volume', value: getValue(quote['06. volume']) ? `${(getValue(quote['06. volume']) / 1000000).toFixed(2)}M` : 'N/A' },
                     ]
                 }
             ];
             
-            // Render categories
+            // Render
             ratiosGrid.innerHTML = categories.map(category => `
                 <div class="fundamental-category">
                     <div class="category-header">${category.name}</div>
@@ -2172,14 +2142,10 @@
             }
             
             try {
-                const to = new Date().toISOString().split('T')[0];
-                const from = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
-                
+                // Alpha Vantage News & Sentiment API
                 const response = await fetch(
-                    `https://finnhub.io/api/v1/company-news?symbol=${ticker}&from=${from}&to=${to}&token=${FINNHUB_API_KEY}`
+                    `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${ticker}&limit=20&apikey=${ALPHAVANTAGE_API_KEY}`
                 );
-                
-                if (!response.ok) throw new Error('Failed to fetch news');
                 
                 const data = await response.json();
                 
@@ -2195,30 +2161,50 @@
             }
         }
 
-        function renderNews(newsData) {
+        function renderNews(data) {
             const newsContainer = document.getElementById('newsContainer');
+            const newsItems = data.feed || [];
             
-            if (!newsData || newsData.length === 0) {
+            if (!newsItems || newsItems.length === 0) {
                 newsContainer.innerHTML = '<div class="chart-loading">No recent news available</div>';
                 return;
             }
             
-            const articles = newsData.slice(0, 15);
-            
-            newsContainer.innerHTML = articles.map(article => {
-                const date = new Date(article.datetime * 1000);
+            newsContainer.innerHTML = newsItems.slice(0, 15).map(article => {
+                // Parse date from format YYYYMMDDTHHMMSS
+                const dateStr = article.time_published;
+                const year = dateStr.substring(0, 4);
+                const month = dateStr.substring(4, 6);
+                const day = dateStr.substring(6, 8);
+                const date = new Date(`${year}-${month}-${day}`);
                 const formattedDate = date.toLocaleDateString('en-US', { 
                     month: 'short', 
                     day: 'numeric',
                     year: 'numeric'
                 });
                 
+                // Get sentiment score for this ticker
+                const tickerSentiment = article.ticker_sentiment?.find(t => t.ticker === ticker);
+                const sentimentScore = tickerSentiment ? parseFloat(tickerSentiment.ticker_sentiment_score) : 0;
+                const sentimentLabel = tickerSentiment ? tickerSentiment.ticker_sentiment_label : 'Neutral';
+                
+                // Color code sentiment
+                const sentimentColor = sentimentScore > 0.15 ? 'var(--accent-green)' : 
+                                      sentimentScore < -0.15 ? 'var(--accent-red)' : 
+                                      'var(--text-secondary)';
+                
                 return `
                     <div class="news-item">
-                        <div class="news-headline">${article.headline}</div>
+                        <div class="news-headline">${article.title}</div>
                         <div class="news-meta">
                             <span class="news-source">${article.source}</span>
                             <span class="news-date">${formattedDate}</span>
+                            <span class="news-sentiment" style="color: ${sentimentColor}; font-weight: 700; font-size: 0.65rem;">
+                                ${sentimentLabel} (${sentimentScore.toFixed(2)})
+                            </span>
+                        </div>
+                        <div class="news-summary" style="font-size: 0.75rem; color: var(--text-secondary); margin: 8px 0; line-height: 1.4;">
+                            ${article.summary.substring(0, 180)}...
                         </div>
                         <a href="${article.url}" target="_blank" class="news-link">Read more →</a>
                     </div>
