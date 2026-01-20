@@ -1915,8 +1915,26 @@
             const quote = data.quote || {};
             const chartData = data.chartData || null;
             
-            console.log('Rendering with metrics:', metricsData);
-            console.log('Series data:', seriesData);
+            console.log('=== DEBUGGING AVAILABLE FIELDS ===');
+            console.log('All metric field names:', Object.keys(metricsData));
+            console.log('All series field names:', Object.keys(seriesData));
+            console.log('Earnings data:', earnings);
+            console.log('Quote data:', quote);
+            
+            // Log specific fields we're looking for
+            console.log('Income fields:', {
+                netIncomeTTM: metricsData.netIncomeTTM,
+                netIncomeCommon: metricsData.netIncomeCommon,
+                netIncome: metricsData.netIncome,
+                annualNetIncome: seriesData.annual?.netIncome,
+            });
+            console.log('Debt fields:', {
+                totalDebt2Equity: metricsData.totalDebt2Equity,
+                totalDebtToEquity: metricsData.totalDebtToEquity,
+                debtEquityRatio: metricsData.debtEquityRatio,
+                currentDebtToEquity: metricsData.currentDebtToEquity,
+            });
+            console.log('=== END DEBUGGING ===');
             
             const ratiosGrid = document.getElementById('ratiosGrid');
             
