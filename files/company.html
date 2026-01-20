@@ -875,31 +875,74 @@
             font-size: 0.85rem;
         }
 
-        /* Key Ratios Tab Styles */
+        /* Fundamentals Tab Styles */
         .ratio-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-height: calc(100vh - 250px);
+            overflow-y: auto;
+        }
+
+        .fundamental-category {
+            margin-bottom: 15px;
+        }
+
+        .category-header {
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid var(--accent-green);
+        }
+
+        .category-grid {
             display: grid;
-            gap: 12px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
         }
 
         .ratio-item {
-            background: rgba(0, 212, 255, 0.05);
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid var(--border);
+            background: rgba(0, 212, 255, 0.03);
+            padding: 6px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+
+        .ratio-item:hover {
+            background: rgba(0, 212, 255, 0.08);
+            border-color: rgba(0, 212, 255, 0.3);
         }
 
         .ratio-label {
-            font-size: 0.75rem;
+            font-size: 0.62rem;
             color: var(--text-secondary);
-            margin-bottom: 4px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
+            font-weight: 500;
         }
 
         .ratio-value {
-            font-size: 1.1rem;
+            font-size: 0.7rem;
             color: var(--accent-cyan);
             font-weight: 700;
+            text-align: right;
+        }
+
+        /* Positive/Negative value colors */
+        .ratio-value.positive {
+            color: var(--accent-green);
+        }
+
+        .ratio-value.negative {
+            color: var(--accent-red);
         }
 
         /* DCF Calculator Tab Styles */
@@ -1074,7 +1117,7 @@
         
         <div class="info-tabs">
             <div class="info-tab active" onclick="switchTab('chart')">Chart</div>
-            <div class="info-tab" onclick="switchTab('ratios')">Ratios</div>
+            <div class="info-tab" onclick="switchTab('ratios')">Fundamentals</div>
             <div class="info-tab" onclick="switchTab('dcf')">DCF Calc</div>
             <div class="info-tab" onclick="switchTab('news')">News</div>
         </div>
@@ -1086,7 +1129,7 @@
                 <div class="chart-loading" id="chartLoading">Loading chart data...</div>
             </div>
             
-            <!-- Key Ratios Tab -->
+            <!-- Fundamentals Tab -->
             <div class="tab-panel" id="ratiosPanel">
                 <div class="ratio-grid" id="ratiosGrid">
                     <div class="chart-loading">Loading key ratios...</div>
@@ -1674,6 +1717,37 @@
             });
         }
 
+        // Fetch chart data for technical calculations
+        async function fetchChartDataForCalculations() {
+            try {
+                const to = Math.floor(Date.now() / 1000);
+                const from = to - (30 * 24 * 60 * 60); // 30 days for calculations
+                
+                const response = await fetch(
+                    `https://finnhub.io/api/v1/stock/candle?symbol=${ticker}&resolution=D&from=${from}&to=${to}&token=${FINNHUB_API_KEY}`
+                );
+                
+                if (!response.ok) return null;
+                
+                const data = await response.json();
+                
+                if (data.s === 'ok') {
+                    return {
+                        close: data.c,
+                        high: data.h,
+                        low: data.l,
+                        volume: data.v,
+                        timestamps: data.t
+                    };
+                }
+                
+                return null;
+            } catch (error) {
+                console.error('Error fetching chart data for calculations:', error);
+                return null;
+            }
+        }
+
         // Chart Data - Using TradingView Widget (no CORS issues)
         async function loadChartData() {
             console.log('Loading TradingView chart for ticker:', ticker);
@@ -1731,7 +1805,7 @@
             });
         }
 
-        // Key Ratios
+        // Fundamentals
         async function loadKeyRatios() {
             const cacheKey = `ratios_${ticker}`;
             
@@ -1742,51 +1816,245 @@
             }
             
             try {
-                const response = await fetch(
-                    `https://finnhub.io/api/v1/stock/metric?symbol=${ticker}&metric=all&token=${FINNHUB_API_KEY}`
-                );
+                // Fetch multiple data sources in parallel
+                const [metricsResponse, earningsResponse, quoteResponse, chartData] = await Promise.all([
+                    fetch(`https://finnhub.io/api/v1/stock/metric?symbol=${ticker}&metric=all&token=${FINNHUB_API_KEY}`),
+                    fetch(`https://finnhub.io/api/v1/calendar/earnings?symbol=${ticker}&token=${FINNHUB_API_KEY}`),
+                    fetch(`https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${FINNHUB_API_KEY}`),
+                    fetchChartDataForCalculations()
+                ]);
                 
-                if (!response.ok) throw new Error('Failed to fetch ratios');
+                if (!metricsResponse.ok) throw new Error('Failed to fetch metrics');
                 
-                const data = await response.json();
+                const metrics = await metricsResponse.json();
+                const earnings = earningsResponse.ok ? await earningsResponse.json() : null;
+                const quote = quoteResponse.ok ? await quoteResponse.json() : null;
+                
+                // Combine all data
+                const combinedData = {
+                    metrics: metrics,
+                    earnings: earnings,
+                    quote: quote,
+                    chartData: chartData
+                };
                 
                 localStorage.setItem(cacheKey, JSON.stringify({
                     timestamp: new Date().toISOString(),
-                    data: data
+                    data: combinedData
                 }));
                 
-                renderKeyRatios(data);
+                renderKeyRatios(combinedData);
             } catch (error) {
-                console.error('Error loading ratios:', error);
-                document.getElementById('ratiosGrid').innerHTML = '<div class="chart-loading">Error loading ratios</div>';
+                console.error('Error loading fundamentals:', error);
+                document.getElementById('ratiosGrid').innerHTML = '<div class="chart-loading">Error loading fundamentals</div>';
             }
         }
 
+        // Calculate technical indicators from price data
+        function calculateRSI(prices, period = 14) {
+            if (!prices || prices.length < period + 1) return null;
+            
+            let gains = 0;
+            let losses = 0;
+            
+            for (let i = prices.length - period; i < prices.length; i++) {
+                const change = prices[i] - prices[i - 1];
+                if (change > 0) gains += change;
+                else losses -= change;
+            }
+            
+            const avgGain = gains / period;
+            const avgLoss = losses / period;
+            
+            if (avgLoss === 0) return 100;
+            const rs = avgGain / avgLoss;
+            const rsi = 100 - (100 / (1 + rs));
+            
+            return rsi;
+        }
+
+        function calculateATR(high, low, close, period = 14) {
+            if (!high || !low || !close || high.length < period + 1) return null;
+            
+            let trSum = 0;
+            for (let i = high.length - period; i < high.length; i++) {
+                const tr = Math.max(
+                    high[i] - low[i],
+                    Math.abs(high[i] - close[i - 1]),
+                    Math.abs(low[i] - close[i - 1])
+                );
+                trSum += tr;
+            }
+            
+            return trSum / period;
+        }
+
         function renderKeyRatios(data) {
-            const metrics = data.metric || {};
+            const metrics = data.metrics?.metric || {};
+            const earnings = data.earnings?.earningsCalendar || [];
+            const quote = data.quote || {};
+            const chartData = data.chartData || null;
+            
             const ratiosGrid = document.getElementById('ratiosGrid');
             
-            const ratios = [
-                { label: 'P/E Ratio (TTM)', value: metrics.peBasicExclExtraTTM || 'N/A' },
-                { label: 'EPS (TTM)', value: metrics.epsExclExtraItemsTTM ? `$${metrics.epsExclExtraItemsTTM.toFixed(2)}` : 'N/A' },
-                { label: 'Market Cap', value: metrics.marketCapitalization ? `$${(metrics.marketCapitalization / 1000).toFixed(2)}B` : 'N/A' },
-                { label: 'Revenue (TTM)', value: metrics.revenueTTM ? `$${(metrics.revenueTTM / 1000).toFixed(2)}B` : 'N/A' },
-                { label: 'Profit Margin', value: metrics.netProfitMarginTTM ? `${(metrics.netProfitMarginTTM * 100).toFixed(2)}%` : 'N/A' },
-                { label: 'ROE', value: metrics.roeTTM ? `${(metrics.roeTTM * 100).toFixed(2)}%` : 'N/A' },
-                { label: 'ROA', value: metrics.roaTTM ? `${(metrics.roaTTM * 100).toFixed(2)}%` : 'N/A' },
-                { label: 'Debt/Equity', value: metrics.totalDebt2Equity ? metrics.totalDebt2Equity.toFixed(2) : 'N/A' },
-                { label: 'Current Ratio', value: metrics.currentRatioAnnual ? metrics.currentRatioAnnual.toFixed(2) : 'N/A' },
-                { label: 'Quick Ratio', value: metrics.quickRatioAnnual ? metrics.quickRatioAnnual.toFixed(2) : 'N/A' },
-                { label: 'Dividend Yield', value: metrics.dividendYieldIndicatedAnnual ? `${(metrics.dividendYieldIndicatedAnnual * 100).toFixed(2)}%` : 'N/A' },
-                { label: '52W High', value: metrics['52WeekHigh'] ? `$${metrics['52WeekHigh'].toFixed(2)}` : 'N/A' },
-                { label: '52W Low', value: metrics['52WeekLow'] ? `$${metrics['52WeekLow'].toFixed(2)}` : 'N/A' },
-                { label: 'Beta', value: metrics.beta ? metrics.beta.toFixed(2) : 'N/A' },
+            // Helper function to safely get values
+            const getValue = (value) => {
+                if (value === null || value === undefined || isNaN(value)) return null;
+                return value;
+            };
+            
+            // Helper to determine if value is positive/negative for color coding
+            const getValueClass = (value, label) => {
+                if (!value || value === 'N/A') return '';
+                if (label.includes('Perf') || label.includes('Y/Y') || label.includes('Q/Q') || label.includes('Past')) {
+                    const numValue = parseFloat(value);
+                    if (numValue > 0) return 'positive';
+                    if (numValue < 0) return 'negative';
+                }
+                return '';
+            };
+            
+            // Calculate derived metrics
+            const currentPrice = getValue(quote.c);
+            const peRatio = getValue(metrics.peBasicExclExtraTTM);
+            const epsTTM = getValue(metrics.epsExclExtraItemsTTM);
+            const epsGrowth5Y = getValue(metrics.epsGrowth5Y);
+            
+            // PEG Ratio = P/E / EPS Growth
+            const pegRatio = (peRatio && epsGrowth5Y && epsGrowth5Y > 0) 
+                ? (peRatio / (epsGrowth5Y * 100)).toFixed(2) 
+                : null;
+            
+            // Next Earnings Date
+            const nextEarnings = earnings.length > 0 
+                ? new Date(earnings[0].date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+                : null;
+            
+            // Performance calculations
+            const week52High = getValue(metrics['52WeekHigh']);
+            const week52Low = getValue(metrics['52WeekLow']);
+            const perfYear = (currentPrice && week52Low && week52Low > 0)
+                ? (((currentPrice - week52Low) / week52Low) * 100).toFixed(2)
+                : null;
+            
+            // Technical indicators from chart data
+            let rsi14 = null;
+            let atr14 = null;
+            let perfWeek = null;
+            let avgVol14 = null;
+            
+            if (chartData && chartData.close && chartData.close.length > 14) {
+                // RSI
+                rsi14 = calculateRSI(chartData.close, 14);
+                
+                // ATR
+                atr14 = calculateATR(chartData.high, chartData.low, chartData.close, 14);
+                
+                // Performance over past week (last 7 days)
+                if (chartData.close.length >= 7) {
+                    const priceWeekAgo = chartData.close[chartData.close.length - 7];
+                    const priceNow = chartData.close[chartData.close.length - 1];
+                    if (priceWeekAgo > 0) {
+                        perfWeek = (((priceNow - priceWeekAgo) / priceWeekAgo) * 100).toFixed(2);
+                    }
+                }
+                
+                // Average volume (14 days)
+                if (chartData.volume && chartData.volume.length >= 14) {
+                    const recent14Vol = chartData.volume.slice(-14);
+                    const sumVol = recent14Vol.reduce((a, b) => a + b, 0);
+                    avgVol14 = sumVol / 14;
+                }
+            }
+            
+            // Organize fundamentals by category
+            const categories = [
+                {
+                    name: 'Valuation',
+                    metrics: [
+                        { label: 'P/E', value: peRatio ? peRatio.toFixed(2) : 'N/A' },
+                        { label: 'PEG', value: pegRatio || 'N/A' },
+                        { label: 'P/S', value: getValue(metrics.psAnnual) ? metrics.psAnnual.toFixed(2) : 'N/A' },
+                        { label: 'P/B', value: getValue(metrics.pbAnnual) ? metrics.pbAnnual.toFixed(2) : 'N/A' },
+                        { label: 'P/FCF', value: getValue(metrics.pfcfShareTTM) ? metrics.pfcfShareTTM.toFixed(2) : 'N/A' },
+                        { label: 'Market Cap', value: getValue(metrics.marketCapitalization) ? `$${(metrics.marketCapitalization / 1000).toFixed(2)}B` : 'N/A' },
+                    ]
+                },
+                {
+                    name: 'Profitability',
+                    metrics: [
+                        { label: 'Income', value: getValue(metrics.netIncomeTTM) ? `$${(metrics.netIncomeTTM / 1000000).toFixed(0)}M` : 'N/A' },
+                        { label: 'Gross Margin', value: getValue(metrics.grossMarginTTM) ? `${(metrics.grossMarginTTM * 100).toFixed(1)}%` : 'N/A' },
+                        { label: 'Oper. Margin', value: getValue(metrics.operatingMarginTTM) ? `${(metrics.operatingMarginTTM * 100).toFixed(1)}%` : 'N/A' },
+                        { label: 'Dividend', value: getValue(metrics.dividendYieldIndicatedAnnual) ? `${(metrics.dividendYieldIndicatedAnnual * 100).toFixed(2)}%` : 'N/A' },
+                    ]
+                },
+                {
+                    name: 'Earnings',
+                    metrics: [
+                        { label: 'EPS (TTM)', value: epsTTM ? `$${epsTTM.toFixed(2)}` : 'N/A' },
+                        { label: 'EPS Y/Y', value: getValue(metrics.epsGrowthTTMYoy) ? `${(metrics.epsGrowthTTMYoy * 100).toFixed(1)}%` : 'N/A' },
+                        { label: 'EPS Q/Q', value: getValue(metrics.epsGrowthQuarterlyYoy) ? `${(metrics.epsGrowthQuarterlyYoy * 100).toFixed(1)}%` : 'N/A' },
+                        { label: 'EPS Past 5Y', value: epsGrowth5Y ? `${(epsGrowth5Y * 100).toFixed(1)}%` : 'N/A' },
+                    ]
+                },
+                {
+                    name: 'Sales',
+                    metrics: [
+                        { label: 'Sales Y/Y', value: getValue(metrics.revenueGrowthTTMYoy) ? `${(metrics.revenueGrowthTTMYoy * 100).toFixed(1)}%` : 'N/A' },
+                        { label: 'Sales Q/Q', value: getValue(metrics.revenueGrowthQuarterlyYoy) ? `${(metrics.revenueGrowthQuarterlyYoy * 100).toFixed(1)}%` : 'N/A' },
+                        { label: 'Sales Past 5Y', value: getValue(metrics.revenueGrowth5Y) ? `${(metrics.revenueGrowth5Y * 100).toFixed(1)}%` : 'N/A' },
+                    ]
+                },
+                {
+                    name: 'Calendar',
+                    metrics: [
+                        { label: 'Next Earnings', value: nextEarnings || 'N/A' },
+                    ]
+                },
+                {
+                    name: 'Balance Sheet',
+                    metrics: [
+                        { label: 'Debt/Eq', value: getValue(metrics.totalDebt2Equity) ? metrics.totalDebt2Equity.toFixed(2) : 'N/A' },
+                        { label: 'Quick Ratio', value: getValue(metrics.quickRatioAnnual) ? metrics.quickRatioAnnual.toFixed(2) : 'N/A' },
+                    ]
+                },
+                {
+                    name: 'Performance',
+                    metrics: [
+                        { label: 'Perf Week', value: perfWeek ? `${perfWeek}%` : 'N/A' },
+                        { label: 'Perf Year', value: perfYear ? `${perfYear}%` : 'N/A' },
+                    ]
+                },
+                {
+                    name: 'Technical',
+                    metrics: [
+                        { label: 'RSI (14d)', value: rsi14 ? rsi14.toFixed(1) : 'N/A' },
+                        { label: 'ATR (14d)', value: atr14 ? atr14.toFixed(2) : 'N/A' },
+                        { label: 'Avg Vol (14d)', value: avgVol14 ? `${(avgVol14 / 1000000).toFixed(1)}M` : 'N/A' },
+                    ]
+                },
+                {
+                    name: 'Short Interest',
+                    metrics: [
+                        { label: 'Short Float', value: getValue(metrics.shortInterestSharePercent) ? `${metrics.shortInterestSharePercent.toFixed(2)}%` : 'N/A' },
+                        { label: 'Short Ratio', value: getValue(metrics.shortInterestDaysToCover) ? `${metrics.shortInterestDaysToCover.toFixed(1)}d` : 'N/A' },
+                    ]
+                }
             ];
             
-            ratiosGrid.innerHTML = ratios.map(ratio => `
-                <div class="ratio-item">
-                    <div class="ratio-label">${ratio.label}</div>
-                    <div class="ratio-value">${ratio.value}</div>
+            // Render categories
+            ratiosGrid.innerHTML = categories.map(category => `
+                <div class="fundamental-category">
+                    <div class="category-header">${category.name}</div>
+                    <div class="category-grid">
+                        ${category.metrics.map(item => `
+                            <div class="ratio-item">
+                                <div class="ratio-label">${item.label}</div>
+                                <div class="ratio-value ${getValueClass(item.value, item.label)}">${item.value}</div>
+                            </div>
+                        `).join('')}
+                    </div>
                 </div>
             `).join('');
         }
