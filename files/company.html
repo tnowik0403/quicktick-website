@@ -1810,12 +1810,15 @@
             const cacheKey = `ratios_${ticker}`;
             
             if (isCacheValid(cacheKey)) {
+                console.log('Using cached fundamentals data');
                 const cached = JSON.parse(localStorage.getItem(cacheKey));
                 renderKeyRatios(cached.data);
                 return;
             }
             
             try {
+                console.log('Fetching fundamentals data for:', ticker);
+                
                 // Fetch multiple data sources in parallel
                 const [metricsResponse, earningsResponse, quoteResponse, chartData] = await Promise.all([
                     fetch(`https://finnhub.io/api/v1/stock/metric?symbol=${ticker}&metric=all&token=${FINNHUB_API_KEY}`),
@@ -1824,11 +1827,27 @@
                     fetchChartDataForCalculations()
                 ]);
                 
-                if (!metricsResponse.ok) throw new Error('Failed to fetch metrics');
+                console.log('API responses received:', {
+                    metrics: metricsResponse.status,
+                    earnings: earningsResponse.status,
+                    quote: quoteResponse.status
+                });
+                
+                if (!metricsResponse.ok) {
+                    console.error('Metrics API failed:', metricsResponse.status, metricsResponse.statusText);
+                    throw new Error('Failed to fetch metrics');
+                }
                 
                 const metrics = await metricsResponse.json();
                 const earnings = earningsResponse.ok ? await earningsResponse.json() : null;
                 const quote = quoteResponse.ok ? await quoteResponse.json() : null;
+                
+                console.log('Parsed data:', {
+                    metrics: metrics,
+                    earnings: earnings,
+                    quote: quote,
+                    chartData: chartData ? 'Available' : 'Not available'
+                });
                 
                 // Combine all data
                 const combinedData = {
@@ -1846,7 +1865,7 @@
                 renderKeyRatios(combinedData);
             } catch (error) {
                 console.error('Error loading fundamentals:', error);
-                document.getElementById('ratiosGrid').innerHTML = '<div class="chart-loading">Error loading fundamentals</div>';
+                document.getElementById('ratiosGrid').innerHTML = '<div class="chart-loading">Error loading fundamentals. Check console for details.</div>';
             }
         }
 
@@ -1903,6 +1922,17 @@
                 return value;
             };
             
+            // Helper to format percentages correctly (check if already percentage or decimal)
+            const formatPercent = (value, decimals = 1) => {
+                if (!value && value !== 0) return null;
+                // If value is greater than 1, it's already a percentage
+                if (Math.abs(value) > 1) {
+                    return `${value.toFixed(decimals)}%`;
+                }
+                // If value is between -1 and 1, it's a decimal that needs to be converted
+                return `${(value * 100).toFixed(decimals)}%`;
+            };
+            
             // Helper to determine if value is positive/negative for color coding
             const getValueClass = (value, label) => {
                 if (!value || value === 'N/A') return '';
@@ -1922,7 +1952,7 @@
             
             // PEG Ratio = P/E / EPS Growth
             const pegRatio = (peRatio && epsGrowth5Y && epsGrowth5Y > 0) 
-                ? (peRatio / (epsGrowth5Y * 100)).toFixed(2) 
+                ? (peRatio / (Math.abs(epsGrowth5Y) > 1 ? epsGrowth5Y : epsGrowth5Y * 100)).toFixed(2) 
                 : null;
             
             // Next Earnings Date
@@ -1984,26 +2014,26 @@
                     name: 'Profitability',
                     metrics: [
                         { label: 'Income', value: getValue(metrics.netIncomeTTM) ? `$${(metrics.netIncomeTTM / 1000000).toFixed(0)}M` : 'N/A' },
-                        { label: 'Gross Margin', value: getValue(metrics.grossMarginTTM) ? `${(metrics.grossMarginTTM * 100).toFixed(1)}%` : 'N/A' },
-                        { label: 'Oper. Margin', value: getValue(metrics.operatingMarginTTM) ? `${(metrics.operatingMarginTTM * 100).toFixed(1)}%` : 'N/A' },
-                        { label: 'Dividend', value: getValue(metrics.dividendYieldIndicatedAnnual) ? `${(metrics.dividendYieldIndicatedAnnual * 100).toFixed(2)}%` : 'N/A' },
+                        { label: 'Gross Margin', value: formatPercent(getValue(metrics.grossMarginTTM)) || 'N/A' },
+                        { label: 'Oper. Margin', value: formatPercent(getValue(metrics.operatingMarginTTM)) || 'N/A' },
+                        { label: 'Dividend', value: formatPercent(getValue(metrics.dividendYieldIndicatedAnnual), 2) || 'N/A' },
                     ]
                 },
                 {
                     name: 'Earnings',
                     metrics: [
                         { label: 'EPS (TTM)', value: epsTTM ? `$${epsTTM.toFixed(2)}` : 'N/A' },
-                        { label: 'EPS Y/Y', value: getValue(metrics.epsGrowthTTMYoy) ? `${(metrics.epsGrowthTTMYoy * 100).toFixed(1)}%` : 'N/A' },
-                        { label: 'EPS Q/Q', value: getValue(metrics.epsGrowthQuarterlyYoy) ? `${(metrics.epsGrowthQuarterlyYoy * 100).toFixed(1)}%` : 'N/A' },
-                        { label: 'EPS Past 5Y', value: epsGrowth5Y ? `${(epsGrowth5Y * 100).toFixed(1)}%` : 'N/A' },
+                        { label: 'EPS Y/Y', value: formatPercent(getValue(metrics.epsGrowthTTMYoy)) || 'N/A' },
+                        { label: 'EPS Q/Q', value: formatPercent(getValue(metrics.epsGrowthQuarterlyYoy)) || 'N/A' },
+                        { label: 'EPS Past 5Y', value: formatPercent(epsGrowth5Y) || 'N/A' },
                     ]
                 },
                 {
                     name: 'Sales',
                     metrics: [
-                        { label: 'Sales Y/Y', value: getValue(metrics.revenueGrowthTTMYoy) ? `${(metrics.revenueGrowthTTMYoy * 100).toFixed(1)}%` : 'N/A' },
-                        { label: 'Sales Q/Q', value: getValue(metrics.revenueGrowthQuarterlyYoy) ? `${(metrics.revenueGrowthQuarterlyYoy * 100).toFixed(1)}%` : 'N/A' },
-                        { label: 'Sales Past 5Y', value: getValue(metrics.revenueGrowth5Y) ? `${(metrics.revenueGrowth5Y * 100).toFixed(1)}%` : 'N/A' },
+                        { label: 'Sales Y/Y', value: formatPercent(getValue(metrics.revenueGrowthTTMYoy)) || 'N/A' },
+                        { label: 'Sales Q/Q', value: formatPercent(getValue(metrics.revenueGrowthQuarterlyYoy)) || 'N/A' },
+                        { label: 'Sales Past 5Y', value: formatPercent(getValue(metrics.revenueGrowth5Y)) || 'N/A' },
                     ]
                 },
                 {
@@ -2037,7 +2067,7 @@
                 {
                     name: 'Short Interest',
                     metrics: [
-                        { label: 'Short Float', value: getValue(metrics.shortInterestSharePercent) ? `${metrics.shortInterestSharePercent.toFixed(2)}%` : 'N/A' },
+                        { label: 'Short Float', value: formatPercent(getValue(metrics.shortInterestSharePercent), 2) || 'N/A' },
                         { label: 'Short Ratio', value: getValue(metrics.shortInterestDaysToCover) ? `${metrics.shortInterestDaysToCover.toFixed(1)}d` : 'N/A' },
                     ]
                 }
