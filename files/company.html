@@ -1819,12 +1819,11 @@
             try {
                 console.log('Fetching fundamentals data for:', ticker);
                 
-                // Fetch multiple data sources in parallel
-                const [metricsResponse, earningsResponse, quoteResponse, chartData] = await Promise.all([
+                // Fetch data sources (removed chartData due to CORS 403 errors)
+                const [metricsResponse, earningsResponse, quoteResponse] = await Promise.all([
                     fetch(`https://finnhub.io/api/v1/stock/metric?symbol=${ticker}&metric=all&token=${FINNHUB_API_KEY}`),
                     fetch(`https://finnhub.io/api/v1/calendar/earnings?symbol=${ticker}&token=${FINNHUB_API_KEY}`),
-                    fetch(`https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${FINNHUB_API_KEY}`),
-                    fetchChartDataForCalculations()
+                    fetch(`https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${FINNHUB_API_KEY}`)
                 ]);
                 
                 console.log('API responses received:', {
@@ -1843,10 +1842,9 @@
                 const quote = quoteResponse.ok ? await quoteResponse.json() : null;
                 
                 console.log('Parsed data:', {
-                    metrics: metrics,
-                    earnings: earnings,
-                    quote: quote,
-                    chartData: chartData ? 'Available' : 'Not available'
+                    metricsAvailable: !!metrics.metric,
+                    earningsAvailable: !!earnings,
+                    quoteAvailable: !!quote
                 });
                 
                 // Combine all data
@@ -1854,7 +1852,7 @@
                     metrics: metrics,
                     earnings: earnings,
                     quote: quote,
-                    chartData: chartData
+                    chartData: null // Removed due to CORS issues
                 };
                 
                 localStorage.setItem(cacheKey, JSON.stringify({
@@ -1909,10 +1907,16 @@
         }
 
         function renderKeyRatios(data) {
-            const metrics = data.metrics?.metric || {};
+            // Finnhub returns data in this structure: {metrics: {...}, metricType: "all", series: {...}}
+            // The actual metrics are in the nested 'metric' or 'metrics' object
+            const metricsData = data.metrics?.metric || data.metrics?.metrics || data.metrics || {};
+            const seriesData = data.metrics?.series || {};
             const earnings = data.earnings?.earningsCalendar || [];
             const quote = data.quote || {};
             const chartData = data.chartData || null;
+            
+            console.log('Rendering with metrics:', metricsData);
+            console.log('Series data:', seriesData);
             
             const ratiosGrid = document.getElementById('ratiosGrid');
             
@@ -1946,9 +1950,9 @@
             
             // Calculate derived metrics
             const currentPrice = getValue(quote.c);
-            const peRatio = getValue(metrics.peBasicExclExtraTTM);
-            const epsTTM = getValue(metrics.epsExclExtraItemsTTM);
-            const epsGrowth5Y = getValue(metrics.epsGrowth5Y);
+            const peRatio = getValue(metricsData.peBasicExclExtraTTM);
+            const epsTTM = getValue(metricsData.epsExclExtraItemsTTM);
+            const epsGrowth5Y = getValue(metricsData.epsGrowth5Y);
             
             // PEG Ratio = P/E / EPS Growth
             const pegRatio = (peRatio && epsGrowth5Y && epsGrowth5Y > 0) 
@@ -1961,8 +1965,8 @@
                 : null;
             
             // Performance calculations
-            const week52High = getValue(metrics['52WeekHigh']);
-            const week52Low = getValue(metrics['52WeekLow']);
+            const week52High = getValue(metricsData['52WeekHigh']);
+            const week52Low = getValue(metricsData['52WeekLow']);
             const perfYear = (currentPrice && week52Low && week52Low > 0)
                 ? (((currentPrice - week52Low) / week52Low) * 100).toFixed(2)
                 : null;
@@ -2004,36 +2008,36 @@
                     metrics: [
                         { label: 'P/E', value: peRatio ? peRatio.toFixed(2) : 'N/A' },
                         { label: 'PEG', value: pegRatio || 'N/A' },
-                        { label: 'P/S', value: getValue(metrics.psAnnual) ? metrics.psAnnual.toFixed(2) : 'N/A' },
-                        { label: 'P/B', value: getValue(metrics.pbAnnual) ? metrics.pbAnnual.toFixed(2) : 'N/A' },
-                        { label: 'P/FCF', value: getValue(metrics.pfcfShareTTM) ? metrics.pfcfShareTTM.toFixed(2) : 'N/A' },
-                        { label: 'Market Cap', value: getValue(metrics.marketCapitalization) ? `$${(metrics.marketCapitalization / 1000).toFixed(2)}B` : 'N/A' },
+                        { label: 'P/S', value: getValue(metricsData.psAnnual) ? metricsData.psAnnual.toFixed(2) : 'N/A' },
+                        { label: 'P/B', value: getValue(metricsData.pbAnnual) ? metricsData.pbAnnual.toFixed(2) : 'N/A' },
+                        { label: 'P/FCF', value: getValue(metricsData.pfcfShareTTM) ? metricsData.pfcfShareTTM.toFixed(2) : 'N/A' },
+                        { label: 'Market Cap', value: getValue(metricsData.marketCapitalization) ? `$${(metricsData.marketCapitalization / 1000).toFixed(2)}B` : 'N/A' },
                     ]
                 },
                 {
                     name: 'Profitability',
                     metrics: [
-                        { label: 'Income', value: getValue(metrics.netIncomeTTM) ? `$${(metrics.netIncomeTTM / 1000000).toFixed(0)}M` : 'N/A' },
-                        { label: 'Gross Margin', value: formatPercent(getValue(metrics.grossMarginTTM)) || 'N/A' },
-                        { label: 'Oper. Margin', value: formatPercent(getValue(metrics.operatingMarginTTM)) || 'N/A' },
-                        { label: 'Dividend', value: formatPercent(getValue(metrics.dividendYieldIndicatedAnnual), 2) || 'N/A' },
+                        { label: 'Income', value: getValue(metricsData.netIncomeTTM) ? `$${(metricsData.netIncomeTTM / 1000000).toFixed(0)}M` : 'N/A' },
+                        { label: 'Gross Margin', value: formatPercent(getValue(metricsData.grossMarginTTM)) || 'N/A' },
+                        { label: 'Oper. Margin', value: formatPercent(getValue(metricsData.operatingMarginTTM)) || 'N/A' },
+                        { label: 'Dividend', value: formatPercent(getValue(metricsData.dividendYieldIndicatedAnnual), 2) || 'N/A' },
                     ]
                 },
                 {
                     name: 'Earnings',
                     metrics: [
                         { label: 'EPS (TTM)', value: epsTTM ? `$${epsTTM.toFixed(2)}` : 'N/A' },
-                        { label: 'EPS Y/Y', value: formatPercent(getValue(metrics.epsGrowthTTMYoy)) || 'N/A' },
-                        { label: 'EPS Q/Q', value: formatPercent(getValue(metrics.epsGrowthQuarterlyYoy)) || 'N/A' },
+                        { label: 'EPS Y/Y', value: formatPercent(getValue(metricsData.epsGrowthTTMYoy)) || 'N/A' },
+                        { label: 'EPS Q/Q', value: formatPercent(getValue(metricsData.epsGrowthQuarterlyYoy)) || 'N/A' },
                         { label: 'EPS Past 5Y', value: formatPercent(epsGrowth5Y) || 'N/A' },
                     ]
                 },
                 {
                     name: 'Sales',
                     metrics: [
-                        { label: 'Sales Y/Y', value: formatPercent(getValue(metrics.revenueGrowthTTMYoy)) || 'N/A' },
-                        { label: 'Sales Q/Q', value: formatPercent(getValue(metrics.revenueGrowthQuarterlyYoy)) || 'N/A' },
-                        { label: 'Sales Past 5Y', value: formatPercent(getValue(metrics.revenueGrowth5Y)) || 'N/A' },
+                        { label: 'Sales Y/Y', value: formatPercent(getValue(metricsData.revenueGrowthTTMYoy)) || 'N/A' },
+                        { label: 'Sales Q/Q', value: formatPercent(getValue(metricsData.revenueGrowthQuarterlyYoy)) || 'N/A' },
+                        { label: 'Sales Past 5Y', value: formatPercent(getValue(metricsData.revenueGrowth5Y)) || 'N/A' },
                     ]
                 },
                 {
@@ -2045,8 +2049,8 @@
                 {
                     name: 'Balance Sheet',
                     metrics: [
-                        { label: 'Debt/Eq', value: getValue(metrics.totalDebt2Equity) ? metrics.totalDebt2Equity.toFixed(2) : 'N/A' },
-                        { label: 'Quick Ratio', value: getValue(metrics.quickRatioAnnual) ? metrics.quickRatioAnnual.toFixed(2) : 'N/A' },
+                        { label: 'Debt/Eq', value: getValue(metricsData.totalDebt2Equity) ? metricsData.totalDebt2Equity.toFixed(2) : 'N/A' },
+                        { label: 'Quick Ratio', value: getValue(metricsData.quickRatioAnnual) ? metricsData.quickRatioAnnual.toFixed(2) : 'N/A' },
                     ]
                 },
                 {
@@ -2067,8 +2071,8 @@
                 {
                     name: 'Short Interest',
                     metrics: [
-                        { label: 'Short Float', value: formatPercent(getValue(metrics.shortInterestSharePercent), 2) || 'N/A' },
-                        { label: 'Short Ratio', value: getValue(metrics.shortInterestDaysToCover) ? `${metrics.shortInterestDaysToCover.toFixed(1)}d` : 'N/A' },
+                        { label: 'Short Float', value: formatPercent(getValue(metricsData.shortInterestSharePercent), 2) || 'N/A' },
+                        { label: 'Short Ratio', value: getValue(metricsData.shortInterestDaysToCover) ? `${metricsData.shortInterestDaysToCover.toFixed(1)}d` : 'N/A' },
                     ]
                 }
             ];
