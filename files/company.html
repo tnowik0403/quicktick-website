@@ -763,7 +763,7 @@
             position: fixed;
             right: 20px;
             top: 20px;
-            width: 420px;
+            width: 380px;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 12px;
@@ -851,7 +851,7 @@
 
         /* Tab Content Container */
         .info-content {
-            padding: 20px;
+            padding: 15px;
             overflow-y: auto;
             max-height: calc(100vh - 180px);
         }
@@ -952,31 +952,33 @@
         .dcf-inputs {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-bottom: 15px;
+            gap: 10px;
+            margin-bottom: 12px;
         }
 
         .dcf-input-group {
             display: flex;
             flex-direction: column;
-            gap: 4px;
+            gap: 3px;
         }
 
         .dcf-label {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
 
         .dcf-input {
             background: var(--bg-primary);
             border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 8px;
+            border-radius: 5px;
+            padding: 6px 8px;
             color: var(--text-primary);
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .dcf-input:focus {
@@ -986,14 +988,14 @@
 
         /* Scenario sections with 2-column grid */
         .dcf-scenario {
-            margin-top: 10px;
-            padding-top: 10px;
+            margin-top: 8px;
+            padding-top: 8px;
         }
 
         .dcf-scenario-header {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -1001,7 +1003,7 @@
         .dcf-scenario-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            gap: 6px;
         }
 
         .dcf-scenario-grid .dcf-input-group:last-child {
