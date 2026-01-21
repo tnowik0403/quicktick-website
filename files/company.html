@@ -1968,13 +1968,25 @@
                 let nextQtrRevEstFromFinnhub = null;
                 
                 if (finnhubEarningsCalendar && finnhubEarningsCalendar.earningsCalendar && finnhubEarningsCalendar.earningsCalendar.length > 0) {
-                    // Get the most recent upcoming earnings
-                    const upcoming = finnhubEarningsCalendar.earningsCalendar[0];
-                    if (upcoming.epsEstimate) {
-                        nextQtrEpsEstFromFinnhub = parseFloat(upcoming.epsEstimate);
-                    }
-                    if (upcoming.revenueEstimate) {
-                        nextQtrRevEstFromFinnhub = parseFloat(upcoming.revenueEstimate);
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0); // Reset time to start of day for proper comparison
+                    
+                    // Filter for FUTURE earnings only, then sort by date ascending (earliest first)
+                    const upcomingEarnings = finnhubEarningsCalendar.earningsCalendar
+                        .filter(e => new Date(e.date) >= today)
+                        .sort((a, b) => new Date(a.date) - new Date(b.date));
+                    
+                    if (upcomingEarnings.length > 0) {
+                        const upcoming = upcomingEarnings[0];
+                        if (upcoming.epsEstimate) {
+                            nextQtrEpsEstFromFinnhub = parseFloat(upcoming.epsEstimate);
+                        }
+                        if (upcoming.revenueEstimate) {
+                            nextQtrRevEstFromFinnhub = parseFloat(upcoming.revenueEstimate);
+                        }
+                        console.log('Finnhub next earnings:', upcoming.date, 'EPS Est:', nextQtrEpsEstFromFinnhub, 'Rev Est:', nextQtrRevEstFromFinnhub);
+                    } else {
+                        console.log('No upcoming earnings found in Finnhub calendar');
                     }
                 }
                 
