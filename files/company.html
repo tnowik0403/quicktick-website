@@ -1303,14 +1303,14 @@
             // Convert markdown-style formatting to HTML
             let formatted = text;
             
-            // Build company metadata line if overview data available
+            // Build company metadata line (will appear between company name and TLDR)
             let companyMetaLine = '';
             if (companyOverview) {
                 const sector = companyOverview.Sector || 'N/A';
                 const industry = companyOverview.Industry || 'N/A';
                 const exchange = companyOverview.Exchange || 'N/A';
                 const country = companyOverview.Country || 'N/A';
-                companyMetaLine = `<div style="color: var(--accent-cyan); font-size: 0.75rem; margin-bottom: 15px; line-height: 1.6;">Sector: ${sector}, Industry: ${industry}, Exchange: ${exchange}, Country: ${country}</div>`;
+                companyMetaLine = `<div style="color: var(--accent-cyan); font-size: 0.75rem; text-align: center; margin: 20px 0 30px 0; line-height: 1.6;">Sector: ${sector}, Industry: ${industry}, Exchange: ${exchange}, Country: ${country}</div>`;
             }
             
             // STEP 0: Create TLDR panel if summary exists
@@ -1323,7 +1323,6 @@
                             <span class="tldr-arrow" id="tldrArrow">▼</span>
                         </div>
                         <div class="tldr-content" id="tldrContent">
-                            ${companyMetaLine}
                             <div class="tldr-text">${tldrSummary}</div>
                         </div>
                     </div>
@@ -1337,7 +1336,6 @@
                             <span class="tldr-arrow" id="tldrArrow">▼</span>
                         </div>
                         <div class="tldr-content" id="tldrContent">
-                            ${companyMetaLine}
                             <div class="tldr-unavailable">Summary not yet available</div>
                         </div>
                     </div>
@@ -1359,7 +1357,7 @@
                 // Split into paragraphs
                 const disclaimerParas = disclaimerText.split(/\n\n+/).filter(p => p.trim());
                 
-                // Build disclaimer HTML with proper div wrapper
+                // Build disclaimer HTML
                 disclaimerHTML = '<div class="disclaimer">';
                 disclaimerParas.forEach(para => {
                     disclaimerHTML += `<p>${para.trim()}</p>`;
@@ -1424,8 +1422,8 @@
                 formatted = formatted + '</p>';
             }
 
-            // STEP 8: Prepend TLDR and disclaimer at the top
-            return tldrHTML + disclaimerHTML + formatted;
+            // STEP 8: Assemble final content - metadata, TLDR, disclaimer, then main content
+            return companyMetaLine + tldrHTML + disclaimerHTML + formatted;
         }
 
         // Toggle TLDR panel
@@ -2149,15 +2147,14 @@
             // Categories with Alpha Vantage fields
             const categories = [
                 {
-                    name: 'Analyst Estimates',
+                    name: 'Financial Performance',
                     metrics: [
-                        { label: 'Target Price', value: analystTargetPrice ? `$${analystTargetPrice.toFixed(2)}` : 'N/A' },
-                        { label: 'Price Upside', value: (analystTargetPrice && currentPrice) ? `${(((analystTargetPrice - currentPrice) / currentPrice) * 100).toFixed(2)}%` : 'N/A' },
-                        { label: 'Forward P/E', value: getValue(overview.ForwardPE) ? getValue(overview.ForwardPE).toFixed(2) : 'N/A' },
-                        { label: 'Next Qtr EPS Est.', value: finnhubEpsEst ? `$${finnhubEpsEst.toFixed(2)}` : (nextQtrEpsEstimate ? `$${nextQtrEpsEstimate.toFixed(2)}` : 'N/A') },
-                        { label: 'Next Qtr Rev. Est.', value: finnhubRevEst ? `$${(finnhubRevEst / 1000000).toFixed(2)}M` : 'N/A' },
-                        { label: 'Beat Rate', value: beatRate || 'N/A' },
-                        { label: 'Avg Surprise', value: avgSurprise || 'N/A' },
+                        { label: 'EPS (TTM)', value: getValue(overview.EPS) ? `$${getValue(overview.EPS).toFixed(2)}` : 'N/A' },
+                        { label: 'EPS Growth YoY', value: formatPercent(overview.QuarterlyEarningsGrowthYOY) || 'N/A' },
+                        { label: 'Revenue TTM', value: getValue(overview.RevenueTTM) ? `$${(getValue(overview.RevenueTTM) / 1000000000).toFixed(2)}B` : 'N/A' },
+                        { label: 'Revenue Growth YoY', value: formatPercent(overview.QuarterlyRevenueGrowthYOY) || 'N/A' },
+                        { label: 'Revenue Per Share', value: getValue(overview.RevenuePerShareTTM) ? `$${getValue(overview.RevenuePerShareTTM).toFixed(2)}` : 'N/A' },
+                        { label: 'EBITDA', value: getValue(overview.EBITDA) ? `$${(getValue(overview.EBITDA) / 1000000000).toFixed(2)}B` : 'N/A' },
                     ]
                 },
                 {
@@ -2172,6 +2169,24 @@
                     ]
                 },
                 {
+                    name: 'Calendar',
+                    metrics: [
+                        { label: 'Next Earnings', value: nextEarnings },
+                    ]
+                },
+                {
+                    name: 'Analyst Estimates',
+                    metrics: [
+                        { label: 'Target Price', value: analystTargetPrice ? `$${analystTargetPrice.toFixed(2)}` : 'N/A' },
+                        { label: 'Price Upside', value: (analystTargetPrice && currentPrice) ? `${(((analystTargetPrice - currentPrice) / currentPrice) * 100).toFixed(2)}%` : 'N/A' },
+                        { label: 'Forward P/E', value: getValue(overview.ForwardPE) ? getValue(overview.ForwardPE).toFixed(2) : 'N/A' },
+                        { label: 'Next Qtr EPS Est.', value: finnhubEpsEst ? `$${finnhubEpsEst.toFixed(2)}` : (nextQtrEpsEstimate ? `$${nextQtrEpsEstimate.toFixed(2)}` : 'N/A') },
+                        { label: 'Next Qtr Rev. Est.', value: finnhubRevEst ? `$${(finnhubRevEst / 1000000).toFixed(2)}M` : 'N/A' },
+                        { label: 'Beat Rate', value: beatRate || 'N/A' },
+                        { label: 'Avg Surprise', value: avgSurprise || 'N/A' },
+                    ]
+                },
+                {
                     name: 'Profitability',
                     metrics: [
                         { label: 'Gross Margin', value: formatPercent(overview.GrossProfitTTM && overview.RevenueTTM ? (getValue(overview.GrossProfitTTM) / getValue(overview.RevenueTTM)) : null) || 'N/A' },
@@ -2180,36 +2195,11 @@
                     ]
                 },
                 {
-                    name: 'Financial Performance',
-                    metrics: [
-                        { label: 'EPS (TTM)', value: getValue(overview.EPS) ? `$${getValue(overview.EPS).toFixed(2)}` : 'N/A' },
-                        { label: 'EPS Growth YoY', value: formatPercent(overview.QuarterlyEarningsGrowthYOY) || 'N/A' },
-                        { label: 'Revenue TTM', value: getValue(overview.RevenueTTM) ? `$${(getValue(overview.RevenueTTM) / 1000000000).toFixed(2)}B` : 'N/A' },
-                        { label: 'Revenue Growth YoY', value: formatPercent(overview.QuarterlyRevenueGrowthYOY) || 'N/A' },
-                        { label: 'Revenue Per Share', value: getValue(overview.RevenuePerShareTTM) ? `$${getValue(overview.RevenuePerShareTTM).toFixed(2)}` : 'N/A' },
-                    ]
-                },
-                {
-                    name: 'Calendar',
-                    metrics: [
-                        { label: 'Next Earnings', value: nextEarnings },
-                    ]
-                },
-                {
                     name: 'Balance Sheet',
                     metrics: [
                         { label: 'Debt/Equity', value: getValue(finnhubMetrics['totalDebt/totalEquityAnnual']) ? getValue(finnhubMetrics['totalDebt/totalEquityAnnual']).toFixed(2) : 'N/A' },
                         { label: 'Current Ratio', value: getValue(finnhubMetrics.currentRatioAnnual) ? getValue(finnhubMetrics.currentRatioAnnual).toFixed(2) : 'N/A' },
                         { label: 'Book Value', value: getValue(overview.BookValue) ? `$${getValue(overview.BookValue).toFixed(2)}` : 'N/A' },
-                    ]
-                },
-                {
-                    name: 'Performance',
-                    metrics: [
-                        { label: 'Perf Week', value: getValue(quote['10. change percent']) || 'N/A' },
-                        { label: 'Perf Year', value: perfYear ? `${perfYear}%` : 'N/A' },
-                        { label: '52W High', value: week52High ? `$${week52High.toFixed(2)}` : 'N/A' },
-                        { label: '52W Low', value: week52Low ? `$${week52Low.toFixed(2)}` : 'N/A' },
                     ]
                 },
                 {
