@@ -1310,7 +1310,11 @@
                 const industry = companyOverview.Industry || 'N/A';
                 const exchange = companyOverview.Exchange || 'N/A';
                 const country = companyOverview.Country || 'N/A';
-                companyMetaLine = `<div style="color: var(--accent-cyan); font-size: 0.75rem; text-align: center; margin: 20px 0 30px 0; line-height: 1.6;">Sector: ${sector}, Industry: ${industry}, Exchange: ${exchange}, Country: ${country}</div>`;
+                
+                // Only show the line if we have at least one valid field (not all N/A)
+                if (sector !== 'N/A' || industry !== 'N/A' || exchange !== 'N/A' || country !== 'N/A') {
+                    companyMetaLine = `<div style="color: var(--accent-cyan); font-size: 0.75rem; text-align: center; margin: 20px 0 30px 0; line-height: 1.6;">Sector: ${sector}, Industry: ${industry}, Exchange: ${exchange}, Country: ${country}</div>`;
+                }
             }
             
             // STEP 0: Create TLDR panel if summary exists
@@ -1478,7 +1482,19 @@
                         // Check if Alpha Vantage returned an error or rate limit message
                         if (companyOverview.Note || companyOverview['Error Message']) {
                             console.warn('Alpha Vantage OVERVIEW error:', companyOverview);
-                            companyOverview = null; // Don't use invalid data
+                            companyOverview = null;
+                        }
+                        
+                        // If Alpha Vantage returned undefined fields, try to fill from company lookup
+                        if (companyOverview && companyMeta) {
+                            if (!companyOverview.Sector && companyMeta.sector) {
+                                companyOverview.Sector = companyMeta.sector;
+                                console.log('Using sector from company lookup:', companyMeta.sector);
+                            }
+                            if (!companyOverview.Industry && companyMeta.subIndustry) {
+                                companyOverview.Industry = companyMeta.subIndustry;
+                                console.log('Using industry from company lookup:', companyMeta.subIndustry);
+                            }
                         }
                     }
                 } catch (e) {
@@ -1981,34 +1997,37 @@
                 
                 console.log('Finnhub Earnings Calendar raw data:', finnhubEarningsCalendar);
                 
-                if (finnhubEarningsCalendar && finnhubEarningsCalendar.earningsCalendar && finnhubEarningsCalendar.earningsCalendar.length > 0) {
-                    const today = new Date();
-                    today.setHours(0, 0, 0, 0); // Reset time to start of day for proper comparison
-                    
-                    console.log('Total earnings events:', finnhubEarningsCalendar.earningsCalendar.length);
-                    console.log('Today:', today.toISOString().split('T')[0]);
-                    
-                    // Filter for FUTURE earnings only, then sort by date ascending (earliest first)
-                    const upcomingEarnings = finnhubEarningsCalendar.earningsCalendar
-                        .filter(e => {
-                            const eventDate = new Date(e.date);
-                            const isFuture = eventDate >= today;
-                            console.log(`Event ${e.date}: isFuture=${isFuture}, epsEst=${e.epsEstimate}, revEst=${e.revenueEstimate}`);
-                            return isFuture;
-                        })
-                        .sort((a, b) => new Date(a.date) - new Date(b.date));
-                    
-                    console.log('Upcoming earnings count:', upcomingEarnings.length);
-                    
-                    if (upcomingEarnings.length > 0) {
-                        const upcoming = upcomingEarnings[0];
-                        console.log('Next earnings selected:', upcoming);
-                        if (upcoming.epsEstimate) {
-                            nextQtrEpsEstFromFinnhub = parseFloat(upcoming.epsEstimate);
-                        }
-                        if (upcoming.revenueEstimate) {
-                            nextQtrRevEstFromFinnhub = parseFloat(upcoming.revenueEstimate);
-                        }
+                if (finnhubEarningsCalendar && finnhubEarningsCalendar.earningsCalendar) {
+                    if (finnhubEarningsCalendar.earningsCalendar.length === 0) {
+                        console.log('Finnhub has no earnings calendar data for', ticker);
+                    } else {
+                        const today = new Date();
+                        today.setHours(0, 0, 0, 0);
+                        
+                        console.log('Total earnings events:', finnhubEarningsCalendar.earningsCalendar.length);
+                        console.log('Today:', today.toISOString().split('T')[0]);
+                        
+                        // Filter for FUTURE earnings only
+                        const upcomingEarnings = finnhubEarningsCalendar.earningsCalendar
+                            .filter(e => {
+                                const eventDate = new Date(e.date);
+                                const isFuture = eventDate >= today;
+                                console.log(`Event ${e.date}: isFuture=${isFuture}, epsEst=${e.epsEstimate}, revEst=${e.revenueEstimate}`);
+                                return isFuture;
+                            })
+                            .sort((a, b) => new Date(a.date) - new Date(b.date));
+                        
+                        console.log('Upcoming earnings count:', upcomingEarnings.length);
+                        
+                        if (upcomingEarnings.length > 0) {
+                            const upcoming = upcomingEarnings[0];
+                            console.log('Next earnings selected:', upcoming);
+                            if (upcoming.epsEstimate) {
+                                nextQtrEpsEstFromFinnhub = parseFloat(upcoming.epsEstimate);
+                            }
+                            if (upcoming.revenueEstimate) {
+                                nextQtrRevEstFromFinnhub = parseFloat(upcoming.revenueEstimate);
+                            }
                         console.log('Finnhub next earnings:', upcoming.date, 'EPS Est:', nextQtrEpsEstFromFinnhub, 'Rev Est:', nextQtrRevEstFromFinnhub);
                     } else {
                         console.log('No upcoming earnings found in Finnhub calendar');
