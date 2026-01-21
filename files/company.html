@@ -1118,7 +1118,7 @@
         <div class="info-tabs">
             <div class="info-tab active" onclick="switchTab('chart')">Chart</div>
             <div class="info-tab" onclick="switchTab('ratios')">Fundamentals</div>
-            <div class="info-tab" onclick="switchTab('dcf')">DCF Calc</div>
+            <div class="info-tab" onclick="switchTab('dcf')">Present Value Calculator</div>
             <div class="info-tab" onclick="switchTab('news')">News</div>
         </div>
         
@@ -1158,29 +1158,72 @@
                         <input type="number" class="dcf-input" id="currentEPS" step="0.01" placeholder="6.50">
                     </div>
                     
-                    <div class="dcf-input-group">
-                        <label class="dcf-label">Normal Growth Rate (%)</label>
-                        <input type="number" class="dcf-input" id="normalGrowth" step="0.1" placeholder="12">
+                    <!-- Scenario 1: Normal Case -->
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--accent-green);">
+                        <div style="font-size: 0.75rem; color: var(--accent-green); font-weight: 700; margin-bottom: 10px; text-transform: uppercase;">Scenario 1: Normal Case</div>
+                        
+                        <div class="dcf-input-group">
+                            <label class="dcf-label">Growth Years 1-5 (%)</label>
+                            <input type="number" class="dcf-input" id="normalGrowth1_5" step="0.1" placeholder="12">
+                        </div>
+                        
+                        <div class="dcf-input-group">
+                            <label class="dcf-label">Growth Years 6-10 (%)</label>
+                            <input type="number" class="dcf-input" id="normalGrowth6_10" step="0.1" placeholder="8">
+                        </div>
+                        
+                        <div class="dcf-input-group">
+                            <label class="dcf-label">P/E Multiple</label>
+                            <input type="number" class="dcf-input" id="normalPE" step="0.1" placeholder="23">
+                        </div>
                     </div>
                     
-                    <div class="dcf-input-group">
-                        <label class="dcf-label">Best Case Growth (%)</label>
-                        <input type="number" class="dcf-input" id="bestGrowth" step="0.1" placeholder="15">
+                    <!-- Scenario 2: Best Case -->
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--accent-cyan);">
+                        <div style="font-size: 0.75rem; color: var(--accent-cyan); font-weight: 700; margin-bottom: 10px; text-transform: uppercase;">Scenario 2: Best Case</div>
+                        
+                        <div class="dcf-input-group">
+                            <label class="dcf-label">Growth Years 1-5 (%)</label>
+                            <input type="number" class="dcf-input" id="bestGrowth1_5" step="0.1" placeholder="15">
+                        </div>
+                        
+                        <div class="dcf-input-group">
+                            <label class="dcf-label">Growth Years 6-10 (%)</label>
+                            <input type="number" class="dcf-input" id="bestGrowth6_10" step="0.1" placeholder="15">
+                        </div>
+                        
+                        <div class="dcf-input-group">
+                            <label class="dcf-label">P/E Multiple</label>
+                            <input type="number" class="dcf-input" id="bestPE" step="0.1" placeholder="32">
+                        </div>
                     </div>
                     
-                    <div class="dcf-input-group">
-                        <label class="dcf-label">Worst Case Growth (%)</label>
-                        <input type="number" class="dcf-input" id="worstGrowth" step="0.1" placeholder="5">
+                    <!-- Scenario 3: Worst Case -->
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--accent-red);">
+                        <div style="font-size: 0.75rem; color: var(--accent-red); font-weight: 700; margin-bottom: 10px; text-transform: uppercase;">Scenario 3: Worst Case</div>
+                        
+                        <div class="dcf-input-group">
+                            <label class="dcf-label">Growth Years 1-5 (%)</label>
+                            <input type="number" class="dcf-input" id="worstGrowth1_5" step="0.1" placeholder="5">
+                        </div>
+                        
+                        <div class="dcf-input-group">
+                            <label class="dcf-label">Growth Years 6-10 (%)</label>
+                            <input type="number" class="dcf-input" id="worstGrowth6_10" step="0.1" placeholder="4">
+                        </div>
+                        
+                        <div class="dcf-input-group">
+                            <label class="dcf-label">P/E Multiple</label>
+                            <input type="number" class="dcf-input" id="worstPE" step="0.1" placeholder="16">
+                        </div>
                     </div>
                     
-                    <div class="dcf-input-group">
-                        <label class="dcf-label">Terminal Growth (%)</label>
-                        <input type="number" class="dcf-input" id="terminalGrowth" step="0.1" placeholder="10">
-                    </div>
-                    
-                    <div class="dcf-input-group">
-                        <label class="dcf-label">Discount Rate (%)</label>
-                        <input type="number" class="dcf-input" id="discountRate" step="0.1" placeholder="23">
+                    <!-- Discount Rate (shared across all scenarios) -->
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--text-secondary);">
+                        <div class="dcf-input-group">
+                            <label class="dcf-label">Discount Rate (%)</label>
+                            <input type="number" class="dcf-input" id="discountRate" step="0.1" placeholder="10">
+                        </div>
                     </div>
                 </div>
                 
@@ -2316,65 +2359,111 @@
             `).join('');
         }
 
-        // DCF Calculator
+        // DCF Calculator - Matches Excel "USE_THIS_TAB" Model
         function calculateDCF() {
+            // Get inputs
             const currentEPS = parseFloat(document.getElementById('currentEPS').value);
-            const normalGrowth = parseFloat(document.getElementById('normalGrowth').value) / 100;
-            const bestGrowth = parseFloat(document.getElementById('bestGrowth').value) / 100;
-            const worstGrowth = parseFloat(document.getElementById('worstGrowth').value) / 100;
-            const terminalGrowth = parseFloat(document.getElementById('terminalGrowth').value) / 100;
+            
+            // Scenario 1: Normal Case
+            const normalGrowth1_5 = parseFloat(document.getElementById('normalGrowth1_5').value) / 100;
+            const normalGrowth6_10 = parseFloat(document.getElementById('normalGrowth6_10').value) / 100;
+            const normalPE = parseFloat(document.getElementById('normalPE').value);
+            
+            // Scenario 2: Best Case
+            const bestGrowth1_5 = parseFloat(document.getElementById('bestGrowth1_5').value) / 100;
+            const bestGrowth6_10 = parseFloat(document.getElementById('bestGrowth6_10').value) / 100;
+            const bestPE = parseFloat(document.getElementById('bestPE').value);
+            
+            // Scenario 3: Worst Case
+            const worstGrowth1_5 = parseFloat(document.getElementById('worstGrowth1_5').value) / 100;
+            const worstGrowth6_10 = parseFloat(document.getElementById('worstGrowth6_10').value) / 100;
+            const worstPE = parseFloat(document.getElementById('worstPE').value);
+            
+            // Shared discount rate
             const discountRate = parseFloat(document.getElementById('discountRate').value) / 100;
             
-            if (isNaN(currentEPS) || isNaN(normalGrowth) || isNaN(bestGrowth) || isNaN(worstGrowth) || isNaN(terminalGrowth) || isNaN(discountRate)) {
+            // Validation
+            if (isNaN(currentEPS) || isNaN(normalGrowth1_5) || isNaN(normalGrowth6_10) || isNaN(normalPE) ||
+                isNaN(bestGrowth1_5) || isNaN(bestGrowth6_10) || isNaN(bestPE) ||
+                isNaN(worstGrowth1_5) || isNaN(worstGrowth6_10) || isNaN(worstPE) ||
+                isNaN(discountRate)) {
                 alert('Please fill in all fields with valid numbers');
                 return;
             }
             
-            const projectionYears = 10;
-            
-            function calculateScenario(growthRate, terminalRate) {
-                let presentValue = 0;
+            /**
+             * Calculate scenario using Excel's exact methodology:
+             * 1. Years 1-5: grow at rate1
+             * 2. Years 6-10: grow at rate2
+             * 3. Terminal value = Year 9 EPS × P/E Multiple
+             * 4. Discount each year's EPS back to present value
+             * 5. Sum all discounted values including terminal
+             */
+            function calculateScenario(growth1_5, growth6_10, peMultiple) {
+                let totalPV = 0;
                 
-                for (let year = 1; year <= projectionYears; year++) {
-                    const futureEPS = currentEPS * Math.pow(1 + growthRate, year);
+                // Calculate EPS for each year and discount to present value
+                for (let year = 1; year <= 10; year++) {
+                    let futureEPS;
+                    
+                    if (year <= 5) {
+                        // Years 1-5: use growth1_5
+                        futureEPS = currentEPS * Math.pow(1 + growth1_5, year);
+                    } else {
+                        // Years 6-10: calculate EPS at year 5, then grow to current year
+                        const epsYear5 = currentEPS * Math.pow(1 + growth1_5, 5);
+                        futureEPS = epsYear5 * Math.pow(1 + growth6_10, year - 5);
+                    }
+                    
+                    // Discount to present value
                     const discountedEPS = futureEPS / Math.pow(1 + discountRate, year);
-                    presentValue += discountedEPS;
+                    totalPV += discountedEPS;
                 }
                 
-                const terminalEPS = currentEPS * Math.pow(1 + growthRate, projectionYears);
-                const terminalValue = terminalEPS * (1 + terminalRate) / (discountRate - terminalRate);
-                const discountedTerminalValue = terminalValue / Math.pow(1 + discountRate, projectionYears);
-                presentValue += discountedTerminalValue;
+                // Terminal value = Year 9 EPS × P/E Multiple
+                // First calculate Year 9 EPS
+                const epsYear5 = currentEPS * Math.pow(1 + growth1_5, 5);
+                const epsYear9 = epsYear5 * Math.pow(1 + growth6_10, 4); // Year 9 = Year 5 + 4 years
                 
-                return presentValue;
+                // Terminal value
+                const terminalValue = epsYear9 * peMultiple;
+                
+                // Discount terminal value to present (as if it's in year 10)
+                const discountedTerminal = terminalValue / Math.pow(1 + discountRate, 10);
+                totalPV += discountedTerminal;
+                
+                return totalPV;
             }
             
-            const normalPV = calculateScenario(normalGrowth, terminalGrowth);
-            const bestPV = calculateScenario(bestGrowth, terminalGrowth);
-            const worstPV = calculateScenario(worstGrowth, terminalGrowth);
+            // Calculate each scenario
+            const normalPV = calculateScenario(normalGrowth1_5, normalGrowth6_10, normalPE);
+            const bestPV = calculateScenario(bestGrowth1_5, bestGrowth6_10, bestPE);
+            const worstPV = calculateScenario(worstGrowth1_5, worstGrowth6_10, worstPE);
             
-            const weightedPV = (normalPV * 0.6) + (bestPV * 0.2) + (worstPV * 0.2);
-            const entryPrice = weightedPV * 0.5;
-            const exitPrice = weightedPV * 0.8;
+            // Weighted fair value: Normal 60%, Best 20%, Worst 20%
+            const fairValue = (normalPV * 0.6) + (bestPV * 0.2) + (worstPV * 0.2);
+            const entryPrice = fairValue * 0.5;  // 50% of fair value
+            const exitPrice = fairValue * 0.8;   // 80% of fair value
             
+            // Display results
             const resultsDiv = document.getElementById('dcfResults');
             resultsDiv.style.display = 'block';
             resultsDiv.innerHTML = `
                 <div class="dcf-result-item">
-                    <span class="dcf-result-label">Normal Case PV:</span>
+                    <span class="dcf-result-label">Scenario 1 (Normal Case):</span>
                     <span class="dcf-result-value">$${normalPV.toFixed(2)}</span>
                 </div>
                 <div class="dcf-result-item">
-                    <span class="dcf-result-label">Best Case PV:</span>
+                    <span class="dcf-result-label">Scenario 2 (Best Case):</span>
                     <span class="dcf-result-value">$${bestPV.toFixed(2)}</span>
                 </div>
                 <div class="dcf-result-item">
-                    <span class="dcf-result-label">Worst Case PV:</span>
+                    <span class="dcf-result-label">Scenario 3 (Worst Case):</span>
                     <span class="dcf-result-value">$${worstPV.toFixed(2)}</span>
                 </div>
                 <div class="dcf-result-item" style="margin-top: 15px; padding-top: 15px; border-top: 2px solid var(--accent-green);">
-                    <span class="dcf-result-label" style="font-size: 0.95rem; font-weight: 700;">Fair Value:</span>
-                    <span class="dcf-result-value" style="font-size: 1.2rem;">$${weightedPV.toFixed(2)}</span>
+                    <span class="dcf-result-label" style="font-size: 0.95rem; font-weight: 700;">Fair Value (Weighted):</span>
+                    <span class="dcf-result-value" style="font-size: 1.2rem;">$${fairValue.toFixed(2)}</span>
                 </div>
                 <div class="dcf-result-item">
                     <span class="dcf-result-label">Entry Price (50%):</span>
