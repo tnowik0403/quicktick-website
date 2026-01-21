@@ -1273,6 +1273,9 @@
         const contentCard = document.getElementById('contentCard');
         const companyInfo = document.getElementById('companyInfo');
         const lastUpdated = document.getElementById('lastUpdated');
+        
+        // Global cache for company overview (to avoid duplicate API calls)
+        let cachedCompanyOverview = null;
 
         // Update page title and ticker display
         if (ticker) {
@@ -1483,6 +1486,9 @@
                         if (companyOverview.Note || companyOverview['Error Message']) {
                             console.warn('Alpha Vantage OVERVIEW error:', companyOverview);
                             companyOverview = null;
+                        } else {
+                            // Save to global cache for reuse in fundamentals tab
+                            cachedCompanyOverview = companyOverview;
                         }
                         
                         // If Alpha Vantage returned undefined fields, try to fill from company lookup
@@ -1940,10 +1946,20 @@
             try {
                 console.log('Fetching fundamentals data from Alpha Vantage for:', ticker);
                 
+                // Use cached overview if available, otherwise fetch (but this should rarely happen)
+                let overviewPromise;
+                if (cachedCompanyOverview) {
+                    console.log('Using cached company overview data');
+                    overviewPromise = Promise.resolve({ ok: true, json: () => Promise.resolve(cachedCompanyOverview) });
+                } else {
+                    console.log('No cached overview, fetching fresh');
+                    overviewPromise = fetch(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${ALPHAVANTAGE_API_KEY}`);
+                }
+                
                 // Fetch from Alpha Vantage Premium API + Finnhub for balance sheet & estimates
                 const [overviewResponse, earningsResponse, earningsCalendarResponse, quoteResponse, finnhubMetricsResponse, finnhubEarningsCalendarResponse] = await Promise.all([
-                    // Company Overview - Has all valuation metrics, financials, analyst data
-                    fetch(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${ALPHAVANTAGE_API_KEY}`),
+                    // Company Overview - Use cached data to avoid duplicate API call
+                    overviewPromise,
                     // Earnings - Has historical EPS data
                     fetch(`https://www.alphavantage.co/query?function=EARNINGS&symbol=${ticker}&apikey=${ALPHAVANTAGE_API_KEY}`),
                     // Earnings Calendar - Has FUTURE earnings dates (Premium feature)
