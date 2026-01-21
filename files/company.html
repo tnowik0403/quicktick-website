@@ -1468,9 +1468,21 @@
                     const overviewResponse = await fetch(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${ALPHAVANTAGE_API_KEY}`);
                     if (overviewResponse.ok) {
                         companyOverview = await overviewResponse.json();
+                        console.log('Company Overview fetched for metadata:', {
+                            Sector: companyOverview.Sector,
+                            Industry: companyOverview.Industry,
+                            Exchange: companyOverview.Exchange,
+                            Country: companyOverview.Country
+                        });
+                        
+                        // Check if Alpha Vantage returned an error or rate limit message
+                        if (companyOverview.Note || companyOverview['Error Message']) {
+                            console.warn('Alpha Vantage OVERVIEW error:', companyOverview);
+                            companyOverview = null; // Don't use invalid data
+                        }
                     }
                 } catch (e) {
-                    console.log('Could not fetch company overview for metadata');
+                    console.log('Could not fetch company overview for metadata:', e);
                 }
                 
                 // Display the data with TLDR summary and company overview
@@ -1967,17 +1979,30 @@
                 let nextQtrEpsEstFromFinnhub = null;
                 let nextQtrRevEstFromFinnhub = null;
                 
+                console.log('Finnhub Earnings Calendar raw data:', finnhubEarningsCalendar);
+                
                 if (finnhubEarningsCalendar && finnhubEarningsCalendar.earningsCalendar && finnhubEarningsCalendar.earningsCalendar.length > 0) {
                     const today = new Date();
                     today.setHours(0, 0, 0, 0); // Reset time to start of day for proper comparison
                     
+                    console.log('Total earnings events:', finnhubEarningsCalendar.earningsCalendar.length);
+                    console.log('Today:', today.toISOString().split('T')[0]);
+                    
                     // Filter for FUTURE earnings only, then sort by date ascending (earliest first)
                     const upcomingEarnings = finnhubEarningsCalendar.earningsCalendar
-                        .filter(e => new Date(e.date) >= today)
+                        .filter(e => {
+                            const eventDate = new Date(e.date);
+                            const isFuture = eventDate >= today;
+                            console.log(`Event ${e.date}: isFuture=${isFuture}, epsEst=${e.epsEstimate}, revEst=${e.revenueEstimate}`);
+                            return isFuture;
+                        })
                         .sort((a, b) => new Date(a.date) - new Date(b.date));
+                    
+                    console.log('Upcoming earnings count:', upcomingEarnings.length);
                     
                     if (upcomingEarnings.length > 0) {
                         const upcoming = upcomingEarnings[0];
+                        console.log('Next earnings selected:', upcoming);
                         if (upcoming.epsEstimate) {
                             nextQtrEpsEstFromFinnhub = parseFloat(upcoming.epsEstimate);
                         }
