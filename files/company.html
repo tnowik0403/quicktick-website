@@ -1686,23 +1686,35 @@
             const cached = localStorage.getItem(cacheKey);
             if (!cached) return false;
             
-            const data = JSON.parse(cached);
-            const now = new Date();
-            const cacheTime = new Date(data.timestamp);
-            
-            // EST is UTC-5
-            const estOffset = -5;
-            const nowEST = new Date(now.getTime() + (estOffset * 60 * 60 * 1000));
-            const cacheEST = new Date(cacheTime.getTime() + (estOffset * 60 * 60 * 1000));
-            
-            // If different date, or if past 4:01 PM EST
-            if (nowEST.toDateString() !== cacheEST.toDateString()) {
-                if (nowEST.getHours() >= 16 && nowEST.getMinutes() >= 1) {
+            try {
+                const data = JSON.parse(cached);
+                const now = new Date();
+                const cacheTime = new Date(data.timestamp);
+                
+                // Get current time in EST (UTC-5, or UTC-4 during DST)
+                const estTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+                const cacheEstTime = new Date(cacheTime.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+                
+                // Check if cache is from a different day
+                if (estTime.toDateString() !== cacheEstTime.toDateString()) {
                     return false;
                 }
+                
+                // Same day - check if we're past 4:01 PM EST
+                const currentHour = estTime.getHours();
+                const currentMinute = estTime.getMinutes();
+                
+                // If current time is past 4:01 PM EST (16:01), invalidate cache
+                if (currentHour > 16 || (currentHour === 16 && currentMinute >= 1)) {
+                    return false;
+                }
+                
+                // Cache is valid (same day, before 4:01 PM EST)
+                return true;
+            } catch (e) {
+                console.error('Cache validation error:', e);
+                return false;
             }
-            
-            return true;
         }
 
         // Load market data for all tabs
@@ -1964,8 +1976,36 @@
                 ? (((currentPrice - week52Low) / week52Low) * 100).toFixed(2)
                 : null;
             
+            // Analyst Estimates from earnings data
+            let analystTargetPrice = null;
+            let revenueEstimate = null;
+            let epsEstimate = null;
+            
+            // Extract analyst price targets if available
+            if (overview.AnalystTargetPrice) {
+                analystTargetPrice = getValue(overview.AnalystTargetPrice);
+            }
+            
+            // Extract forward estimates from quarterly earnings
+            if (earnings.quarterlyEarnings && earnings.quarterlyEarnings.length > 0) {
+                // Get most recent quarter with estimates
+                const recentQuarter = earnings.quarterlyEarnings[0];
+                if (recentQuarter.estimatedEPS) {
+                    epsEstimate = getValue(recentQuarter.estimatedEPS);
+                }
+            }
+            
             // Categories with Alpha Vantage fields
             const categories = [
+                {
+                    name: 'Analyst Estimates',
+                    metrics: [
+                        { label: 'Target Price', value: analystTargetPrice ? `$${analystTargetPrice.toFixed(2)}` : 'N/A' },
+                        { label: 'Price Upside', value: (analystTargetPrice && currentPrice) ? `${(((analystTargetPrice - currentPrice) / currentPrice) * 100).toFixed(2)}%` : 'N/A' },
+                        { label: 'Forward P/E', value: getValue(overview.ForwardPE) ? getValue(overview.ForwardPE).toFixed(2) : 'N/A' },
+                        { label: 'Next Qtr EPS Est.', value: epsEstimate ? `$${epsEstimate.toFixed(2)}` : 'N/A' },
+                    ]
+                },
                 {
                     name: 'Valuation',
                     metrics: [
@@ -1973,7 +2013,7 @@
                         { label: 'PEG', value: getValue(overview.PEGRatio) ? getValue(overview.PEGRatio).toFixed(2) : 'N/A' },
                         { label: 'P/S', value: getValue(overview.PriceToSalesRatioTTM) ? getValue(overview.PriceToSalesRatioTTM).toFixed(2) : 'N/A' },
                         { label: 'P/B', value: getValue(overview.PriceToBookRatio) ? getValue(overview.PriceToBookRatio).toFixed(2) : 'N/A' },
-                        { label: 'Forward P/E', value: getValue(overview.ForwardPE) ? getValue(overview.ForwardPE).toFixed(2) : 'N/A' },
+                        { label: 'EV/EBITDA', value: getValue(overview.EVToEBITDA) ? getValue(overview.EVToEBITDA).toFixed(2) : 'N/A' },
                         { label: 'Market Cap', value: getValue(overview.MarketCapitalization) ? `$${(getValue(overview.MarketCapitalization) / 1000000000).toFixed(2)}B` : 'N/A' },
                     ]
                 },
