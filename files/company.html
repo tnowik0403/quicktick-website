@@ -1127,6 +1127,20 @@
             <div class="tab-panel active" id="chartPanel">
                 <div id="chartContainer"></div>
                 <div class="chart-loading" id="chartLoading">Loading chart data...</div>
+                
+                <!-- Technical Indicators -->
+                <div id="technicalIndicators" style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.02); border-radius: 8px; display: none;">
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; font-size: 0.85rem;">
+                        <div>
+                            <div style="color: var(--text-secondary); margin-bottom: 5px;">RSI (14)</div>
+                            <div id="rsiValue" style="color: var(--accent-cyan); font-size: 1.1rem; font-weight: 700;">--</div>
+                        </div>
+                        <div>
+                            <div style="color: var(--text-secondary); margin-bottom: 5px;">ATR (14)</div>
+                            <div id="atrValue" style="color: var(--accent-cyan); font-size: 1.1rem; font-weight: 700;">--</div>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <!-- Fundamentals Tab -->
@@ -1781,10 +1795,49 @@
             if (!window.TradingView) {
                 const script = document.createElement('script');
                 script.src = 'https://s3.tradingview.com/tv.js';
-                script.onload = () => renderTradingViewChart();
+                script.onload = () => {
+                    renderTradingViewChart();
+                    loadTechnicalIndicators();
+                };
                 document.head.appendChild(script);
             } else {
                 renderTradingViewChart();
+                loadTechnicalIndicators();
+            }
+        }
+        
+        async function loadTechnicalIndicators() {
+            try {
+                // Fetch RSI and ATR from Alpha Vantage
+                const [rsiResponse, atrResponse] = await Promise.all([
+                    fetch(`https://www.alphavantage.co/query?function=RSI&symbol=${ticker}&interval=daily&time_period=14&series_type=close&apikey=${ALPHAVANTAGE_API_KEY}`),
+                    fetch(`https://www.alphavantage.co/query?function=ATR&symbol=${ticker}&interval=daily&time_period=14&apikey=${ALPHAVANTAGE_API_KEY}`)
+                ]);
+                
+                const rsiData = await rsiResponse.json();
+                const atrData = await atrResponse.json();
+                
+                // Get most recent values
+                const rsiTechnical = rsiData['Technical Analysis: RSI'];
+                const atrTechnical = atrData['Technical Analysis: ATR'];
+                
+                if (rsiTechnical) {
+                    const latestRSIDate = Object.keys(rsiTechnical)[0];
+                    const rsiValue = parseFloat(rsiTechnical[latestRSIDate]['RSI']);
+                    document.getElementById('rsiValue').textContent = rsiValue.toFixed(2);
+                }
+                
+                if (atrTechnical) {
+                    const latestATRDate = Object.keys(atrTechnical)[0];
+                    const atrValue = parseFloat(atrTechnical[latestATRDate]['ATR']);
+                    document.getElementById('atrValue').textContent = atrValue.toFixed(2);
+                }
+                
+                // Show indicators container
+                document.getElementById('technicalIndicators').style.display = 'block';
+                
+            } catch (error) {
+                console.error('Error loading technical indicators:', error);
             }
         }
 
@@ -1839,11 +1892,13 @@
                 console.log('Fetching fundamentals data from Alpha Vantage for:', ticker);
                 
                 // Fetch from Alpha Vantage Premium API
-                const [overviewResponse, earningsResponse, quoteResponse] = await Promise.all([
+                const [overviewResponse, earningsResponse, earningsCalendarResponse, quoteResponse] = await Promise.all([
                     // Company Overview - Has all valuation metrics, financials, analyst data
                     fetch(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${ALPHAVANTAGE_API_KEY}`),
-                    // Earnings - Has EPS estimates and earnings dates
+                    // Earnings - Has historical EPS data
                     fetch(`https://www.alphavantage.co/query?function=EARNINGS&symbol=${ticker}&apikey=${ALPHAVANTAGE_API_KEY}`),
+                    // Earnings Calendar - Has FUTURE earnings dates (Premium feature)
+                    fetch(`https://www.alphavantage.co/query?function=EARNINGS_CALENDAR&symbol=${ticker}&horizon=3month&apikey=${ALPHAVANTAGE_API_KEY}`),
                     // Global Quote - Current price
                     fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${ticker}&apikey=${ALPHAVANTAGE_API_KEY}`)
                 ]);
@@ -1851,6 +1906,7 @@
                 console.log('Alpha Vantage API responses:', {
                     overview: overviewResponse.status,
                     earnings: earningsResponse.status,
+                    earningsCalendar: earningsCalendarResponse.status,
                     quote: quoteResponse.status
                 });
                 
@@ -1860,14 +1916,29 @@
                 
                 const overview = await overviewResponse.json();
                 const earnings = earningsResponse.ok ? await earningsResponse.json() : null;
+                const earningsCalendar = earningsCalendarResponse.ok ? await earningsCalendarResponse.text() : null; // Returns CSV
                 const quote = quoteResponse.ok ? await quoteResponse.json() : null;
                 
                 console.log('Alpha Vantage data received');
+                
+                // Parse earnings calendar CSV if available
+                let nextEarningsFromCalendar = null;
+                if (earningsCalendar && !earningsCalendar.includes('Error') && !earningsCalendar.includes('Information')) {
+                    const lines = earningsCalendar.split('\n');
+                    if (lines.length > 1) {
+                        // First line is header, second line is data
+                        const data = lines[1].split(',');
+                        if (data[2]) { // reportDate column
+                            nextEarningsFromCalendar = data[2];
+                        }
+                    }
+                }
                 
                 // Combine all data
                 const combinedData = {
                     overview: overview,
                     earnings: earnings,
+                    earningsCalendar: nextEarningsFromCalendar,
                     quote: quote
                 };
                 
@@ -1941,10 +2012,11 @@
                 return isNaN(parsed) ? null : parsed;
             };
             
-            const formatPercent = (value, decimals = 1) => {
+            const formatPercent = (value, decimals = 2) => {
                 const num = getValue(value);
                 if (!num && num !== 0) return null;
-                return `${num.toFixed(decimals)}%`;
+                // Alpha Vantage returns percentages as decimals - multiply by 100
+                return `${(num * 100).toFixed(decimals)}%`;
             };
             
             const getValueClass = (value, label) => {
@@ -1960,13 +2032,28 @@
             // Extract metrics
             const currentPrice = getValue(quote['05. price']);
             
-            // Next Earnings Date
-            let nextEarnings = null;
+            // Next Earnings Date - Use EARNINGS_CALENDAR (Premium feature)
+            let nextEarnings = 'N/A';
+            let nextQtrEpsEstimate = null;
+            
+            // Check earnings calendar first (future date)
+            if (data.earningsCalendar) {
+                try {
+                    const calendarDate = new Date(data.earningsCalendar);
+                    nextEarnings = calendarDate.toLocaleDateString('en-US', { 
+                        month: 'short', day: 'numeric', year: 'numeric' 
+                    });
+                } catch (e) {
+                    console.error('Error parsing earnings calendar date:', e);
+                }
+            }
+            
+            // Get EPS estimate from historical earnings data
             if (earnings.quarterlyEarnings && earnings.quarterlyEarnings.length > 0) {
                 const sorted = earnings.quarterlyEarnings.sort((a, b) => new Date(b.reportedDate) - new Date(a.reportedDate));
-                nextEarnings = new Date(sorted[0].reportedDate).toLocaleDateString('en-US', { 
-                    month: 'short', day: 'numeric', year: 'numeric' 
-                });
+                if (sorted[0].estimatedEPS) {
+                    nextQtrEpsEstimate = getValue(sorted[0].estimatedEPS);
+                }
             }
             
             // Performance
@@ -1976,23 +2063,10 @@
                 ? (((currentPrice - week52Low) / week52Low) * 100).toFixed(2)
                 : null;
             
-            // Analyst Estimates from earnings data
+            // Analyst Estimates
             let analystTargetPrice = null;
-            let revenueEstimate = null;
-            let epsEstimate = null;
-            
-            // Extract analyst price targets if available
             if (overview.AnalystTargetPrice) {
                 analystTargetPrice = getValue(overview.AnalystTargetPrice);
-            }
-            
-            // Extract forward estimates from quarterly earnings
-            if (earnings.quarterlyEarnings && earnings.quarterlyEarnings.length > 0) {
-                // Get most recent quarter with estimates
-                const recentQuarter = earnings.quarterlyEarnings[0];
-                if (recentQuarter.estimatedEPS) {
-                    epsEstimate = getValue(recentQuarter.estimatedEPS);
-                }
             }
             
             // Categories with Alpha Vantage fields
@@ -2003,7 +2077,9 @@
                         { label: 'Target Price', value: analystTargetPrice ? `$${analystTargetPrice.toFixed(2)}` : 'N/A' },
                         { label: 'Price Upside', value: (analystTargetPrice && currentPrice) ? `${(((analystTargetPrice - currentPrice) / currentPrice) * 100).toFixed(2)}%` : 'N/A' },
                         { label: 'Forward P/E', value: getValue(overview.ForwardPE) ? getValue(overview.ForwardPE).toFixed(2) : 'N/A' },
-                        { label: 'Next Qtr EPS Est.', value: epsEstimate ? `$${epsEstimate.toFixed(2)}` : 'N/A' },
+                        { label: 'Next Qtr EPS Est.', value: nextQtrEpsEstimate ? `$${nextQtrEpsEstimate.toFixed(2)}` : 'N/A' },
+                        { label: 'Next Year EPS Est.', value: 'N/A' }, // Not available in Alpha Vantage Premium
+                        { label: 'Next 5Y EPS Growth', value: 'N/A' }, // Not available in Alpha Vantage Premium
                     ]
                 },
                 {
@@ -2020,8 +2096,7 @@
                 {
                     name: 'Profitability',
                     metrics: [
-                        { label: 'Revenue TTM', value: getValue(overview.RevenueTTM) ? `$${(getValue(overview.RevenueTTM) / 1000000000).toFixed(2)}B` : 'N/A' },
-                        { label: 'Gross Margin', value: formatPercent(overview.GrossProfitTTM && overview.RevenueTTM ? (getValue(overview.GrossProfitTTM) / getValue(overview.RevenueTTM) * 100) : null) || 'N/A' },
+                        { label: 'Gross Margin', value: formatPercent(overview.GrossProfitTTM && overview.RevenueTTM ? (getValue(overview.GrossProfitTTM) / getValue(overview.RevenueTTM)) : null) || 'N/A' },
                         { label: 'Oper. Margin', value: formatPercent(overview.OperatingMarginTTM) || 'N/A' },
                         { label: 'Profit Margin', value: formatPercent(overview.ProfitMargin) || 'N/A' },
                     ]
@@ -2031,23 +2106,21 @@
                     metrics: [
                         { label: 'EPS (TTM)', value: getValue(overview.EPS) ? `$${getValue(overview.EPS).toFixed(2)}` : 'N/A' },
                         { label: 'EPS Growth YoY', value: formatPercent(overview.QuarterlyEarningsGrowthYOY) || 'N/A' },
-                        { label: 'EPS Past 5Y', value: 'N/A' },
-                        { label: 'Diluted EPS', value: getValue(overview.DilutedEPSTTM) ? `$${getValue(overview.DilutedEPSTTM).toFixed(2)}` : 'N/A' },
+                        { label: 'EPS Past 5Y', value: 'N/A' }, // Alpha Vantage doesn't provide this even in Premium
                     ]
                 },
                 {
                     name: 'Sales',
                     metrics: [
+                        { label: 'Revenue TTM', value: getValue(overview.RevenueTTM) ? `$${(getValue(overview.RevenueTTM) / 1000000000).toFixed(2)}B` : 'N/A' },
                         { label: 'Revenue Growth YoY', value: formatPercent(overview.QuarterlyRevenueGrowthYOY) || 'N/A' },
                         { label: 'Revenue Per Share', value: getValue(overview.RevenuePerShareTTM) ? `$${getValue(overview.RevenuePerShareTTM).toFixed(2)}` : 'N/A' },
-                        { label: 'Sales Past 5Y', value: 'N/A' },
                     ]
                 },
                 {
                     name: 'Calendar',
                     metrics: [
-                        { label: 'Next Earnings', value: nextEarnings || 'N/A' },
-                        { label: 'Ex-Dividend Date', value: overview.ExDividendDate || 'N/A' },
+                        { label: 'Next Earnings', value: nextEarnings },
                     ]
                 },
                 {
@@ -2079,7 +2152,7 @@
                     metrics: [
                         { label: 'Dividend Yield', value: formatPercent(overview.DividendYield) || 'N/A' },
                         { label: 'Dividend Per Share', value: getValue(overview.DividendPerShare) ? `$${getValue(overview.DividendPerShare).toFixed(2)}` : 'N/A' },
-                        { label: 'Payout Ratio', value: formatPercent(overview.PayoutRatio) || 'N/A' },
+                        { label: 'Ex-Dividend Date', value: overview.ExDividendDate || 'N/A' },
                     ]
                 },
                 {
