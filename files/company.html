@@ -103,21 +103,39 @@
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 20px 15px;
             max-height: calc(100vh - 40px);
-            overflow-y: auto;
+            overflow: hidden;
             z-index: 100;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .nav-sidebar.minimized {
+            max-height: 50px;
+            overflow: hidden;
+        }
+
+        .nav-sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(0, 212, 255, 0.05);
         }
 
         .nav-sidebar-title {
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             font-weight: 700;
             color: var(--accent-cyan);
-            margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            opacity: 0.8;
+        }
+
+        .nav-sidebar-content {
+            padding: 20px 15px;
+            overflow-y: auto;
+            max-height: calc(100vh - 130px);
         }
 
         .scroll-to-top {
@@ -1131,11 +1149,16 @@
 
     <!-- Navigation Sidebar -->
     <div class="nav-sidebar" id="navSidebar">
-        <a href="#" class="scroll-to-top" onclick="scrollToTop(event)">↑ Top</a>
-        <div class="nav-sidebar-title">Sections</div>
-        <ul class="nav-sidebar-list" id="navSidebarList">
-            <!-- Populated by JavaScript -->
-        </ul>
+        <div class="nav-sidebar-header">
+            <div class="nav-sidebar-title">Sections</div>
+            <button class="minimize-btn" onclick="toggleNavSidebar()">Minimize</button>
+        </div>
+        <div class="nav-sidebar-content">
+            <a href="#" class="scroll-to-top" onclick="scrollToTop(event)">↑ Top</a>
+            <ul class="nav-sidebar-list" id="navSidebarList">
+                <!-- Populated by JavaScript -->
+            </ul>
+        </div>
     </div>
 
     <!-- Supplemental Info Sidebar (RIGHT) -->
@@ -1801,6 +1824,13 @@
         // Info Sidebar Functions
         function toggleInfoSidebar() {
             const sidebar = document.getElementById('infoSidebar');
+            const btn = sidebar.querySelector('.minimize-btn');
+            sidebar.classList.toggle('minimized');
+            btn.textContent = sidebar.classList.contains('minimized') ? 'Expand' : 'Minimize';
+        }
+
+        function toggleNavSidebar() {
+            const sidebar = document.getElementById('navSidebar');
             const btn = sidebar.querySelector('.minimize-btn');
             sidebar.classList.toggle('minimized');
             btn.textContent = sidebar.classList.contains('minimized') ? 'Expand' : 'Minimize';
