@@ -2,8 +2,8 @@ name: Update Today's Tickers
 
 on:
   schedule:
-    # Run at 12:00 AM EST daily (5:00 AM UTC)
-    - cron: '0 5 * * *'
+    # Run at 3:00 AM EST (8:00 AM UTC) - After Daily QuickTick Update completes
+    - cron: '0 8 * * *'
   workflow_dispatch:  # Allow manual trigger
 
 jobs:
@@ -22,11 +22,58 @@ jobs:
       - name: Generate today's tickers JSON
         run: |
           cd files
-          python generate_todays_tickers_simple.py
+          # The Daily QuickTick Update workflow increments current_day.txt at the end
+          # So current_day.txt contains TOMORROW's bucket number
+          # We need to subtract 1 to get TODAY's actual bucket
+          NEXT_DAY=$(cat current_day.txt)
+          TODAY_DAY=$((NEXT_DAY - 1))
+          
+          # Handle wrap-around (if next_day is 1, today was 91)
+          if [ $TODAY_DAY -eq 0 ]; then
+            TODAY_DAY=91
+          fi
+          
+          echo "Next scheduled day: $NEXT_DAY"
+          echo "Today's actual day: $TODAY_DAY"
+          
+          # Run the script with TODAY's day number
+          python -c "
+import json
+from datetime import datetime
+from daily_buckets import get_bucket
+
+today_day = $TODAY_DAY
+todays_tickers = get_bucket(today_day)
+now = datetime.now()
+
+output = {
+    'generated_at': now.isoformat(),
+    'date': now.strftime('%B %d, %Y'),
+    'day': today_day,
+    'total_days': 91,
+    'tickers': todays_tickers,
+    'count': len(todays_tickers)
+}
+
+with open('todays_tickers.json', 'w') as f:
+    json.dump(output, f, indent=2)
+
+print('SUCCESS: Generated todays_tickers.json')
+print('Day: ' + str(today_day) + '/91')
+print('Tickers: ' + str(len(todays_tickers)))
+"
       
       - name: Commit and push if changed
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add files/todays_tickers.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update today's tickers - Day $(cat files/current_day.txt)/91 (automated)" && git push)
+          
+          # Get today's day for commit message
+          NEXT_DAY=$(cat files/current_day.txt)
+          TODAY_DAY=$((NEXT_DAY - 1))
+          if [ $TODAY_DAY -eq 0 ]; then
+            TODAY_DAY=91
+          fi
+          
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update today's tickers - Day ${TODAY_DAY}/91 (automated)" && git push)
