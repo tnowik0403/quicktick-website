@@ -471,6 +471,137 @@
                 padding: 30px 20px;
             }
         }
+
+        /* Updated Today Widget Styles */
+        .todays-updates-widget {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05) 0%, rgba(0, 255, 163, 0.05) 100%);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px auto;
+            max-width: 1200px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .widget-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+            padding-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .widget-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .widget-info {
+            display: flex;
+            gap: 20px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+        }
+
+        .widget-info-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .widget-info-label {
+            opacity: 0.7;
+        }
+
+        .widget-info-value {
+            color: var(--accent-green);
+            font-weight: 700;
+        }
+
+        .ticker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .ticker-badge {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 6px;
+            padding: 10px 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            display: block;
+        }
+
+        .ticker-badge:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 212, 255, 0.3);
+        }
+
+        .widget-footer {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 212, 255, 0.3);
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+        }
+
+        .loading-shimmer {
+            background: linear-gradient(90deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 212, 255, 0.3) 50%, rgba(0, 212, 255, 0.1) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        @media (max-width: 768px) {
+            .todays-updates-widget {
+                padding: 20px 15px;
+                margin: 20px 15px;
+            }
+
+            .widget-title {
+                font-size: 1.2rem;
+            }
+
+            .widget-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .ticker-grid {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+                gap: 8px;
+            }
+
+            .ticker-badge {
+                padding: 8px 10px;
+                font-size: 0.8rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -514,6 +645,37 @@
                 <span class="example-ticker" data-ticker="MSFT">MSFT</span>
                 <span class="example-ticker" data-ticker="GOOGL">GOOGL</span>
                 <span class="example-ticker" data-ticker="NVDA">NVDA</span>
+            </div>
+        </div>
+
+        <!-- Updated Today Widget -->
+        <div class="todays-updates-widget" id="todaysUpdatesWidget">
+            <div class="widget-header">
+                <div class="widget-title">📊 Updated Today</div>
+                <div class="widget-info">
+                    <div class="widget-info-item">
+                        <span class="widget-info-label">Date:</span>
+                        <span class="widget-info-value" id="updateDate">Loading...</span>
+                    </div>
+                    <div class="widget-info-item">
+                        <span class="widget-info-label">Day:</span>
+                        <span class="widget-info-value" id="updateDay">--/91</span>
+                    </div>
+                    <div class="widget-info-item">
+                        <span class="widget-info-label">Tickers:</span>
+                        <span class="widget-info-value" id="tickerCount">--</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ticker-grid" id="tickerGrid">
+                <!-- Tickers will be loaded here -->
+                <div class="ticker-badge loading-shimmer">Loading...</div>
+            </div>
+
+            <div class="widget-footer">
+                Next update: <span id="nextUpdate">Tomorrow</span> • 
+                Auto-refreshes daily at 12:00 AM EST
             </div>
         </div>
 
@@ -627,6 +789,90 @@
                 showError('Unable to load random ticker. Please try searching manually.');
             }
         });
+
+        // Updated Today Widget JavaScript
+        async function loadTodaysTickers() {
+            try {
+                // Check cache first (expires at midnight)
+                const cacheKey = 'todays_tickers';
+                const cached = localStorage.getItem(cacheKey);
+                
+                if (cached) {
+                    const data = JSON.parse(cached);
+                    const cacheDate = new Date(data.timestamp);
+                    const now = new Date();
+                    
+                    // Check if cache is from today
+                    if (cacheDate.toDateString() === now.toDateString()) {
+                        renderTickers(data.tickers);
+                        return;
+                    }
+                }
+
+                // Fetch fresh data
+                const response = await fetch('todays_tickers.json');
+                if (!response.ok) throw new Error('Failed to load tickers');
+                
+                const data = await response.json();
+                
+                // Cache with timestamp
+                localStorage.setItem(cacheKey, JSON.stringify({
+                    timestamp: new Date().toISOString(),
+                    tickers: data
+                }));
+                
+                renderTickers(data);
+                
+            } catch (error) {
+                console.error('Error loading todays tickers:', error);
+                document.getElementById('tickerGrid').innerHTML = 
+                    '<div style="grid-column: 1/-1; text-align: center; color: var(--accent-red);">Error loading tickers</div>';
+            }
+        }
+
+        function renderTickers(data) {
+            // Update header info
+            document.getElementById('updateDate').textContent = data.date;
+            document.getElementById('updateDay').textContent = `${data.day}/${data.total_days}`;
+            document.getElementById('tickerCount').textContent = data.count;
+            
+            // Render ticker badges
+            const grid = document.getElementById('tickerGrid');
+            grid.innerHTML = data.tickers.map(ticker => `
+                <a href="company.html?ticker=${ticker}" class="ticker-badge" title="View ${ticker} analysis">
+                    ${ticker}
+                </a>
+            `).join('');
+            
+            // Calculate next update time
+            const now = new Date();
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            
+            const hoursUntil = Math.floor((tomorrow - now) / (1000 * 60 * 60));
+            document.getElementById('nextUpdate').textContent = `in ${hoursUntil}h`;
+        }
+
+        // Load on page load
+        loadTodaysTickers();
+
+        // Auto-refresh at midnight
+        function scheduleNextRefresh() {
+            const now = new Date();
+            const tomorrow = new Date(now);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setHours(0, 0, 0, 0);
+            
+            const timeUntilMidnight = tomorrow - now;
+            
+            setTimeout(() => {
+                loadTodaysTickers();
+                scheduleNextRefresh(); // Schedule next day
+            }, timeUntilMidnight);
+        }
+
+        scheduleNextRefresh();
     </script>
 </body>
 </html>
