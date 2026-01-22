@@ -99,9 +99,9 @@
         }
 
         .container {
-            max-width: 900px;
+            width: 100%;
             margin: 0 auto;
-            padding: 20px;
+            padding: 20px 40px;
             position: relative;
             z-index: 1;
         }
@@ -614,20 +614,23 @@
         /* Main layout with sidebar */
         .main-layout {
             display: flex;
-            gap: 20px;
-            max-width: 1400px;
-            margin: 0 auto;
+            gap: 30px;
+            width: 100%;
+            margin: 0;
             align-items: flex-start;
+            padding: 0 20px;
         }
 
         .sidebar-widgets {
-            width: 320px;
+            width: 350px;
             flex-shrink: 0;
         }
 
         .main-content {
             flex: 1;
             min-width: 0;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         /* Market Movers Widget */
@@ -805,13 +808,13 @@
         }
 
         .earnings-days {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
             gap: 6px;
             overflow-x: auto;
         }
 
         .earnings-day-column {
-            flex: 1;
             min-width: 0;
         }
 
@@ -1078,8 +1081,21 @@
         // Load company lookup JSON
         async function loadCompanyLookup() {
             try {
+                console.log('Loading company_lookup.json...');
                 const response = await fetch('company_lookup.json');
+                
+                if (!response.ok) {
+                    console.error('Failed to load company_lookup.json:', response.status);
+                    return;
+                }
+                
                 companyLookup = await response.json();
+                const tickerCount = Object.keys(companyLookup).length;
+                console.log(`Loaded ${tickerCount} companies from database`);
+                
+                if (tickerCount === 0) {
+                    console.error('WARNING: company_lookup.json is empty!');
+                }
             } catch (error) {
                 console.error('Error loading company lookup:', error);
             }
@@ -1283,25 +1299,45 @@
 
         // Fetch earnings for specific date range
         async function fetchEarningsForRange(from, to) {
-            const response = await fetch(
-                `https://finnhub.io/api/v1/calendar/earnings?from=${from}&to=${to}&token=${FINNHUB_KEY}`
-            );
-            const data = await response.json();
-            
-            // Filter to only tickers we have in our database
-            const allEarnings = data.earningsCalendar || [];
-            const ourEarnings = allEarnings.filter(e => {
-                const hasCompany = companyLookup[e.symbol];
-                if (!hasCompany && allEarnings.length < 50) {
-                    // Only log if it's a small list (avoid spam for big lists)
-                    console.log(`Filtered out ${e.symbol} - not in our database`);
+            try {
+                console.log(`Fetching earnings from ${from} to ${to}...`);
+                
+                const response = await fetch(
+                    `https://finnhub.io/api/v1/calendar/earnings?from=${from}&to=${to}&token=${FINNHUB_KEY}`
+                );
+                
+                if (!response.ok) {
+                    console.error(`API Error: ${response.status} ${response.statusText}`);
+                    return organizeEarningsByDay([]);
                 }
-                return hasCompany;
-            });
-            
-            console.log(`Earnings ${from} to ${to}: ${allEarnings.length} total, ${ourEarnings.length} in our database`);
-            
-            return organizeEarningsByDay(ourEarnings);
+                
+                const data = await response.json();
+                console.log('API Response:', data);
+                
+                if (!data.earningsCalendar) {
+                    console.error('No earningsCalendar in response:', data);
+                    return organizeEarningsByDay([]);
+                }
+                
+                // Filter to only tickers we have in our database
+                const allEarnings = data.earningsCalendar || [];
+                console.log(`Total earnings from API: ${allEarnings.length}`);
+                
+                const ourEarnings = allEarnings.filter(e => {
+                    const hasCompany = companyLookup[e.symbol];
+                    return hasCompany;
+                });
+                
+                console.log(`Earnings in our database: ${ourEarnings.length}`);
+                if (ourEarnings.length > 0) {
+                    console.log('Sample earnings:', ourEarnings.slice(0, 5).map(e => e.symbol));
+                }
+                
+                return organizeEarningsByDay(ourEarnings);
+            } catch (error) {
+                console.error('Error fetching earnings:', error);
+                return organizeEarningsByDay([]);
+            }
         }
 
         // Organize earnings by day of week and session
@@ -1344,6 +1380,11 @@
         function renderWeekEarnings(contentId, weekData) {
             const content = document.getElementById(contentId);
             
+            if (!weekData) {
+                content.innerHTML = '<div class="no-earnings">Error loading earnings</div>';
+                return;
+            }
+            
             const hasAnyEarnings = Object.values(weekData).some(day => 
                 day.bmo.length > 0 || day.amc.length > 0
             );
@@ -1353,9 +1394,20 @@
                 return;
             }
             
-            const daysHTML = Object.entries(weekData).map(([day, sessions]) => {
-                if (sessions.bmo.length === 0 && sessions.amc.length === 0) {
-                    return '';
+            // Always show all 5 days in order
+            const orderedDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+            
+            const daysHTML = orderedDays.map(day => {
+                const sessions = weekData[day];
+                
+                // Show day even if empty
+                if (!sessions || (sessions.bmo.length === 0 && sessions.amc.length === 0)) {
+                    return `
+                        <div class="earnings-day-column">
+                            <div class="day-header">${day}</div>
+                            <div class="no-earnings" style="padding: 10px; font-size: 0.65rem;">No earnings</div>
+                        </div>
+                    `;
                 }
                 
                 return `
@@ -1375,7 +1427,7 @@
                         ` : ''}
                     </div>
                 `;
-            }).filter(html => html).join('');
+            }).join('');
             
             content.innerHTML = `<div class="earnings-days">${daysHTML}</div>`;
         }
