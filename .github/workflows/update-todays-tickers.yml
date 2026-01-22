@@ -22,46 +22,7 @@ jobs:
       - name: Generate today's tickers JSON
         run: |
           cd files
-          # The Daily QuickTick Update workflow increments current_day.txt at the end
-          # So current_day.txt contains TOMORROW's bucket number
-          # We need to subtract 1 to get TODAY's actual bucket
-          NEXT_DAY=$(cat current_day.txt)
-          TODAY_DAY=$((NEXT_DAY - 1))
-          
-          # Handle wrap-around (if next_day is 1, today was 91)
-          if [ $TODAY_DAY -eq 0 ]; then
-            TODAY_DAY=91
-          fi
-          
-          echo "Next scheduled day: $NEXT_DAY"
-          echo "Today's actual day: $TODAY_DAY"
-          
-          # Run the script with TODAY's day number
-          python -c "
-import json
-from datetime import datetime
-from daily_buckets import get_bucket
-
-today_day = $TODAY_DAY
-todays_tickers = get_bucket(today_day)
-now = datetime.now()
-
-output = {
-    'generated_at': now.isoformat(),
-    'date': now.strftime('%B %d, %Y'),
-    'day': today_day,
-    'total_days': 91,
-    'tickers': todays_tickers,
-    'count': len(todays_tickers)
-}
-
-with open('todays_tickers.json', 'w') as f:
-    json.dump(output, f, indent=2)
-
-print('SUCCESS: Generated todays_tickers.json')
-print('Day: ' + str(today_day) + '/91')
-print('Tickers: ' + str(len(todays_tickers)))
-"
+          python generate_todays_tickers_simple.py
       
       - name: Commit and push if changed
         run: |
@@ -70,10 +31,12 @@ print('Tickers: ' + str(len(todays_tickers)))
           git add files/todays_tickers.json
           
           # Get today's day for commit message
-          NEXT_DAY=$(cat files/current_day.txt)
+          cd files
+          NEXT_DAY=$(cat current_day.txt)
           TODAY_DAY=$((NEXT_DAY - 1))
           if [ $TODAY_DAY -eq 0 ]; then
             TODAY_DAY=91
           fi
+          cd ..
           
           git diff --quiet && git diff --staged --quiet || (git commit -m "Update today's tickers - Day ${TODAY_DAY}/91 (automated)" && git push)
