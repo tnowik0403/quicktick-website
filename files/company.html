@@ -834,25 +834,44 @@
 
         .refresh-btn {
             background: none;
-            border: 1px solid var(--accent-green);
-            color: var(--accent-green);
-            padding: 2px 8px;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            padding: 4px 6px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 1rem;
-            font-weight: 700;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             font-family: 'JetBrains Mono', monospace;
             line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
         }
 
-        .refresh-btn:hover {
-            background: rgba(0, 255, 163, 0.1);
-            transform: rotate(90deg);
+        .refresh-btn svg {
+            transition: transform 0.6s ease;
         }
 
-        .refresh-btn:active {
+        .refresh-btn:hover:not(:disabled) {
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .refresh-btn:hover:not(:disabled) svg {
             transform: rotate(180deg);
+        }
+
+        .refresh-btn:active:not(:disabled) svg {
+            transform: rotate(360deg);
+        }
+
+        .refresh-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .refresh-btn #refreshCountdown {
+            position: absolute;
+            font-weight: 700;
         }
 
         /* Tab Navigation */
@@ -1190,7 +1209,10 @@
             <div style="display: flex; align-items: center; gap: 10px;">
                 <div class="info-sidebar-title">Market Data</div>
                 <button id="refreshBtn" class="refresh-btn" onclick="forceRefreshFundamentals()" style="display: none;" title="Refresh data">
-                    ↻
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+                    </svg>
+                    <span id="refreshCountdown" style="display: none; font-size: 0.7rem;"></span>
                 </button>
             </div>
             <button class="minimize-btn" onclick="toggleInfoSidebar()">Minimize</button>
@@ -2040,39 +2062,53 @@
             // Remove from cache
             safeRemoveCache(cacheKey);
             
+            // Also clear global cached overview to force fresh fetch
+            cachedCompanyOverview = null;
+            
             // Show loading state
             const ratiosGrid = document.getElementById('ratiosGrid');
             ratiosGrid.innerHTML = '<div class="chart-loading">Refreshing data...</div>';
             
-            // Disable refresh button temporarily and show countdown
+            // Disable refresh button and start countdown
             const refreshBtn = document.getElementById('refreshBtn');
+            const refreshCountdown = document.getElementById('refreshCountdown');
+            const svg = refreshBtn.querySelector('svg');
+            
             if (refreshBtn) {
                 refreshBtn.disabled = true;
-                refreshBtn.style.opacity = '0.5';
-                refreshBtn.style.cursor = 'not-allowed';
                 
-                // Start countdown display
-                let countdown = 60;
-                refreshBtn.textContent = countdown;
-                
-                const countdownInterval = setInterval(() => {
-                    countdown--;
-                    if (countdown > 0) {
-                        refreshBtn.textContent = countdown;
-                    } else {
-                        clearInterval(countdownInterval);
-                        refreshBtn.textContent = '↻';
-                        refreshBtn.disabled = false;
-                        refreshBtn.style.opacity = '1';
-                        refreshBtn.style.cursor = 'pointer';
-                    }
-                }, 1000);
+                // Hide SVG, show countdown
+                if (svg) svg.style.display = 'none';
+                if (refreshCountdown) {
+                    refreshCountdown.style.display = 'block';
+                    
+                    // Start countdown display
+                    let countdown = 60;
+                    refreshCountdown.textContent = countdown;
+                    
+                    const countdownInterval = setInterval(() => {
+                        countdown--;
+                        if (countdown > 0) {
+                            refreshCountdown.textContent = countdown;
+                        } else {
+                            clearInterval(countdownInterval);
+                            // Restore SVG, hide countdown
+                            if (svg) svg.style.display = 'block';
+                            refreshCountdown.style.display = 'none';
+                            refreshBtn.disabled = false;
+                        }
+                    }, 1000);
+                }
             }
             
-            // Reload data
-            await loadKeyRatios();
-            
-            console.log('Fundamentals data forcefully refreshed (manual)');
+            // Reload data - this should update immediately
+            try {
+                await loadKeyRatios();
+                console.log('Fundamentals data forcefully refreshed and displayed (manual)');
+            } catch (error) {
+                console.error('Error refreshing fundamentals:', error);
+                ratiosGrid.innerHTML = '<div class="chart-loading">Error refreshing data. Please try again.</div>';
+            }
         }
 
         // Load market data for all tabs
