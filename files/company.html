@@ -1180,20 +1180,6 @@
             <div class="tab-panel active" id="chartPanel">
                 <div id="chartContainer"></div>
                 <div class="chart-loading" id="chartLoading">Loading chart data...</div>
-                
-                <!-- Technical Indicators -->
-                <div id="technicalIndicators" style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.02); border-radius: 8px; display: none;">
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; font-size: 0.85rem;">
-                        <div>
-                            <div style="color: var(--text-secondary); margin-bottom: 5px;">RSI (14)</div>
-                            <div id="rsiValue" style="color: var(--accent-cyan); font-size: 1.1rem; font-weight: 700;">--</div>
-                        </div>
-                        <div>
-                            <div style="color: var(--text-secondary); margin-bottom: 5px;">ATR (14)</div>
-                            <div id="atrValue" style="color: var(--accent-cyan); font-size: 1.1rem; font-weight: 700;">--</div>
-                        </div>
-                    </div>
-                </div>
             </div>
             
             <!-- Fundamentals Tab -->
@@ -1562,42 +1548,55 @@
 
                 const data = await response.json();
                 
-                // Fetch company overview for metadata (Sector, Industry, Exchange, Country)
+                // Fetch company profile for metadata (Sector, Industry, Exchange, Country)
+                // Using Finnhub Profile API instead of Alpha Vantage for better foreign stock support
                 let companyOverview = null;
                 try {
-                    const overviewResponse = await fetch(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${ticker}&apikey=${ALPHAVANTAGE_API_KEY}`);
-                    if (overviewResponse.ok) {
-                        companyOverview = await overviewResponse.json();
-                        console.log('Company Overview fetched for metadata:', {
-                            Sector: companyOverview.Sector,
-                            Industry: companyOverview.Industry,
-                            Exchange: companyOverview.Exchange,
-                            Country: companyOverview.Country
-                        });
+                    const profileResponse = await fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=${ticker}&token=${FINNHUB_API_KEY}`);
+                    if (profileResponse.ok) {
+                        const profile = await profileResponse.json();
+                        console.log('Finnhub Profile fetched for metadata:', profile);
                         
-                        // Check if Alpha Vantage returned an error or rate limit message
-                        if (companyOverview.Note || companyOverview['Error Message']) {
-                            console.warn('Alpha Vantage OVERVIEW error:', companyOverview);
-                            companyOverview = null;
-                        } else {
+                        // Check if Finnhub returned valid data (not empty object)
+                        if (profile && Object.keys(profile).length > 0 && profile.name) {
+                            // Map Finnhub profile to our format
+                            companyOverview = {
+                                Country: profile.country || (companyMeta?.country) || 'N/A',
+                                Exchange: profile.exchange || (companyMeta?.exchange) || 'N/A',
+                                Industry: profile.finnhubIndustry || (companyMeta?.subIndustry) || 'N/A',
+                                Sector: (companyMeta?.sector) || 'N/A'  // Finnhub doesn't provide sector, use lookup
+                            };
+                            
+                            console.log('Using company metadata:', companyOverview);
+                            
                             // Save to global cache for reuse in fundamentals tab
                             cachedCompanyOverview = companyOverview;
-                        }
-                        
-                        // If Alpha Vantage returned undefined fields, try to fill from company lookup
-                        if (companyOverview && companyMeta) {
-                            if (!companyOverview.Sector && companyMeta.sector) {
-                                companyOverview.Sector = companyMeta.sector;
+                        } else {
+                            // Finnhub returned empty/invalid data, fall back to company lookup
+                            console.log('Finnhub returned no data, using company lookup fallback');
+                            if (companyMeta) {
+                                companyOverview = {
+                                    Country: companyMeta.country || 'N/A',
+                                    Exchange: companyMeta.exchange || 'N/A',
+                                    Industry: companyMeta.subIndustry || 'N/A',
+                                    Sector: companyMeta.sector || 'N/A'
+                                };
                                 console.log('Using sector from company lookup:', companyMeta.sector);
-                            }
-                            if (!companyOverview.Industry && companyMeta.subIndustry) {
-                                companyOverview.Industry = companyMeta.subIndustry;
-                                console.log('Using industry from company lookup:', companyMeta.subIndustry);
                             }
                         }
                     }
                 } catch (e) {
-                    console.log('Could not fetch company overview for metadata:', e);
+                    console.log('Could not fetch Finnhub profile for metadata:', e);
+                    // Fall back to company lookup if API fails
+                    if (companyMeta) {
+                        companyOverview = {
+                            Country: companyMeta.country || 'N/A',
+                            Exchange: companyMeta.exchange || 'N/A',
+                            Industry: companyMeta.subIndustry || 'N/A',
+                            Sector: companyMeta.sector || 'N/A'
+                        };
+                        console.log('Using company lookup as fallback');
+                    }
                 }
                 
                 // Display the data with TLDR summary and company overview
@@ -1952,50 +1951,13 @@
                 script.src = 'https://s3.tradingview.com/tv.js';
                 script.onload = () => {
                     renderTradingViewChart();
-                    loadTechnicalIndicators();
                 };
                 document.head.appendChild(script);
             } else {
                 renderTradingViewChart();
-                loadTechnicalIndicators();
             }
         }
         
-        async function loadTechnicalIndicators() {
-            try {
-                // Fetch RSI and ATR from Alpha Vantage
-                const [rsiResponse, atrResponse] = await Promise.all([
-                    fetch(`https://www.alphavantage.co/query?function=RSI&symbol=${ticker}&interval=daily&time_period=14&series_type=close&apikey=${ALPHAVANTAGE_API_KEY}`),
-                    fetch(`https://www.alphavantage.co/query?function=ATR&symbol=${ticker}&interval=daily&time_period=14&apikey=${ALPHAVANTAGE_API_KEY}`)
-                ]);
-                
-                const rsiData = await rsiResponse.json();
-                const atrData = await atrResponse.json();
-                
-                // Get most recent values
-                const rsiTechnical = rsiData['Technical Analysis: RSI'];
-                const atrTechnical = atrData['Technical Analysis: ATR'];
-                
-                if (rsiTechnical) {
-                    const latestRSIDate = Object.keys(rsiTechnical)[0];
-                    const rsiValue = parseFloat(rsiTechnical[latestRSIDate]['RSI']);
-                    document.getElementById('rsiValue').textContent = rsiValue.toFixed(2);
-                }
-                
-                if (atrTechnical) {
-                    const latestATRDate = Object.keys(atrTechnical)[0];
-                    const atrValue = parseFloat(atrTechnical[latestATRDate]['ATR']);
-                    document.getElementById('atrValue').textContent = atrValue.toFixed(2);
-                }
-                
-                // Show indicators container
-                document.getElementById('technicalIndicators').style.display = 'block';
-                
-            } catch (error) {
-                console.error('Error loading technical indicators:', error);
-            }
-        }
-
         function renderTradingViewChart() {
             new TradingView.widget({
                 "width": "100%",
@@ -2533,7 +2495,7 @@
             `;
         }
 
-        // News
+        // News - Using Finnhub Company News API
         async function loadNews() {
             const cacheKey = `news_${ticker}`;
             
@@ -2546,26 +2508,27 @@
                 }
             } catch (e) {
                 console.log('Cache read error, fetching fresh news:', e.message);
-                localStorage.removeItem(cacheKey);
+                safeRemoveCache(cacheKey);
             }
             
             try {
-                // Alpha Vantage News & Sentiment API
+                // Finnhub Company News API (last 30 days)
+                const today = new Date();
+                const thirtyDaysAgo = new Date(today.getTime() - (30 * 24 * 60 * 60 * 1000));
+                const fromDate = thirtyDaysAgo.toISOString().split('T')[0];
+                const toDate = today.toISOString().split('T')[0];
+                
                 const response = await fetch(
-                    `https://www.alphavantage.co/query?function=NEWS_SENTIMENT&tickers=${ticker}&limit=20&apikey=${ALPHAVANTAGE_API_KEY}`
+                    `https://finnhub.io/api/v1/company-news?symbol=${ticker}&from=${fromDate}&to=${toDate}&token=${FINNHUB_API_KEY}`
                 );
                 
                 const data = await response.json();
                 
-                // Try to cache, but don't fail if quota exceeded
-                try {
-                    localStorage.setItem(cacheKey, JSON.stringify({
-                        timestamp: new Date().toISOString(),
-                        data: data
-                    }));
-                } catch (storageError) {
-                    console.warn('Could not cache news (quota exceeded), continuing without cache:', storageError.message);
-                }
+                // Try to cache with safe method
+                safeSetCache(cacheKey, {
+                    timestamp: new Date().toISOString(),
+                    data: data
+                });
                 
                 renderNews(data);
             } catch (error) {
@@ -2574,9 +2537,54 @@
             }
         }
 
+        // Safe cache management functions
+        function safeSetCache(key, value) {
+            try {
+                localStorage.setItem(key, JSON.stringify(value));
+                return true;
+            } catch (e) {
+                if (e.name === 'QuotaExceededError') {
+                    console.log('Cache quota exceeded, clearing old entries');
+                    // Clear oldest 25% of news cache entries
+                    const keys = Object.keys(localStorage);
+                    const newsCacheKeys = keys.filter(k => k.startsWith('news_'));
+                    
+                    if (newsCacheKeys.length > 0) {
+                        const toRemove = Math.max(1, Math.floor(newsCacheKeys.length * 0.25));
+                        newsCacheKeys.slice(0, toRemove).forEach(k => {
+                            try {
+                                localStorage.removeItem(k);
+                            } catch (e2) {
+                                // Ignore removal errors
+                            }
+                        });
+                        
+                        // Try again after clearing
+                        try {
+                            localStorage.setItem(key, JSON.stringify(value));
+                            return true;
+                        } catch (e3) {
+                            console.warn('Still cannot cache, continuing without cache');
+                        }
+                    }
+                }
+                return false;
+            }
+        }
+
+        function safeRemoveCache(key) {
+            try {
+                localStorage.removeItem(key);
+            } catch (e) {
+                // Ignore errors when removing
+            }
+        }
+
         function renderNews(data) {
             const newsContainer = document.getElementById('newsContainer');
-            const newsItems = data.feed || [];
+            
+            // Finnhub returns array directly, not { feed: [] }
+            const newsItems = Array.isArray(data) ? data : [];
             
             if (!newsItems || newsItems.length === 0) {
                 newsContainer.innerHTML = '<div class="chart-loading">No recent news available</div>';
@@ -2584,42 +2592,24 @@
             }
             
             newsContainer.innerHTML = newsItems.slice(0, 15).map(article => {
-                // Parse date from format YYYYMMDDTHHMMSS
-                const dateStr = article.time_published;
-                const year = dateStr.substring(0, 4);
-                const month = dateStr.substring(4, 6);
-                const day = dateStr.substring(6, 8);
-                const date = new Date(`${year}-${month}-${day}`);
+                // Finnhub datetime is Unix timestamp
+                const date = new Date(article.datetime * 1000);
                 const formattedDate = date.toLocaleDateString('en-US', { 
                     month: 'short', 
                     day: 'numeric',
                     year: 'numeric'
                 });
                 
-                // Get sentiment score for this ticker
-                const tickerSentiment = article.ticker_sentiment?.find(t => t.ticker === ticker);
-                const sentimentScore = tickerSentiment ? parseFloat(tickerSentiment.ticker_sentiment_score) : 0;
-                const sentimentLabel = tickerSentiment ? tickerSentiment.ticker_sentiment_label : 'Neutral';
-                
-                // Color code sentiment
-                const sentimentColor = sentimentScore > 0.15 ? 'var(--accent-green)' : 
-                                      sentimentScore < -0.15 ? 'var(--accent-red)' : 
-                                      'var(--text-secondary)';
-                
                 return `
                     <div class="news-item">
-                        <div class="news-headline">${article.title}</div>
                         <div class="news-meta">
-                            <span class="news-source">${article.source}</span>
+                            <span class="news-source">${article.source || 'Unknown'}</span>
                             <span class="news-date">${formattedDate}</span>
-                            <span class="news-sentiment" style="color: ${sentimentColor}; font-weight: 700; font-size: 0.65rem;">
-                                ${sentimentLabel} (${sentimentScore.toFixed(2)})
-                            </span>
                         </div>
-                        <div class="news-summary" style="font-size: 0.75rem; color: var(--text-secondary); margin: 8px 0; line-height: 1.4;">
-                            ${article.summary.substring(0, 180)}...
-                        </div>
-                        <a href="${article.url}" target="_blank" class="news-link">Read more →</a>
+                        <a href="${article.url}" target="_blank" rel="noopener noreferrer" class="news-title">
+                            ${article.headline}
+                        </a>
+                        ${article.summary ? `<div class="news-summary">${article.summary.substring(0, 150)}...</div>` : ''}
                     </div>
                 `;
             }).join('');
