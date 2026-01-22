@@ -1312,7 +1312,6 @@
                 }
                 
                 const data = await response.json();
-                console.log('API Response:', data);
                 
                 if (!data.earningsCalendar) {
                     console.error('No earningsCalendar in response:', data);
@@ -1323,14 +1322,29 @@
                 const allEarnings = data.earningsCalendar || [];
                 console.log(`Total earnings from API: ${allEarnings.length}`);
                 
+                // Sample first 10 tickers from API to check format
+                if (allEarnings.length > 0) {
+                    console.log('Sample API tickers:', allEarnings.slice(0, 10).map(e => e.symbol));
+                    console.log('Sample database tickers:', Object.keys(companyLookup).slice(0, 10));
+                }
+                
                 const ourEarnings = allEarnings.filter(e => {
-                    const hasCompany = companyLookup[e.symbol];
+                    // Normalize ticker: remove exchange suffixes, convert to uppercase
+                    const normalizedTicker = e.symbol.split('.')[0].toUpperCase();
+                    const hasCompany = companyLookup[normalizedTicker] || companyLookup[e.symbol];
+                    
+                    if (!hasCompany && allEarnings.length < 100) {
+                        console.warn(`Skipping ${e.symbol} - not in our database`);
+                    }
+                    
                     return hasCompany;
                 });
                 
-                console.log(`Earnings in our database: ${ourEarnings.length}`);
+                console.log(`✓ Earnings in our database: ${ourEarnings.length}`);
                 if (ourEarnings.length > 0) {
-                    console.log('Sample earnings:', ourEarnings.slice(0, 5).map(e => e.symbol));
+                    console.log('✓ Matched tickers:', ourEarnings.slice(0, 10).map(e => e.symbol));
+                } else {
+                    console.warn('⚠️ No earnings matched! Check ticker format mismatch.');
                 }
                 
                 return organizeEarningsByDay(ourEarnings);
@@ -1434,7 +1448,9 @@
 
         // Render individual earnings ticker
         function renderEarningsTicker(earning) {
-            const company = companyLookup[earning.symbol];
+            // Normalize ticker for lookup
+            const normalizedTicker = earning.symbol.split('.')[0].toUpperCase();
+            const company = companyLookup[normalizedTicker] || companyLookup[earning.symbol];
             
             // Double-check: Only render if we have this company in our database
             if (!company) {
@@ -1444,9 +1460,12 @@
             
             const sector = company.sector || 'N/A';
             
+            // Use normalized ticker for display and navigation
+            const displayTicker = normalizedTicker;
+            
             return `
-                <div class="earnings-ticker-item" onclick="window.location.href='company.html?ticker=${earning.symbol}'">
-                    <div class="earnings-ticker">${earning.symbol}</div>
+                <div class="earnings-ticker-item" onclick="window.location.href='company.html?ticker=${displayTicker}'">
+                    <div class="earnings-ticker">${displayTicker}</div>
                     <div class="earnings-sector">${sector}</div>
                 </div>
             `;
