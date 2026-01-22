@@ -1065,8 +1065,8 @@
         // ============================================
         
         // API Keys - REPLACE WITH YOUR ACTUAL KEYS
-        const ALPHA_VANTAGE_KEY = 'RVHFHHBEGVY6M4MI';
-        const FINNHUB_KEY = 'd5n9k69r01ql6sfq9l20d5n9k69r01ql6sfq9l2g';
+        const ALPHA_VANTAGE_KEY = 'YOUR_ALPHA_VANTAGE_KEY';
+        const FINNHUB_KEY = 'YOUR_FINNHUB_KEY';
 
         // ============================================
         // MARKET MOVERS WIDGET
@@ -1288,7 +1288,19 @@
             );
             const data = await response.json();
             
-            const ourEarnings = data.earningsCalendar.filter(e => companyLookup[e.symbol]);
+            // Filter to only tickers we have in our database
+            const allEarnings = data.earningsCalendar || [];
+            const ourEarnings = allEarnings.filter(e => {
+                const hasCompany = companyLookup[e.symbol];
+                if (!hasCompany && allEarnings.length < 50) {
+                    // Only log if it's a small list (avoid spam for big lists)
+                    console.log(`Filtered out ${e.symbol} - not in our database`);
+                }
+                return hasCompany;
+            });
+            
+            console.log(`Earnings ${from} to ${to}: ${allEarnings.length} total, ${ourEarnings.length} in our database`);
+            
             return organizeEarningsByDay(ourEarnings);
         }
 
@@ -1371,12 +1383,19 @@
         // Render individual earnings ticker
         function renderEarningsTicker(earning) {
             const company = companyLookup[earning.symbol];
-            const sector = company ? company.sector : '';
+            
+            // Double-check: Only render if we have this company in our database
+            if (!company) {
+                console.warn(`Skipping ${earning.symbol} - not in our database`);
+                return '';
+            }
+            
+            const sector = company.sector || 'N/A';
             
             return `
                 <div class="earnings-ticker-item" onclick="window.location.href='company.html?ticker=${earning.symbol}'">
                     <div class="earnings-ticker">${earning.symbol}</div>
-                    ${sector ? `<div class="earnings-sector">${sector}</div>` : ''}
+                    <div class="earnings-sector">${sector}</div>
                 </div>
             `;
         }
