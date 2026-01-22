@@ -1598,55 +1598,27 @@
 
                 const data = await response.json();
                 
-                // Fetch company profile for metadata (Sector, Industry, Exchange, Country)
-                // Using Finnhub Profile API instead of Alpha Vantage for better foreign stock support
+                // Get company metadata ONLY from company_lookup.json (no API calls)
                 let companyOverview = null;
-                try {
-                    const profileResponse = await fetch(`https://finnhub.io/api/v1/stock/profile2?symbol=${ticker}&token=${FINNHUB_API_KEY}`);
-                    if (profileResponse.ok) {
-                        const profile = await profileResponse.json();
-                        console.log('Finnhub Profile fetched for metadata:', profile);
-                        
-                        // Check if Finnhub returned valid data (not empty object)
-                        if (profile && Object.keys(profile).length > 0 && profile.name) {
-                            // Map Finnhub profile to our format
-                            companyOverview = {
-                                Country: profile.country || (companyMeta?.country) || 'N/A',
-                                Exchange: profile.exchange || (companyMeta?.exchange) || 'N/A',
-                                Industry: profile.finnhubIndustry || (companyMeta?.subIndustry) || 'N/A',
-                                Sector: (companyMeta?.sector) || 'N/A'  // Finnhub doesn't provide sector, use lookup
-                            };
-                            
-                            console.log('Using company metadata:', companyOverview);
-                            
-                            // Save to global cache for reuse in fundamentals tab
-                            cachedCompanyOverview = companyOverview;
-                        } else {
-                            // Finnhub returned empty/invalid data, fall back to company lookup
-                            console.log('Finnhub returned no data, using company lookup fallback');
-                            if (companyMeta) {
-                                companyOverview = {
-                                    Country: companyMeta.country || 'N/A',
-                                    Exchange: companyMeta.exchange || 'N/A',
-                                    Industry: companyMeta.subIndustry || 'N/A',
-                                    Sector: companyMeta.sector || 'N/A'
-                                };
-                                console.log('Using sector from company lookup:', companyMeta.sector);
-                            }
-                        }
-                    }
-                } catch (e) {
-                    console.log('Could not fetch Finnhub profile for metadata:', e);
-                    // Fall back to company lookup if API fails
-                    if (companyMeta) {
-                        companyOverview = {
-                            Country: companyMeta.country || 'N/A',
-                            Exchange: companyMeta.exchange || 'N/A',
-                            Industry: companyMeta.subIndustry || 'N/A',
-                            Sector: companyMeta.sector || 'N/A'
-                        };
-                        console.log('Using company lookup as fallback');
-                    }
+                if (companyMeta) {
+                    companyOverview = {
+                        Country: companyMeta.country || 'N/A',
+                        Exchange: companyMeta.exchange || 'N/A',
+                        Industry: companyMeta.subIndustry || 'N/A',
+                        Sector: companyMeta.sector || 'N/A'
+                    };
+                    console.log('Using company metadata from lookup:', companyOverview);
+                    
+                    // Save to global cache for reuse in fundamentals tab
+                    cachedCompanyOverview = companyOverview;
+                } else {
+                    console.warn('No company lookup data available for:', ticker);
+                    companyOverview = {
+                        Country: 'N/A',
+                        Exchange: 'N/A',
+                        Industry: 'N/A',
+                        Sector: 'N/A'
+                    };
                 }
                 
                 // Display the data with TLDR summary and company overview
