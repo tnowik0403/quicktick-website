@@ -610,6 +610,284 @@
                 font-size: 0.7rem;
             }
         }
+
+        /* Main layout with sidebar */
+        .main-layout {
+            display: flex;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: flex-start;
+        }
+
+        .sidebar-widgets {
+            width: 320px;
+            flex-shrink: 0;
+        }
+
+        .main-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* Market Movers Widget */
+        .market-movers-widget {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .widget-title-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .widget-title-main {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .widget-update-time {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+        }
+
+        .movers-categories {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .category-tab {
+            flex: 1;
+            padding: 6px 8px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+
+        .category-tab.active {
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+            border-color: var(--accent-cyan);
+        }
+
+        .category-tab:hover:not(.active) {
+            border-color: var(--accent-cyan);
+        }
+
+        .movers-list {
+            display: none;
+        }
+
+        .movers-list.active {
+            display: block;
+        }
+
+        .mover-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 8px;
+            margin-bottom: 4px;
+            background: var(--bg-secondary);
+            border-radius: 5px;
+            font-size: 0.75rem;
+            transition: all 0.2s ease;
+        }
+
+        .mover-item:hover {
+            background: rgba(0, 212, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .mover-ticker {
+            font-weight: 700;
+            color: var(--accent-cyan);
+            min-width: 50px;
+        }
+
+        .mover-sector {
+            flex: 1;
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            margin: 0 8px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .mover-price {
+            color: var(--text-primary);
+            margin-right: 8px;
+        }
+
+        .mover-change {
+            font-weight: 700;
+            min-width: 55px;
+            text-align: right;
+        }
+
+        .mover-change.positive {
+            color: var(--accent-green);
+        }
+
+        .mover-change.negative {
+            color: var(--accent-red);
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        /* Earnings Calendar Widget */
+        .earnings-widget {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .earnings-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .earnings-tab {
+            flex: 1;
+            padding: 6px 8px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: var(--text-secondary);
+        }
+
+        .earnings-tab.active {
+            background: var(--accent-green);
+            color: var(--bg-primary);
+            border-color: var(--accent-green);
+        }
+
+        .earnings-tab:hover:not(.active) {
+            border-color: var(--accent-green);
+        }
+
+        .earnings-content {
+            display: none;
+        }
+
+        .earnings-content.active {
+            display: block;
+        }
+
+        .earnings-days {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+        }
+
+        .earnings-day-column {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .day-header {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            text-align: center;
+            padding: 6px 4px;
+            background: var(--bg-secondary);
+            border-radius: 5px;
+            margin-bottom: 6px;
+        }
+
+        .earnings-session {
+            margin-bottom: 8px;
+        }
+
+        .session-label {
+            font-size: 0.6rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .earnings-ticker-item {
+            padding: 4px 6px;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            margin-bottom: 3px;
+            font-size: 0.7rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .earnings-ticker-item:hover {
+            background: rgba(0, 255, 163, 0.1);
+        }
+
+        .earnings-ticker {
+            font-weight: 700;
+            color: var(--accent-cyan);
+        }
+
+        .earnings-sector {
+            font-size: 0.6rem;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        .no-earnings {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 1024px) {
+            .main-layout {
+                flex-direction: column;
+            }
+            
+            .sidebar-widgets {
+                width: 100%;
+            }
+            
+            .earnings-days {
+                flex-direction: column;
+            }
+            
+            .earnings-day-column {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -633,7 +911,62 @@
             <p class="tagline">Intelligent Investing. Instant Insights.</p>
         </header>
 
-        <div class="search-container">
+        <!-- Main Layout with Sidebar -->
+        <div class="main-layout">
+            <!-- Left Sidebar with Widgets -->
+            <aside class="sidebar-widgets">
+                <!-- Market Movers Widget -->
+                <div class="market-movers-widget">
+                    <div class="widget-title-bar">
+                        <div class="widget-title-main">📈 Market Movers</div>
+                        <div class="widget-update-time" id="moversUpdateTime">Loading...</div>
+                    </div>
+                    
+                    <div class="movers-categories">
+                        <div class="category-tab active" data-category="gainers">Gainers</div>
+                        <div class="category-tab" data-category="losers">Losers</div>
+                        <div class="category-tab" data-category="active">Most Active</div>
+                    </div>
+                    
+                    <div class="movers-list active" id="gainersList">
+                        <div class="loading-spinner">Loading gainers...</div>
+                    </div>
+                    <div class="movers-list" id="losersList">
+                        <div class="loading-spinner">Loading losers...</div>
+                    </div>
+                    <div class="movers-list" id="activeList">
+                        <div class="loading-spinner">Loading most active...</div>
+                    </div>
+                </div>
+
+                <!-- Earnings Calendar Widget -->
+                <div class="earnings-widget">
+                    <div class="widget-title-bar">
+                        <div class="widget-title-main">📊 Earnings Calendar</div>
+                        <div class="widget-update-time" id="earningsUpdateTime">Loading...</div>
+                    </div>
+                    
+                    <div class="earnings-tabs">
+                        <div class="earnings-tab" data-week="last">Last Week</div>
+                        <div class="earnings-tab active" data-week="this">This Week</div>
+                        <div class="earnings-tab" data-week="next">Next Week</div>
+                    </div>
+                    
+                    <div class="earnings-content" id="lastWeekContent">
+                        <div class="loading-spinner">Loading last week...</div>
+                    </div>
+                    <div class="earnings-content active" id="thisWeekContent">
+                        <div class="loading-spinner">Loading this week...</div>
+                    </div>
+                    <div class="earnings-content" id="nextWeekContent">
+                        <div class="loading-spinner">Loading next week...</div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="main-content">
+                <div class="search-container">
             <div class="search-wrapper">
                 <input 
                     type="text" 
@@ -713,6 +1046,8 @@
                 </div>
             </div>
         </div>
+            </div><!-- Close main-content -->
+        </div><!-- Close main-layout -->
 
         <footer>
             <p>Quick Tick &copy; 2026 | Data updated quarterly</p>
@@ -725,6 +1060,366 @@
     </div>
 
     <script>
+        // ============================================
+        // WIDGETS: MARKET MOVERS & EARNINGS CALENDAR
+        // ============================================
+        
+        // API Keys - REPLACE WITH YOUR ACTUAL KEYS
+        const ALPHA_VANTAGE_KEY = 'RVHFHHBEGVY6M4MI';
+        const FINNHUB_KEY = 'd5n9k69r01ql6sfq9l20d5n9k69r01ql6sfq9l2g';
+
+        // ============================================
+        // MARKET MOVERS WIDGET
+        // ============================================
+
+        let companyLookup = {};
+        let marketMoversCache = null;
+
+        // Load company lookup JSON
+        async function loadCompanyLookup() {
+            try {
+                const response = await fetch('company_lookup.json');
+                companyLookup = await response.json();
+            } catch (error) {
+                console.error('Error loading company lookup:', error);
+            }
+        }
+
+        // Check if cache is valid (1 hour)
+        function isMarketMoversCacheValid() {
+            if (!marketMoversCache) return false;
+            const now = Date.now();
+            const oneHour = 60 * 60 * 1000;
+            return (now - marketMoversCache.timestamp) < oneHour;
+        }
+
+        // Fetch market movers from Alpha Vantage
+        async function fetchMarketMovers() {
+            try {
+                const response = await fetch(
+                    `https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=${ALPHA_VANTAGE_KEY}`
+                );
+                const data = await response.json();
+                
+                if (data.top_gainers && data.top_losers && data.most_actively_traded) {
+                    const gainers = filterOurTickers(data.top_gainers);
+                    const losers = filterOurTickers(data.top_losers);
+                    const active = filterOurTickers(data.most_actively_traded);
+                    
+                    marketMoversCache = {
+                        gainers: gainers.slice(0, 20),
+                        losers: losers.slice(0, 20),
+                        active: active.slice(0, 20),
+                        timestamp: Date.now()
+                    };
+                    
+                    localStorage.setItem('marketMoversCache', JSON.stringify(marketMoversCache));
+                    return marketMoversCache;
+                }
+            } catch (error) {
+                console.error('Error fetching market movers:', error);
+                return null;
+            }
+        }
+
+        // Filter tickers to only include ones in our database
+        function filterOurTickers(tickers) {
+            return tickers.filter(ticker => companyLookup[ticker.ticker]);
+        }
+
+        // Render market movers
+        function renderMarketMovers(data) {
+            const { gainers, losers, active } = data;
+            
+            renderMoversList('gainersList', gainers);
+            renderMoversList('losersList', losers);
+            renderMoversList('activeList', active);
+            
+            const updateTime = new Date().toLocaleTimeString('en-US', { 
+                hour: 'numeric', 
+                minute: '2-digit' 
+            });
+            document.getElementById('moversUpdateTime').textContent = `Updated ${updateTime}`;
+        }
+
+        // Render individual mover list
+        function renderMoversList(listId, tickers) {
+            const list = document.getElementById(listId);
+            
+            if (!tickers || tickers.length === 0) {
+                list.innerHTML = '<div class="no-earnings">No data available</div>';
+                return;
+            }
+            
+            list.innerHTML = tickers.map(ticker => {
+                const company = companyLookup[ticker.ticker];
+                const sector = company ? company.sector : 'N/A';
+                const changePercent = parseFloat(ticker.change_percentage.replace('%', ''));
+                const changeClass = changePercent >= 0 ? 'positive' : 'negative';
+                
+                return `
+                    <div class="mover-item" onclick="window.location.href='company.html?ticker=${ticker.ticker}'">
+                        <div class="mover-ticker">${ticker.ticker}</div>
+                        <div class="mover-sector">${sector}</div>
+                        <div class="mover-price">$${parseFloat(ticker.price).toFixed(2)}</div>
+                        <div class="mover-change ${changeClass}">${ticker.change_percentage}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Initialize market movers
+        async function initMarketMovers() {
+            await loadCompanyLookup();
+            
+            const cachedData = localStorage.getItem('marketMoversCache');
+            if (cachedData) {
+                marketMoversCache = JSON.parse(cachedData);
+                if (isMarketMoversCacheValid()) {
+                    renderMarketMovers(marketMoversCache);
+                    return;
+                }
+            }
+            
+            const data = await fetchMarketMovers();
+            if (data) {
+                renderMarketMovers(data);
+            }
+        }
+
+        // Category tab switching
+        document.querySelectorAll('.category-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.movers-list').forEach(l => l.classList.remove('active'));
+                
+                this.classList.add('active');
+                const category = this.dataset.category;
+                document.getElementById(`${category}List`).classList.add('active');
+            });
+        });
+
+        // ============================================
+        // EARNINGS CALENDAR WIDGET
+        // ============================================
+
+        let earningsCache = null;
+
+        // Check if earnings cache is valid (until next Sunday 1 AM EST)
+        function isEarningsCacheValid() {
+            if (!earningsCache) return false;
+            
+            const now = new Date();
+            const cacheDate = new Date(earningsCache.timestamp);
+            
+            const nextSunday = new Date(cacheDate);
+            nextSunday.setDate(cacheDate.getDate() + ((7 - cacheDate.getDay()) % 7 || 7));
+            nextSunday.setHours(6, 0, 0, 0); // 1 AM EST = 6 AM UTC (EST is UTC-5)
+            
+            return now < nextSunday;
+        }
+
+        // Get date ranges for last, this, and next week
+        function getWeekRanges() {
+            const now = new Date();
+            const dayOfWeek = now.getDay();
+            
+            const thisWeekStart = new Date(now);
+            thisWeekStart.setDate(now.getDate() - dayOfWeek);
+            thisWeekStart.setHours(0, 0, 0, 0);
+            
+            const thisWeekEnd = new Date(thisWeekStart);
+            thisWeekEnd.setDate(thisWeekStart.getDate() + 6);
+            thisWeekEnd.setHours(23, 59, 59, 999);
+            
+            const lastWeekStart = new Date(thisWeekStart);
+            lastWeekStart.setDate(thisWeekStart.getDate() - 7);
+            
+            const lastWeekEnd = new Date(thisWeekStart);
+            lastWeekEnd.setDate(thisWeekStart.getDate() - 1);
+            
+            const nextWeekStart = new Date(thisWeekEnd);
+            nextWeekStart.setDate(thisWeekEnd.getDate() + 1);
+            
+            const nextWeekEnd = new Date(nextWeekStart);
+            nextWeekEnd.setDate(nextWeekStart.getDate() + 6);
+            
+            return {
+                lastWeek: { from: formatDate(lastWeekStart), to: formatDate(lastWeekEnd) },
+                thisWeek: { from: formatDate(thisWeekStart), to: formatDate(thisWeekEnd) },
+                nextWeek: { from: formatDate(nextWeekStart), to: formatDate(nextWeekEnd) }
+            };
+        }
+
+        function formatDate(date) {
+            return date.toISOString().split('T')[0];
+        }
+
+        // Fetch earnings from Finnhub
+        async function fetchEarnings() {
+            try {
+                const ranges = getWeekRanges();
+                
+                const [lastWeekData, thisWeekData, nextWeekData] = await Promise.all([
+                    fetchEarningsForRange(ranges.lastWeek.from, ranges.lastWeek.to),
+                    fetchEarningsForRange(ranges.thisWeek.from, ranges.thisWeek.to),
+                    fetchEarningsForRange(ranges.nextWeek.from, ranges.nextWeek.to)
+                ]);
+                
+                earningsCache = {
+                    lastWeek: lastWeekData,
+                    thisWeek: thisWeekData,
+                    nextWeek: nextWeekData,
+                    timestamp: Date.now()
+                };
+                
+                localStorage.setItem('earningsCache', JSON.stringify(earningsCache));
+                return earningsCache;
+            } catch (error) {
+                console.error('Error fetching earnings:', error);
+                return null;
+            }
+        }
+
+        // Fetch earnings for specific date range
+        async function fetchEarningsForRange(from, to) {
+            const response = await fetch(
+                `https://finnhub.io/api/v1/calendar/earnings?from=${from}&to=${to}&token=${FINNHUB_KEY}`
+            );
+            const data = await response.json();
+            
+            const ourEarnings = data.earningsCalendar.filter(e => companyLookup[e.symbol]);
+            return organizeEarningsByDay(ourEarnings);
+        }
+
+        // Organize earnings by day of week and session
+        function organizeEarningsByDay(earnings) {
+            const days = {
+                'Mon': { bmo: [], amc: [] },
+                'Tue': { bmo: [], amc: [] },
+                'Wed': { bmo: [], amc: [] },
+                'Thu': { bmo: [], amc: [] },
+                'Fri': { bmo: [], amc: [] }
+            };
+            
+            earnings.forEach(earning => {
+                const date = new Date(earning.date);
+                const dayName = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][date.getDay()];
+                
+                if (days[dayName]) {
+                    const session = earning.hour === 'bmo' ? 'bmo' : 'amc';
+                    days[dayName][session].push(earning);
+                }
+            });
+            
+            return days;
+        }
+
+        // Render earnings calendar
+        function renderEarnings(data) {
+            renderWeekEarnings('lastWeekContent', data.lastWeek);
+            renderWeekEarnings('thisWeekContent', data.thisWeek);
+            renderWeekEarnings('nextWeekContent', data.nextWeek);
+            
+            const updateTime = new Date().toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: 'numeric' 
+            });
+            document.getElementById('earningsUpdateTime').textContent = `Week of ${updateTime}`;
+        }
+
+        // Render a specific week's earnings
+        function renderWeekEarnings(contentId, weekData) {
+            const content = document.getElementById(contentId);
+            
+            const hasAnyEarnings = Object.values(weekData).some(day => 
+                day.bmo.length > 0 || day.amc.length > 0
+            );
+            
+            if (!hasAnyEarnings) {
+                content.innerHTML = '<div class="no-earnings">No earnings this week</div>';
+                return;
+            }
+            
+            const daysHTML = Object.entries(weekData).map(([day, sessions]) => {
+                if (sessions.bmo.length === 0 && sessions.amc.length === 0) {
+                    return '';
+                }
+                
+                return `
+                    <div class="earnings-day-column">
+                        <div class="day-header">${day}</div>
+                        ${sessions.bmo.length > 0 ? `
+                            <div class="earnings-session">
+                                <div class="session-label">Before Open</div>
+                                ${sessions.bmo.map(e => renderEarningsTicker(e)).join('')}
+                            </div>
+                        ` : ''}
+                        ${sessions.amc.length > 0 ? `
+                            <div class="earnings-session">
+                                <div class="session-label">After Close</div>
+                                ${sessions.amc.map(e => renderEarningsTicker(e)).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }).filter(html => html).join('');
+            
+            content.innerHTML = `<div class="earnings-days">${daysHTML}</div>`;
+        }
+
+        // Render individual earnings ticker
+        function renderEarningsTicker(earning) {
+            const company = companyLookup[earning.symbol];
+            const sector = company ? company.sector : '';
+            
+            return `
+                <div class="earnings-ticker-item" onclick="window.location.href='company.html?ticker=${earning.symbol}'">
+                    <div class="earnings-ticker">${earning.symbol}</div>
+                    ${sector ? `<div class="earnings-sector">${sector}</div>` : ''}
+                </div>
+            `;
+        }
+
+        // Initialize earnings calendar
+        async function initEarnings() {
+            const cachedData = localStorage.getItem('earningsCache');
+            if (cachedData) {
+                earningsCache = JSON.parse(cachedData);
+                if (isEarningsCacheValid()) {
+                    renderEarnings(earningsCache);
+                    return;
+                }
+            }
+            
+            const data = await fetchEarnings();
+            if (data) {
+                renderEarnings(data);
+            }
+        }
+
+        // Earnings tab switching
+        document.querySelectorAll('.earnings-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.earnings-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.earnings-content').forEach(c => c.classList.remove('active'));
+                
+                this.classList.add('active');
+                const week = this.dataset.week;
+                document.getElementById(`${week}WeekContent`).classList.add('active');
+            });
+        });
+
+        // Initialize both widgets on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initMarketMovers();
+            initEarnings();
+        });
+
+        // ============================================
+        // EXISTING SEARCH & NAVIGATION CODE
+        // ============================================
+
         const searchInput = document.getElementById('searchInput');
         const searchButton = document.getElementById('searchButton');
         const errorMessage = document.getElementById('errorMessage');
