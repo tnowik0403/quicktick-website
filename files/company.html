@@ -832,6 +832,29 @@
             background: rgba(0, 212, 255, 0.1);
         }
 
+        .refresh-btn {
+            background: none;
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            padding: 2px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 700;
+            transition: all 0.2s ease;
+            font-family: 'JetBrains Mono', monospace;
+            line-height: 1;
+        }
+
+        .refresh-btn:hover {
+            background: rgba(0, 255, 163, 0.1);
+            transform: rotate(90deg);
+        }
+
+        .refresh-btn:active {
+            transform: rotate(180deg);
+        }
+
         /* Tab Navigation */
         .info-tabs {
             display: flex;
@@ -1164,7 +1187,12 @@
     <!-- Supplemental Info Sidebar (RIGHT) -->
     <div class="info-sidebar" id="infoSidebar">
         <div class="info-sidebar-header">
-            <div class="info-sidebar-title">Market Data</div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div class="info-sidebar-title">Market Data</div>
+                <button id="refreshBtn" class="refresh-btn" onclick="forceRefreshFundamentals()" style="display: none;" title="Refresh data">
+                    ↻
+                </button>
+            </div>
             <button class="minimize-btn" onclick="toggleInfoSidebar()">Minimize</button>
         </div>
         
@@ -1847,9 +1875,22 @@
                 panel.classList.remove('active');
             });
             document.getElementById(tabName + 'Panel').classList.add('active');
+            
+            // Show/hide refresh button based on tab
+            const refreshBtn = document.getElementById('refreshBtn');
+            if (refreshBtn) {
+                refreshBtn.style.display = (tabName === 'ratios') ? 'block' : 'none';
+            }
         }
 
+        // Global state for cache refresh management
+        let cacheRefreshAttempts = {}; // Track failed attempts per ticker
+        let lastManualRefreshTime = 0; // Track last manual refresh timestamp
+        const MANUAL_REFRESH_COOLDOWN = 60000; // 1 minute in milliseconds
+        const MAX_AUTO_REFRESH_ATTEMPTS = 3; // Max automatic refresh attempts
+
         // Check if cached data is still valid (expires at 4:01 PM EST)
+        // Also checks data quality - invalidates if too many N/A values
         function isCacheValid(cacheKey) {
             const cached = localStorage.getItem(cacheKey);
             if (!cached) return false;
@@ -1877,12 +1918,161 @@
                     return false;
                 }
                 
-                // Cache is valid (same day, before 4:01 PM EST)
+                // NEW: Check if we've hit max retry attempts for this ticker
+                const tickerKey = cacheKey.replace('ratios_', '');
+                const attempts = cacheRefreshAttempts[tickerKey] || 0;
+                
+                if (attempts >= MAX_AUTO_REFRESH_ATTEMPTS) {
+                    console.warn(`Max refresh attempts (${MAX_AUTO_REFRESH_ATTEMPTS}) reached for ${tickerKey}. Using cached data despite quality issues.`);
+                    return true; // Force use of cache to prevent infinite loop
+                }
+                
+                // Check data quality - invalidate if too many N/A values
+                if (cacheKey.startsWith('ratios_') && data.data) {
+                    const qualityCheck = assessDataQuality(data.data);
+                    if (!qualityCheck.isGoodQuality) {
+                        console.warn('Cache invalidated due to poor data quality:', qualityCheck);
+                        
+                        // Increment retry counter for this ticker
+                        cacheRefreshAttempts[tickerKey] = attempts + 1;
+                        console.log(`Auto-refresh attempt ${attempts + 1}/${MAX_AUTO_REFRESH_ATTEMPTS} for ${tickerKey}`);
+                        
+                        return false;
+                    } else {
+                        // Good quality data - reset counter
+                        if (cacheRefreshAttempts[tickerKey]) {
+                            console.log(`Good data received for ${tickerKey}, resetting retry counter`);
+                            delete cacheRefreshAttempts[tickerKey];
+                        }
+                    }
+                }
+                
+                // Cache is valid (same day, before 4:01 PM EST, and good quality)
                 return true;
             } catch (e) {
                 console.error('Cache validation error:', e);
                 return false;
             }
+        }
+
+        // Assess the quality of cached fundamentals data
+        function assessDataQuality(data) {
+            if (!data || typeof data !== 'object') {
+                return { isGoodQuality: false, reason: 'No data' };
+            }
+
+            // Count N/A values in critical fields
+            let totalFields = 0;
+            let naFields = 0;
+            
+            // Critical fields that should usually have data
+            const criticalFields = [
+                'MarketCapitalization',
+                'PERatio',
+                'EPS',
+                'RevenueTTM',
+                'ProfitMargin',
+                'OperatingMarginTTM',
+                'ReturnOnEquityTTM',
+                'DividendYield',
+                'Beta',
+                '52WeekHigh',
+                '52WeekLow'
+            ];
+            
+            // Check Alpha Vantage overview data
+            if (data.overview) {
+                criticalFields.forEach(field => {
+                    totalFields++;
+                    const value = data.overview[field];
+                    if (!value || value === 'None' || value === 'N/A' || value === '-' || value === 0) {
+                        naFields++;
+                    }
+                });
+            }
+            
+            // If more than 50% of critical fields are N/A, consider it poor quality
+            const naPercentage = totalFields > 0 ? (naFields / totalFields) : 0;
+            const threshold = 0.5; // 50% threshold
+            
+            if (naPercentage > threshold) {
+                return {
+                    isGoodQuality: false,
+                    reason: `${Math.round(naPercentage * 100)}% of fields are N/A (${naFields}/${totalFields})`,
+                    naPercentage: naPercentage
+                };
+            }
+            
+            return {
+                isGoodQuality: true,
+                naPercentage: naPercentage,
+                naFields: naFields,
+                totalFields: totalFields
+            };
+        }
+
+        // Force refresh fundamentals data (bypasses cache)
+        async function forceRefreshFundamentals() {
+            const now = Date.now();
+            const timeSinceLastRefresh = now - lastManualRefreshTime;
+            const cooldownRemaining = MANUAL_REFRESH_COOLDOWN - timeSinceLastRefresh;
+            
+            // Check if still in cooldown period
+            if (timeSinceLastRefresh < MANUAL_REFRESH_COOLDOWN) {
+                const secondsRemaining = Math.ceil(cooldownRemaining / 1000);
+                alert(`Please wait ${secondsRemaining} seconds before refreshing again.\n\nThis cooldown prevents rate limit issues with our data providers.`);
+                console.log(`Refresh cooldown: ${secondsRemaining}s remaining`);
+                return;
+            }
+            
+            // Update last refresh time
+            lastManualRefreshTime = now;
+            
+            // Reset auto-refresh counter for this ticker (manual refresh gets a free pass)
+            const tickerKey = ticker;
+            if (cacheRefreshAttempts[tickerKey]) {
+                console.log(`Manual refresh: Resetting auto-refresh counter for ${tickerKey}`);
+                delete cacheRefreshAttempts[tickerKey];
+            }
+            
+            const cacheKey = `ratios_${ticker}`;
+            
+            // Remove from cache
+            safeRemoveCache(cacheKey);
+            
+            // Show loading state
+            const ratiosGrid = document.getElementById('ratiosGrid');
+            ratiosGrid.innerHTML = '<div class="chart-loading">Refreshing data...</div>';
+            
+            // Disable refresh button temporarily and show countdown
+            const refreshBtn = document.getElementById('refreshBtn');
+            if (refreshBtn) {
+                refreshBtn.disabled = true;
+                refreshBtn.style.opacity = '0.5';
+                refreshBtn.style.cursor = 'not-allowed';
+                
+                // Start countdown display
+                let countdown = 60;
+                refreshBtn.textContent = countdown;
+                
+                const countdownInterval = setInterval(() => {
+                    countdown--;
+                    if (countdown > 0) {
+                        refreshBtn.textContent = countdown;
+                    } else {
+                        clearInterval(countdownInterval);
+                        refreshBtn.textContent = '↻';
+                        refreshBtn.disabled = false;
+                        refreshBtn.style.opacity = '1';
+                        refreshBtn.style.cursor = 'pointer';
+                    }
+                }, 1000);
+            }
+            
+            // Reload data
+            await loadKeyRatios();
+            
+            console.log('Fundamentals data forcefully refreshed (manual)');
         }
 
         // Load market data for all tabs
@@ -2188,6 +2378,20 @@
             const finnhubMetrics = data.finnhubMetrics?.metric || {};
             const ratiosGrid = document.getElementById('ratiosGrid');
             
+            // Check if we've hit max auto-refresh attempts
+            const attempts = cacheRefreshAttempts[ticker] || 0;
+            let warningBanner = '';
+            
+            if (attempts >= MAX_AUTO_REFRESH_ATTEMPTS) {
+                warningBanner = `
+                    <div style="background: rgba(255, 140, 0, 0.1); border: 1px solid orange; border-radius: 6px; padding: 10px; margin-bottom: 15px; font-size: 0.75rem; color: orange;">
+                        <strong>⚠️ Limited Data Available</strong><br>
+                        This ticker has limited fundamental data. Automatic refresh disabled after ${MAX_AUTO_REFRESH_ATTEMPTS} attempts.<br>
+                        <span style="opacity: 0.8;">You can still manually refresh using the ↻ button if needed.</span>
+                    </div>
+                `;
+            }
+            
             // Helper functions
             const getValue = (value) => {
                 if (value === null || value === undefined || value === 'None' || value === '-') return null;
@@ -2363,7 +2567,7 @@
             ];
             
             // Render
-            ratiosGrid.innerHTML = categories.map(category => `
+            ratiosGrid.innerHTML = warningBanner + categories.map(category => `
                 <div class="fundamental-category">
                     <div class="category-header">${category.name}</div>
                     <div class="category-grid">
