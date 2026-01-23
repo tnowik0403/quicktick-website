@@ -48,20 +48,7 @@ except ImportError:
 # *** ADD YOUR TICKERS HERE ***
 # Just replace this list with any tickers you want to analyze
 TICKERS = [
-    # Grid & Power
-    "EOSE", "BE", "NVTS",
-    # AI Utility
-    "IREN", "CIFR", "NBIS", "APLD", "CRWV",
-    # Space Economy
-    "ASTS", "RKLB", "PL", "RDW", "FLY",
-    # Nuclear
-    "OKLO", "SMR", "NNE", "CCJ", "BWXT", "LEU",
-    # Drones
-    "KTOS", "ONDS", "AVAV", "DPRO", "PDYN", "RCAT",
-    # Critical Materials
-    "CRML", "UUUU", "UAMY", "ASPI", "USAR",
-    # Chip Manufacturing & Memory
-    "INTC", "MU", "AMKR", "SNDK", "LRCX", "SKYT",
+    "SOFI"
 ]
 
 YOUR_PROMPT = """

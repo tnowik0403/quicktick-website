@@ -39,30 +39,7 @@ except ImportError:
 # *** ADD YOUR TICKERS HERE ***
 # Just replace this list with any tickers you want to generate summaries for
 TICKERS = [
-    # Grid & Power
-    "EOSE", "BE", "NVTS",
-    # AI Utility
-    "IREN", "CIFR", "NBIS", "APLD", "CRWV",
-    # Space Economy
-    "ASTS", "RKLB", "PL", "RDW", "FLY",
-    # Nuclear
-    "OKLO", "SMR", "NNE", "CCJ", "BWXT", "LEU",
-    # Drones
-    "KTOS", "ONDS", "AVAV", "DPRO", "PDYN", "RCAT",
-    # Critical Materials
-    "CRML", "UUUU", "UAMY", "ASPI", "USAR",
-    # Chip Manufacturing & Memory
-    "INTC", "MU", "AMKR", "SNDK", "LRCX", "SKYT","AVGO", "META", "BRK.B", "LLY", "JPM", "JNJ", "XOM", "WMT", "NFLX", "COST",
-        "ABBV", "HD", "PG", "BAC", "GE", "UNH", "CVX", "IBM", "WFC", "CSCO",
-        "CAT", "MRK", "KO", "PM", "GS", "RTX", "ABT", "TMO", "MCD", "PEP",
-        "LRCX", "LIN", "DIS", "AMGN", "UBER", "QCOM", "NEE", "AXP", "INTU", "AAPL", "NVDA", "MSFT", "AMZN", "GOOGL", "GOOG", "TSLA", "V", "MA", "PLTR",
-        "AMD", "ORCL", "MU", "CRM", "ISRG", "MS", "AMAT", "NOW", "GEV", "ACN", "PGR", "ANET", "PANW", "CRWD", "ADP", "HOOD", "NKE", "SNOW",
-        "NET", "RBLX", "FTNT", "DDOG", "MSTR", "ROK", "CTSH", "TER", "MDB", "COHR",
-        "ZS", "BE", "LITE", "ALAB", "TTD", "TOST", "IONQ", "LSCC", "MP", "TEM",
-        "RGTI", "CELH", "QBTS", "CGNX", "ESTC", "APLD", "CFLT", "PATH", "RIOT", "S", "PEGA", "SYM", "GLXY", "SOUN", "CRCL", "EOSE", "UPST", "AMBA",
-        "BBAI", "SMR", "AI", "INOD", "APPN", "QUBT", "NVTS", "AMSC", "ENVX", "OUST",
-        "AMPX", "NNE", "EVLV", "MVST", "RDVT", "LWLG", "BKSY", "HCKT", "CRNC", "LTBR",
-        "VERI", "AEVA", "BZAI", "PDYN", "IDN", "OSS", "MDAI", "SPAI",
+    "SOFI"
 
 ]
 
