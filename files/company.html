@@ -1203,6 +1203,292 @@
                 display: none;
             }
         }
+
+        /* ========================================
+           MERCURY AI CHATBOT STYLES
+           ======================================== */
+        
+        .mercury-chatbot {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 9999;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .mercury-minimized {
+            width: 40px;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 255, 163, 0.1) 100%);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .mercury-minimized:hover {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2) 0%, rgba(0, 255, 163, 0.2) 100%);
+            border-color: var(--accent-green);
+            transform: translateX(2px);
+        }
+
+        .mercury-expanded {
+            width: 380px;
+            height: 550px;
+            background: var(--bg-card);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .mercury-header {
+            padding: 15px 20px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(0, 255, 163, 0.1) 100%);
+            border-bottom: 1px solid var(--accent-cyan);
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mercury-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            letter-spacing: 0.8px;
+        }
+
+        .mercury-subtitle {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        .mercury-minimize-btn {
+            background: none;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .mercury-minimize-btn:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: var(--accent-green);
+        }
+
+        .mercury-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .mercury-message {
+            max-width: 85%;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .mercury-message-user {
+            align-self: flex-end;
+            background: rgba(0, 212, 255, 0.15);
+            border: 1px solid var(--accent-cyan);
+            color: var(--text-secondary);
+        }
+
+        .mercury-message-ai {
+            align-self: flex-start;
+            background: rgba(0, 255, 163, 0.08);
+            border: 1px solid var(--accent-green);
+            color: var(--text-primary);
+        }
+
+        .mercury-message-system {
+            align-self: center;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--accent-red);
+            color: var(--accent-red);
+            font-size: 0.75rem;
+            text-align: center;
+            max-width: 95%;
+        }
+
+        .mercury-typing {
+            align-self: flex-start;
+            background: rgba(0, 255, 163, 0.08);
+            border: 1px solid var(--accent-green);
+            padding: 10px 14px;
+            border-radius: 8px;
+            display: flex;
+            gap: 4px;
+        }
+
+        .mercury-typing-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: mercuryTyping 1.4s infinite;
+        }
+
+        .mercury-typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .mercury-typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes mercuryTyping {
+            0%, 60%, 100% { opacity: 0.3; }
+            30% { opacity: 1; }
+        }
+
+        .mercury-web-search-indicator {
+            font-size: 0.7rem;
+            color: var(--accent-cyan);
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        .mercury-input-container {
+            padding: 12px 15px;
+            border-top: 1px solid var(--accent-cyan);
+            background: var(--bg-secondary);
+            border-radius: 0 0 12px 12px;
+        }
+
+        .mercury-input-wrapper {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .mercury-input {
+            flex: 1;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 12px;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        .mercury-input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+        }
+
+        .mercury-input::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.5;
+        }
+
+        .mercury-send-btn {
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .mercury-send-btn:hover:not(:disabled) {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.4);
+        }
+
+        .mercury-send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .mercury-send-btn svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--bg-primary);
+            stroke-width: 2.5;
+        }
+
+        .mercury-token-usage {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 6px 0;
+        }
+
+        .mercury-token-warning {
+            color: var(--accent-red);
+        }
+
+        /* Scrollbar styling for messages */
+        .mercury-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .mercury-messages::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        .mercury-messages::-webkit-scrollbar-thumb {
+            background: var(--accent-cyan);
+            border-radius: 3px;
+        }
+
+        .mercury-messages::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-green);
+        }
+
+        @media (max-width: 768px) {
+            .mercury-chatbot {
+                bottom: 10px;
+                left: 10px;
+            }
+
+            .mercury-expanded {
+                width: calc(100vw - 20px);
+                max-width: 380px;
+                height: 500px;
+            }
+
+            .mercury-minimized {
+                width: 35px;
+                height: 250px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2858,6 +3144,462 @@
 
         // Start loading
         loadCompanyData();
+    </script>
+
+    <!-- Mercury AI Chatbot Widget -->
+    <div class="mercury-chatbot" id="mercuryChatbot">
+        <div class="mercury-expanded" id="mercuryExpanded">
+            <div class="mercury-header">
+                <div>
+                    <div class="mercury-title">⚡ MERCURY AI</div>
+                    <div class="mercury-subtitle" id="mercurySubtitle">Lead Analyst</div>
+                </div>
+                <button class="mercury-minimize-btn" onclick="toggleMercury()" title="Minimize">−</button>
+            </div>
+            
+            <div class="mercury-messages" id="mercuryMessages">
+                <!-- Messages will be added here -->
+            </div>
+            
+            <div class="mercury-token-usage" id="mercuryTokenUsage">
+                Tokens: 0 / 35,000
+            </div>
+            
+            <div class="mercury-input-container">
+                <div class="mercury-input-wrapper">
+                    <input 
+                        type="text" 
+                        class="mercury-input" 
+                        id="mercuryInput" 
+                        placeholder="Ask me anything..."
+                        autocomplete="off"
+                    />
+                    <button class="mercury-send-btn" id="mercurySendBtn" onclick="sendMercuryMessage()">
+                        <svg fill="none" viewBox="0 0 24 24">
+                            <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 8L11 13" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mercury-minimized" id="mercuryMinimized" onclick="toggleMercury()" style="display: none;">
+            MERCURY AI
+        </div>
+    </div>
+
+    <script>
+        // ========================================
+        // MERCURY AI CHATBOT FUNCTIONALITY
+        // ======================================== 
+        
+        const MERCURY_CONFIG = {
+            // Cloudflare Worker URL (YOU'LL UPDATE THIS AFTER DEPLOYING THE WORKER)
+            WORKER_URL: 'mercury-proxy.tnowik0403.workers.dev/',
+            
+            // No API key needed in browser anymore! It's hidden in the Worker ✅
+            
+            MODEL: 'claude-3-5-haiku-20241022', // Haiku 3.5
+            MAX_INPUT_TOKENS: 30000,
+            MAX_OUTPUT_TOKENS: 5000,
+            MAX_RESPONSE_TOKENS: 300, // Limit per response for ~100 words
+            RATE_LIMIT_MESSAGES: 5,
+            RATE_LIMIT_WINDOW: 60000, // 1 minute
+            TOKEN_RESET_INTERVAL: 3600000, // 1 hour
+        };
+
+        let mercuryState = {
+            isMinimized: false,
+            conversationHistory: [],
+            contextLoaded: false,
+            companyContext: null,
+            tokenUsage: {
+                input: 0,
+                output: 0,
+                lastReset: Date.now()
+            },
+            messageTimestamps: [],
+            lockedUntil: null,
+            companyName: '',
+            companyTicker: ''
+        };
+
+        // Initialize Mercury with welcome message
+        function initMercury() {
+            const companyNameEl = document.querySelector('.company-name');
+            if (companyNameEl) {
+                const fullText = companyNameEl.textContent;
+                const match = fullText.match(/^(.+?)\s*\(/);
+                mercuryState.companyName = match ? match[1].trim() : 'this company';
+                const tickerMatch = fullText.match(/\(([A-Z]+)\)/);
+                mercuryState.companyTicker = tickerMatch ? tickerMatch[1] : '';
+            }
+            
+            // Update subtitle
+            document.getElementById('mercurySubtitle').textContent = `Lead Analyst for ${mercuryState.companyName}`;
+            
+            // Add welcome message
+            addMercuryMessage(
+                `Hi, I'm Mercury, your AI-Powered Lead Analyst for ${mercuryState.companyName}. Ask me anything regarding ${mercuryState.companyName} and I'll give you (web-search enabled) quality color and insights.`,
+                'ai'
+            );
+            
+            // Load token usage from localStorage
+            loadTokenUsage();
+            
+            // Set up hourly reset
+            setInterval(checkTokenReset, 60000); // Check every minute
+        }
+
+        function toggleMercury() {
+            mercuryState.isMinimized = !mercuryState.isMinimized;
+            const expanded = document.getElementById('mercuryExpanded');
+            const minimized = document.getElementById('mercuryMinimized');
+            
+            if (mercuryState.isMinimized) {
+                expanded.style.display = 'none';
+                minimized.style.display = 'flex';
+            } else {
+                expanded.style.display = 'flex';
+                minimized.style.display = 'none';
+                scrollMercuryToBottom();
+            }
+        }
+
+        function addMercuryMessage(text, type = 'ai', metadata = {}) {
+            const messagesContainer = document.getElementById('mercuryMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `mercury-message mercury-message-${type}`;
+            messageDiv.textContent = text;
+            
+            // Add web search indicator if used
+            if (metadata.usedWebSearch) {
+                const indicator = document.createElement('div');
+                indicator.className = 'mercury-web-search-indicator';
+                indicator.textContent = '🌐 Web search used';
+                messageDiv.appendChild(indicator);
+            }
+            
+            messagesContainer.appendChild(messageDiv);
+            scrollMercuryToBottom();
+        }
+
+        function addTypingIndicator() {
+            const messagesContainer = document.getElementById('mercuryMessages');
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'mercury-typing';
+            typingDiv.id = 'mercuryTyping';
+            typingDiv.innerHTML = '<div class="mercury-typing-dot"></div><div class="mercury-typing-dot"></div><div class="mercury-typing-dot"></div>';
+            messagesContainer.appendChild(typingDiv);
+            scrollMercuryToBottom();
+        }
+
+        function removeTypingIndicator() {
+            const typing = document.getElementById('mercuryTyping');
+            if (typing) typing.remove();
+        }
+
+        function scrollMercuryToBottom() {
+            const messagesContainer = document.getElementById('mercuryMessages');
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function updateTokenDisplay() {
+            const total = mercuryState.tokenUsage.input + mercuryState.tokenUsage.output;
+            const maxTotal = MERCURY_CONFIG.MAX_INPUT_TOKENS + MERCURY_CONFIG.MAX_OUTPUT_TOKENS;
+            const displayEl = document.getElementById('mercuryTokenUsage');
+            
+            displayEl.textContent = `Tokens: ${total.toLocaleString()} / ${maxTotal.toLocaleString()}`;
+            
+            if (total > maxTotal * 0.8) {
+                displayEl.classList.add('mercury-token-warning');
+            } else {
+                displayEl.classList.remove('mercury-token-warning');
+            }
+            
+            // Save to localStorage
+            saveTokenUsage();
+        }
+
+        function saveTokenUsage() {
+            try {
+                const key = `mercury_tokens_${mercuryState.companyTicker || 'unknown'}`;
+                localStorage.setItem(key, JSON.stringify({
+                    input: mercuryState.tokenUsage.input,
+                    output: mercuryState.tokenUsage.output,
+                    lastReset: mercuryState.tokenUsage.lastReset,
+                    lockedUntil: mercuryState.lockedUntil
+                }));
+            } catch (e) {
+                console.warn('Could not save token usage to localStorage');
+            }
+        }
+
+        function loadTokenUsage() {
+            try {
+                const key = `mercury_tokens_${mercuryState.companyTicker || 'unknown'}`;
+                const saved = localStorage.getItem(key);
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    
+                    // Check if an hour has passed since last reset
+                    const now = Date.now();
+                    if (now - data.lastReset >= MERCURY_CONFIG.TOKEN_RESET_INTERVAL) {
+                        // Reset tokens
+                        mercuryState.tokenUsage = {
+                            input: 0,
+                            output: 0,
+                            lastReset: now
+                        };
+                        mercuryState.lockedUntil = null;
+                    } else {
+                        mercuryState.tokenUsage = {
+                            input: data.input,
+                            output: data.output,
+                            lastReset: data.lastReset
+                        };
+                        mercuryState.lockedUntil = data.lockedUntil;
+                    }
+                    
+                    updateTokenDisplay();
+                }
+            } catch (e) {
+                console.warn('Could not load token usage from localStorage');
+            }
+        }
+
+        function checkTokenReset() {
+            const now = Date.now();
+            if (now - mercuryState.tokenUsage.lastReset >= MERCURY_CONFIG.TOKEN_RESET_INTERVAL) {
+                mercuryState.tokenUsage = {
+                    input: 0,
+                    output: 0,
+                    lastReset: now
+                };
+                mercuryState.lockedUntil = null;
+                updateTokenDisplay();
+                console.log('Mercury tokens reset');
+            }
+        }
+
+        function checkRateLimit() {
+            const now = Date.now();
+            
+            // Check if locked
+            if (mercuryState.lockedUntil && now < mercuryState.lockedUntil) {
+                const minutesLeft = Math.ceil((mercuryState.lockedUntil - now) / 60000);
+                const unlockTime = new Date(mercuryState.lockedUntil).toLocaleTimeString();
+                return {
+                    allowed: false,
+                    message: `Token limit reached. You can resume prompting at ${unlockTime} (${minutesLeft} minute${minutesLeft > 1 ? 's' : ''}).`
+                };
+            }
+            
+            // Check token limits
+            const totalTokens = mercuryState.tokenUsage.input + mercuryState.tokenUsage.output;
+            if (totalTokens >= MERCURY_CONFIG.MAX_INPUT_TOKENS + MERCURY_CONFIG.MAX_OUTPUT_TOKENS) {
+                mercuryState.lockedUntil = now + MERCURY_CONFIG.TOKEN_RESET_INTERVAL;
+                saveTokenUsage();
+                const unlockTime = new Date(mercuryState.lockedUntil).toLocaleTimeString();
+                return {
+                    allowed: false,
+                    message: `Token limit reached. You can resume prompting at ${unlockTime}.`
+                };
+            }
+            
+            // Check message rate limit (5 messages per minute)
+            mercuryState.messageTimestamps = mercuryState.messageTimestamps.filter(
+                ts => now - ts < MERCURY_CONFIG.RATE_LIMIT_WINDOW
+            );
+            
+            if (mercuryState.messageTimestamps.length >= MERCURY_CONFIG.RATE_LIMIT_MESSAGES) {
+                return {
+                    allowed: false,
+                    message: "Woah, slow down there. Give me a minute to catch my breath!"
+                };
+            }
+            
+            return { allowed: true };
+        }
+
+        async function loadCompanyContext() {
+            if (mercuryState.contextLoaded) {
+                return mercuryState.companyContext;
+            }
+            
+            try {
+                // Load JSON report data
+                const ticker = new URLSearchParams(window.location.search).get('ticker');
+                if (!ticker) {
+                    throw new Error('No ticker specified');
+                }
+                
+                const response = await fetch(`data/${ticker}.json`);
+                if (!response.ok) {
+                    throw new Error('Could not load company data');
+                }
+                
+                const data = await response.json();
+                
+                // Build context from JSON (exclude disclaimer)
+                let context = `COMPANY: ${mercuryState.companyName} (${mercuryState.companyTicker})\n\n`;
+                
+                if (data.tldr_summary) {
+                    context += `TLDR SUMMARY:\n${data.tldr_summary}\n\n`;
+                }
+                
+                if (data.content) {
+                    // Remove disclaimer section
+                    let content = data.content;
+                    const disclaimerIndex = content.toLowerCase().indexOf('**disclaimer:**');
+                    if (disclaimerIndex !== -1) {
+                        content = content.substring(0, disclaimerIndex);
+                    }
+                    context += `FULL REPORT:\n${content}`;
+                }
+                
+                mercuryState.companyContext = context;
+                mercuryState.contextLoaded = true;
+                
+                return context;
+            } catch (error) {
+                console.error('Error loading company context:', error);
+                return `COMPANY: ${mercuryState.companyName}\n\nError: Could not load full company data. Limited context available.`;
+            }
+        }
+
+        async function sendMercuryMessage() {
+            const input = document.getElementById('mercuryInput');
+            const sendBtn = document.getElementById('mercurySendBtn');
+            const userMessage = input.value.trim();
+            
+            if (!userMessage) return;
+            
+            // Check rate limits
+            const rateLimitCheck = checkRateLimit();
+            if (!rateLimitCheck.allowed) {
+                addMercuryMessage(rateLimitCheck.message, 'system');
+                return;
+            }
+            
+            // Add to rate limit tracking
+            mercuryState.messageTimestamps.push(Date.now());
+            
+            // Disable input
+            input.disabled = true;
+            sendBtn.disabled = true;
+            
+            // Add user message
+            addMercuryMessage(userMessage, 'user');
+            input.value = '';
+            
+            // Show typing indicator
+            addTypingIndicator();
+            
+            try {
+                // Load context if first message
+                const context = await loadCompanyContext();
+                
+                // Build system message
+                const systemMessage = `You are Mercury, an expert financial analyst assistant. You are embedded in a webpage about ${mercuryState.companyName} (${mercuryState.companyTicker}).
+
+CRITICAL RULES:
+1. ALL responses must be 100 words or less. Prefer shorter. Be direct and efficient.
+2. You have access to detailed company information provided below. Use it as your primary source.
+3. The user's question is about ${mercuryState.companyName} unless explicitly stated otherwise.
+4. NEVER fabricate information about ${mercuryState.companyName}. If you need current data not in the context, use web search.
+5. If asked about another company, answer briefly but suggest visiting that company's page for better insights.
+6. Always acknowledge when you use web search vs. page context.
+7. If the answer is clearly in the provided context, DON'T use web search.
+8. If the question needs current/live data not in context, USE web search.
+9. Offer web search for questions that might benefit from more up-to-date information (add note about token usage).
+
+COMPANY CONTEXT:
+${context}
+
+Now answer the user's question concisely and accurately.`;
+                
+                // Call Claude API via Cloudflare Worker (secure)
+                const response = await fetch(MERCURY_CONFIG.WORKER_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        model: MERCURY_CONFIG.MODEL,
+                        max_tokens: MERCURY_CONFIG.MAX_RESPONSE_TOKENS,
+                        system: systemMessage,
+                        messages: [
+                            { role: 'user', content: userMessage }
+                        ]
+                    })
+                });
+                
+                if (!response.ok) {
+                    // Check if it's a rate limit error from the Worker
+                    if (response.status === 429) {
+                        const errorData = await response.json();
+                        throw new Error(`Rate limit: ${errorData.message}`);
+                    }
+                    throw new Error(`API error: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                // Extract response
+                let aiResponse = '';
+                let usedWebSearch = false;
+                
+                for (const block of data.content) {
+                    if (block.type === 'text') {
+                        aiResponse += block.text;
+                    }
+                }
+                
+                // Check if web search was used (simple heuristic)
+                if (aiResponse.toLowerCase().includes('according to') || 
+                    aiResponse.toLowerCase().includes('recent reports') ||
+                    aiResponse.toLowerCase().includes('as of')) {
+                    usedWebSearch = true;
+                }
+                
+                // Update token usage
+                mercuryState.tokenUsage.input += data.usage.input_tokens;
+                mercuryState.tokenUsage.output += data.usage.output_tokens;
+                updateTokenDisplay();
+                
+                // Remove typing indicator
+                removeTypingIndicator();
+                
+                // Add AI response
+                addMercuryMessage(aiResponse, 'ai', { usedWebSearch });
+                
+            } catch (error) {
+                console.error('Mercury API error:', error);
+                removeTypingIndicator();
+                addMercuryMessage("Looks like I'm PTO right now. But I'll be back soon!", 'system');
+            } finally {
+                // Re-enable input
+                input.disabled = false;
+                sendBtn.disabled = false;
+                input.focus();
+            }
+        }
+
+        // Handle Enter key in input
+        document.addEventListener('DOMContentLoaded', function() {
+            const input = document.getElementById('mercuryInput');
+            if (input) {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        sendMercuryMessage();
+                    }
+                });
+            }
+            
+            // Initialize Mercury
+            initMercury();
+        });
     </script>
 </body>
 </html>
