@@ -3195,7 +3195,7 @@
         
         const MERCURY_CONFIG = {
             // Cloudflare Worker URL (YOU'LL UPDATE THIS AFTER DEPLOYING THE WORKER)
-            WORKER_URL: 'https://mercury-proxy.tnowik0403.workers.dev/',
+            WORKER_URL: 'https://mercury-proxy.YOUR-SUBDOMAIN.workers.dev',
             
             // No API key needed in browser anymore! It's hidden in the Worker ✅
             
@@ -3226,23 +3226,28 @@
 
         // Initialize Mercury with welcome message
         function initMercury() {
-            const companyNameEl = document.querySelector('.company-name');
-            if (companyNameEl) {
-                const fullText = companyNameEl.textContent;
-                const match = fullText.match(/^(.+?)\s*\(/);
-                mercuryState.companyName = match ? match[1].trim() : 'this company';
-                const tickerMatch = fullText.match(/\(([A-Z]+)\)/);
-                mercuryState.companyTicker = tickerMatch ? tickerMatch[1] : '';
-            }
-            
-            // Update subtitle
-            document.getElementById('mercurySubtitle').textContent = `Lead Analyst for ${mercuryState.companyName}`;
-            
-            // Add welcome message
-            addMercuryMessage(
-                `Hi, I'm Mercury, your AI-Powered Lead Analyst for ${mercuryState.companyName}. Ask me anything regarding ${mercuryState.companyName} and I'll give you (web-search enabled) quality color and insights.`,
-                'ai'
-            );
+            // Wait for company name to be loaded (it's populated by loadCompanyData)
+            const waitForCompanyName = setInterval(() => {
+                const companyNameEl = document.querySelector('.company-name');
+                if (companyNameEl && companyNameEl.textContent.trim()) {
+                    clearInterval(waitForCompanyName);
+                    
+                    const fullText = companyNameEl.textContent;
+                    const match = fullText.match(/^(.+?)\s*\(/);
+                    mercuryState.companyName = match ? match[1].trim() : 'this company';
+                    const tickerMatch = fullText.match(/\(([A-Z]+)\)/);
+                    mercuryState.companyTicker = tickerMatch ? tickerMatch[1] : '';
+                    
+                    // Update subtitle with ticker
+                    document.getElementById('mercurySubtitle').textContent = `Lead Analyst for ${mercuryState.companyTicker}`;
+                    
+                    // Add welcome message with company name
+                    addMercuryMessage(
+                        `Hi, I'm Mercury, your AI-Powered Lead Analyst for ${mercuryState.companyName}. Ask me anything regarding ${mercuryState.companyName} and I'll give you (web-search enabled) quality color and insights.`,
+                        'ai'
+                    );
+                }
+            }, 100); // Check every 100ms
             
             // Load token usage from localStorage
             loadTokenUsage();
@@ -3507,17 +3512,23 @@ CRITICAL RULES:
 1. ALL responses must be 100 words or less. Prefer shorter. Be direct and efficient.
 2. You have access to detailed company information provided below. Use it as your primary source.
 3. The user's question is about ${mercuryState.companyName} unless explicitly stated otherwise.
-4. NEVER fabricate information about ${mercuryState.companyName}. If you need current data not in the context, use web search.
+4. NEVER fabricate information about ${mercuryState.companyName}. If you need current data not in the context, AUTOMATICALLY use web search - don't ask permission.
 5. If asked about another company, answer briefly but suggest visiting that company's page for better insights.
 6. Always acknowledge when you use web search vs. page context.
 7. If the answer is clearly in the provided context, DON'T use web search.
-8. If the question needs current/live data not in context, USE web search.
-9. Offer web search for questions that might benefit from more up-to-date information (add note about token usage).
+8. If the question needs current/live data not in context (like CEO name, recent news, latest developments), AUTOMATICALLY use web search without asking.
+9. Do NOT ask permission to use web search - just use it when needed and mention that you did.
 
 COMPANY CONTEXT:
 ${context}
 
 Now answer the user's question concisely and accurately.`;
+                
+                // Add current message to conversation history
+                mercuryState.conversationHistory.push({
+                    role: 'user',
+                    content: userMessage
+                });
                 
                 // Call Claude API via Cloudflare Worker (secure)
                 const response = await fetch(MERCURY_CONFIG.WORKER_URL, {
@@ -3529,9 +3540,7 @@ Now answer the user's question concisely and accurately.`;
                         model: MERCURY_CONFIG.MODEL,
                         max_tokens: MERCURY_CONFIG.MAX_RESPONSE_TOKENS,
                         system: systemMessage,
-                        messages: [
-                            { role: 'user', content: userMessage }
-                        ]
+                        messages: mercuryState.conversationHistory  // Send full conversation history
                     })
                 });
                 
@@ -3562,6 +3571,12 @@ Now answer the user's question concisely and accurately.`;
                     aiResponse.toLowerCase().includes('as of')) {
                     usedWebSearch = true;
                 }
+                
+                // Add AI response to conversation history
+                mercuryState.conversationHistory.push({
+                    role: 'assistant',
+                    content: aiResponse
+                });
                 
                 // Update token usage
                 mercuryState.tokenUsage.input += data.usage.input_tokens;
