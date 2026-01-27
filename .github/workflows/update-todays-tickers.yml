@@ -2,8 +2,8 @@ name: Update Today's Tickers
 
 on:
   schedule:
-    # Run at 3:00 AM EST (8:00 AM UTC) - After Daily QuickTick Update completes
-    - cron: '0 8 * * *'
+    # Run at 4:00 AM EST (9:00 AM UTC) - Safely after Daily QuickTick Update completes
+    - cron: '0 9 * * *'
   workflow_dispatch:  # Allow manual trigger
 
 jobs:
@@ -23,12 +23,24 @@ jobs:
         run: |
           cd files
           python generate_todays_tickers_simple.py
+          
+          # Copy to root for index.html to access
+          cp todays_tickers.json ../todays_tickers.json
+          
+          echo "Generated todays_tickers.json"
+          cat todays_tickers.json | head -20
       
       - name: Commit and push if changed
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add files/todays_tickers.json
+          
+          # Fetch and pull to avoid conflicts
+          git fetch origin main
+          git pull origin main
+          
+          # Stage both copies of the file
+          git add todays_tickers.json files/todays_tickers.json
           
           # Get today's day for commit message
           cd files
@@ -39,4 +51,11 @@ jobs:
           fi
           cd ..
           
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update today's tickers - Day ${TODAY_DAY}/91 (automated)" && git push)
+          # Commit and push if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update today's tickers - Day ${TODAY_DAY}/91 (automated)"
+            git push
+            echo "Successfully pushed updated tickers"
+          fi
