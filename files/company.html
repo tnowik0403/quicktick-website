@@ -119,9 +119,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px;
+            padding: 12px 15px;
             border-bottom: 1px solid var(--border);
             background: rgba(0, 212, 255, 0.05);
+            gap: 10px;
         }
 
         .nav-sidebar-title {
@@ -159,6 +160,30 @@
 
         .scroll-to-top:hover {
             background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Compact top button for nav header */
+        .scroll-to-top-compact {
+            background: none;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+            line-height: 1;
+            text-decoration: none;
+        }
+
+        .scroll-to-top-compact:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: var(--accent-green);
             transform: translateY(-2px);
         }
 
@@ -789,12 +814,22 @@
             overflow: hidden;
             z-index: 100;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
         }
 
         .info-sidebar.minimized {
             max-height: 50px;
             overflow: hidden;
+        }
+
+        .info-sidebar.fullscreen {
+            right: 50%;
+            top: 50%;
+            transform: translate(50%, -50%);
+            width: 50vw;
+            height: 70vh;
+            max-width: 900px;
+            max-height: 800px;
         }
 
         .info-sidebar-header {
@@ -830,6 +865,77 @@
 
         .minimize-btn:hover {
             background: rgba(0, 212, 255, 0.1);
+        }
+
+        /* Icon-style minimize button (for Sections and Market Data) */
+        .minimize-btn-icon {
+            background: none;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            font-size: 1.2rem;
+            line-height: 1;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .minimize-btn-icon:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: var(--accent-green);
+        }
+
+        /* Expand button icon (for Mercury and Market Data) */
+        .expand-btn-icon,
+        .mercury-expand-btn {
+            background: none;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+            line-height: 1;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .expand-btn-icon:hover,
+        .mercury-expand-btn:hover {
+            background: rgba(0, 255, 163, 0.2);
+            border-color: var(--accent-green);
+        }
+
+        /* Compact scroll to top button (in header) */
+        .scroll-to-top-compact {
+            background: none;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+            line-height: 1;
+            text-decoration: none;
+        }
+
+        .scroll-to-top-compact:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-2px);
         }
 
         .refresh-btn {
@@ -1214,6 +1320,20 @@
             left: 20px;
             z-index: 9999;
             font-family: 'JetBrains Mono', monospace;
+            transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+
+        .mercury-chatbot.fullscreen {
+            left: 50%;
+            bottom: 50%;
+            transform: translate(-50%, 50%);
+        }
+
+        .mercury-chatbot.fullscreen .mercury-expanded {
+            width: 50vw;
+            height: 70vh;
+            max-width: 900px;
+            max-height: 800px;
         }
 
         .mercury-minimized {
@@ -1292,6 +1412,52 @@
         }
 
         .mercury-minimize-btn:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: var(--accent-green);
+        }
+
+        /* Shared minimize button style for all widgets */
+        .widget-minimize-btn {
+            background: none;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .widget-minimize-btn:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: var(--accent-green);
+        }
+
+        /* Expand buttons for widgets */
+        .mercury-expand-btn,
+        .widget-expand-btn {
+            background: none;
+            border: 1px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        .mercury-expand-btn:hover,
+        .widget-expand-btn:hover {
             background: rgba(0, 212, 255, 0.2);
             border-color: var(--accent-green);
         }
@@ -1501,7 +1667,7 @@
     <div class="nav-sidebar" id="navSidebar">
         <div class="nav-sidebar-header">
             <div class="nav-sidebar-title">Sections</div>
-            <button class="minimize-btn" onclick="toggleNavSidebar()">Minimize</button>
+            <button class="widget-minimize-btn" onclick="toggleNavSidebar()" title="Minimize">−</button>
         </div>
         <div class="nav-sidebar-content">
             <a href="#" class="scroll-to-top" onclick="scrollToTop(event)">↑ Top</a>
@@ -1523,7 +1689,10 @@
                     <span id="refreshCountdown" style="display: none; font-size: 0.7rem;"></span>
                 </button>
             </div>
-            <button class="minimize-btn" onclick="toggleInfoSidebar()">Minimize</button>
+            <div style="display: flex; gap: 8px;">
+                <button class="widget-expand-btn" onclick="toggleInfoSidebarExpand()" title="Expand">⛶</button>
+                <button class="widget-minimize-btn" onclick="toggleInfoSidebar()" title="Minimize">−</button>
+            </div>
         </div>
         
         <div class="info-tabs">
@@ -2153,16 +2322,27 @@
         // Info Sidebar Functions
         function toggleInfoSidebar() {
             const sidebar = document.getElementById('infoSidebar');
-            const btn = sidebar.querySelector('.minimize-btn');
             sidebar.classList.toggle('minimized');
-            btn.textContent = sidebar.classList.contains('minimized') ? 'Expand' : 'Minimize';
+        }
+
+        function toggleInfoSidebarExpand() {
+            const sidebar = document.getElementById('infoSidebar');
+            const expandBtn = sidebar.querySelector('.widget-expand-btn');
+            
+            if (sidebar.classList.contains('fullscreen')) {
+                sidebar.classList.remove('fullscreen');
+                expandBtn.textContent = '⛶';
+                expandBtn.title = 'Expand';
+            } else {
+                sidebar.classList.add('fullscreen');
+                expandBtn.textContent = '⛶';
+                expandBtn.title = 'Collapse';
+            }
         }
 
         function toggleNavSidebar() {
             const sidebar = document.getElementById('navSidebar');
-            const btn = sidebar.querySelector('.minimize-btn');
             sidebar.classList.toggle('minimized');
-            btn.textContent = sidebar.classList.contains('minimized') ? 'Expand' : 'Minimize';
         }
 
         function switchTab(tabName) {
@@ -3154,7 +3334,10 @@
                     <div class="mercury-title">⚡ MERCURY AI</div>
                     <div class="mercury-subtitle" id="mercurySubtitle">Lead Analyst</div>
                 </div>
-                <button class="mercury-minimize-btn" onclick="toggleMercury()" title="Minimize">−</button>
+                <div style="display: flex; gap: 8px;">
+                    <button class="mercury-expand-btn" onclick="toggleMercuryExpand()" title="Expand">⛶</button>
+                    <button class="mercury-minimize-btn" onclick="toggleMercury()" title="Minimize">−</button>
+                </div>
             </div>
             
             <div class="mercury-messages" id="mercuryMessages">
@@ -3288,6 +3471,21 @@
                 expanded.style.display = 'flex';
                 minimized.style.display = 'none';
                 scrollMercuryToBottom();
+            }
+        }
+
+        function toggleMercuryExpand() {
+            const chatbot = document.getElementById('mercuryChatbot');
+            const expandBtn = chatbot.querySelector('.mercury-expand-btn');
+            
+            if (chatbot.classList.contains('fullscreen')) {
+                chatbot.classList.remove('fullscreen');
+                expandBtn.textContent = '⛶';
+                expandBtn.title = 'Expand';
+            } else {
+                chatbot.classList.add('fullscreen');
+                expandBtn.textContent = '⛶';
+                expandBtn.title = 'Collapse';
             }
         }
 
