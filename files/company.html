@@ -168,7 +168,7 @@
             background: none;
             border: 1px solid var(--accent-cyan);
             color: var(--accent-cyan);
-            width: 28px;
+            padding: 0 10px;
             height: 28px;
             border-radius: 6px;
             cursor: pointer;
@@ -176,9 +176,12 @@
             align-items: center;
             justify-content: center;
             transition: all 0.2s ease;
-            font-size: 1rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
             line-height: 1;
             text-decoration: none;
+            white-space: nowrap;
         }
 
         .scroll-to-top-compact:hover {
@@ -1667,8 +1670,10 @@
     <div class="nav-sidebar" id="navSidebar">
         <div class="nav-sidebar-header">
             <div class="nav-sidebar-title">Sections</div>
-            <a href="#" class="scroll-to-top-compact" onclick="scrollToTop(event)" title="Scroll to top">↑</a>
-            <button class="widget-minimize-btn" onclick="toggleNavSidebar()" title="Minimize">−</button>
+            <div style="display: flex; gap: 8px;">
+                <a href="#" class="scroll-to-top-compact" onclick="scrollToTop(event)" title="Scroll to top">↑ TOP</a>
+                <button class="widget-minimize-btn" onclick="toggleNavSidebar()" title="Minimize">−</button>
+            </div>
         </div>
         <div class="nav-sidebar-content">
             <ul class="nav-sidebar-list" id="navSidebarList">
