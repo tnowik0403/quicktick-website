@@ -3225,58 +3225,49 @@
         };
 
         // Initialize Mercury with welcome message
-        function initMercury() {
-            // Wait for company name to be loaded (it's populated by loadCompanyData)
-            let attempts = 0;
-            const maxAttempts = 100; // 10 seconds max wait (100 * 100ms)
+        async function initMercury() {
+            // Use ticker from URL (already defined globally)
+            if (!ticker) {
+                console.warn('No ticker found in URL');
+                document.getElementById('mercurySubtitle').textContent = 'Lead Analyst';
+                addMercuryMessage(
+                    `Hi, I'm Mercury, your AI-Powered Lead Analyst. I have live web search capabilities. Ask me anything!`,
+                    'ai'
+                );
+                return;
+            }
             
-            const waitForCompanyName = setInterval(() => {
-                attempts++;
-                const tickerEl = document.getElementById('tickerSymbol');
-                
-                if (tickerEl && tickerEl.textContent.trim() && tickerEl.textContent !== '...') {
-                    clearInterval(waitForCompanyName);
+            mercuryState.companyTicker = ticker;
+            
+            // Load company name from company_lookup.json
+            try {
+                const response = await fetch('company_lookup.json');
+                if (response.ok) {
+                    const companies = await response.json();
+                    const companyData = companies[ticker];
                     
-                    // Extract company name and ticker from the display
-                    // Format is: "COMPANY NAME (TICKER)"
-                    const fullText = tickerEl.textContent;
-                    const match = fullText.match(/^(.+?)\s*\(([A-Z]+)\)/);
-                    
-                    if (match) {
-                        mercuryState.companyName = match[1].trim();
-                        mercuryState.companyTicker = match[2].trim();
+                    if (companyData && companyData.name) {
+                        mercuryState.companyName = companyData.name;
                     } else {
-                        // Fallback if format doesn't match
-                        mercuryState.companyName = 'this company';
-                        mercuryState.companyTicker = ticker || ''; // Use URL param ticker as fallback
+                        // Fallback if ticker not found in lookup
+                        mercuryState.companyName = ticker;
                     }
-                    
-                    // Update subtitle with ticker
-                    document.getElementById('mercurySubtitle').textContent = `Lead Analyst for ${mercuryState.companyTicker}`;
-                    
-                    // Add welcome message with company name
-                    addMercuryMessage(
-                        `Hi, I'm Mercury, your AI-Powered Lead Analyst for ${mercuryState.companyName}. I have live web search capabilities and full access to the company report. Ask me anything!`,
-                        'ai'
-                    );
-                } else if (attempts >= maxAttempts) {
-                    // Timeout - use fallback
-                    clearInterval(waitForCompanyName);
-                    console.warn('Mercury initialization timeout - using fallback');
-                    
-                    mercuryState.companyName = 'this company';
-                    mercuryState.companyTicker = ticker || '';
-                    
-                    document.getElementById('mercurySubtitle').textContent = mercuryState.companyTicker 
-                        ? `Lead Analyst for ${mercuryState.companyTicker}` 
-                        : 'Lead Analyst';
-                    
-                    addMercuryMessage(
-                        `Hi, I'm Mercury, your AI-Powered Lead Analyst. I have live web search capabilities and full access to the company report. Ask me anything!`,
-                        'ai'
-                    );
+                } else {
+                    mercuryState.companyName = ticker;
                 }
-            }, 100); // Check every 100ms
+            } catch (error) {
+                console.warn('Could not load company lookup:', error);
+                mercuryState.companyName = ticker;
+            }
+            
+            // Update subtitle with ticker
+            document.getElementById('mercurySubtitle').textContent = `Lead Analyst for ${mercuryState.companyTicker}`;
+            
+            // Add welcome message with company name
+            addMercuryMessage(
+                `Hi, I'm Mercury, your AI-Powered Lead Analyst for ${mercuryState.companyName}. I have live web search capabilities and full access to the company report. Ask me anything!`,
+                'ai'
+            );
             
             // Load token usage from localStorage
             loadTokenUsage();
