@@ -48,7 +48,7 @@ except ImportError:
 # *** ADD YOUR TICKERS HERE ***
 # Just replace this list with any tickers you want to analyze
 TICKERS = [
-    "SOFI"
+    "AREC", "ASPI", "ALDX", "BEPC", "AMLP"
 ]
 
 YOUR_PROMPT = """
