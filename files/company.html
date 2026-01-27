@@ -3199,7 +3199,7 @@
             
             // No API key needed in browser anymore! It's hidden in the Worker ✅
             
-            MODEL: 'claude-3-5-haiku-20241022', // Haiku 3.5
+            MODEL: 'claude-haiku-4-5-20251001', // Haiku 4.5 with web search support
             MAX_INPUT_TOKENS: 30000,
             MAX_OUTPUT_TOKENS: 5000,
             MAX_RESPONSE_TOKENS: 300, // Limit per response for ~100 words
@@ -3243,7 +3243,7 @@
                     
                     // Add welcome message with company name
                     addMercuryMessage(
-                        `Hi, I'm Mercury, your AI-Powered Lead Analyst for ${mercuryState.companyName}. Ask me anything regarding ${mercuryState.companyName} and I'll give you (web-search enabled) quality color and insights.`,
+                        `Hi, I'm Mercury, your AI-Powered Lead Analyst for ${mercuryState.companyName}. I have live web search capabilities and full access to the company report. Ask me anything!`,
                         'ai'
                     );
                 }
@@ -3540,7 +3540,12 @@ Now answer the user's question concisely and accurately.`;
                         model: MERCURY_CONFIG.MODEL,
                         max_tokens: MERCURY_CONFIG.MAX_RESPONSE_TOKENS,
                         system: systemMessage,
-                        messages: mercuryState.conversationHistory  // Send full conversation history
+                        messages: mercuryState.conversationHistory,  // Send full conversation history
+                        tools: [{
+                            type: "web_search_20250305",
+                            name: "web_search",
+                            max_uses: 3  // Limit to 3 searches per request
+                        }]
                     })
                 });
                 
@@ -3555,7 +3560,7 @@ Now answer the user's question concisely and accurately.`;
                 
                 const data = await response.json();
                 
-                // Extract response
+                // Extract response and check for web search usage
                 let aiResponse = '';
                 let usedWebSearch = false;
                 
@@ -3563,13 +3568,10 @@ Now answer the user's question concisely and accurately.`;
                     if (block.type === 'text') {
                         aiResponse += block.text;
                     }
-                }
-                
-                // Check if web search was used (simple heuristic)
-                if (aiResponse.toLowerCase().includes('according to') || 
-                    aiResponse.toLowerCase().includes('recent reports') ||
-                    aiResponse.toLowerCase().includes('as of')) {
-                    usedWebSearch = true;
+                    // Check if web search tool was actually used
+                    if (block.type === 'server_tool_use' && block.name === 'web_search') {
+                        usedWebSearch = true;
+                    }
                 }
                 
                 // Add AI response to conversation history
