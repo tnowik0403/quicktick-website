@@ -39,7 +39,7 @@ except ImportError:
 # *** ADD YOUR TICKERS HERE ***
 # Just replace this list with any tickers you want to generate summaries for
 TICKERS = [
-    "HIVE"
+    "SOFI"
 
 ]
 
@@ -104,7 +104,7 @@ def save_company_data(data, ticker):
 
 def generate_summary(client, content, ticker):
     """
-    Generate TLDR summary using Claude Haiku 4
+    Generate TLDR summary using Claude Haiku 4.5
     
     Args:
         client: Anthropic client instance
@@ -120,7 +120,7 @@ def generate_summary(client, content, ticker):
             print(f"  Generating summary for {ticker}... ", end="", flush=True)
             
             message = client.messages.create(
-                model="claude-3-5-haiku-20241022",
+                model="claude-haiku-4-5-20251001",
                 max_tokens=300,
                 messages=[
                     {
@@ -143,7 +143,7 @@ def generate_summary(client, content, ticker):
             input_tokens = usage.input_tokens
             output_tokens = usage.output_tokens
             
-            # Haiku 3.5 pricing: Input $1/M, Output $5/M
+            # Haiku 4.5 pricing: Input $1/M, Output $5/M
             cost = (
                 (input_tokens / 1_000_000 * 1.00) +
                 (output_tokens / 1_000_000 * 5.00)
